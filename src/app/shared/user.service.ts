@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {User} from '../user/user.model';
+import { registerDTO } from '../register/registerDTO';
 
 
 const httpOptions = {
@@ -23,11 +24,19 @@ export class UserService {
   }
 
   public login(userName:string,userPassword:string): Observable<any> {
-    
-  var obj={
-    "userName":userName,
-    "userPassword":userPassword   
- };
-    return this.http.post<any>('http://localhost:8084/api/user/login', obj,httpOptions);
+      var obj={
+                "userName":userName,
+                "userPassword":userPassword   
+      };
+      return this.http.post<any>(this.userUrl + '/login', obj,httpOptions);
   }
+
+  public register(registerdto:registerDTO): Observable<any> {
+    return this.http.post<any>(this.userUrl + '/registerUser', registerdto,httpOptions);
+}
+
+
+
+
+
 }

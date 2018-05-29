@@ -14,6 +14,8 @@ import {AuthService} from "./core/auth.service";
 import {Interceptor} from "./core/inteceptor";
 import {TokenStorage} from "./core/token.storage";
 import { HeaderComponent } from './header/header.component';
+import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -23,6 +25,8 @@ import { HeaderComponent } from './header/header.component';
     LoginComponent,
     ErrorDialogComponent,
     HeaderComponent,
+    HomeComponent,
+    RegisterComponent,
     
   ],
   imports: [

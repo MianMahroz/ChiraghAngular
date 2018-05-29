@@ -1,32 +1,85 @@
+<!DOCTYPE html>
 
   <div class="container-fluid screen-wrapper">
-    <app-header></app-header>  
+    
     <div class="row body-section">
       <div class="col-md-12">
+        <!-- <div class="alert alert-danger number-error d-none">
+          <strong>Warning!</strong> You cannot type numbers in this field.
+        </div> -->
         <div class="row form-wrapper-row py-5">
           <div class="offset-md-1 col-md-10">
             <div class="row sign-in-row">
-              <div class="offset-md-4 col-md-4 sign-in-col">
+              <div class="offset-md-2 col-md-8 sign-in-col">
                 <div class="common-form" novalidate>
-                  <div class="text-center mb-5 page-primary-title-34">Sign In</div>
-                  <div class="input-wrapper form-label-group mb-4">
-                    <input id="stuff" type="text"  [(ngModel)]="logindto.userName" class="form-control form-input" placeholder="Username" required>
-                    <label for="stuff" class="fa fa-user input-icon"></label>
+                  <div class="text-center mb-5 page-primary-title-34">Register</div>
+                  <div class="row">
+                    <div class="col-md-12 form-block-heading mb-2">Personal Details:</div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <input type="text" class="form-control onlyText form-input" [(ngModel)]="registerdto.firstName" placeholder="First Name" required>
+                    </div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <input type="text" class="form-control onlyText form-input" [(ngModel)]="registerdto.middleName" placeholder="Middle Name">
+                    </div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <input type="text" class="form-control onlyText form-input" [(ngModel)]="registerdto.lastName"  placeholder="Last Name" required>
+                    </div>
                   </div>
-                  <div class="input-wrapper form-label-group mb-4">
-                    <input type="password" class="form-control form-input"  [(ngModel)]="logindto.userPassword" placeholder="Password" required>
-                    <label for="stuff" class="fa fa-lock input-icon"></label>
+                  <div class="row mt-3">
+                    <div class="col-md-12 form-block-heading mb-2">Account Details:</div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <input type="text" class="form-control form-input" [(ngModel)]="registerdto.userName"  placeholder="Create Username" required>
+                    </div>
                   </div>
-                  <button class="btn form-btn mb-4" (click)="loginChiraghUser()" type="submit">Sign In</button>
-                  <div class="common-checkbox sign-in-remeber-div mb-4">                    
-                    <label>
-                      <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Remember Me
-                    </label>
-                    <a href="#" class="forgot-pwd-link">Forgot Password?</a>
+                  <div class="row">
+                    <div class="col-md-6 form-label-group mb-4">
+                      <input type="password" class="form-control form-input" [(ngModel)]="registerdto.userPassword" placeholder="Create Password" required>
+                    </div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <input type="password" class="form-control form-input"  [(ngModel)]="registerdto.confirmPassword" placeholder="Confirm Password" required>
+                    </div>
                   </div>
-                  <div class="not-registered-div">
-                    <a href="#" class="learn-more-link">Sign Up for Free</a>
+                  <div class="row mt-3">
+                    <div class="col-md-12 form-block-heading mb-2">Contact Details:</div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <input type="email" class="form-control form-input" [(ngModel)]="registerdto.userEmail" placeholder="Your Email" required>
+                    </div>
                   </div>
+                  <div class="row">
+                    <div class="col-md-6 form-label-group mb-4">
+                      <input type="number" class="form-control form-input" [(ngModel)]="registerdto.mobileNo" placeholder="Mobile Number" required>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 my-xs-4 mb-4 form-label-group otp-code-div">
+                      <a href="#" class="click-here-link mb-1">Click here</a>
+                      <button class="btn form-btn mb-1">Send OTP code on my mobile</button>
+                      <span class="code-instruct">Code Valid for 5 mins</span>
+                      <a href="#" class="resend-otp-link">Resend OTP code</a>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 form-label-group mb-4">
+                      <input type="number" class="form-control form-input" [(ngModel)]="registerdto.mobileOtpCode" placeholder="Enter OTP code" required>
+                    </div>  
+                  </div>
+                  <div class="row my-4">
+                    <div class="col-md-12 common-checkbox">
+                      <label>
+                        <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Accept Terms & Conditions
+                      </label>
+                    </div>
+                  </div>  
+                  <!-- <div class="form-group mb-5">
+                    <div class="g-recaptcha" data-sitekey="6LfKURIUAAAAAO50vlwWZkyK_G2ywqE52NU7YO0S" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
+                    <input class="form-control d-none" data-recaptcha="true" required data-error="Please complete the Captcha">
+                    <div class="help-block with-errors"></div>
+                  </div> -->
+                  <div class="row">
+                    <div class="col-md-6">
+                      <button class="btn form-btn"   (click)="onRegister()" type="submit">Register</button>
+                    </div>
+                  </div>    
                 </div>
               </div>
             </div>

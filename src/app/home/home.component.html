@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Chiragh</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./assets/css/fonts/nunito-font.css">
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+  <link href="./assets/css/application.css" rel="stylesheet">
+  <script src="./assets/js/jquery-3.2.1.slim.min.js"></script>
+  <script src="./assets/js/bootstrap.min.js"></script>
+  <script src="./assets/js/popper.min.js"></script>
+  <script src="./assets/js/fa-all.js"></script>
+  <script src="./assets/js/jQuery-v3.3.1.min.js"></script>
+  <script src="./assets/js/common.js"></script>
+</head>
+<body>
+	<div class="container-fluid screen-wrapper">
+		<header class="row header">
+			<div class="col-md-12">
+				<div class="row info-header-row">
+					<div class="offset-md-1 col-md-10 info-header-col d-flex justify-content-end align-items-center">
+						<div class="chiragh-info-mail py-2 pr-3">info@chiragh.com</div>
+						<div class="chiragh-contact py-2 ml-3 pr-3">
+							<a class="whatsapp-icon ml-2">Dubai +971 4 1234 5678</a>
+						</div>	
+						<div class="language-flags ml-3">
+							<span class="mr-1 country-flags uae-flag"></span>
+							<span class="mr-1 country-flags active uk-flag"></span>
+							<span class="mr-1 country-flags french-flag"></span>
+							<span class="mr-1 country-flags spanish-flag"></span>
+						</div>
+            <div class="social-media-nav ml-3 pl-3 py-2">
+              <a href="#" class="social-links mr-3"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social-links mr-3"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-links mr-3"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="social-links"><i class="fab fa-google-plus-g"></i></a>
+            </div>
+					</div>
+				</div>
+				<div class="row navbar-wrap-row navbar-wrap-row-xs">
+					<div class="offset-md-1 col-md-10">
+						<div class="row navbar-row-wrapper my-2">
+							<div class="col-md-3 col-8 logo-sec-col">
+								<a href="#" class="site-logo d-block"><img src="./assets/images/mainlogo.jpg" class="w-100" alt="Logo"></a>
+							</div>
+							<div class="col-md-9 col-4 navbar-col">
+								<nav class="navbar navbar-expand-lg navbar-light">
+								  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+								    <span class="navbar-toggler-icon"></span>
+								  </button>
+								  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+								    <ul class="navbar-nav d-flex w-100 align-items-center">
+								      <li class="nav-item">
+								        <a class="nav-link" href="#">About Us<span class="sr-only">(current)</span></a>
+								      </li>
+								      <li class="nav-item">
+								        <a class="nav-link" href="#">Buy</a>
+								      </li>
+								      <li class="nav-item">
+								        <a class="nav-link" href="#">Sell</a>
+								      </li>
+								      <li class="nav-item">
+								        <a class="nav-link" href="#">How it Works</a>
+								      </li>
+								      <li class="nav-item">
+								        <a class="nav-link" href="#">FAQs</a>
+								      </li>
+								      <li class="nav-item">
+								        <a class="nav-link" href="#">Resources</a>
+								      </li>
+								      <li class="nav-item reg-sign-in-item">
+								        <div class="common-btn reg-sign-in-block px-3">
+                          <a class="register-link pr-2" href="#">Register</a><a class="sign-in pl-2" href="#">Sign in</a>
+                        </div>
+								      </li>
+								    </ul>
+								  </div>
+								</nav>
+							</div>			
+						</div>
+					</div>
+				</div>	
+			</div>
+		</header>
+		<div class="row body-section">
+			<div class="col-md-12">
+				<div class="row home-slider-row">
+					<div class="col-md-12 px-0 home-slider-col">	
+						<div id="index-main-slider" class="carousel carousel-fade slide" data-ride="carousel">
+						  <div class="carousel-inner">
+						    <div class="carousel-item active">
+						      <img class="b-img d-block h-100 w-100" src="./assets/images/Villa_modern.jpg" alt="House View">
+						    </div>
+						  </div>
+						</div>
+						<div class="row mx-0 main-search-row">
+							<div class="offset-md-1 col-md-10">
+								<div class="input-group">
+								  <input type="text" class="form-control main-search" placeholder='Try "Villa in Dubai"'>
+								  <button class="btn common-btn slider-search-btn slider-search-btn-top">Search</button>
+								  <a class="advance-search-link circle-plus closed" data-toggle="collapse" href="#advance-search">
+                    <div class="circle">
+                      <div class="horizontal"></div>
+                      <div class="vertical"></div>
+                    </div>        
+                  </a>
+                  <div class="collapse advance-search-body" id="advance-search">
+                    <div class="search-heading my-3">Advance Search</div>
+                    <div class="advance-options-wrap">
+                      <div class="row">
+                        <div class="col-md-3 form-label-group mb-xs-3">
+                          <select class="form-control adnvance-search-select">
+                            <option selected>Type of Area</option>
+                            <option>Square</option>
+                            <option>Feet</option>
+                          </select>
+                        </div>
+                        <div class="col-md-3 form-label-group mb-xs-3">
+                          <select class="form-control adnvance-search-select">
+                            <option selected>Type of Property</option>
+                            <option>Square</option>
+                            <option>Feet</option>
+                          </select>
+                        </div>
+                        <div class="col-md-3 form-label-group mb-xs-3">
+                          <select class="form-control adnvance-search-select">
+                            <option selected>Status</option>
+                            <option>Square</option>
+                            <option>Feet</option>
+                          </select>
+                        </div>
+                        <div class="col-md-3 form-label-group">
+                          <select class="form-control adnvance-search-select">
+                            <option selected>City</option>
+                            <option>Square</option>
+                            <option>Feet</option>
+                          </select>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-md-3">
+                          <div class="row">
+                            <div class="col-md-6 form-label-group pr-1 pr-xs-15 mb-xs-3">
+                              <select class="form-control adnvance-search-select">
+                                <option selected>Beds(min)</option>
+                                <option>1</option>
+                                <option>2</option>
+                              </select>
+                            </div>
+                            <div class="col-md-6 form-label-group pl-1 pl-xs-15 mb-xs-3">
+                              <select class="form-control adnvance-search-select">
+                                <option selected>Beds(max)</option>
+                                <option>5</option>
+                                <option>20</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="row">
+                            <div class="col-md-6 form-label-group mb-xs-3 pr-1 pr-xs-15">
+                              <select class="form-control adnvance-search-select">
+                                <option selected>Baths(min)</option>
+                                <option>1</option>
+                                <option>2</option>
+                              </select>
+                            </div>
+                            <div class="col-md-6 form-label-group mb-xs-3 pl-1 pl-xs-15">
+                              <select class="form-control adnvance-search-select">
+                                <option selected>Baths(max)</option>
+                                <option>5</option>
+                                <option>20</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="row">
+                            <div class="col-md-6 mb-xs-3 form-label-group pr-1 pr-xs-15">
+                              <select class="form-control adnvance-search-select">
+                                <option selected>Car parking</option>
+                                <option>1</option>
+                                <option>2</option>
+                              </select>
+                            </div>
+                            <div class="col-md-6 mb-xs-3 form-label-group pl-1 pl-xs-15">
+                              <select class="form-control adnvance-search-select">
+                                <option selected>Holding type</option>
+                                <option>5</option>
+                                <option>20</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="row">
+                            <div class="col-md-6 mb-xs-3 form-label-group pr-1 pr-xs-15">
+                              <select class="form-control adnvance-search-select">
+                                <option selected>Price(min)</option>
+                                <option>1</option>
+                                <option>2</option>
+                              </select>
+                            </div>
+                            <div class="col-md-6 mb-xs-3 form-label-group pl-1 pl-xs-15">
+                              <select class="form-control adnvance-search-select">
+                                <option selected>Price(max)</option>
+                                <option>5</option>
+                                <option>20</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-md-3">
+                          <div class="row">
+                            <div class="col-md-6 mb-xs-3 form-label-group pr-1 pr-xs-15">
+                              <select class="form-control adnvance-search-select">
+                                <option selected>Size(min)</option>
+                                <option>1</option>
+                                <option>2</option>
+                              </select>
+                            </div>
+                            <div class="col-md-6 mb-xs-3 form-label-group pl-1 pl-xs-15">
+                              <select class="form-control adnvance-search-select">
+                                <option selected>Size(max)</option>
+                                <option>5</option>
+                                <option>20</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="row">
+                            <div class="col-md-6 mb-xs-3 form-label-group pr-1 pr-xs-15">
+                              <select class="form-control adnvance-search-select">
+                                <option selected>Rent status</option>
+                                <option>1</option>
+                                <option>2</option>
+                              </select>
+                            </div>
+                            <div class="col-md-6 mb-xs-3 form-label-group pl-1 pl-xs-15">
+                              <select class="form-control adnvance-search-select">
+                                <option selected>Furnished</option>
+                                <option>5</option>
+                                <option>20</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="row">
+                            <div class="col-md-6 mb-xs-3 pr-xs-15 form-label-group pr-1">
+                              <select class="form-control adnvance-search-select">
+                                <option selected>Kitchen</option>
+                                <option>1</option>
+                                <option>2</option>
+                              </select>
+                            </div>
+                            <div class="col-md-6 mb-xs-3 form-label-group pl-1 pl-xs-15">
+                              <select class="form-control adnvance-search-select">
+                                <option selected>Maid's room</option>
+                                <option>5</option>
+                                <option>20</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn common-btn slider-search-btn mt-3">Search</button>
+                  </div>
+								</div>
+							</div>
+						</div>
+					</div>	
+				</div>
+				<div class="row mt-5 mt-xs-3">
+					<div class="offset-md-1 col-md-10">
+						<div class="row current-auction-row">
+							<div class="col-md-12 current-auction-col">
+								<div class="up-header title-secondary-26 pb-3">Upcoming Auctions</div>
+							</div>
+						</div>
+						<div id="ucSlider" class="auc-index-slider ca-blocks-row pb-5 carousel slide" data-ride="carousel" data-interval="20000">
+							<div class="row carousel-inner">
+								<div class="col-md-4 carousel-item active">
+									<div class="ca-blocks-col pb-4">
+										<div class="ca-block-img"><img class="b-img w-100" src="./assets/images/Villa_modern.jpg" alt="House View"></div>
+										<div class="prop-id-block-wrap">
+											<div class="prop-id">Property ID</div>
+											<div class="prop-actions-wrap">
+												<a href="#" class="location-link mr-3"></a>
+												<a href="#" class="street-view-link mr-3"></a>
+												<a href="#" class="directions-link mr-3"></a>
+												<a href="#" class="watch-list-link"></a>
+											</div>
+										</div>
+										<div class="ca-block-heading mt-2">
+											Awesome Property Heading
+											<div class="ca-sub-block-heading">Location</div>
+										</div>
+										<div class="ca-entity mt-3"><span class="count square-icon">167</span><span class="count ml-4 bed-icon">3</span><span class="count ml-4 bath-icon">4</span></div>		
+									</div>	
+								</div>
+								<div class="col-md-4 carousel-item">
+									<div class="ca-blocks-col pb-4">
+										<div class="ca-block-img"><img class="b-img w-100" src="./assets/images/Villa_modern-2.jpg" alt="House Image"></div>
+										<div class="prop-id-block-wrap">
+											<div class="prop-id">Property ID</div>
+											<div class="prop-actions-wrap">
+												<a href="#" class="location-link mr-3"></a>
+												<a href="#" class="street-view-link mr-3"></a>
+												<a href="#" class="directions-link mr-3"></a>
+												<a href="#" class="watch-list-link"></a>
+											</div>
+										</div>
+										<div class="ca-block-heading mt-2">
+											Awesome Property Heading
+											<div class="ca-sub-block-heading">Location</div>
+										</div>
+										<div class="ca-entity mt-3"><span class="count square-icon">167</span><span class="count ml-4 bed-icon">3</span><span class="count ml-4 bath-icon">4</span></div>		
+									</div>	
+								</div>
+								<div class="col-md-4 carousel-item">
+									<div class="ca-blocks-col pb-4">
+										<div class="ca-block-img"><img class="b-img w-100" src="./assets/images/Villa_modern.jpg" alt="House View"></div>
+										<div class="prop-id-block-wrap">
+											<div class="prop-id">Property ID</div>
+											<div class="prop-actions-wrap">
+												<a href="#" class="location-link mr-3"></a>
+												<a href="#" class="street-view-link mr-3"></a>
+												<a href="#" class="directions-link mr-3"></a>
+												<a href="#" class="watch-list-link"></a>
+											</div>
+										</div>
+										<div class="ca-block-heading mt-2">
+											Awesome Property Heading
+											<div class="ca-sub-block-heading">Location</div>
+										</div>
+										<div class="ca-entity mt-3"><span class="count square-icon">167</span><span class="count ml-4 bed-icon">3</span><span class="count ml-4 bath-icon">4</span></div>		
+									</div>	
+								</div>
+							</div>	
+							<a class="carousel-control-prev" href="#ucSlider" role="button" data-slide="prev">
+		            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		            <span class="sr-only">Previous</span>
+			        </a>
+			        <a class="carousel-control-next text-faded" href="#ucSlider" role="button" data-slide="next">
+			            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+			            <span class="sr-only">Next</span>
+			        </a>
+						</div>	
+					</div>
+				</div>
+				<div class="row mt-5 mt-xs-3">
+					<div class="offset-md-1 col-md-10">
+						<div class="row current-auction-row-wrap">
+							<div class="col-md-12 current-auction-col">
+								<div class="title-secondary-26 auction-title pb-3">
+									Current Auctions
+									<div class="sub-title">The motivated sellers are keen to seek your attention</div>
+								</div>
+								<div class="auctions-wrapper">
+									<div class="table-responsive">
+										<table class="table auctions-table table-hover">
+										  <thead>
+										    <tr>
+										      <th scope="col">Property Name</th>
+										      <th scope="col">Type</th>
+										      <th scope="col">Basic Info</th>
+										      <th scope="col">Price</th>
+										      <th scope="col"></th>
+										    </tr>
+										  </thead>
+										  <tbody>
+										    <tr>
+										      <td class="prop-name-td">
+										      	<div class="prop-name-td-block">
+										      		<div class="auction-img"></div>
+											      	<div class="ac-img-descript">
+											      		<span class="ac-title mt-2">466 Smith Street</span>
+																<span class="ac-descript mt-2">Collingwood, VIC 3066</span>	
+											      	</div>
+										      	</div>
+										      </td>
+										      <td>Building</td>
+										      <td>
+										      	<span class="mr-3">168ft<sup>2</sup></span><span class="mr-3">3 bed</span><span>2 bath</span>
+										      </td>
+										      <td>460,000</td>
+										      <td class="text-center">
+										      	<button class="btn common-btn ac-detail-btn">More detail</button>
+										      </td>
+										    </tr>
+										    <tr>
+										      <td class="prop-name-td">
+										      	<div class="prop-name-td-block">
+										      		<div class="auction-img"></div>
+											      	<div class="ac-img-descript">
+											      		<span class="ac-title mt-2">466 Smith Street</span>
+																<span class="ac-descript mt-2">Collingwood, VIC 3066</span>	
+											      	</div>
+										      	</div>
+										      </td>
+										      <td>Building</td>
+										      <td>
+										      	<span class="mr-3">168ft<sup>2</sup></span><span class="mr-3">3 bed</span><span>2 bath</span>
+										      </td>
+										      <td>460,000</td>
+										      <td class="text-center">
+										      	<button class="btn common-btn ac-detail-btn">More detail</button>
+										      </td>
+										    </tr>
+										    <tr>
+										      <td class="prop-name-td">
+										      	<div class="prop-name-td-block">
+										      		<div class="auction-img"></div>
+											      	<div class="ac-img-descript">
+											      		<span class="ac-title mt-2">466 Smith Street</span>
+																<span class="ac-descript mt-2">Collingwood, VIC 3066</span>	
+											      	</div>
+										      	</div>
+										      </td>
+										      <td>Building</td>
+										      <td>
+										      	<span class="mr-3">168ft<sup>2</sup></span><span class="mr-3">3 bed</span><span>2 bath</span>
+										      </td>
+										      <td>460,000</td>
+										      <td class="text-center">
+										      	<button class="btn common-btn ac-detail-btn">More detail</button>
+										      </td>
+										    </tr>
+										    <tr>
+										      <td class="prop-name-td">
+										      	<div class="prop-name-td-block">
+										      		<div class="auction-img"></div>
+											      	<div class="ac-img-descript">
+											      		<span class="ac-title mt-2">466 Smith Street</span>
+																<span class="ac-descript mt-2">Collingwood, VIC 3066</span>	
+											      	</div>
+										      	</div>
+										      </td>
+										      <td>Building</td>
+										      <td>
+										      	<span class="mr-3">168ft<sup>2</sup></span><span class="mr-3">3 bed</span><span>2 bath</span>
+										      </td>
+										      <td>460,000</td>
+										      <td class="text-center">
+										      	<button class="btn common-btn ac-detail-btn">More detail</button>
+										      </td>
+										    </tr>
+										  </tbody>
+										</table>
+									</div>	
+									<div class="pagination-wrap pb-4">
+                    <nav>
+                      <ul class="pagination justify-content-center mb-0">
+                        <li class="page-item"><a class="page-link prev-link mr-2" href="#"><i class="fas fa-chevron-left"></i></a></li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                        <li class="page-item"><a class="page-link next-link ml-2" href="#"><i class="fas fa-chevron-right"></i></a></li>
+                      </ul>
+                    </nav>
+                  </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row mt-5 mt-xs-3">
+					<div class="offset-md-1 col-md-10">
+						<div class="row current-auction-row">
+							<div class="col-md-12 current-auction-col">
+								<div class="up-header title-secondary-26 pb-3">Similar Searches</div>
+							</div>
+						</div>
+						<div id="simsSlider" class="auc-index-slider ca-blocks-row pb-5 carousel slide" data-ride="carousel" data-interval="20000">
+							<div class="row carousel-inner">
+								<div class="col-md-4 carousel-item active">
+									<div class="ca-blocks-col ss-block-col pb-4">
+										<div class="ca-block-img"><img class="b-img w-100" src="./assets/images/Villa_modern.jpg" alt="House View"></div>
+										<div class="prop-id-block-wrap">
+											<div class="prop-id">Property ID</div>
+											<div class="prop-actions-wrap">
+												<a href="#" class="location-link mr-3"></a>
+												<a href="#" class="street-view-link mr-3"></a>
+												<a href="#" class="directions-link mr-3"></a>
+												<a href="#" class="watch-list-link"></a>
+											</div>
+										</div>
+										<div class="ca-block-heading mt-2">
+											Awesome Property Heading
+											<div class="ca-sub-block-heading">Location</div>
+										</div>
+										<div class="ca-entity mt-3"><span class="count square-icon">167</span><span class="count ml-4 bed-icon">3</span><span class="count ml-4 bath-icon">4</span></div>		
+									</div>	
+								</div>
+								<div class="col-md-4 carousel-item">
+									<div class="ca-blocks-col ss-block-col pb-4">
+										<div class="ca-block-img"><img class="b-img w-100" src="./assets/images/Villa_modern-2.jpg" alt="House Image"></div>
+										<div class="prop-id-block-wrap">
+											<div class="prop-id">Property ID</div>
+											<div class="prop-actions-wrap">
+												<a href="#" class="location-link mr-3"></a>
+												<a href="#" class="street-view-link mr-3"></a>
+												<a href="#" class="directions-link mr-3"></a>
+												<a href="#" class="watch-list-link"></a>
+											</div>
+										</div>
+										<div class="ca-block-heading mt-2">
+											Awesome Property Heading
+											<div class="ca-sub-block-heading">Location</div>
+										</div>
+										<div class="ca-entity mt-3"><span class="count square-icon">167</span><span class="count ml-4 bed-icon">3</span><span class="count ml-4 bath-icon">4</span></div>		
+									</div>	
+								</div>
+								<div class="col-md-4 carousel-item">
+									<div class="ca-blocks-col ss-block-col pb-4">
+										<div class="ca-block-img"><img class="b-img w-100" src="./assets/images/Villa_modern.jpg" alt="House View"></div>
+										<div class="prop-id-block-wrap">
+											<div class="prop-id">Property ID</div>
+											<div class="prop-actions-wrap">
+												<a href="#" class="location-link mr-3"></a>
+												<a href="#" class="street-view-link mr-3"></a>
+												<a href="#" class="directions-link mr-3"></a>
+												<a href="#" class="watch-list-link"></a>
+											</div>
+										</div>
+										<div class="ca-block-heading mt-2">
+											Awesome Property Heading
+											<div class="ca-sub-block-heading">Location</div>
+										</div>
+										<div class="ca-entity mt-3"><span class="count square-icon">167</span><span class="count ml-4 bed-icon">3</span><span class="count ml-4 bath-icon">4</span></div>		
+									</div>	
+								</div>
+							</div>	
+							<a class="carousel-control-prev" href="#simsSlider" role="button" data-slide="prev">
+		            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		            <span class="sr-only">Previous</span>
+			        </a>
+			        <a class="carousel-control-next text-faded" href="#simsSlider" role="button" data-slide="next">
+			            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+			            <span class="sr-only">Next</span>
+			        </a>
+						</div>	
+					</div>
+				</div>
+				<div class="row">
+					<div class="offset-md-1 col-md-10">
+						<div class="row app-permote-row my-5 my-xs-4">
+							<div class="col-md-6 pl-xs-0 pr-0 app-permote-col">
+								<div class="app-permote-block">
+									<div class="header-wrap">
+										<div class="propmote-image mr-4"></div>
+										<div class="title-light-mono-26">where ever you are
+											<div class="sub-title">we are just on a click away</div>
+										</div>	
+									</div>
+									<div class="permote-decript my-5 my-xs-3">
+										Download our app to save properties, monitor auctions, and get real-time alerts
+									</div>
+									<div class="playstore-icon-div d-flex justify-content-center">
+										<a href="#" class="app-store mr-3"></a><a href="#" class="google-play"></a>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 pr-xs-0 pl-0 promotion-image-block"></div>
+						</div>
+						<div class="permote-footer d-flex align-items-center flex-column mb-4">
+							<div class="title-secondary-26 title-secondary-26-xs mb-3">How can we help?</div>
+							<a class="learn-more-link" href="#">CONTACT US</a>
+						</div>
+					</div>
+				</div>
+				<div class="row auction-section">
+					<div class="offset-md-1 col-md-10 auction-section-col">
+						<div class="row heading-row mt-2">
+							<div class="col-md-12 heading-col">Our Partners</div>
+						</div>
+						<div class="row partners-row mt-3">
+							<div class="col-md-12 partners-col">
+						    <div class="partners-logo py-3">
+						    	<span class="acc-logo-1"></span><span class="acc-logo-2"></span><span class="acc-logo-3"></span><span class="acc-logo-4"></span>
+						    </div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row page-footer mt-5 pt-4">
+					<div class="offset-md-1 col-md-10">
+						<div class="row footer-wrap pb-5 py-xs-3">
+							<div class="col-md-3 about-us-col">
+								<div class="footer-heading">About Us</div>
+								<div class="about-us-detail pb-3">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+								</div>
+							</div>
+							<div class="col-md-3 useful-links-col">
+								<div class="footer-heading">Quick Links</div>
+								<div class="useful-links-list">
+									<a href="#" class="useful-link">-&nbsp;&nbsp;&nbsp;International Properties</a>
+									<a href="#" class="useful-link">-&nbsp;&nbsp;&nbsp;Buyers and Investors</a>
+									<a href="#" class="useful-link">-&nbsp;&nbsp;&nbsp;Press Releases</a>
+									<a href="#" class="useful-link">-&nbsp;&nbsp;&nbsp;Mortage Calculator</a>
+									<a href="#" class="useful-link">-&nbsp;&nbsp;&nbsp;For Buyers</a>
+									<a href="#" class="useful-link">-&nbsp;&nbsp;&nbsp;For Homeowners</a>
+								</div>
+							</div>	
+							<div class="col-md-3 about-us-col featured-prop-col">
+								<div class="footer-heading">Newsletter</div>
+								<div class="about-us-detail pb-3">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+								</div>
+							  <div class="form-group">
+							    <input type="email" class="form-control footer-input" placeholder="Enter your email here...">
+							  </div>
+							  <button type="submit" class="btn common-btn footer-btn">Subscribe</button>
+							</div>
+							
+							<div class="col-md-3 contact-col">
+								<div class="footer-heading">Contact</div>
+								<div class="footer-address-div">
+									<div class="address-text mb-3">168th Wellington Street<br>Collingwood, VIC 3066</div>
+									<div class="contact-div">+971 40 123-4567<br>Mon-Fri 6am-5pm PT</div>
+								</div>
+								<div class="social-links-div mt-3">
+									<a href="#" class="social-links mr-4"><i class="fab fa-facebook-f"></i></a>
+									<a href="#" class="social-links mr-4"><i class="fab fa-twitter"></i></a>
+									<a href="#" class="social-links mr-4"><i class="fab fa-instagram"></i></a>
+									<a href="#" class="social-links"><i class="fab fa-google-plus-g"></i></a>
+								</div>
+							</div>	
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer class="row social-page-footer py-3 mb-3 mb-xs-0">
+			<div class="offset-md-1 col-md-10">
+				<div class="row bottom-footer-row align-items-center">
+					<div class="col-md-6 copyright-div d-flex">
+						<div class="copyrights pr-3">Copyright &copy; Chiragh.com</div> 
+						<div class="pl-3">All Rights Reserved.</div>
+					</div>
+					<div class="col-md-6 copyright-div d-flex justify-content-end">
+						<a href="#" class="copyrights pr-3 policy-link">Disclaimer</a>
+						<a href="#" class="copyrights px-3 policy-link">Privacy Policy</a> 
+						<a href="#" class="pl-3 policy-link">Terms & Conditions</a>
+					</div>
+				</div>
+			</div>
+		</footer>	
+	</div>
+</body>
+</html>  
