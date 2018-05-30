@@ -28,7 +28,7 @@ export class RegisterComponent  {
             data1=>{
               console.log(data1);
                    if(data1.msg=="User Created Successfully"){
-                      this.router.navigate(['login']);
+                      this.router.navigate(['confirmemail']);
                    }//end of if
                 }//end of inner data predicate
           );//end of inner subscription 

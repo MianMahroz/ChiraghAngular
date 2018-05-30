@@ -35,6 +35,11 @@ export class UserService {
     return this.http.post<any>(this.userUrl + '/registerUser', registerdto,httpOptions);
 }
 
+public confirmEmailRequest(email:string): Observable<any> {
+  return this.http.post<any>(this.userUrl + '/confirmEmailRequest', email,httpOptions);
+}
+
+
 
 
 
