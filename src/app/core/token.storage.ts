@@ -28,6 +28,12 @@ export class TokenStorage {
     window.sessionStorage.setItem(TOKEN_EXPIRES_IN,  expiresIn);
   }
 
+    public saveUserName(userName:string){
+      window.sessionStorage.setItem("userName",  userName);
+    }
+    public getuserName(): string {
+      return sessionStorage.getItem("userName");
+    }
   public getToken(): string {
     return sessionStorage.getItem(TOKEN_KEY);
   }

@@ -34,12 +34,7 @@ export class LoginComponent {
             data1=>{
               console.log(data1);
                    if(data1.msg=="Login Successfully"){
-                        this.userService.confirmEmailRequest(this.logindto.userName).subscribe(
-                          data2=>{
-                                    console.log(data2);
-                          }//end of email data
-                        );//end of email subscription
-                      this.router.navigate(['home']);
+                       this.router.navigate(['home']);
                    }//end of if
                 }//end of inner data predicate
           );//end of inner subscription 

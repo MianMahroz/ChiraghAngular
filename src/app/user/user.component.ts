@@ -30,7 +30,7 @@ export class UserComponent implements OnInit {
       
       this.userService.getSessionUser().subscribe(
         data=>{
-             console.log('Tomcat Session User:'+data);
+                console.log('Tomcat Session User:'+data);
         }
       );
     }

@@ -39,9 +39,9 @@ public confirmEmailRequest(email:string): Observable<any> {
   return this.http.post<any>(this.userUrl + '/confirmEmailRequest', email,httpOptions);
 }
 
-
-
-
+public confirmEmailByToken(token:string): Observable<any> {
+  return this.http.post<any>(this.userUrl + '/confirmEmailByToken', token,httpOptions);
+}
 
 
 }

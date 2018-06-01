@@ -9,15 +9,17 @@ import {AppRoutingModule} from './core/app.routing.module';
 import { LoginComponent } from './login/login.component';
 import {ErrorDialogComponent} from './core/error-dialog.component';
 import {UserService} from "./shared/user.service";
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {AuthService} from "./core/auth.service";
-import {Interceptor} from "./core/inteceptor";
-import {TokenStorage} from "./core/token.storage";
+import { HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import { AuthService} from "./core/auth.service";
+import { Interceptor} from "./core/inteceptor";
+import { TokenStorage} from "./core/token.storage";
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 import { FooterComponent } from './footer/footer.component';
+import { RegisterSuccessComponent } from './register-success/register-success.component';
+import { OwnerDetailsComponent } from './SellerForm/owner-details/owner-details.component';
 
 
 @NgModule({
@@ -31,6 +33,8 @@ import { FooterComponent } from './footer/footer.component';
     RegisterComponent,
     ConfirmEmailComponent,
     FooterComponent,
+    RegisterSuccessComponent,
+    OwnerDetailsComponent,
     
   ],
   imports: [
