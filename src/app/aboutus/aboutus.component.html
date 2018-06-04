@@ -1,0 +1,57 @@
+
+  <div class="container-fluid screen-wrapper">
+<app-header></app-header>
+    <div class="row body-section">
+      <div class="col-md-12">
+        <div class="row form-wrapper-row py-5 py-xs-4">
+          <div class="offset-md-1 col-md-10">
+            <div class="row sign-in-row">
+              <div class="offset-md-2 col-md-8 sign-in-col">
+                <form class="common-form" novalidate>
+                  <div class="text-center mb-5 page-primary-title-34">Contact Us</div>
+                  <div class="row">
+                    <div class="col-md-12 form-block-heading mb-2">Personal Details:</div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <input type="text" class="form-control form-input" placeholder="First Name" required>
+                    </div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <input type="text" class="form-control form-input" placeholder="Middle Name">
+                    </div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <input type="text" class="form-control form-input" placeholder="Last Name" required>
+                    </div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <input type="email" class="form-control form-input" placeholder="Your Email" required>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 form-block-heading mb-2">Your Message:</div>
+                    <div class="col-md-12 form-group mb-4">
+                      <textarea class="form-control common-textarea" required></textarea>
+                    </div>
+                    <div class="offset-md-3 col-md-6 mb-4 form-group">
+                      <div class="g-recaptcha" data-sitekey="6LfKURIUAAAAAO50vlwWZkyK_G2ywqE52NU7YO0S" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
+                      <input class="form-control d-none" data-recaptcha="true" required data-error="Please complete the Captcha">
+                      <div class="help-block with-errors"></div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="offset-md-3 col-md-6">
+                      <button class="btn form-btn" type="submit">Send</button>
+                    </div>  
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-us-google-map google-map-wrap mt-4">
+          <div id="map" style="height:500px;"></div>
+        </div>
+        
+      </div>
+    </div>
+    <app-footer></app-footer> 
+  </div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAd-j_wO9dKvrgFaoAsAxkfqGnOiSfgTzg&callback=myMap"></script>

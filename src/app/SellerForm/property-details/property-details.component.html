@@ -1,0 +1,668 @@
+
+  <div class="container-fluid screen-wrapper">
+<app-header></app-header>
+    <div class="row body-section">
+      <div class="col-md-12">
+        <div class="row form-wrapper-row py-5">
+          <div class="offset-md-1 col-md-10">
+            <div class="row sign-in-row">
+              <div class="offset-md-2 col-md-8 sign-in-col">
+                <div class="common-form" novalidate>
+                  <div class="mb-5 page-primary-title-34">Property Details</div>
+                  <div class="row">
+                    <div class="col-md-12 form-block-heading mb-2">Area Details:</div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <select  class="form-control common-select">
+                        <option>Property Status</option>
+                        <option>Sell</option>
+                        <option>Buy</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <input type="text" class="form-control onlyText form-input" [(ngModel)]="propertyDetailsDto.plotNo" placeholder="Plot Number" required>
+                    </div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <input type="text" class="form-control onlyText form-input" [(ngModel)]="propertyDetailsDto.typeArea" placeholder="Type of Area" required>
+                    </div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <input type="number" class="form-control onlyText form-input" [(ngModel)]="propertyDetailsDto.titleDeedNo" placeholder="Title Deed Number" required>
+                    </div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <input type="text" class="form-control onlyText form-input" [(ngModel)]="propertyDetailsDto.address" placeholder="Address" required>
+                    </div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <input type="text" class="form-control onlyText form-input" [(ngModel)]="propertyDetailsDto.mapLocation" placeholder="Location Map" required>
+                    </div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <input type="text" class="form-control onlyText form-input" [(ngModel)]="propertyDetailsDto.propertyReferenceNo" placeholder="Property Number" required>
+                    </div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <select class="form-control common-select">
+                        <option>Type of Property</option>
+                        <option>Sell</option>
+                        <option>Buy</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <input type="text" class="form-control onlyText form-input" [(ngModel)]="propertyDetailsDto.projectName" placeholder="Project Name" required>
+                    </div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <input type="text" class="form-control onlyText form-input" [(ngModel)]="propertyDetailsDto.areaPermitNo" placeholder="Area" required>
+                    </div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <input type="number" class="form-control onlyText form-input" [(ngModel)]="propertyDetailsDto.ownerAssociationNo" placeholder="Owner Association Number" required>
+                    </div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <select class="form-control common-select">
+                        <option>Present Use</option>
+                        <option>Sell</option>
+                        <option>Buy</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <input type="number" class="form-control onlyText form-input" [(ngModel)]="propertyDetailsDto.communityNo" placeholder="Community Number" required>
+                    </div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <input type="text" class="form-control onlyText form-input" [(ngModel)]="propertyDetailsDto.propertyAge" placeholder="Property Approx. Age" required>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 form-block-heading mb-3">
+                      Specs:
+                      <a href="#" class="save-form-link"></a>
+                      <a href="#" class="edit-form-link"></a>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                      <select  [(ngModel)]="propertyDetailsDto.noOfBedrooms" class="form-control common-select">
+                        <option>Bedrooms</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                      <select [(ngModel)]="propertyDetailsDto.noOfBaths" class="form-control common-select">
+                        <option>Bathrooms</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                      <select [(ngModel)]="propertyDetailsDto.noOfParking" class="form-control common-select">
+                        <option>Car Parks</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                      <select class="form-control common-select">
+                        <option>Kitchens</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                      <select  [(ngModel)]="propertyDetailsDto.noOfFloors"class="form-control common-select">
+                        <option>Floor No.</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                      <select  [(ngModel)]="propertyDetailsDto.noUnits" class="form-control common-select">
+                        <option>Unit No.</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                      <select  class="form-control common-select">
+                        <option>No. of Floors</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                      <select class="form-control common-select">
+                        <option>No. of Floors</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                      </select>
+                    </div>
+                  </div>  
+                  <div class="section-seprator">
+                    <div class="row mt-3">
+                      <div class="col-md-12 form-block-heading mb-3">Features</div>
+                      <div class="col-md-3 common-checkbox mb-4">
+                        <label>
+                          <input   type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Balcony
+                        </label>  
+                      </div>
+                      <div class="col-md-3 common-checkbox mb-4">
+                        <label>
+                          <input   type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Basement Parking
+                        </label>  
+                      </div>
+                      <div class="col-md-3 common-checkbox mb-4">
+                        <label>
+                        </label>  
+                      </div>
+                      <div class="col-md-3 common-checkbox mb-4">
+                        <label>
+                          <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Broadband ready
+                        </label>  
+                      </div>
+                      <div class="col-md-3 common-checkbox mb-4">
+                        <label>
+                          <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Broadband ready
+                        </label>  
+                      </div>
+                      <div class="col-md-3 common-checkbox mb-4">
+                        <label>
+                          <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Built in wardrobes
+                        </label>  
+                      </div>
+                      <div class="col-md-3 common-checkbox mb-4">
+                        <label>
+                          <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Carpets
+                        </label>  
+                      </div>
+                      <div class="col-md-3 common-checkbox mb-4">
+                        <label>
+                          <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Central AC
+                        </label>  
+                      </div>
+                    </div>
+                    <div class="features-checkboxes-wrap">
+                      <div class="row">
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Central Heating
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Community View
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Covered Parking
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Driver's Room
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Fully fitted Kitchen
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Fully furnished
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Gymnasium
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Intercom
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Jacuzzi
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Maid's Room
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Marble Floors
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> On high floors
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> On low floor
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> On mid floor
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Part furnished
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Pets Allowed
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Private Garage
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Private Garden
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Satellite/Cable TV
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Sauna
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Solid wood floors
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Steam Room
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Storage Room
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Study
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Upgraded Interior 
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> View of gardens
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> View of golfcourse
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> View of parkland
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> View of sea/water
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Laundry/Washing Room
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Private Swimming Pool
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Shared Swimming Pool
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Gazebo and outdoor entertaining area
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Kitchen White Goods
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Landscaped Garden
+                          </label>  
+                        </div>
+                      </div>  
+                    </div>
+                    <div id="features-shows" class="show-all-link d-flex justify-content-center mb-3">Show all</div>
+                  </div>
+                  <div class="section-seprator">
+                    <div class="row mt-3">
+                      <div class="col-md-12 form-block-heading mb-3">Facilities</div>
+                      <div class="col-md-3 common-checkbox mb-4">
+                        <label>
+                          <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Balcony
+                        </label>  
+                      </div>
+                      <div class="col-md-3 common-checkbox mb-4">
+                        <label>
+                          <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Basement Parking
+                        </label>  
+                      </div>
+                      <div class="col-md-3 common-checkbox mb-4">
+                        <label>
+                          <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> BBQ area
+                        </label>  
+                      </div>
+                      <div class="col-md-3 common-checkbox mb-4">
+                        <label>
+                          <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Broadband ready
+                        </label>  
+                      </div>
+                      <div class="col-md-3 common-checkbox mb-4">
+                        <label>
+                          <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Broadband ready
+                        </label>  
+                      </div>
+                      <div class="col-md-3 common-checkbox mb-4">
+                        <label>
+                          <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Built in wardrobes
+                        </label>  
+                      </div>
+                      <div class="col-md-3 common-checkbox mb-4">
+                        <label>
+                          <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Carpets
+                        </label>  
+                      </div>
+                      <div class="col-md-3 common-checkbox mb-4">
+                        <label>
+                          <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Central AC
+                        </label>  
+                      </div>
+                    </div>
+                    <div class="facilities-checkboxes-wrap">
+                      <div class="row">
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Bank/ATM Facility
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Basketball Court
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Beach Access
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Bus Services
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Business Center
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Clubhouse
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Concierge service
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Cycling tracks
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Fitness Center
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Laundry Service
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Marine Berth
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Metro Station
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Mosque
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Public Park
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Public Parking
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Public Transport
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Restaurants
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> School
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Shopping Mall
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Shops
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Spaort Academies
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Squash courts
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Tennis courts
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Valet Service
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Walking Trails
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> 24 hours Maintenence
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Childrens's Nursery
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Childrens's play area
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Communal gardens
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Polo club and clubhouse
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Golf club and clubhouse
+                          </label>  
+                        </div>
+                        <div class="col-md-3 common-checkbox mb-4">
+                          <label>
+                            <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Recreational Facilities
+                          </label>  
+                        </div>
+                      </div>  
+                    </div>
+                    <div id="facilities-shows" class="show-all-link d-flex justify-content-center mb-3">Show all</div>
+                  </div>
+                  <div class="section-seprator">
+                    <div class="row mt-3">
+                      <div class="col-md-12 form-block-heading mb-3">Neighbourhood Information</div>
+                      <div class="col-md-3 common-checkbox mb-4">
+                        <label>
+                          <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Schools
+                        </label>  
+                      </div>
+                      <div class="col-md-3 common-checkbox mb-4">
+                        <label>
+                          <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Metros
+                        </label>  
+                      </div>
+                      <div class="col-md-3 common-checkbox mb-4">
+                        <label>
+                          <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Medical Centers
+                        </label>  
+                      </div>
+                      <div class="col-md-3 common-checkbox mb-4">
+                        <label>
+                          <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Shopping Malls
+                        </label>  
+                      </div>
+                      <div class="col-md-3 common-checkbox mb-4">
+                        <label>
+                          <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Mosques
+                        </label>  
+                      </div>
+                      <div class="col-md-3 common-checkbox mb-4">
+                        <label>
+                          <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Beaches
+                        </label>  
+                      </div>
+                      <div class="col-md-3 common-checkbox mb-4">
+                        <label>
+                          <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Supermarkets
+                        </label>  
+                      </div>
+                      <div class="col-md-3 common-checkbox mb-4">
+                        <label>
+                          <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Park
+                        </label>  
+                      </div>
+                    </div>
+                  </div>
+                  <div class="section-seprator">
+                    <div class="row mt-3">
+                      <div class="col-md-12 form-block-heading mb-3">Description</div>
+                      <div class="form-group col-md-12">
+                        <textarea class="form-control common-textarea" required></textarea>
+                      </div>
+                    </div>
+                  </div>  
+                  <div class="row mt-3">
+                    <div class="col-md-12 document-upload">
+                      Upload Title Deed
+                      <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>
+                    </div>
+                    <div class="col-md-12 upload-doc-block">
+                      <div class="upload-btn-div mt-4">
+                        <div class="file">
+                          <input type="file" name="file" class="doc-upload" />
+                        </div>
+                        <div class="upload-instuct mt-2">Scanned Title Deed</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="note-block py-3 px-2 mt-5">
+                    <div class="col-1 common-checkbox">
+                      <label>
+                        <input type="checkbox"><span class="checkbox-material"><span class="check"></span></span>
+                      </label>
+                    </div>
+                    <div class="note-text">
+                      I Want 3rd Party Valuation also
+                      <div class="note-sub-title-text">Note: Chiragh will do the valuation. Seller is liable to pay the cost for 3rd party valuation</div>
+                    </div>
+                  </div>
+                  <div class="row mt-5 submit-btn-row">
+                    <div class="offset-md-6 col-md-3 mb-xs-4">
+                      <button class="btn common-btn btn-light-black">Back</button>
+                    </div>
+                    <div class="col-md-3">
+                      <a  (click)="addPropertyDetails()" style=color:white class="btn common-btn" type="submit">Next</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-footer></app-footer> 
+  </div>

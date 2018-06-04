@@ -20,6 +20,15 @@ import { ConfirmEmailComponent } from './confirm-email/confirm-email.component';
 import { FooterComponent } from './footer/footer.component';
 import { RegisterSuccessComponent } from './register-success/register-success.component';
 import { OwnerDetailsComponent } from './SellerForm/owner-details/owner-details.component';
+import { SellerService } from './shared/seller.service';
+import { PoaDetailsComponent } from './SellerForm/poa-details/poa-details.component';
+import { PropertyDetailsComponent } from './SellerForm/property-details/property-details.component';
+import { PropertyService } from './shared/property.service';
+import { PropertyFinancialsComponent } from './SellerForm/property-financials/property-financials.component';
+import { FaqsComponent } from './faqs/faqs.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { PropertyRentalComponent } from './SellerForm/property-rental/property-rental.component';
+
 
 
 @NgModule({
@@ -35,6 +44,12 @@ import { OwnerDetailsComponent } from './SellerForm/owner-details/owner-details.
     FooterComponent,
     RegisterSuccessComponent,
     OwnerDetailsComponent,
+    PoaDetailsComponent,
+    PropertyDetailsComponent,
+    PropertyFinancialsComponent,
+    FaqsComponent,
+    AboutusComponent,
+    PropertyRentalComponent,
     
   ],
   imports: [
@@ -46,7 +61,7 @@ import { OwnerDetailsComponent } from './SellerForm/owner-details/owner-details.
     AppRoutingModule
   ],
   entryComponents: [ErrorDialogComponent],
-  providers: [ErrorDialogComponent, UserService, AuthService, TokenStorage, TokenStorage,
+  providers: [ErrorDialogComponent, UserService, AuthService, TokenStorage, TokenStorage,SellerService,PropertyService
     {provide: HTTP_INTERCEPTORS,
     useClass: Interceptor,
     multi : true}

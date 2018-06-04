@@ -34,6 +34,15 @@ export class TokenStorage {
     public getuserName(): string {
       return sessionStorage.getItem("userName");
     }
+    public savePropertyId(propertyId:string){
+      window.sessionStorage.setItem("propertyId",  propertyId);
+    }
+    public getPropertyId(): number {
+      return Number(sessionStorage.getItem('propertyId'));
+    }
+    public getPropertyIdString(): string {
+      return sessionStorage.getItem('propertyId');
+    }
   public getToken(): string {
     return sessionStorage.getItem(TOKEN_KEY);
   }
