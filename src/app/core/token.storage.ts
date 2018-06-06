@@ -9,6 +9,7 @@ const TOKEN_EXPIRES_IN = 'expires_in';
 @Injectable()
 export class TokenStorage {
 
+  serverPath:string='http://localhost:8084/ChiraghServer';
   constructor() { }
 
   signOut() {
@@ -55,4 +56,7 @@ export class TokenStorage {
     return Number(sessionStorage.getItem(TOKEN_EXPIRES_IN)); 
   }
 
+  public getServerpath():string{
+    return this.serverPath;
+  }
 }

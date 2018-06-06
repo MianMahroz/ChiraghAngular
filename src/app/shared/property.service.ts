@@ -15,7 +15,7 @@ export class PropertyService {
 
   constructor(private http: HttpClient,private token:TokenStorage,private authService:AuthService) { }
 
-  private propertyUrl = 'http://localhost:8084/api/property';
+  private propertyUrl = this.token.getServerpath()+'/api/property';
   
   public updateProperty(proertyDetailDto:PropertyDetailsDto): Observable<any> {
     return this.http.put<any>(this.propertyUrl + '/updateProperty/Details',proertyDetailDto ,httpOptions);

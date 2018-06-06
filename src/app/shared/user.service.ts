@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {User} from '../user/user.model';
 import { registerDTO } from '../register/registerDTO';
+import { TokenStorage } from '../core/token.storage';
 
 
 const httpOptions = {
@@ -11,9 +12,9 @@ const httpOptions = {
 @Injectable()
 export class UserService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private token:TokenStorage) {}
 
-  private userUrl = 'http://localhost:8084/api/user';
+  private userUrl = this.token.getServerpath()+'/api/user';
 
   public getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.userUrl + '/getAll');

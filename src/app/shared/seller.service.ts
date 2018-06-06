@@ -14,7 +14,7 @@ export class SellerService {
 
   constructor(private http: HttpClient,private token:TokenStorage,private authService:AuthService) { }
   
-  private sellerUrl = 'http://localhost:8084/api/Propertysellerdetails';
+  private sellerUrl = this.token.getServerpath()+'/api/Propertysellerdetails';
   
   public getOwners(propertyId:number,userName:string): Observable<OwnerDetails[]> {
     return this.http.get<OwnerDetails[]>(this.sellerUrl + '/getOwners/'+propertyId+'/'+userName);
