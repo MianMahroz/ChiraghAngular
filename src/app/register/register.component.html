@@ -11,12 +11,12 @@
           <div class="offset-md-1 col-md-10">
             <div class="row sign-in-row">
               <div class="offset-md-2 col-md-8 sign-in-col">
-                <div class="common-form" novalidate>
+                <div  class="common-form" novalidate>
                   <div class="text-center mb-5 page-primary-title-34">Register</div>
                   <div class="row">
                     <div class="col-md-12 form-block-heading mb-2">Personal Details:</div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="text" class="form-control onlyText form-input" [(ngModel)]="registerdto.firstName" placeholder="First Name" required>
+                      <input type="text" class="form-control onlyText form-input" [(ngModel)]="registerdto.firstName" minlength="8" name="userName" #userName="ngModel" maxlength="15" placeholder="First Name" required>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <input type="text" class="form-control onlyText form-input" [(ngModel)]="registerdto.middleName" placeholder="Middle Name">

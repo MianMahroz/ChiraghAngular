@@ -1,14 +1,7 @@
-.example-icon {
-  padding: 0 14px;
-}
 
-.example-spacer {
-  flex: 1 1 auto;
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
 }
-.example-card {
-  width: 400px;
-  margin: 10% auto;
-}
-.mat-card-title{
-  font-size: 16px;
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
 }

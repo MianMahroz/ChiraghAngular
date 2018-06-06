@@ -5,6 +5,7 @@ import { AuthService } from '../../core/auth.service';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { PropertyService } from '../../shared/property.service';
+import { SellerService } from '../../shared/seller.service';
 
 @Component({
   selector: 'app-property-financials',
@@ -13,13 +14,15 @@ import { PropertyService } from '../../shared/property.service';
 })
 export class PropertyFinancialsComponent implements OnInit {
 
-  constructor(private propertyService:PropertyService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
+  constructor(private sellerService:SellerService,private propertyService:PropertyService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
 
   propertyFinancialDTO=new PropertyFinancialDTO();
   selectedMorgageNoc: FileList
   morgageNocFile:File;
   
   ngOnInit() {
+    // this.token.savePropertyId('111');
+    // this.token.saveUserName('BesterCapital1');
   }
 
 
@@ -28,7 +31,11 @@ export class PropertyFinancialsComponent implements OnInit {
     this.morgageNocFile=this.selectedMorgageNoc.item(0);
   }
 
-  addPropertyRentalDetails(): void {
+  addPropertyFinancialDetails(): string {
+    if(this.token.getuserName()==null){
+      console.log('Invalid Session');
+      return "Invalid Session";
+    }
     window.sessionStorage.removeItem('AuthToken');
     this.authService.attemptAuth().subscribe(
       data => {
@@ -36,19 +43,31 @@ export class PropertyFinancialsComponent implements OnInit {
         console.log(data);
         if(this.token.getToken()!=null){
           //for testing 
-          this.propertyFinancialDTO.propertyId=98;
-          this.propertyService.updatePropertyFinancials(this.propertyFinancialDTO).subscribe(
-              propertyFinancialData=>{
-                      console.log(propertyFinancialData);
-                      this. router.navigate(['../propertyRental']);
-                    
-                    }//end of propertyFinancialData
-          );//end of subscription of property financial Details
+          this.propertyFinancialDTO.propertyId=this.token.getPropertyId();
+          this.sellerService.saveDocument('PropertyFinancials-morgageNocCopy'+this.token.getPropertyId(),this.token.getuserName(),this.morgageNocFile).subscribe(
+            data2=>{
+                        if(data2.type==3){
+                          console.log(data2);
+                          
+                          this.propertyFinancialDTO.morgageNoc=data2.partialText;
+                          this.propertyFinancialDTO.userName=this.token.getuserName();
+                          this.propertyService.updatePropertyFinancials(this.propertyFinancialDTO).subscribe(
+                            propertyFinancialData=>{
+                                    console.log(propertyFinancialData);
+                                   if(propertyFinancialData.msg=='Property Financial Detail Updated Successfully'){
+                                    this. router.navigate(['../propertyRental']);          
+                                   }
+                                  }//end of propertyFinancialData
+                        );//end of subscription of property financial Details
+                        }
+            }//end of data2
+          );//end of save document subscription
+         
         }//end of if
         
      }//end of outer data predicate
     );//end of outer subscription
-    
+    return "";
   }//end of loginChiraghUser
 
 }

@@ -13,6 +13,7 @@ import { PropertyFinancialsComponent } from '../SellerForm/property-financials/p
 import { FaqsComponent } from '../faqs/faqs.component';
 import { AboutusComponent } from '../aboutus/aboutus.component';
 import { PropertyRentalComponent } from '../SellerForm/property-rental/property-rental.component';
+import { AuctionFeeDetailsComponent } from '../SellerForm/auction-fee-details/auction-fee-details.component';
 
 const routes: Routes = [
   { path: 'user', component: UserComponent },
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'faqs', component: FaqsComponent },
   { path: 'aboutus', component: AboutusComponent },
   { path: 'propertyRental', component: PropertyRentalComponent },
+  { path: 'auctionFeeDetails', component: AuctionFeeDetailsComponent },
 
 ];
 

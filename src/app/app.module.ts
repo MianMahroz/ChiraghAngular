@@ -28,6 +28,7 @@ import { PropertyFinancialsComponent } from './SellerForm/property-financials/pr
 import { FaqsComponent } from './faqs/faqs.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { PropertyRentalComponent } from './SellerForm/property-rental/property-rental.component';
+import { AuctionFeeDetailsComponent } from './SellerForm/auction-fee-details/auction-fee-details.component';
 
 
 
@@ -50,6 +51,7 @@ import { PropertyRentalComponent } from './SellerForm/property-rental/property-r
     FaqsComponent,
     AboutusComponent,
     PropertyRentalComponent,
+    AuctionFeeDetailsComponent,
     
   ],
   imports: [
@@ -61,7 +63,7 @@ import { PropertyRentalComponent } from './SellerForm/property-rental/property-r
     AppRoutingModule
   ],
   entryComponents: [ErrorDialogComponent],
-  providers: [ErrorDialogComponent, UserService, AuthService, TokenStorage, TokenStorage,SellerService,PropertyService
+  providers: [ErrorDialogComponent, UserService, AuthService, TokenStorage, TokenStorage,SellerService,PropertyService,
     {provide: HTTP_INTERCEPTORS,
     useClass: Interceptor,
     multi : true}

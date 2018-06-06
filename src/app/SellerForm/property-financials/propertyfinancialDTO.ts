@@ -1,5 +1,5 @@
 export class PropertyFinancialDTO{
-   
+   userName:string;
 	propertyId:number;
     listedPrice:number;
 	originalPrice:number;
@@ -10,7 +10,7 @@ export class PropertyFinancialDTO{
 	bank:string;
 	morgageAmount:number;
 	preClosureCharges:number;
-	paymentSchedule:DateTimeFormat;
+	paymentSchedule:string;
 	date:DateTimeFormat;
 	amount:number;
 	morgageNoc:string;

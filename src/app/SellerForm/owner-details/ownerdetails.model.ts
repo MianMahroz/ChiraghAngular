@@ -1,6 +1,7 @@
 export class OwnerDetails{
-     
-    propertySellerId :number;
+	 userName:string;
+	 propertyId:number;
+     propertySellerId :number;
 	 firstName:string;
 	 middleName:string;
 	 lastName:string;
@@ -23,7 +24,6 @@ export class OwnerDetails{
 	 sellerProfilepic:string;
 	 ownerType:string;
 	 fax:string;
-	 propertyId:number;
 	 poaNumber:string;
 	 poaAgreementExpiry:string;
 	 poaPropertyAuthority:string;

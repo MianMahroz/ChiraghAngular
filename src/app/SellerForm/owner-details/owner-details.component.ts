@@ -25,8 +25,15 @@ export class OwnerDetailsComponent implements OnInit {
   constructor(private sellerService:SellerService,private userService:UserService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
   
     ngOnInit() {
-      // this.createNewProperty();
+       // this.createNewProperty();
       this.token.savePropertyId('0');  
+     // console.log(this.token.getuserName());
+     if(this.token.getuserName()==null){
+      console.log('Invalid Session');
+      this.router.navigate(['../login']);
+      return "Invalid Session";
+    }
+    
     }
     selectPassport(event) {
       this.selectedPassport = event.target.files;
@@ -39,6 +46,11 @@ export class OwnerDetailsComponent implements OnInit {
     
    
   addOwner(operation:string): string {
+    if(this.token.getuserName()==null){
+      console.log('Invalid Session');
+      this.router.navigate(['../login']);
+      return "Invalid Session";
+    }
     window.sessionStorage.removeItem('AuthToken');
     this.authService.attemptAuth().subscribe(
       data => {
@@ -47,26 +59,28 @@ export class OwnerDetailsComponent implements OnInit {
               var pid=0;
               pid=this.token.getPropertyId();
               this.ownerDto.ownerType='owner';
-             if(pid==0||pid==null){
-                  this.sellerService.createProperty('BesterCapital2').subscribe(
+              this.ownerDto.userName=this.token.getuserName();
+              if(pid==0||pid==null){
+                  this.sellerService.createProperty(this.token.getuserName()).subscribe(
                     data11=>{
                       if(!this.token.getPropertyId){
                         return 'Property not Created';
                       }
                          this.token.savePropertyId(data11)
                          this.ownerDto.propertyId=this.token.getPropertyId();
-                  this.sellerService.addOwner(this.ownerDto).subscribe(
+             
+                   this.sellerService.addOwner(this.ownerDto).subscribe(
                     data1=>{
                       console.log('Owner');
                       console.log(data1);
                       this.ownerDto.propertySellerId=data1;
-                      this.sellerService.saveDocument(data1+'-Sowner-passport'+this.token.getPropertyId(),this.passportFile).subscribe(
+                      this.sellerService.saveDocument(data1+'-Sowner-passport'+this.token.getPropertyId(),this.token.getuserName(),this.passportFile).subscribe(
                       data2=>{
                         // console.log(data2);
                              if(data2.type==3){
                               //  console.log(data2.partialText);
                               this.ownerDto.passportCopyUpload= data2.partialText;
-                              this.sellerService.saveDocument(data1+'-Sowner-IdCopy'+this.token.getPropertyId(),this.idCopyFile).subscribe(
+                              this.sellerService.saveDocument(data1+'-Sowner-IdCopy'+this.token.getPropertyId(),this.token.getuserName(),this.idCopyFile).subscribe(
                                 data3=>{
                                   // console.log(data3);
                                        if(data3.type==3){
@@ -83,7 +97,7 @@ export class OwnerDetailsComponent implements OnInit {
                                             else if(operation=='add'){
                                               console.log('Add');
                                                 this.ownerDto=new OwnerDetails();
-                                                this.sellerService.getOwners(this.token.getPropertyId()).subscribe(
+                                                this.sellerService.getOwners(this.token.getPropertyId(),this.token.getuserName()).subscribe(
                                                    ownerData=>{
                                                       console.log(ownerData);
                                                    }//end of ownerData
@@ -106,19 +120,20 @@ export class OwnerDetailsComponent implements OnInit {
              }//end of pid if
              else{
               this.ownerDto.propertyId=this.token.getPropertyId();//setting proeprty Id
+              this.ownerDto.userName=this.token.getuserName();
              this.sellerService.addOwner(this.ownerDto).subscribe(
                data1=>{
                 console.log(' owner');
                 console.log(data1);
 
                 this.ownerDto.propertySellerId=data1;
-                this.sellerService.saveDocument(data1+'-Sowner-passport'+this.token.getPropertyId(),this.passportFile).subscribe(
+                this.sellerService.saveDocument(data1+'-Sowner-passport'+this.token.getPropertyId(),this.token.getuserName(),this.passportFile).subscribe(
                  data2=>{
                   //  console.log(data2);
                         if(data2.type==3){
                           // console.log(data2.partialText);
                          this.ownerDto.passportCopyUpload= data2.partialText;
-                         this.sellerService.saveDocument(data1+'-Sowner-IdCopy'+this.token.getPropertyId(),this.idCopyFile).subscribe(
+                         this.sellerService.saveDocument(data1+'-Sowner-IdCopy'+this.token.getPropertyId(),this.token.getuserName(),this.idCopyFile).subscribe(
                            data3=>{
                             //  console.log(data3);
                                   if(data3.type==3){
@@ -133,7 +148,7 @@ export class OwnerDetailsComponent implements OnInit {
                                       }
                                       else if(operation=='add'){
                                           this.ownerDto=new OwnerDetails();
-                                          this.sellerService.getOwners(this.token.getPropertyId()).subscribe(
+                                          this.sellerService.getOwners(this.token.getPropertyId(),this.token.getuserName()).subscribe(
                                              ownerData=>{
                                                 console.log(ownerData);
                                              }//end of ownerData
@@ -161,24 +176,24 @@ export class OwnerDetailsComponent implements OnInit {
  
   
 
-  createNewProperty(): void {
-    window.sessionStorage.removeItem('AuthToken');
-    this.authService.attemptAuth().subscribe(
-      data => {
-        this.token.saveToken(data.access_token,data.refresh_token,data.expires_in);
-        // console.log(data);
-        if(this.token.getToken()!=null){
-          this.sellerService.createProperty('BesterCapital2').subscribe(
-             data1=>{
-                    this.token.savePropertyId(data1)
-                    console.log('New Property Created');    
-                    console.log(this.token.getPropertyId());
-            }
-          );
-        }//end of if        
-     }//end of outer data predicate
-    );//end of outer subscription 
-  }//end of loginChiraghUser
+  // createNewProperty(): void {
+  //   window.sessionStorage.removeItem('AuthToken');
+  //   this.authService.attemptAuth().subscribe(
+  //     data => {
+  //       this.token.saveToken(data.access_token,data.refresh_token,data.expires_in);
+  //       // console.log(data);
+  //       if(this.token.getToken()!=null){
+  //         this.sellerService.createProperty('BesterCapital2').subscribe(
+  //            data1=>{
+  //                   this.token.savePropertyId(data1)
+  //                   console.log('New Property Created');    
+  //                   console.log(this.token.getPropertyId());
+  //           }
+  //         );
+  //       }//end of if        
+  //    }//end of outer data predicate
+  //   );//end of outer subscription 
+  // }//end of loginChiraghUser
 
 
 

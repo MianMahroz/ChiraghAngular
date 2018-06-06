@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders, HttpRequest, HttpEvent } from '@angular/common
 import {Observable} from 'rxjs/Observable';
 import { PropertyDetailsDto } from '../SellerForm/property-details/propertymodel';
 import { PropertyFinancialDTO } from '../SellerForm/property-financials/propertyfinancialDTO';
+import { PropertyRentalDetailDTO } from '../SellerForm/property-rental/propertyRentalDTO';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -22,7 +23,9 @@ export class PropertyService {
 public updatePropertyFinancials(propertyFinancialDto:PropertyFinancialDTO): Observable<any> {
   return this.http.put<any>(this.propertyUrl + '/updateProperty/FinancialDetails',propertyFinancialDto ,httpOptions);
 }
-
+public updatePropertyRental(propertyRentalDetailDTO:PropertyRentalDetailDTO): Observable<any> {
+  return this.http.put<any>(this.propertyUrl + '/updateProperty/rentInfo',propertyRentalDetailDTO ,httpOptions);
+}
 
 
 

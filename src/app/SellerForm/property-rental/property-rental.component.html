@@ -12,40 +12,40 @@
                   <div class="row">
                     <div class="col-md-12 form-block-heading mb-2">Rent Details</div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <select class="form-control common-select">
+                      <select  [(ngModel)]="propertyRentalDetailDTO.isRented" class="form-control common-select">
                         <option>Property Rented</option>
                         <option>Yes</option>
                         <option>No</option>
                       </select>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <select class="form-control common-select">
+                      <select [(ngModel)]="propertyRentalDetailDTO.isVacant" class="form-control common-select">
                         <option>Vacant</option>
                         <option>Yes</option>
                         <option>No</option>
                       </select>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="text" class="form-control onlyText form-input" placeholder="Tenant Name" required>
+                      <input type="text" class="form-control onlyText form-input" [(ngModel)]="propertyRentalDetailDTO.tenantName" placeholder="Tenant Name" required>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <select class="form-control common-select">
+                      <select [(ngModel)]="propertyRentalDetailDTO.paymentStructure" class="form-control common-select">
                         <option>Payment Structure</option>
                         <option>Yes</option>
                         <option>No</option>
                       </select>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="number" class="form-control onlyText form-input" placeholder="Ejari Number" required>
+                      <input type="number" class="form-control onlyText form-input" [(ngModel)]="propertyRentalDetailDTO.rentalEjariNo" placeholder="Ejari Number" required>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="text" class="form-control onlyText form-input" placeholder="Annual Rent" required>
+                      <input type="text" class="form-control onlyText form-input" [(ngModel)]="propertyRentalDetailDTO.rentalAnnualRent" placeholder="Annual Rent" required>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="text" class="form-control onlyText form-input" placeholder="Lease Start Date" required>
+                      <input type="text" class="form-control onlyText form-input" [(ngModel)]="propertyRentalDetailDTO.leaseStartDate" placeholder="Lease Start Date" required>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="text" class="form-control onlyText form-input" placeholder="Lease Expiry Date" required>
+                      <input type="text" class="form-control onlyText form-input" [(ngModel)]="propertyRentalDetailDTO.leaseExpiryDate" placeholder="Lease Expiry Date" required>
                     </div>
                   </div>
                   <div class="row mt-3">
@@ -56,7 +56,7 @@
                     <div class="col-md-12 upload-doc-block">
                       <div class="upload-btn-div mt-4">
                         <div class="file">
-                          <input type="file" name="file" class="doc-upload" />
+                          <input  (change)="scannedTenantContract($event)" type="file" name="file" class="doc-upload" />
                         </div>
                         <div class="upload-instuct mt-2">Scanned Tenancy Contract</div>
                       </div>
@@ -67,7 +67,7 @@
                       <button class="btn common-btn btn-light-black">Back</button>
                     </div>
                     <div class="col-md-3">
-                      <button class="btn common-btn" type="submit">Next</button>
+                      <a  (click)="addPropertyRentalDetails()" style=color:white  class="btn common-btn btn-light-black"type="submit">Next</a>
                     </div>
                   </div>
                 </div>

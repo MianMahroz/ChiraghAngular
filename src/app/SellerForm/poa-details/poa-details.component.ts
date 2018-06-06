@@ -41,6 +41,10 @@ export class PoaDetailsComponent implements OnInit {
   }
 
   addPOA(operation:string): string {
+    if(this.token.getuserName()==null){
+      console.log('Invalid Session');
+      return "Invalid Session";
+    }
     window.sessionStorage.removeItem('AuthToken');
     this.authService.attemptAuth().subscribe(
       data => {
@@ -55,28 +59,29 @@ export class PoaDetailsComponent implements OnInit {
          }
               this.ownerDto.ownerType='poa';
               this.ownerDto.propertyId=this.token.getPropertyId();//setting proeprty Id
-
+              this.ownerDto.userName=this.token.getuserName();
               this.sellerService.addOwner(this.ownerDto).subscribe(
                 data1=>{
                   this.ownerDto.propertySellerId=data1;
-                 this.sellerService.saveDocument(data1+'-Spoa-passport'+this.token.getPropertyId(),this.passportFile).subscribe(
+                 this.sellerService.saveDocument(data1+'-Spoa-passport'+this.token.getPropertyId(),this.token.getuserName(),this.passportFile).subscribe(
                   data2=>{
                     console.log(data2);
                          if(data2.type==3){
                           //  console.log(data2.partialText);
                           this.ownerDto.passportCopyUpload= data2.partialText;
-                          this.sellerService.saveDocument(data1+'-Spoa-IdCopy'+this.token.getPropertyId(),this.idCopyFile).subscribe(
+                          this.sellerService.saveDocument(data1+'-Spoa-IdCopy'+this.token.getPropertyId(),this.token.getuserName(),this.idCopyFile).subscribe(
                             data3=>{
                               console.log(data3);
                                    if(data3.type==3){
                                     //  console.log(data3.partialText);
                                      this.ownerDto.scannedIdCopy= data3.partialText;
-                          this.sellerService.saveDocument(data1+'-Spoa-scannedNotorizedPoaCopy'+this.token.getPropertyId(),this.scannedNotorizedPoaFile).subscribe(
+                          this.sellerService.saveDocument(data1+'-Spoa-scannedNotorizedPoaCopy'+this.token.getPropertyId(),this.token.getuserName(),this.scannedNotorizedPoaFile).subscribe(
                                       data4=>{
                                         console.log(data4);
                                              if(data4.type==3){
                                               //  console.log(data4.partialText);
                                                this.ownerDto.scannedNotorizedCopy= data4.partialText;
+                                               this.ownerDto.userName=this.token.getuserName();
                                                this.sellerService.updateOwner(this.ownerDto).subscribe(
                                                 data5=>{
                                                   console.log('Update owner');
@@ -88,7 +93,7 @@ export class PoaDetailsComponent implements OnInit {
                                                   else if(operation=='add'){
                                                     console.log('Add');
                                                       this.ownerDto=new OwnerDetails();
-                                                      this.sellerService.getPoas(this.token.getPropertyId()).subscribe(
+                                                      this.sellerService.getPoas(this.token.getPropertyId(),this.token.getuserName()).subscribe(
                                                          ownerData=>{
                                                             console.log(ownerData);
                                                          }//end of ownerData
@@ -117,25 +122,6 @@ export class PoaDetailsComponent implements OnInit {
  
   
   
-
-  createNewProperty(): void {
-    window.sessionStorage.removeItem('AuthToken');
-    this.authService.attemptAuth().subscribe(
-      data => {
-        this.token.saveToken(data.access_token,data.refresh_token,data.expires_in);
-        // console.log(data);
-        if(this.token.getToken()!=null){
-          this.sellerService.createProperty('BesterCapital2').subscribe(
-             data1=>{
-                    this.token.savePropertyId(data1)
-                    console.log('New Property Created');    
-                    console.log(this.token.getPropertyId());
-            }
-          );
-        }//end of if        
-     }//end of outer data predicate
-    );//end of outer subscription 
-  }//end of loginChiraghUser
 
 
 }

@@ -1,5 +1,6 @@
 export class PropertyDetailsDto {
    
+	userName:string;
 	propertyId:number;
     typeTitle:string;
 	propertyTitle:string;

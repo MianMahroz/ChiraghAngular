@@ -21,6 +21,7 @@ export class RegisterSuccessComponent implements OnInit {
       this.confirmEmailByToken();
   }
   confirmEmailByToken() {
+    
     window.sessionStorage.removeItem('AuthToken');
     this.authService.attemptAuth().subscribe(
       data => {

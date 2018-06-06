@@ -34,6 +34,7 @@ export class LoginComponent {
             data1=>{
               console.log(data1);
                    if(data1.msg=="Login Successfully"){
+                     this.token.saveUserName(this.logindto.userName);
                        this.router.navigate(['home']);
                    }//end of if
                 }//end of inner data predicate

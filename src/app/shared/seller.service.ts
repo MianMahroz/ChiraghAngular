@@ -16,11 +16,11 @@ export class SellerService {
   
   private sellerUrl = 'http://localhost:8084/api/Propertysellerdetails';
   
-  public getOwners(propertyId:number): Observable<OwnerDetails[]> {
-    return this.http.get<OwnerDetails[]>(this.sellerUrl + '/getOwners/'+propertyId);
+  public getOwners(propertyId:number,userName:string): Observable<OwnerDetails[]> {
+    return this.http.get<OwnerDetails[]>(this.sellerUrl + '/getOwners/'+propertyId+'/'+userName);
   }
-  public getPoas(propertyId:number): Observable<OwnerDetails[]> {
-    return this.http.get<OwnerDetails[]>(this.sellerUrl + '/getPoas/'+propertyId);
+  public getPoas(propertyId:number,userName:string): Observable<OwnerDetails[]> {
+    return this.http.get<OwnerDetails[]>(this.sellerUrl + '/getPoas/'+propertyId+'/'+userName);
   }
   public addOwner(obj:OwnerDetails): Observable<any> {
     return this.http.post<any>(this.sellerUrl + '/post', obj,httpOptions);
@@ -33,10 +33,10 @@ export class SellerService {
     return this.http.post<any>(this.sellerUrl + '/createProperty', userName,httpOptions);
 }
 
-saveDocument(name:string,file: File): Observable<any> {
+saveDocument(name:string,userName:string,file: File): Observable<any> {
   let formdata: FormData = new FormData();
   formdata.append('file', file);
-  const req = new HttpRequest('POST', this.sellerUrl+'/saveDocument/'+name, formdata, {
+  const req = new HttpRequest('POST', this.sellerUrl+'/saveDocument/'+name+'/'+userName, formdata, {
     reportProgress: true,
     responseType: 'text'
   });
