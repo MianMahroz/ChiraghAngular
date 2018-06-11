@@ -1,6 +1,6 @@
 
   <div class="container-fluid screen-wrapper">
-    <app-header></app-header>  
+    <app-header></app-header>
     <div class="row body-section">
       <div class="col-md-12">
         <div class="row form-wrapper-row py-5">
@@ -12,7 +12,7 @@
                   <div class="input-wrapper form-label-group mb-4">
                     <input  pattern="[a-zA-Z0-9_]*" required minlength="8" name="userName" #userName="ngModel" maxlength="15" id="stuff" type="text"  [(ngModel)]="logindto.userName" class="form-control form-input" placeholder="Username" >
                     <label for="stuff" class="fa fa-user input-icon"></label>
-                    
+
                     <div *ngIf="userName.errors && (userName.dirty || userName.touched)" class="alert alert-danger">
                       <div [hidden]="!userName.errors.required">
                         User Name is required!
@@ -26,13 +26,13 @@
                       <div [hidden]="!userName.errors.pattern">
                         Must be a valid User Name!
                       </div>
-                      
+
                     </div>
                   </div>
                   <div class="input-wrapper form-label-group mb-4">
                     <input  minlength="8"  #userPassword="ngModel" maxlength="15" type="password" class="form-control form-input" name="userPassword" [(ngModel)]="logindto.userPassword" placeholder="Password" required>
                     <label for="stuff" class="fa fa-lock input-icon"></label>
-                  
+
                     <div *ngIf="userPassword.errors && (userPassword.dirty || userPassword.touched)" class="alert alert-danger">
                       <div [hidden]="!userPassword.errors.required">
                         User Password is required!
@@ -47,14 +47,14 @@
                         Must be a valid User Password!
                       </div>
                     </div>
-                  
+
                   </div>
                   <button  [disabled]="!loginForm.form.valid" class="btn form-btn mb-4" (click)="loginChiraghUser()" type="submit">Sign In</button>
-                  <div class="common-checkbox sign-in-remeber-div mb-4">                    
+                  <div class="common-checkbox sign-in-remeber-div mb-4">
                     <label>
                       <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> Remember Me
                     </label>
-                    <a href="#" class="forgot-pwd-link">Forgot Password?</a>
+                    <a routerLink="../forgotPasswordRequest" class="forgot-pwd-link">Forgot Password?</a>
                   </div>
                   <div class="not-registered-div">
                     <a href="#" class="learn-more-link">Sign Up for Free</a>
@@ -64,9 +64,8 @@
             </div>
           </div>
         </div>
-        
+
       </div>
     </div>
-    <app-footer></app-footer> 
+    <app-footer></app-footer>
   </div>
-  

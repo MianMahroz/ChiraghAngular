@@ -1,3 +1,5 @@
+import { ForgotPasswordDTO } from './../forgot-password-form/forgotPasswordDTO';
+import { ForgotPasswordRequestDTO } from './../forgot-password-request/forgotPasswordRequestDTO';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
@@ -27,7 +29,7 @@ export class UserService {
   public login(userName:string,userPassword:string): Observable<any> {
       var obj={
                 "userName":userName,
-                "userPassword":userPassword   
+                "userPassword":userPassword
       };
       return this.http.post<any>(this.userUrl + '/login', obj,httpOptions);
   }
@@ -44,5 +46,13 @@ public confirmEmailByToken(token:string): Observable<any> {
   return this.http.post<any>(this.userUrl + '/confirmEmailByToken', token,httpOptions);
 }
 
+//forgot password service calls
+public forgotPasswordServiceRequest(forgotPasswordRequestDTO:ForgotPasswordRequestDTO): Observable<any> {
+  return this.http.post<any>(this.userUrl + '/resetPasswordRequest', forgotPasswordRequestDTO,httpOptions);
+}
+
+public resetPassword(forgotPasswordDTO:ForgotPasswordDTO): Observable<any> {
+  return this.http.post<any>(this.userUrl + '/resetPassword', forgotPasswordDTO,httpOptions);
+}
 
 }

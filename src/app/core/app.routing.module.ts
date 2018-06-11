@@ -1,3 +1,5 @@
+import { ForgotPasswordFormComponent } from './../forgot-password-form/forgot-password-form.component';
+import { ForgotPasswordRequestComponent } from './../forgot-password-request/forgot-password-request.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {UserComponent} from '../user/user.component';
@@ -31,6 +33,8 @@ const routes: Routes = [
   { path: 'aboutus', component: AboutusComponent },
   { path: 'propertyRental', component: PropertyRentalComponent },
   { path: 'auctionFeeDetails', component: AuctionFeeDetailsComponent },
+  { path: 'forgotPasswordRequest', component: ForgotPasswordRequestComponent },
+  { path: 'forgotPasswordForm/:token', component: ForgotPasswordFormComponent },
 
 ];
 

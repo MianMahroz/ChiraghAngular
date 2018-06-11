@@ -29,6 +29,8 @@ import { FaqsComponent } from './faqs/faqs.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { PropertyRentalComponent } from './SellerForm/property-rental/property-rental.component';
 import { AuctionFeeDetailsComponent } from './SellerForm/auction-fee-details/auction-fee-details.component';
+import { ForgotPasswordRequestComponent } from './forgot-password-request/forgot-password-request.component';
+import { ForgotPasswordFormComponent } from './forgot-password-form/forgot-password-form.component';
 
 
 
@@ -52,6 +54,8 @@ import { AuctionFeeDetailsComponent } from './SellerForm/auction-fee-details/auc
     AboutusComponent,
     PropertyRentalComponent,
     AuctionFeeDetailsComponent,
+    ForgotPasswordRequestComponent,
+    ForgotPasswordFormComponent,
     
   ],
   imports: [
