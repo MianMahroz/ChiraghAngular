@@ -11,7 +11,7 @@
                 <div class="row">
                   <div class="col-md-12 form-block-heading mb-2">Personal Details:</div>
                   <div class="col-md-6 form-label-group mb-4">
-                    <input pattern="[a-zA-Z0-9_]*" type="text" class="form-control form-input" minlength="3" name="userFirstName" #userFirstName="ngModel" maxlength="15"  [(ngModel)]="ownerDto.firstName"placeholder="First Name" required>
+                    <input pattern="[a-zA-Z0-9_]*" type="text" class="form-control form-input" minlength="3" name="userFirstName" #userFirstName="ngModel" maxlength="15"  [(ngModel)]="ownerDto.firstName"placeholder="First Name" autofocus>
                     <div *ngIf="userFirstName.errors && (userFirstName.dirty || userFirstName.touched)" class="alert alert-danger">
                       <div [hidden]="!userFirstName.errors.required">
                         User Name is required!

@@ -12,7 +12,7 @@
                   <div class="row">
                     <div class="col-md-12 form-block-heading mb-2">Personal Details:</div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input pattern="[a-zA-Z0-9_]*" type="text" class="form-control form-input" minlength="3" name="userFirstName" #userFirstName="ngModel" maxlength="15"  [(ngModel)]="ownerDto.firstName"placeholder="First Name" required>
+                      <input pattern="[a-zA-Z0-9_]*" type="text" class="form-control form-input" minlength="3" name="userFirstName" #userFirstName="ngModel" maxlength="15"  [(ngModel)]="ownerDto.firstName"placeholder="First Name" autofocus>
                       <div *ngIf="userFirstName.errors && (userFirstName.dirty || userFirstName.touched)" class="alert alert-danger">
                         <div [hidden]="!userFirstName.errors.required">
                           User Name is required!
@@ -146,8 +146,8 @@
                     <div class="col-md-6 form-label-group mb-4">
                       <input pattern="[a-zA-Z0-9_]*" type="text" minlength="8" name="userAddress" #userAddress="ngModel" maxlength="60" class="form-control  form-input" [(ngModel)]="ownerDto.address" placeholder="Address" required>
                       <div *ngIf="userAddress.errors && (userAddress.dirty || userAddress.touched)" class="alert alert-danger">
-                        <div [hidden]="!userAddress.errors.required">
-                          Address is required!
+                        <div [hidden]="!userAddress.errors.minlength">
+                          Address must be at least 8 characters long.
                         </div>
                       </div>
                     </div>

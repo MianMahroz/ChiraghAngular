@@ -10,7 +10,7 @@
                 <form #loginForm="ngForm" class="common-form" novalidate>
                   <div class="text-center mb-5 page-primary-title-34">Sign In</div>
                   <div class="input-wrapper form-label-group mb-4">
-                    <input  pattern="[a-zA-Z0-9_]*" required minlength="8" name="userName" #userName="ngModel" maxlength="15" id="stuff" type="text"  [(ngModel)]="logindto.userName" class="form-control form-input" placeholder="Username" >
+                    <input  pattern="[a-zA-Z0-9_]*" minlength="8" name="userName" #userName="ngModel" maxlength="15" id="stuff" type="text"  [(ngModel)]="logindto.userName" class="form-control form-input" placeholder="Username" autofocus>
                     <label for="stuff" class="fa fa-user input-icon"></label>
 
                     <div *ngIf="userName.errors && (userName.dirty || userName.touched)" class="alert alert-danger">

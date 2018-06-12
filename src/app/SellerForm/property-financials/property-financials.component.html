@@ -12,7 +12,7 @@
                   <div class="row">
                     <div class="col-md-12 form-block-heading mb-2">Financial Details</div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input pattern="[1-9][0-9]*|0" type="number" class="form-control form-input"  [(ngModel)]="propertyFinancialDTO.listedPrice"  name="listedPrice" #listedPrice="ngModel"  placeholder="Listed Price" required>
+                      <input pattern="[1-9][0-9]*|0" type="number" class="form-control form-input"  [(ngModel)]="propertyFinancialDTO.listedPrice"  name="listedPrice" #listedPrice="ngModel"  placeholder="Listed Price" autofocus>
                       <div *ngIf="listedPrice.errors && (listedPrice.dirty || listedPrice.touched)" class="alert alert-danger">
                         <div [hidden]="!listedPrice.errors.required">
                           Listed Price is required!

@@ -55,15 +55,15 @@
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <input type="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseStartDate" name="leaseStartDate"  #leaseStartDate="ngModel" placeholder="Lease Start Date" required>
-                      <div *ngIf="leaseStartDate.errors" class="alert alert-danger">
-                          <div [hidden]="!leaseStartDate.errors.required">Date is required! </div>
-                      </div>
+                      <!-- <div *ngIf="leaseStartDate.errors" class="alert alert-danger">
+                        <div [hidden]="!leaseStartDate.errors.required">Date is required! </div>
+                      </div> -->
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <input type="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseExpiryDate" name="leaseExpiryDate"  #leaseExpiryDate="ngModel" placeholder="Lease Expiry Date" required>
-                      <div *ngIf="leaseExpiryDate.errors" class="alert alert-danger">
-                          <div [hidden]="!leaseExpiryDate.errors.required">Date is required! </div>
-                      </div>
+                      <!-- <div *ngIf="leaseExpiryDate.errors" class="alert alert-danger">
+                        <div [hidden]="!leaseExpiryDate.errors.required">Date is required! </div>
+                      </div> -->
                     </div>
                   </div>
                   <div class="row mt-3">
