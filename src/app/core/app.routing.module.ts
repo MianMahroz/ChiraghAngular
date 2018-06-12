@@ -1,3 +1,4 @@
+import { SellersecuritypaymentComponent } from './../SellerForm/sellersecuritypayment/sellersecuritypayment.component';
 import { ForgotPasswordFormComponent } from './../forgot-password-form/forgot-password-form.component';
 import { ForgotPasswordRequestComponent } from './../forgot-password-request/forgot-password-request.component';
 import { NgModule } from '@angular/core';
@@ -35,6 +36,8 @@ const routes: Routes = [
   { path: 'auctionFeeDetails', component: AuctionFeeDetailsComponent },
   { path: 'forgotPasswordRequest', component: ForgotPasswordRequestComponent },
   { path: 'forgotPasswordForm/:token', component: ForgotPasswordFormComponent },
+  { path: 'forgotPasswordForm/:token', component: ForgotPasswordFormComponent },
+  {path: 'sellerSecurityPayments',component:SellersecuritypaymentComponent},
 
 ];
 

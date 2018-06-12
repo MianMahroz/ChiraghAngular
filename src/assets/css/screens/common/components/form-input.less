@@ -5,8 +5,20 @@
   font-size: 1.5em;
   font-weight: 900; 
   padding-right: 200px;
-  color: @primary-color;
+  color: @secondary-color;
   padding-left: 16px;
+  &::placeholder {
+    color: @secondary-color;
+  }
+  &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: @secondary-color;
+  }
+  &::-moz-placeholder { /* Firefox 19+ */
+    color: @secondary-color;
+  }
+  &:-ms-input-placeholder { /* IE 10+ */
+    color: @secondary-color;
+  }
   &.form-control {
     &:focus {
       box-shadow: none;
@@ -27,11 +39,23 @@
 
 .common-textarea {
   font-size: 18px;
-  color: @secondary-color;
+  color: @placeholder-color;
   resize: none;
   height: 120px;
   border-radius: 2px;
+  &.form-control {
+    color: @placeholder-color;
+  }
   &::placeholder {
+    color: @placeholder-color;
+  }
+  &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: @placeholder-color;
+  }
+  &::-moz-placeholder { /* Firefox 19+ */
+    color: @placeholder-color;
+  }
+  &:-ms-input-placeholder { /* IE 10+ */
     color: @placeholder-color;
   }
   &.form-control {
@@ -46,6 +70,18 @@
   color: @mono-color;
   border-radius: 0px;
   border: 1px solid @seprator-color;
+  &::placeholder {
+    color: @mono-color;
+  }
+  &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: @mono-color;
+  }
+  &::-moz-placeholder { /* Firefox 19+ */
+    color: @mono-color;
+  }
+  &:-ms-input-placeholder { /* IE 10+ */
+    color: @mono-color;
+  }
   &.form-control {
     &:focus {
       box-shadow: none;
@@ -57,11 +93,23 @@
 .form-input {
   .footer-input;
   font-size: 18px;
-  color: @secondary-color;
+  color: @placeholder-color;
   height: 45px;
   border-radius: 2px;
   box-shadow: none !important;
+  &.form-control {
+    color: @placeholder-color;
+  }
   &::placeholder {
+    color: @placeholder-color;
+  }
+  &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: @placeholder-color;
+  }
+  &::-moz-placeholder { /* Firefox 19+ */
+    color: @placeholder-color;
+  }
+  &:-ms-input-placeholder { /* IE 10+ */
     color: @placeholder-color;
   }
   &.form-control {
@@ -71,6 +119,14 @@
   }
 }
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
 
 
 
@@ -354,6 +410,7 @@
     border-radius: 2px;
     color: @secondary-color;
     -webkit-appearance: none;
+    -moz-appearance: none;
     background: url("../../assets/images/dropdown-arrow.png") no-repeat 0 0;
     background-position: calc(~'100% - 12px') center;
     &:first-child {
@@ -367,6 +424,11 @@
       border-color: @seprator-color;
     }
   }  
+}
+
+
+select option[selected]{
+  color: @secondary-color;
 }
 
 .adnvance-search-select {

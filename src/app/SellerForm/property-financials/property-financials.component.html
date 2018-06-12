@@ -1,71 +1,109 @@
 
   <div class="container-fluid screen-wrapper">
-<app-header></app-header>
+    <app-header></app-header>
     <div class="row body-section">
       <div class="col-md-12">
         <div class="row form-wrapper-row py-5">
           <div class="offset-md-1 col-md-10">
             <div class="row sign-in-row">
               <div class="offset-md-2 col-md-8 sign-in-col">
-                <div class="common-form" novalidate>
+                <form #finanicalForm="ngForm" class="common-form" novalidate>
                   <div class="mb-5 page-primary-title-34">Property Details</div>
                   <div class="row">
                     <div class="col-md-12 form-block-heading mb-2">Financial Details</div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="number" class="form-control onlyText form-input"  [(ngModel)]="propertyFinancialDTO.listedPrice" placeholder="Listed Price" required>
+                      <input pattern="[1-9][0-9]*|0" type="number" class="form-control form-input"  [(ngModel)]="propertyFinancialDTO.listedPrice"  name="listedPrice" #listedPrice="ngModel"  placeholder="Listed Price" required>
+                      <div *ngIf="listedPrice.errors && (listedPrice.dirty || listedPrice.touched)" class="alert alert-danger">
+                        <div [hidden]="!listedPrice.errors.required">
+                          Listed Price is required!
+                        </div>
+                        <div [hidden]="!listedPrice.errors.pattern">
+                          Must be a valid User Name!
+                        </div>
+                      </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="number" class="form-control onlyText form-input" [(ngModel)]="propertyFinancialDTO.originalPrice" placeholder="Original Price">
+                      <input type="number" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.originalPrice" name ="originalPrice" #originalPrice="ngModel" placeholder="Original Price">
+                      <div *ngIf="originalPrice.errors && (originalPrice.dirty ||originalPrice.touched)" class="alert alert-danger">
+                        <div [hidden]="!originalPrice.errors.required">Original Amount is required!</div>
+                        <div [hidden]="!originalPrice.errors.pattern">Must be a valid Original Amount!</div>
+                      </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="number" class="form-control onlyText form-input" [(ngModel)]="propertyFinancialDTO.paidAmount" placeholder="Paid Amount" required>
+                      <input pattern="[1-9][0-9]*|0" type="number" class="form-control form-input"[(ngModel)]="propertyFinancialDTO.paidAmount" name ="paidAmount" #paidAmount="ngModel"  placeholder="Paid Amount" required>
+                      <div *ngIf="paidAmount.errors && (paidAmount.dirty ||paidAmount.touched)" class="alert alert-danger">
+                        <div [hidden]="!paidAmount.errors.required">Paid Amount is required!</div>
+                        <div [hidden]="!paidAmount.errors.pattern">Must be a valid Paid Amount!</div>
+                      </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="number" class="form-control onlyText form-input" [(ngModel)]="propertyFinancialDTO.balanceAmount" placeholder="Balance Amount" required>
+                      <input pattern="[1-9][0-9]*|0" type="number" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.balanceAmount" name ="balanceAmount" #balanceAmount="ngModel"  placeholder="Balance Amount" required>
+                      <div *ngIf="balanceAmount.errors && (balanceAmount.dirty ||balanceAmount.touched)" class="alert alert-danger">
+                        <div [hidden]="!balanceAmount.errors.required">Balance Amount is required!</div>
+                        <div [hidden]="!balanceAmount.errors.pattern">Must be a valid Balance Amount!</div>
+                      </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="number" class="form-control onlyText form-input"  [(ngModel)]="propertyFinancialDTO.serviceCharge" placeholder="Service Charge" required>
+                      <input pattern="[1-9][0-9]*|0" type="number" class="form-control form-input"   [(ngModel)]="propertyFinancialDTO.serviceCharge" name ="serviceCharge" #serviceCharge="ngModel"  placeholder="Service Charge" required>
+                      <div *ngIf="serviceCharge.errors && (serviceCharge.dirty ||serviceCharge.touched)" class="alert alert-danger">
+                        <div [hidden]="!serviceCharge.errors.required">Service Charges is required!</div>
+                        <div [hidden]="!serviceCharge.errors.pattern">Must be a valid Service Charges!</div>
+                      </div>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-6 form-label-group mb-4">
-                      <select [(ngModel)]="propertyFinancialDTO.morgageStatus" class="form-control common-select">
+                      <select [(ngModel)]="propertyFinancialDTO.morgageStatus" name="morgageStatus" class="form-control common-select">
                         <option>Mortgage Status</option>
-                        <option>Pakistani</option>
-                        <option>Indian</option>
+                        <option>Yes</option>
+                        <option>No</option>
                       </select>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="number" class="form-control onlyText form-input"  [(ngModel)]="propertyFinancialDTO.morgageRegNo" placeholder="Mortgage Reg.No." required>
+                      <input pattern="[a-zA-Z0-9_]*"  type="number" class="form-control form-input"  [(ngModel)]="propertyFinancialDTO.morgageRegNo"  name ="morgageRegNo" #morgageRegNo="ngModel" placeholder="Mortgage Reg.No." required>
+
+                      <div *ngIf="morgageRegNo.errors && (morgageRegNo.dirty ||morgageRegNo.touched)" class="alert alert-danger">
+                        <div [hidden]="!morgageRegNo.errors.required"> Morgage Registeration Number is required!</div>
+                        <div [hidden]="!morgageRegNo.errors.pattern">Must be a valid Morgage Registeration Number!</div>
+                      </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <select [(ngModel)]="propertyFinancialDTO.bank" class="form-control common-select">
+                      <select [(ngModel)]="propertyFinancialDTO.bank" name="bank" class="form-control common-select">
                         <option>Bank</option>
                         <option>Islamic</option>
                         <option>World Bank</option>
                       </select>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="number" class="form-control onlyText form-input"  [(ngModel)]="propertyFinancialDTO.morgageAmount" placeholder="Mortgage Amount" required>
+                      <input  pattern="[1-9][0-9]*|0" type="number" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.morgageAmount" name ="morgageAmount" #morgageAmount="ngModel" placeholder="Mortgage Amount" required>
+                      <div *ngIf="morgageAmount.errors && (morgageAmount.dirty ||morgageAmount.touched)" class="alert alert-danger">
+                        <div [hidden]="!morgageAmount.errors.required">Morgage Amount is required!</div>
+                        <div [hidden]="!morgageAmount.errors.pattern">Must be a valid Morgage Amount!</div>
+                      </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="text" class="form-control onlyText form-input" [(ngModel)]="propertyFinancialDTO.preClosureCharges" placeholder="Pre-Closure Charges" required>
+                      <input pattern="[1-9][0-9]*|0" type="text" class="form-control form-input"  [(ngModel)]="propertyFinancialDTO.preClosureCharges" name="preClosureCharges" #preClosureCharges="ngModel" placeholder="Pre-Closure Charges" required>
+                      <div *ngIf="preClosureCharges.errors && (preClosureCharges.dirty ||preClosureCharges.touched)" class="alert alert-danger">
+                        <div [hidden]="!preClosureCharges.errors.required">Pre-Closure-Charges is required!</div>
+                        <div [hidden]="!preClosureCharges.errors.pattern">Must be a valid Pre-Closure-Charges!</div>
+                      </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <select  [(ngModel)]="propertyFinancialDTO.paymentSchedule" class="form-control common-select">
+                      <select  [(ngModel)]="propertyFinancialDTO.paymentSchedule" name="paymentSchedule"class="form-control common-select">
                         <option>Payment Schedule</option>
-                        <option>Islamic</option>
-                        <option>World Bank</option>
+                        <option>Quarterly</option>
+                        <option>Monthly</option>
+                        <option>Yearly</option>
                       </select>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="text" class="form-control onlyText form-input" [(ngModel)]="propertyFinancialDTO.date"  placeholder="Date" required>
+                      <input type="date" class="form-control form-input"  [(ngModel)]="propertyFinancialDTO.date" name="date" #date="ngModel"  placeholder="Date" required>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="number" class="form-control onlyText form-input" [(ngModel)]="propertyFinancialDTO.amount" placeholder="Amount" required>
+                      <input pattern="[1-9][0-9]*|0" type="number" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.amount" name="amount" #amount="ngModel" placeholder="Amount" required>
                     </div>
                   </div>
-                  
+
                   <div class="row mt-3">
                     <div class="col-md-12 document-upload">
                       Upload Documents
@@ -74,7 +112,7 @@
                     <div class="col-md-12 upload-doc-block">
                       <div class="upload-btn-div mt-4">
                         <div class="file">
-                          <input type="file" (change)="selectMorgageNoc($event)" name="file" class="doc-upload" />
+                          <input type="file" (change)="selectMorgageNoc($event)" name="file" class="doc-upload">
                         </div>
                         <div class="upload-instuct mt-2">Scanned NOC fromM<br>Mortgage Company</div>
                       </div>
@@ -85,17 +123,15 @@
                       <button class="btn common-btn btn-light-black">Back</button>
                     </div>
                     <div class="col-md-3">
-                      <a  (click)="addPropertyFinancialDetails()" style=color:white class="btn common-btn" type="submit">Next</a>
+                      <button [disabled]="!finanicalForm.form.valid"  (click)="addPropertyFinancialDetails()" style=color:white class="btn common-btn" type="submit">Next</button>
                     </div>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>
         </div>
-       
       </div>
     </div>
     <app-footer></app-footer>
     </div>
-    

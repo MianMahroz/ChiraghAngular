@@ -1,141 +1,230 @@
-  <div class="container-fluid screen-wrapper">
-<app-header></app-header>
-    <div class="row body-section">
-      <div class="col-md-12">
-        <div class="row form-wrapper-row py-5">
-          <div class="offset-md-1 col-md-10">
-            <div class="row sign-in-row">
-              <div class="offset-md-2 col-md-8 sign-in-col">
-                <div class="common-form" novalidate>
-                  <div class="mb-5 page-primary-title-34">POA Details</div>
-                  <div class="row">
-                    <div class="col-md-12 form-block-heading mb-2">Personal Details:</div>
-                    <div class="col-md-6 form-label-group mb-4">
-                      <input type="text"  [(ngModel)]="ownerDto.firstName" class="form-control onlyText form-input" placeholder="First Name" required>
-                    </div>
-                    <div class="col-md-6 form-label-group mb-4">
-                      <input type="text" class="form-control onlyText form-input"[(ngModel)]="ownerDto.middleName" placeholder="Middle Name">
-                    </div>
-                    <div class="col-md-6 form-label-group mb-4">
-                      <input type="text" class="form-control onlyText form-input" [(ngModel)]="ownerDto.lastName" placeholder="Last Name" required>
-                    </div>
-                    <div class="col-md-6 form-label-group mb-4">
-                      <select [(ngModel)]="ownerDto.nationality" class="form-control common-select">
-                        <option>Select Nationality</option>
-                        <option>Pakistani</option>
-                        <option>Indian</option>
-                        <option>Australian</option>
-                        <option>American</option>
-                      </select>
-                    </div>
-                    <div class="col-md-6 form-label-group mb-4">
-                      <input type="number" class="form-control onlyText form-input"  [(ngModel)]="ownerDto.idCardNo" placeholder="ID Card Number" required>
-                    </div>
-                    <div class="col-md-6 form-label-group mb-4">
-                      <input type="text" class="form-control onlyText form-input"  [(ngModel)]="ownerDto.idCardExpiration" placeholder="ID Card Expiry Date" required>
-                    </div>
-                    <div class="col-md-6 form-label-group mb-4">
-                      <input type="number" class="form-control onlyText form-input" [(ngModel)]="ownerDto.passportNo" placeholder="Passport Number" required>
-                    </div>
-                    <div class="col-md-6 form-label-group mb-4">
-                      <input type="text" class="form-control onlyText form-input" [(ngModel)]="ownerDto.passportExpiryDate" placeholder="Passport Expiry Date" required>
-                    </div>
-                  </div>
-                  <div class="row mt-3">
-                    <div class="col-md-12 form-block-heading mb-2">Contact Details:</div>
-                    <div class="col-md-6 form-label-group mb-4">
-                      <input type="number" class="form-control onlyText form-input" [(ngModel)]="ownerDto.telephone" placeholder="Phone Number" required>
-                    </div>
-                    <div class="col-md-6 form-label-group mb-4">
-                      <input type="number" class="form-control onlyText form-input" [(ngModel)]="ownerDto.mobile" placeholder="Mobile Number" required>
-                    </div>
-                    <div class="col-md-6 form-label-group mb-4">
-                      <input type="email" class="form-control onlyText form-input" [(ngModel)]="ownerDto.email" placeholder="Email" required>
-                    </div>
-                    <div class="col-md-6 form-label-group mb-4">
-                      <input type="text" class="form-control onlyText form-input" [(ngModel)]="ownerDto.fax" placeholder="Fax" required>
-                    </div>
-                    <div class="col-md-6 form-label-group mb-4">
-                      <input type="text" class="form-control onlyText form-input" [(ngModel)]="ownerDto.address" placeholder="Address" required>
-                    </div>
-                    <div class="col-md-6 form-label-group mb-4">
-                      <input type="number" class="form-control onlyText form-input" [(ngModel)]="ownerDto.pobox" placeholder="P.O.Box" required>
-                    </div>
-                  </div>
-                  <div class="row mt-3">
-                    <div class="col-md-12 form-block-heading mb-2">Power Of Attorney Details</div>
-                    <div class="col-md-6 form-label-group mb-4">
-                      <input type="number" class="form-control form-input" [(ngModel)]="ownerDto.poaNumber" placeholder="POA Number" required>
-                    </div>
-                    <div class="col-md-6 form-label-group mb-4">
-                      <input type="text" class="form-control onlyText form-input" [(ngModel)]="ownerDto.poaAgreementExpiry" placeholder="POA Expiry Date" required>
-                    </div>
-                    <div class="col-md-6 form-label-group mb-4">
-                      <input type="email" class="form-control onlyText form-input" placeholder="Email" required>
-                    </div>
-                    <div class="col-md-6 form-label-group mb-4">
-                      <select   class="form-control common-select">
-                        <option>Specific Property</option>
-                        <option>Sell</option>
-                        <option>Buy</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="row mt-3">
-                    <div class="col-md-12 document-upload">
-                      Upload Documents
-                      <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>
-                    </div>
-                    <div class="col-md-12 upload-doc-block">
-                      <div class="upload-btn-div mt-4">
-                        <div class="file">
-                          <input type="file"  (change)="selectPassport($event)" name="file" class="doc-upload" />
-                        </div>
-                        <div class="upload-instuct mt-2">Scanned passport copy</div>
+<div class="container-fluid screen-wrapper">
+  <app-header></app-header>
+  <div class="row body-section">
+    <div class="col-md-12">
+      <div class="row form-wrapper-row py-5">
+        <div class="offset-md-1 col-md-10">
+          <div class="row sign-in-row">
+            <div class="offset-md-2 col-md-8 sign-in-col">
+              <form #poaDetailsForm="ngForm" class="common-form" novalidate>
+                <div class="mb-5 page-primary-title-34">POA Details</div>
+                <div class="row">
+                  <div class="col-md-12 form-block-heading mb-2">Personal Details:</div>
+                  <div class="col-md-6 form-label-group mb-4">
+                    <input pattern="[a-zA-Z0-9_]*" type="text" class="form-control form-input" minlength="3" name="userFirstName" #userFirstName="ngModel" maxlength="15"  [(ngModel)]="ownerDto.firstName"placeholder="First Name" required>
+                    <div *ngIf="userFirstName.errors && (userFirstName.dirty || userFirstName.touched)" class="alert alert-danger">
+                      <div [hidden]="!userFirstName.errors.required">
+                        User Name is required!
                       </div>
-                      <div class="upload-btn-div mt-5">
-                        <div class="file">
-                          <input type="file" name="file" (change)="selectIdCopy($event)" class="doc-upload" />
-                        </div>
-                        <div class="upload-instuct mt-2">
-                          Scanned ID copy
-                          <div class="upload-sub-instruct">(UAE or country of origin)</div>
-                        </div>
+                      <div [hidden]="!userFirstName.errors.minlength">
+                        User First Name must be at least 3 characters long.
                       </div>
-                      <div class="upload-btn-div mt-4">
-                        <div class="file">
-                          <input type="file" name="file"  (change)="selectScannedPoa($event)" class="doc-upload" />
-                        </div>
-                        <div class="upload-instuct mt-2">Scanned NOTORIZED POA
-                          <div class="upload-sub-instruct">(International POA should have the stamp of external affairs and UAE embassy)</div>
-                        </div>
+                      <div [hidden]="!userFirstName.errors.maxlength">
+                        User Name cannot be more than 15 characters long.
                       </div>
-                      <div class="common-checkbox mt-5">                    
-                        <label>
-                          <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> General POA not accepted
-                        </label>
+                      <div [hidden]="!userFirstName.errors.pattern">
+                        Space and special character not Allowed!
                       </div>
                     </div>
                   </div>
-                  <div class="row mt-5 submit-btn-row">
-                    <div class="col-md-3 mb-xs-4">
-                      <a  (click)="addPOA('add')" style=color:white class="btn common-btn btn-light-black">Add POA</a>
+                  <div class="col-md-6 form-label-group mb-4">
+                    <input pattern="[a-zA-Z0-9_]*" type="text" minlength="3" name="userMiddleName" #userMiddleName="ngModel" maxlength="15" class="form-control form-input"[(ngModel)]="ownerDto.middleName" placeholder="Middle Name">
+                    <div *ngIf="userMiddleName.errors && (userMiddleName.dirty || userMiddleName.touched)" class="alert alert-danger">
+                      <div [hidden]="!userMiddleName.errors.required">
+                        Middle Name is required!
+                      </div>
+                      <div [hidden]="!userMiddleName.errors.minlength">
+                        User Middle Name must be at least 3 characters long.
+                      </div>
+                      <div [hidden]="!userMiddleName.errors.maxlength">
+                        User Middle Name cannot be more than 15 characters long.
+                      </div>
+                      <div [hidden]="!userMiddleName.errors.pattern">
+                        Space and special character not Allowed!
+                      </div>
                     </div>
-                    <div class="offset-md-3 col-md-3 mb-xs-4">
-                      <button class="btn common-btn btn-light-black">Back</button>
+                  </div>
+                  <div class="col-md-6 form-label-group mb-4">
+                    <input pattern="[a-zA-Z0-9_]*" type="text" minlength="3" name="userLastName" #userLastName="ngModel" maxlength="15" class="form-control form-input" [(ngModel)]="ownerDto.lastName" placeholder="Last Name" required>
+                    <div *ngIf="userLastName.errors && (userLastName.dirty || userLastName.touched)" class="alert alert-danger">
+                      <div [hidden]="!userLastName.errors.required">
+                        Last Name is required!
+                      </div>
+                      <div [hidden]="!userLastName.errors.minlength">
+                        User Last Middle Name must be at least 3 characters long.
+                      </div>
+                      <div [hidden]="!userLastName.errors.maxlength">
+                        User Last Name cannot be more than 15 characters long.
+                      </div>
+                      <div [hidden]="!userLastName.errors.pattern">
+                        Space and special character not Allowed!
+                      </div>
                     </div>
-                    <div class="col-md-3">
-                      <a  (click)="addPOA('next')" style=color:white class="btn common-btn" type="submit">Next</a>
+                  </div>
+                  <div class="col-md-6 form-label-group mb-4">
+                    <select [(ngModel)]="ownerDto.nationality" name="nationality" class="form-control common-select">
+                      <option>Select Nationality</option>
+                      <option>Pakistani</option>
+                      <option>Indian</option>
+                      <option>Australian</option>
+                      <option>American</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6 form-label-group mb-4">
+                    <input type="number" class="form-control form-input" [(ngModel)]="ownerDto.idCardNo" name="idCardNo" #idCardNo="ngModel" minlength="6" maxlength="18" placeholder="ID Card Number" required>
+                    <div *ngIf="idCardNo.errors && (idCardNo.dirty || idCardNo.touched)" class="alert alert-danger">
+                      <div [hidden]="!idCardNo.errors.required">
+                        ID Card Number is required!
+                      </div>
+                      <div [hidden]="!idCardNo.errors.maxlength">
+                        ID Card Number cannot be more than 18 characters long.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 form-label-group mb-4">
+                    <input type="date" class="form-control form-input"  [(ngModel)]="ownerDto.idCardExpiration" name="idCardExpiration" placeholder="ID Card Expiry Date" required>
+                  </div>
+                  <div class="col-md-6 form-label-group mb-4">
+                    <input type="number" class="form-control  form-input" [(ngModel)]="ownerDto.passportNo" name="passportNo" #passportNo="ngModel" minlength="6" maxlength="15" placeholder="Passport Number" required>
+                    <div *ngIf="passportNo.errors && (passportNo.dirty || passportNo.touched)" class="alert alert-danger">
+                      <div [hidden]="!passportNo.errors.required">
+                        Passport Number is required!
+                      </div>
+                      <div [hidden]="!passportNo.errors.maxlength">
+                        Passport Number cannot be more than 15 characters long.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 form-label-group mb-4">
+                    <input type="date" class="form-control  form-input" [(ngModel)]="ownerDto.passportExpiryDate" name="passportExpiryDate" placeholder="Passport Expiry Date" required>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-md-12 form-block-heading mb-2">Contact Details:</div>
+                  <div class="col-md-6 form-label-group mb-4">
+                    <input type="number" class="form-control  form-input" [(ngModel)]="ownerDto.telephone" name="telephone" #telephone="ngModel" minlength="6" maxlength="16" placeholder="Phone Number" required>
+                    <div *ngIf="telephone.errors && (telephone.dirty || telephone.touched)" class="alert alert-danger">
+                      <div [hidden]="!telephone.errors.required">
+                        Telephone Number is required!
+                      </div>
+                      <div [hidden]="!passportNo.errors.maxlength">
+                        Telephone Number cannot be more than 16 characters long.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 form-label-group mb-4">
+                    <input type="number" class="form-control  form-input" [(ngModel)]="ownerDto.mobile" name="mobile" #mobile="ngModel" minlength="6" maxlength="16" placeholder="Mobile Number" required>
+                    <div *ngIf="telephone.errors && (telephone.dirty || telephone.touched)" class="alert alert-danger">
+                      <div [hidden]="!telephone.errors.required">
+                        Mobile Number is required!
+                      </div>
+                      <div [hidden]="!passportNo.errors.maxlength">
+                        Mobile Number cannot be more than 16 characters long.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 form-label-group mb-4">
+                    <input type="email" class="form-control form-input" [(ngModel)]="ownerDto.email" name="email" #email="ngModel" placeholder="Email" required>
+                    <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
+                      <div [hidden]="!email.errors.required">
+                        Write like name@email.com
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 form-label-group mb-4">
+                    <input type="number" class="form-control form-input" [(ngModel)]="ownerDto.fax" name="fax" #fax="ngModel"  minlength="6" maxlength="18" placeholder="Fax" required>
+                    <div *ngIf="fax.errors && (fax.dirty || fax.touched)" class="alert alert-danger">
+                      <div [hidden]="!fax.errors.required">
+                        Fax is required!
+                      </div>
+                      <div [hidden]="!fax.errors.maxlength">
+                        Fax Number cannot be more than 18 characters long.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 form-label-group mb-4">
+                    <input pattern="[a-zA-Z0-9_]*" type="text" minlength="8" name="userAddress" #userAddress="ngModel" maxlength="60" class="form-control  form-input" [(ngModel)]="ownerDto.address" placeholder="Address" required>
+                    <div *ngIf="userAddress.errors && (userAddress.dirty || userAddress.touched)" class="alert alert-danger">
+                      <div [hidden]="!userAddress.errors.required">
+                        Address is required!
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 form-label-group mb-4">
+                    <input type="number" class="form-control  form-input" [(ngModel)]="ownerDto.pobox" name="pobox" placeholder="P.O.Box" required>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-md-12 form-block-heading mb-2">Power Of Attorney Details</div>
+                  <div class="col-md-6 form-label-group mb-4">
+                    <input type="number" class="form-control form-input" [(ngModel)]="ownerDto.poaNumber" name="poaNumber" placeholder="POA Number" required>
+                  </div>
+                  <div class="col-md-6 form-label-group mb-4">
+                    <input type="date" class="form-control form-input" [(ngModel)]="ownerDto.poaAgreementExpiry" name="poaAgreementExpiry" placeholder="POA Expiry Date" required>
+                  </div>
+                  <div class="col-md-6 form-label-group mb-4">
+                    <select class="form-control common-select">
+                      <option>Specific Property</option>
+                      <option>Individual Property</option>
+                      <option>Multiple Properties</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-md-12 document-upload">
+                    Upload Documents
+                    <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>
+                  </div>
+                  <div class="col-md-12 upload-doc-block">
+                    <div class="upload-btn-div mt-4">
+                      <div class="file">
+                        <input type="file"  (change)="selectPassport($event)" name="file" class="doc-upload" />
+                      </div>
+                      <div class="upload-instuct mt-2">Scanned passport copy</div>
+                    </div>
+                    <div class="upload-btn-div mt-5">
+                      <div class="file">
+                        <input type="file" name="file" (change)="selectIdCopy($event)" class="doc-upload" />
+                      </div>
+                      <div class="upload-instuct mt-2">
+                        Scanned ID copy
+                        <div class="upload-sub-instruct">(UAE or country of origin)</div>
+                      </div>
+                    </div>
+                    <div class="upload-btn-div mt-4">
+                      <div class="file">
+                        <input type="file" name="file"  (change)="selectScannedPoa($event)" class="doc-upload" />
+                      </div>
+                      <div class="upload-instuct mt-2">Scanned NOTORIZED POA
+                        <div class="upload-sub-instruct">(International POA should have the stamp of external affairs and UAE embassy)</div>
+                      </div>
+                    </div>
+                    <div class="common-checkbox mt-5">
+                      <label>
+                        <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span> General POA not accepted
+                      </label>
                     </div>
                   </div>
                 </div>
-              </div>
+                <div class="row mt-5 submit-btn-row">
+                  <div class="col-md-3 mb-xs-4">
+                    <a  (click)="addPOA('add')" style=color:white class="btn common-btn btn-light-black">Add POA</a>
+                  </div>
+                  <div class="offset-md-3 col-md-3 mb-xs-4">
+                    <button class="btn common-btn btn-light-black">Back</button>
+                  </div>
+                  <div class="col-md-3">
+                    <button  (click)="addPOA('next')" style=color:white class="btn common-btn" type="submit">Next</button>
+
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>
-        
       </div>
     </div>
-    <app-footer></app-footer> 
   </div>
-  
+  <app-footer></app-footer>
+</div>
+

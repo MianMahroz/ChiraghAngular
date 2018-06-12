@@ -126,10 +126,11 @@
                 .listing-label-wrap {
                   .listing-label {
                     font-size: 1.125em;
+                    display: flex;
                     &::before {
                       content: "";
-                      background: url("../../assets/images/sprite-image.png") no-repeat -520px -283px;
-                      padding: 6px 16px;
+                      background: url("../../assets/images/sprite-image.png") no-repeat -520px -285px;
+                      padding: 16px;
                       margin-right: 0.6rem;
                     }    
                   }
@@ -160,6 +161,10 @@
             .bid-block {
               border: 1px solid @seprator-color;
               padding: 0 15px;
+              position: sticky;
+              top: 80px;
+              background-color: white;
+              z-index: 9;
               .bid-value-block {
                 color: @secondary-color;
                 display: flex;
@@ -314,7 +319,12 @@
           }
           .sign-in-remeber-div {
             display: flex;
-            justify-content: space-between;
+            align-items: center;
+            span {
+              &.font-size-14 {
+                margin-left: 5px;
+              }
+            }
           }
           .document-upload {
             font-size: 1.25em;
@@ -484,6 +494,55 @@
             font-size: 16px;
             font-weight: 400; 
           } 
+        }
+        .payment-method-wrap {
+          .payment-tabs {
+            .nav-item {
+              flex: 1;
+              text-align: center;
+              .nav-link {
+                font-weight: bold;
+                border: 1px solid @seprator-color;
+                text-transform: uppercase;
+                &.active {
+                  background-color: @placeholder-color;
+                  border: 1px solid transparent; 
+                }
+                .payment-cards-div {
+                  .visa-card {
+                    background: url("../../assets/images/sprite-image.png") no-repeat -554px -286px;
+                    padding: 3px 18px;    
+                  }
+                  .paypal-card {
+                    .visa-card;
+                    padding: 3px 16px;
+                    background-position: -586px -286px;
+                  }
+                  .amex-card {
+                    .visa-card;
+                    background-position: -617px -286px;
+                  }
+                  .bank-transfer-card {
+                    .visa-card;
+                    padding: 6px 21px;
+                    background-position: -655px -286px;  
+                  }
+                }
+              }
+            }
+          }
+          .payment-wraper {
+            border: 1px solid @seprator-color;
+            .tab-pane {
+              .payment-form {
+                .payment-label {
+                  font-size: 13px;
+                  color: @mono-color;
+                  text-transform: uppercase;
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -942,7 +1001,6 @@
   .ca-blocks-row {
     border-bottom: 1px solid @seprator-color;
     .ca-blocks-col {
-      border-bottom: 4px solid @seprator-color;
       &.ss-block-col {
         border-bottom: 0;  
       }
@@ -1002,6 +1060,7 @@
       }
       
       .ca-entity {
+        border-bottom: 4px solid @seprator-color;
         font-size: 0.875em;
         color: @mono-color;
         display: flex;

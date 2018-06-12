@@ -11,7 +11,9 @@ a {
 		color: @light-black-color;
 	}
 }
-
+.overflow-hidden {
+  overflow: hidden;
+}
 .read-link-div {
 	.read-more-link {
 		.fa-chevron-right {
@@ -116,7 +118,52 @@ a {
 }
 
 
-
-
-
+.ca-blocks-row {
   
+  .carousel-inner {
+    .carousel-item.active {
+      display: flex;
+    }
+    .carousel-item-next {
+      display: flex;
+      transform: translateX(33.33%);
+    }
+    .carousel-item-prev {
+      display: flex;
+      transform: translateX(-33.33%);
+    }
+    .carousel-item-right.active {
+      transform: translateX(33.33%);
+    }
+    .carousel-item-left.active {
+      transform: translateX(-33.33%);
+    }
+    .carousel-item-right {
+      transform: translateX(0);
+    }
+    .carousel-item-left {
+      transform: translateX(0);
+    }
+    .carousel-item {
+      margin: 0 -15px;
+      width: auto;
+    }
+  }
+}
+
+.alert {
+  position: absolute;
+  font-size: 18px;  
+  z-index: 1024;
+  color: @mono-color;
+  background-color: @placeholder-color;
+  border-color: @seprator-color;
+}
+
+
+// .ng-valid[required], .ng-valid.required  {
+//   border-left: 5px solid #42A948; /* green */
+// }
+// .ng-invalid:not(form)  {
+//   border-left: 5px solid #a94442; /* red */
+// }

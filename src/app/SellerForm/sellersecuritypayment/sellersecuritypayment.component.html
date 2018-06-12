@@ -1,0 +1,196 @@
+
+  <div class="container-fluid screen-wrapper">
+  <app-header></app-header>
+    <div class="row body-section">
+      <div class="col-md-12">
+        <div class="row form-wrapper-row py-5">
+          <div class="offset-md-2 col-md-8">
+            <div class="offset-md-1 text-center mb-5 page-primary-title-34">Security Deposit</div>
+            <div class="row sign-in-row">
+              <div class="offset-md-4 col-md-5 sign-in-col">
+                <form class="common-form" novalidate>
+                  <div class="input-wrapper form-label-group mb-4">
+                    <input type="password" class="form-control form-input" placeholder="Enter Your Security Code" required>
+                    <label class="fa fa-lock input-icon"></label>
+                  </div>
+                  <div class="common-checkbox sign-in-remeber-div mb-4">                    
+                    <label class="font-size-14 align-items-center">
+                      <input type="checkbox"><span class="checkbox-material"><span class="check mr-2"></span></span>I agree with Terms & Conditions (Read more)
+                    </label>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 mb-xs-4">
+                      <button class="btn common-btn-18">400</button>
+                    </div>
+                    <div class="col-md-6 dropdown">
+                      <button class="btn common-btn-18 dropdown-toggle" data-toggle="dropdown">AED</button>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                      </div>
+                    </div>
+                  </div>
+                  <ul class="pl-3 mt-3 font-size-14">
+                    <li>2.5% Security deposit based on reserved price</li>
+                  </ul>
+                </form>
+              </div>
+            </div>
+            <div class="row payment-row mt-5">
+              <div class="offset-md-1 col-md-11 payment-col">
+                <div class="deposit-heading mb-5">
+                  Choose a payment method
+                  <div class="deposit-sub-heading">All transactions are secure and encrypted.</div>
+                </div>
+                <div class="payment-method-wrap">
+                  <ul class="nav nav-tabs payment-tabs border-none" id="paymentTab" role="tablist">
+                    <li class="nav-item mr-3 mr-xs-0">
+                      <a class="nav-link active" (click)="paymentType('credit')" id="pay-credit-tab" data-toggle="tab" href="#payCredit" role="tab" aria-selected="true">
+                        Pay By Credit Card
+                        <div class="payment-cards-div my-2">
+                          <span class="visa-card"></span>
+                          <span class="paypal-card"></span>
+                          <span class="amex-card"></span>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="nav-item mr-3 mr-xs-0">
+                      <a class="nav-link" (click)="paymentType('debit')" id="pay-debit-tab" data-toggle="tab" href="#payDebit" role="tab" aria-selected="false">
+                        Pay By Debit Card
+                        <div class="payment-cards-div my-2">
+                          <span class="visa-card"></span>
+                          <span class="paypal-card"></span>
+                          <span class="amex-card"></span>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" (click)="paymentType('bank')" id="bank-transfer-tab" data-toggle="tab" href="#bankTransfer" role="tab" aria-selected="false">
+                        Bank Transfer
+                        <div class="payment-cards-div my-2"><span class="bank-transfer-card"></span></div>
+                      </a>
+                    </li>
+                  </ul>
+                  <div id="myTabContent" class="tab-content payment-wraper py-5 py-xs-3 px-xs-3">
+                    <div id="payCredit" class="row tab-pane fade show active">
+                      <div class="offset-md-2 col-md-8">
+                        <form class="common-form payment-form" novalidate>
+                          <div class="row">
+                            <div class="col-md-8 form-label-group mb-4">
+                              <label class="payment-label">Card Number</label>
+                              <input type="text" class="form-control onlyText form-input" placeholder="xxx - xxx - xxx - xxx" required>
+                            </div>
+                            <div class="col-md-4 form-label-group mb-4">
+                              <label class="payment-label">
+                                Cvc<i class="fas fa-question-circle ml-2"></i>
+                              </label>
+                              <input type="number" class="form-control form-input" placeholder="123" required>
+                            </div>
+                            <div class="col-md-12 form-label-group mb-4">
+                              <label class="payment-label">Card Holder Name</label>
+                              <input type="text" class="form-control onlyText form-input" placeholder="Name" required>
+                            </div>    
+                            <div class="col-md-12">
+                              <label class="payment-label">Expiration Date</label>    
+                            </div>
+                            <div class="col-md-6 form-label-group mb-4">
+                              <select class="form-control common-select">
+                                <option>Months</option>
+                                <option>Jan</option>
+                                <option>Feb</option>
+                                <option>Mar</option>
+                                <option>Apr</option>
+                                <option>May</option>
+                                <option>Jun</option>
+                                <option>Jul</option>
+                                <option>Aug</option>
+                                <option>Sep</option>
+                                <option>Oct</option>
+                                <option>Nov</option>
+                                <option>Dec</option>
+                              </select>
+                            </div>
+                            <div class="col-md-6 form-label-group mb-4">
+                              <select class="form-control common-select">
+                                <option>Year</option>
+                                <option>2014</option>
+                                <option>2015</option>
+                                <option>2016</option>
+                                <option>2017</option>
+                                <option>2018</option>
+                              </select>
+                            </div>
+                            <div class="col-md-12">
+                              <button class="btn common-btn-18" type="submit">MAKE A PAYMENT</button>
+                            </div>
+                          </div>
+                        </form>    
+                      </div>
+                    </div>
+                    <div id="payDebit" class="tab-pane fade">
+                      <div class="offset-md-2 col-md-8">
+                        <form class="common-form payment-form" novalidate>
+                          <div class="row">
+                            <div class="col-md-8 form-label-group mb-4">
+                              <label class="payment-label">Card Number</label>
+                              <input type="text" class="form-control onlyText form-input" placeholder="xxx - xxx - xxx - xxx" required>
+                            </div>
+                            <div class="col-md-4 form-label-group mb-4">
+                              <label class="payment-label">
+                                Cvc<i class="fas fa-question-circle ml-2"></i>
+                              </label>
+                              <input type="number" class="form-control form-input" placeholder="123" required>
+                            </div>
+                            <div class="col-md-12 form-label-group mb-4">
+                              <label class="payment-label">Card Holder Name</label>
+                              <input type="text" class="form-control onlyText form-input" placeholder="Name" required>
+                            </div>    
+                            <div class="col-md-12">
+                              <label class="payment-label">Expiration Date</label>    
+                            </div>
+                            <div class="col-md-6 form-label-group mb-4">
+                              <select class="form-control common-select">
+                                <option>Months</option>
+                                <option>Jan</option>
+                                <option>Feb</option>
+                                <option>Mar</option>
+                                <option>Apr</option>
+                                <option>May</option>
+                                <option>Jun</option>
+                                <option>Jul</option>
+                                <option>Aug</option>
+                                <option>Sep</option>
+                                <option>Oct</option>
+                                <option>Nov</option>
+                                <option>Dec</option>
+                              </select>
+                            </div>
+                            <div class="col-md-6 form-label-group mb-4">
+                              <select class="form-control common-select">
+                                <option>Year</option>
+                                <option>2014</option>
+                                <option>2015</option>
+                                <option>2016</option>
+                                <option>2017</option>
+                                <option>2018</option>
+                              </select>
+                            </div>
+                            <div class="col-md-12">
+                              <button class="btn common-btn-18" type="submit">MAKE A PAYMENT</button>
+                            </div>
+                          </div>
+                        </form>    
+                      </div>
+                    </div>
+                    <div id="bankTransfer" class="tab-pane fade">...</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        </div>
+      </div>
+      <app-footer></app-footer> 
+  </div>

@@ -1,101 +1,127 @@
 $(document).ready(function(){ 
-  (function ($) {
-    $.fn.countTo = function (options) {
-      options = options || {};
+  $('#ucSlider .carousel-item').each(function(){
+    var next = $(this).next();
+    if (!next.length) {
+    next = $(this).siblings(':first');
+    }
+    next.children(':first-child').clone().appendTo($(this));
+    
+    for (var i=0;i<1;i++) {
+      next=next.next();
+      if (!next.length) {
+          next = $(this).siblings(':first');
+      }
       
-      return $(this).each(function () {
-        // set options for current element
-        var settings = $.extend({}, $.fn.countTo.defaults, {
-          from:            $(this).data('from'),
-          to:              $(this).data('to'),
-          speed:           $(this).data('speed'),
-          refreshInterval: $(this).data('refresh-interval'),
-          decimals:        $(this).data('decimals')
-        }, options);
-        
-        // how many times to update the value, and how much to increment the value on each update
-        var loops = Math.ceil(settings.speed / settings.refreshInterval),
-          increment = (settings.to - settings.from) / loops;
-        
-        // references & variables that will change with each update
-        var self = this,
-          $self = $(this),
-          loopCount = 0,
-          value = settings.from,
-          data = $self.data('countTo') || {};
-        
-        $self.data('countTo', data);
-        
-        // if an existing interval can be found, clear it first
-        if (data.interval) {
-          clearInterval(data.interval);
-        }
-        data.interval = setInterval(updateTimer, settings.refreshInterval);
-        
-        // initialize the element with the starting value
-        render(value);
-        
-        function updateTimer() {
-          value += increment;
-          loopCount++;
-          
-          render(value);
-          
-          if (typeof(settings.onUpdate) == 'function') {
-            settings.onUpdate.call(self, value);
-          }
-          
-          if (loopCount >= loops) {
-            // remove the interval
-            $self.removeData('countTo');
-            clearInterval(data.interval);
-            value = settings.to;
-            
-            if (typeof(settings.onComplete) == 'function') {
-              settings.onComplete.call(self, value);
-            }
-          }
-        }
-        
-        function render(value) {
-          var formattedValue = settings.formatter.call(self, value, settings);
-          $self.html(formattedValue);
-        }
-      });
-    };
-    
-    $.fn.countTo.defaults = {
-      from: 0,               // the number the element should start at
-      to: 0,                 // the number the element should end at
-      speed: 1000,           // how long it should take to count between the target numbers
-      refreshInterval: 100,  // how often the element should be updated
-      decimals: 0,           // the number of decimal places to show
-      formatter: formatter,  // handler for formatting the value before rendering
-      onUpdate: null,        // callback method for every time the element is updated
-      onComplete: null       // callback method for when the element finishes updating
-    };
-    
-    function formatter(value, settings) {
-      return value.toFixed(settings.decimals);
-    }
-  }(jQuery));
-  jQuery(function ($) {
-    // custom formatting example
-    $('.count-number').data('countToOptions', {
-    formatter: function (value, options) {
-      return value.toFixed(options.decimals).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
-    }
-    });
-    
-    // start all the timers
-    $('.timer').each(count);  
-    
-    function count(options) {
-    var $this = $(this);
-    options = $.extend({}, options || {}, $this.data('countToOptions') || {});
-    $this.countTo(options);
+      next.children(':first-child').clone().appendTo($(this));
     }
   });
+  
+  $('#simsSlider .carousel-item').each(function(){
+    var next = $(this).next();
+    if (!next.length) {
+    next = $(this).siblings(':first');
+    }
+    next.children(':first-child').clone().appendTo($(this));
+    
+    for (var i=0;i<1;i++) {
+      next=next.next();
+      if (!next.length) {
+          next = $(this).siblings(':first');
+      }
+      
+      next.children(':first-child').clone().appendTo($(this));
+    }
+  });
+  // $('#ucSlider').on('slide.bs.carousel', function (e) {
+  //   /*
+
+  //   CC 2.0 License Iatek LLC 2018
+  //   Attribution required
+    
+  //   */
+
+  //   var $e = $(e.relatedTarget);
+  //   var idx = $e.index();
+  //   var itemsPerSlide = 3;
+  //   var totalItems = $('.block-item').length;
+    
+  //   if (idx >= totalItems-(itemsPerSlide-1)) {
+  //       var it = itemsPerSlide - (totalItems - idx);
+  //       for (var i=0; i<it; i++) {
+  //           // append slides to end
+  //           if (e.direction=="left") {
+  //               $('.block-item').eq(i).appendTo('.block-inner');
+  //           }
+  //           else {
+  //               $('.block-item').eq(0).appendTo('.block-inner');
+  //           }
+  //       }
+  //   }
+  // });
+  
+
+  var checkitem = function() {
+    var $this;
+    $this = $("#ucSlider");
+    if ($("#ucSlider .block-inner .block-item:first").hasClass("active")) {
+      $this.children(".carousel-control-prev").hide();
+      $this.children(".carousel-control-next").show();
+    } else if ($("#ucSlider .block-inner .block-item:last").hasClass("active")) {
+      $this.children(".carousel-control-next").hide();
+      $this.children(".carousel-control-prev").show();
+    } else {
+      $this.children(".control-btn").show();
+    }
+  };
+
+  checkitem();
+
+  $("#ucSlider").on("slid.bs.carousel", "", checkitem);
+
+
+
+  var checkitem = function() {
+    var $this;
+    $this = $("#simsSlider");
+    if ($("#simsSlider .block-inner2 .block-item2:first").hasClass("active")) {
+      $this.children(".carousel-control-prev").hide();
+      $this.children(".carousel-control-next").show();
+    } else if ($("#simsSlider .block-inner2 .block-item2:last").hasClass("active")) {
+      $this.children(".carousel-control-next").hide();
+      $this.children(".carousel-control-prev").show();
+    } else {
+      $this.children(".control-btn").show();
+    }
+  };
+  checkitem();
+
+  $("#simsSlider").on("slid.bs.carousel", "", checkitem);
+  // $('#acceptBiducSlider').on('slide.bs.carousel', function (e) {
+  //   /*
+
+  //   CC 2.0 License Iatek LLC 2018
+  //   Attribution required
+    
+  //   */
+
+  //   var $e = $(e.relatedTarget);
+  //   var idx = $e.index();
+  //   var itemsPerSlide = 3;
+  //   var totalItems = $('.block-item-ab').length;
+    
+  //   if (idx >= totalItems-(itemsPerSlide-1)) {
+  //       var it = itemsPerSlide - (totalItems - idx);
+  //       for (var i=0; i<it; i++) {
+  //           // append slides to end
+  //           if (e.direction=="left") {
+  //               $('.block-item-ab').eq(i).appendTo('.block-inner-ab');
+  //           }
+  //           else {
+  //               $('.block-item-ab').eq(0).appendTo('.block-inner-ab');
+  //           }
+  //       }
+  //   }
+  // });
 
   (function() {
     'use strict';
@@ -131,28 +157,56 @@ $(document).ready(function(){
     }
   });    
 
+  $('.btn-view-images').click(function(){
+    $('body').addClass('overflow-hidden');
+  });
+  $('.close').click(function(){
+    $('body').removeClass('overflow-hidden');
+  });
 
-  $('#features-shows').click(function() {
-    $('.features-checkboxes-wrap').toggle('slow');
+  $(".facilities-checkboxes-wrap > div:gt(0)").hide();
+  $("#facilities-shows").click(function(){
+      $(this).siblings("div:gt(0)").slideToggle('slow'); 
+      $(this).text($(this).text() == "Show all" ? "Show less" : "Show all");
   });
-  $('#facilities-shows').click(function() {
-    $('.facilities-checkboxes-wrap').toggle('slow');
+
+  $(".features-checkboxes-wrap > div:gt(0)").hide();
+  $("#features-shows").click(function(){
+      $(this).siblings("div:gt(0)").slideToggle('slow'); 
+      $(this).text($(this).text() == "Show all" ? "Show less" : "Show all");
   });
-  $('#features-shows-round').click(function() {
-    $('.features-checkboxes-wrap').toggle('slow');
+
+  $(".features-checkboxes-wrap > div:gt(0)").hide();
+  $("#features-shows-round").click(function(){
+      $(this).siblings("div:gt(0)").slideToggle('slow'); 
+      $(this).text($(this).text() == "Show all" ? "Show less" : "Show all");
   });
-  $('#facilities-shows-round').click(function() {
-    $('.facilities-checkboxes-wrap').toggle('slow');
+
+  $(".facilities-checkboxes-wrap > div:gt(0)").hide();
+  $("#facilities-shows-round").click(function(){
+      $(this).siblings("div:gt(0)").slideToggle('slow'); 
+      $(this).text($(this).text() == "Show all" ? "Show less" : "Show all");
   });
-  $('#ni-shows-round').click(function() {
-    $('.ni-checkboxes-wrap').toggle('slow');
+
+  $(".ni-checkboxes-wrap > div:gt(0)").hide();
+  $("#ni-shows-round").click(function(){
+      $(this).siblings("div:gt(0)").slideToggle('slow'); 
+      $(this).text($(this).text() == "Show all" ? "Show less" : "Show all");
   });
+
+
+  
   $('.advance-search-link').click(function() {
     $('.slider-search-btn-top').toggle();
   });
   $('.circle-plus').on('click', function(){
     $(this).toggleClass('opened');
-  })
+  });
+
+  $('select').each(function(){
+    $(this).find('option:first').prop('selected', 'selected');
+  });
+
 });	
 
 // Forms fields error msgs

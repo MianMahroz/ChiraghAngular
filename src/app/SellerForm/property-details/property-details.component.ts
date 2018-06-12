@@ -16,13 +16,13 @@ export class PropertyDetailsComponent implements OnInit {
   propertyDetailsDto=new PropertyDetailsDto();
 
   constructor(private propertyService:PropertyService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
- 
+
   ngOnInit() {
-    // this.token.savePropertyId('111');
-    // this.token.saveUserName('BesterCapital1');
+    // this.token.savePropertyId('61');
+    // this.token.saveUserName('BesterCapital2');
   }
 
-  
+
 
   addPropertyDetails(): string {
     if(this.token.getuserName()==null){
@@ -41,10 +41,10 @@ export class PropertyDetailsComponent implements OnInit {
                 propertydata=>{
                     console.log(propertydata);
                     this.router.navigate(['../propertyFinancialDetails']);
-                }    
+                }
               );//end of propertySubscription
             }//end of if
-        
+
      }//end of outer data predicate
     );//end of outer subscription
     return "";

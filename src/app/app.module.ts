@@ -1,3 +1,6 @@
+import { PaymentsService } from './shared/seller.payments.service';
+import { AuctionService } from './shared/auction.service';
+import { SellersecuritypaymentComponent } from './SellerForm/sellersecuritypayment/sellersecuritypayment.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
@@ -35,7 +38,7 @@ import { ForgotPasswordFormComponent } from './forgot-password-form/forgot-passw
 
 
 @NgModule({
-  declarations: [   
+  declarations: [
     AppComponent,
     UserComponent,
     LoginComponent,
@@ -56,7 +59,7 @@ import { ForgotPasswordFormComponent } from './forgot-password-form/forgot-passw
     AuctionFeeDetailsComponent,
     ForgotPasswordRequestComponent,
     ForgotPasswordFormComponent,
-    
+    SellersecuritypaymentComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +70,7 @@ import { ForgotPasswordFormComponent } from './forgot-password-form/forgot-passw
     AppRoutingModule
   ],
   entryComponents: [ErrorDialogComponent],
-  providers: [ErrorDialogComponent, UserService, AuthService, TokenStorage, TokenStorage,SellerService,PropertyService,
+  providers: [ErrorDialogComponent, PaymentsService,AuctionService,UserService,SellerService,AuthService, TokenStorage, TokenStorage,SellerService,PropertyService,
     {provide: HTTP_INTERCEPTORS,
     useClass: Interceptor,
     multi : true}

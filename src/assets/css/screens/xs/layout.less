@@ -17,6 +17,18 @@
         }
       }
     }
+    .listing-slider-row {
+      .listing-slider-col {
+        .prev {
+          left: 0;
+          top: 38%;
+        }
+        .next {
+          right: 0;
+          top: 38%;
+        }
+      }
+    }
     .ud-body-row {
       .tab-content {
         .tab-pane {
@@ -71,6 +83,18 @@
         }
         .prop-pics-block {
           margin-bottom: 2rem;
+        }
+      }
+    }
+    .payment-row {
+      .payment-col {
+        .payment-method-wrap {
+          .payment-tabs {
+            .nav-item {
+              flex: auto !important;
+              width: 100%;
+            }
+          }
         }
       }
     }
@@ -254,6 +278,30 @@
             margin-bottom: 1.5rem;
           }
         }  
+      }
+      .carousel-inner {
+        .carousel-item {
+          &.active {
+            overflow: hidden;
+            flex-wrap: wrap;
+            max-height: 367px;
+          }
+          &.block-item2 {
+            max-height: 338px;    
+          }
+        }
+        .carousel-item-next {
+          transform: translateX(100%);
+        }
+        .carousel-item-prev {
+          transform: translateX(-100%);
+        }
+        .carousel-item-right.active {
+          transform: translateX(100%);
+        }
+        .carousel-item-left.active {
+          transform: translateX(-100%);
+        }
       }
     }    
     .prop-quality-blocks {

@@ -18,10 +18,10 @@ export class PropertyRentalComponent implements OnInit {
   propertyRentalDetailDTO=new PropertyRentalDetailDTO();
   selectedscannedTenentContract: FileList;
   scannedTenentContractFile:File;
-  
+
   ngOnInit() {
-    // this.token.savePropertyId('111');
-    // this.token.saveUserName('BesterCapital1');
+    // this.token.savePropertyId('61');
+    // this.token.saveUserName('BesterCapital2');
   }
 
 
@@ -41,13 +41,13 @@ export class PropertyRentalComponent implements OnInit {
         this.token.saveToken(data.access_token,data.refresh_token,data.expires_in);
         console.log(data);
         if(this.token.getToken()!=null){
-          //for testing 
+          //for testing
           this.propertyRentalDetailDTO.propertyId=this.token.getPropertyId();
           this.sellerService.saveDocument('PropertyRentals-scannedTenantContractCopy'+this.token.getPropertyId(),this.token.getuserName(),this.scannedTenentContractFile).subscribe(
             data2=>{
                         if(data2.type==3){
                           console.log(data2);
-                          
+
                           this.propertyRentalDetailDTO.tenancyContractUpload=data2.partialText;
                           this.propertyRentalDetailDTO.userName=this.token.getuserName();
                           this.propertyService.updatePropertyRental(this.propertyRentalDetailDTO).subscribe(
@@ -56,15 +56,15 @@ export class PropertyRentalComponent implements OnInit {
                                     if(propertyRentalData.msg=='Property Rental Info Updated Successfully'){
                                       this. router.navigate(['../auctionFeeDetails']);
                                     }
-                                 
+
                                   }//end of propertyFinancialData
                         );//end of subscription of property financial Details
                         }
             }//end of data2
           );//end of save document subscription
-         
+
         }//end of if
-        
+
      }//end of outer data predicate
     );//end of outer subscription
     return "";
