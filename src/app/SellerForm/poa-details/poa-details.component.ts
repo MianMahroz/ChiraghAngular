@@ -21,7 +21,7 @@ export class PoaDetailsComponent implements OnInit {
   passportFile:File;
   idCopyFile:File;
   scannedNotorizedPoaFile:File;
-  
+  isPoaAccepted=false;
   constructor(private sellerService:SellerService,private userService:UserService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
  
   ngOnInit() {

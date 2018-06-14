@@ -413,9 +413,6 @@ input[type=number] {
     -moz-appearance: none;
     background: url("../../assets/images/dropdown-arrow.png") no-repeat 0 0;
     background-position: calc(~'100% - 12px') center;
-    &:first-child {
-      color: @placeholder-color;
-    }
     option {
       color: @secondary-color;
     }
@@ -423,13 +420,12 @@ input[type=number] {
       box-shadow: none;
       border-color: @seprator-color;
     }
+  }
+  &.placeholder {
+    color: @placeholder-color;
   }  
 }
 
-
-select option[selected]{
-  color: @secondary-color;
-}
 
 .adnvance-search-select {
   &.form-control {  
@@ -441,4 +437,32 @@ select option[selected]{
       border-color: @seprator-color;
     }
   }
+}
+
+@-webkit-keyframes autofill {
+  to {
+      color: @secondary-color;
+      background: @white-color;
+  }
+}
+
+input:-webkit-autofill {
+  -webkit-animation-name: autofill;
+  -webkit-animation-fill-mode: both;
+}
+
+
+input[type="date"]::before {
+	color: @placeholder-color;
+	content: attr(placeholder);
+  width: 100%;
+}
+input[type="date"]:focus,
+input[type="date"]:valid {
+	color: @secondary-color;
+}
+input[type="date"]:focus::before,
+input[type="date"]:valid::before {
+  content: "" !important;
+  position: absolute;
 }

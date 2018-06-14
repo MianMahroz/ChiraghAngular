@@ -15,8 +15,11 @@ export class RegisterComponent  {
 
   constructor(private userService:UserService,private router: Router,  private authService: AuthService, private token: TokenStorage) { }
   registerdto=new registerDTO();
+  public barLabel: string = "Password strength:";
+  public myColors = ['#DD2C00', '#FF6D00', '#FFD600', '#AEEA00', '#00C853'];
+  public strengthLabels = ['weak', 'medium', 'strong', 'very strong', 'excellent'];
+  terms=false;
 
-  
   onRegister(){
     window.sessionStorage.removeItem('AuthToken');
     this.authService.attemptAuth().subscribe(
@@ -39,9 +42,9 @@ export class RegisterComponent  {
                     );//end of email subscription
                    }//end of if
                 }//end of inner data predicate
-          );//end of inner subscription 
+          );//end of inner subscription
         }//end of if
-        
+
      }//end of outer data predicate
     );//end of outer subscription
 

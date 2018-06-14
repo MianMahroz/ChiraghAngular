@@ -18,6 +18,9 @@ export class LoginComponent {
 
   constructor(private userService:UserService,private http: HttpClient,private router: Router, public dialog: MatDialog, private authService: AuthService, private token: TokenStorage) {
   }
+  public barLabel: string = "Password strength:";
+  public myColors = ['#DD2C00', '#FF6D00', '#FFD600', '#AEEA00', '#00C853'];
+  public strengthLabels = ['weak', 'medium', 'strong', 'very strong', 'excellent'];
 
   // userName: string;
   // userPassword: string;
@@ -38,15 +41,15 @@ export class LoginComponent {
                        this.router.navigate(['home']);
                    }//end of if
                 }//end of inner data predicate
-          );//end of inner subscription 
+          );//end of inner subscription
         }//end of if
-        
+
      }//end of outer data predicate
     );//end of outer subscription
-    
+
   }//end of loginChiraghUser
-  
-  
+
+
 
 
 }

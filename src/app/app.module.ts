@@ -34,7 +34,7 @@ import { PropertyRentalComponent } from './SellerForm/property-rental/property-r
 import { AuctionFeeDetailsComponent } from './SellerForm/auction-fee-details/auction-fee-details.component';
 import { ForgotPasswordRequestComponent } from './forgot-password-request/forgot-password-request.component';
 import { ForgotPasswordFormComponent } from './forgot-password-form/forgot-password-form.component';
-
+import { PasswordStrengthBarModule } from 'ng2-password-strength-bar';
 
 
 @NgModule({
@@ -67,7 +67,8 @@ import { ForgotPasswordFormComponent } from './forgot-password-form/forgot-passw
     BrowserAnimationsModule,
     CustomMaterialModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    PasswordStrengthBarModule,
   ],
   entryComponents: [ErrorDialogComponent],
   providers: [ErrorDialogComponent, PaymentsService,AuctionService,UserService,SellerService,AuthService, TokenStorage, TokenStorage,SellerService,PropertyService,

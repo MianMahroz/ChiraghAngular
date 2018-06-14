@@ -7,7 +7,7 @@
           <div class="offset-md-1 col-md-10">
             <div class="row sign-in-row">
               <div class="offset-md-2 col-md-8 sign-in-col">
-                <form class="common-form" novalidate>
+                <form #ownerDetailsForm="ngForm" class="common-form" novalidate>
                   <div class="mb-5 page-primary-title-34">Owner Details</div>
                   <div class="row">
                     <div class="col-md-12 form-block-heading mb-2">Personal Details:</div>
@@ -15,13 +15,13 @@
                       <input pattern="[a-zA-Z0-9_]*" type="text" class="form-control form-input" minlength="3" name="userFirstName" #userFirstName="ngModel" maxlength="15"  [(ngModel)]="ownerDto.firstName"placeholder="First Name" autofocus>
                       <div *ngIf="userFirstName.errors && (userFirstName.dirty || userFirstName.touched)" class="alert alert-danger">
                         <div [hidden]="!userFirstName.errors.required">
-                          User Name is required!
+                          First Name is required!
                         </div>
                         <div [hidden]="!userFirstName.errors.minlength">
-                          User First Name must be at least 3 characters long.
+                          First Name must be at least 3 characters long.
                         </div>
                         <div [hidden]="!userFirstName.errors.maxlength">
-                          User Name cannot be more than 15 characters long.
+                          First Name cannot be more than 15 characters long.
                         </div>
                         <div [hidden]="!userFirstName.errors.pattern">
                           Space and special character not Allowed!
@@ -35,10 +35,10 @@
                           Middle Name is required!
                         </div>
                         <div [hidden]="!userMiddleName.errors.minlength">
-                          User Middle Name must be at least 3 characters long.
+                          Middle Name must be at least 3 characters long.
                         </div>
                         <div [hidden]="!userMiddleName.errors.maxlength">
-                          User Middle Name cannot be more than 15 characters long.
+                          Middle Name cannot be more than 15 characters long.
                         </div>
                         <div [hidden]="!userMiddleName.errors.pattern">
                           Space and special character not Allowed!
@@ -52,10 +52,10 @@
                           Last Name is required!
                         </div>
                         <div [hidden]="!userLastName.errors.minlength">
-                          User Last Middle Name must be at least 3 characters long.
+                          Last Middle Name must be at least 3 characters long.
                         </div>
                         <div [hidden]="!userLastName.errors.maxlength">
-                          User Last Name cannot be more than 15 characters long.
+                          Last Name cannot be more than 15 characters long.
                         </div>
                         <div [hidden]="!userLastName.errors.pattern">
                           Space and special character not Allowed!
@@ -63,7 +63,7 @@
                       </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <select [(ngModel)]="ownerDto.nationality" name="nationality" class="form-control common-select">
+                      <select [(ngModel)]="ownerDto.nationality" name="nationality" class="form-control common-select placeholder">
                         <option>Select Nationality</option>
                         <option>Pakistani</option>
                         <option>Indian</option>
@@ -72,7 +72,7 @@
                       </select>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="number" class="form-control form-input" [(ngModel)]="ownerDto.idCardNo" name="idCardNo" #idCardNo="ngModel" minlength="6" maxlength="18" placeholder="ID Card Number" required>
+                      <input pattern="[0-9_]*" type="text" class="form-control form-input" [(ngModel)]="ownerDto.idCardNo" name="idCardNo" #idCardNo="ngModel" minlength="6" maxlength="18" placeholder="ID Card Number" required>
                       <div *ngIf="idCardNo.errors && (idCardNo.dirty || idCardNo.touched)" class="alert alert-danger">
                         <div [hidden]="!idCardNo.errors.required">
                           ID Card Number is required!
@@ -80,19 +80,25 @@
                         <div [hidden]="!idCardNo.errors.maxlength">
                           ID Card Number cannot be more than 18 characters long.
                         </div>
+                        <div [hidden]="!idCardNo.errors.pattern">
+                          Space and special character not Allowed!
+                        </div>
                       </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <input type="date" class="form-control  form-input"  [(ngModel)]="ownerDto.idCardExpiration" name="idCardExpiration" placeholder="ID Card Expiry Date" required>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="number" class="form-control  form-input" [(ngModel)]="ownerDto.passportNo" name="passportNo" #passportNo="ngModel" minlength="6" maxlength="15" placeholder="Passport Number" required>
+                      <input pattern="[0-9_]*" type="text" class="form-control  form-input" [(ngModel)]="ownerDto.passportNo" name="passportNo" #passportNo="ngModel" minlength="6" maxlength="15" placeholder="Passport Number" required>
                       <div *ngIf="passportNo.errors && (passportNo.dirty || passportNo.touched)" class="alert alert-danger">
                         <div [hidden]="!passportNo.errors.required">
                           Passport Number is required!
                         </div>
                         <div [hidden]="!passportNo.errors.maxlength">
                           Passport Number cannot be more than 15 characters long.
+                        </div>
+                        <div [hidden]="!passportNo.errors.pattern">
+                          Space and special character not Allowed!
                         </div>
                       </div>
                     </div>
@@ -103,43 +109,55 @@
                   <div class="row mt-3">
                     <div class="col-md-12 form-block-heading mb-2">Contact Details:</div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="number" class="form-control  form-input" [(ngModel)]="ownerDto.telephone" name="telephone" #telephone="ngModel" minlength="6" maxlength="16" placeholder="Phone Number" required>
+                      <input type="text" pattern="[0-9_]*" class="form-control  form-input" [(ngModel)]="ownerDto.telephone" name="telephone" #telephone="ngModel" minlength="6" maxlength="16" placeholder="Phone Number" required>
                       <div *ngIf="telephone.errors && (telephone.dirty || telephone.touched)" class="alert alert-danger">
                         <div [hidden]="!telephone.errors.required">
-                          Telephone Number is required!
+                          Phone number is required!
                         </div>
-                        <div [hidden]="!passportNo.errors.maxlength">
-                          Telephone Number cannot be more than 16 characters long.
+                        <div [hidden]="!telephone.errors.maxlength">
+                          Please enter a 16 digit number.
+                        </div>
+                        <div [hidden]="!telephone.errors.pattern">
+                          Space and special character not Allowed!
                         </div>
                       </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="number" class="form-control  form-input" [(ngModel)]="ownerDto.mobile" name="mobile" #mobile="ngModel" minlength="6" maxlength="16" placeholder="Mobile Number" required>
-                      <div *ngIf="telephone.errors && (telephone.dirty || telephone.touched)" class="alert alert-danger">
-                        <div [hidden]="!telephone.errors.required">
-                          Mobile Number is required!
+                      <input pattern="[0-9_]*" type="text" class="form-control  form-input" [(ngModel)]="ownerDto.mobile" name="mobile" #mobile="ngModel" minlength="6" maxlength="16" placeholder="Mobile Number" required>
+                      <div *ngIf="mobile.errors && (mobile.dirty || mobile.touched)" class="alert alert-danger">
+                        <div [hidden]="!mobile.errors.required">
+                          Mobile number is required!
                         </div>
-                        <div [hidden]="!passportNo.errors.maxlength">
-                          Mobile Number cannot be more than 16 characters long.
+                        <div [hidden]="!mobile.errors.maxlength">
+                          Please enter a 16 digit number.
+                        </div>
+                        <div [hidden]="!mobile.errors.pattern">
+                          Space and special character not Allowed!
                         </div>
                       </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="email" class="form-control form-input" [(ngModel)]="ownerDto.email" name="email" #email="ngModel" placeholder="Email" required>
+                      <input type="email" pattern="[^ @]*@[^ @]*" class="form-control form-input" [(ngModel)]="ownerDto.email" name="email" #email="ngModel" placeholder="Email" required>
                       <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
                         <div [hidden]="!email.errors.required">
-                          Write like name@email.com
+                          Email must be like name@gmail.com
+                        </div>
+                        <div [hidden]="!email.errors.pattern">
+                          Enter valid email
                         </div>
                       </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="number" class="form-control form-input" [(ngModel)]="ownerDto.fax" name="fax" #fax="ngModel"  minlength="6" maxlength="18" placeholder="Fax" required>
+                      <input type="text" pattern="[0-9_]*" class="form-control form-input" [(ngModel)]="ownerDto.fax" name="fax" #fax="ngModel"  minlength="6" maxlength="18" placeholder="Fax" required>
                       <div *ngIf="fax.errors && (fax.dirty || fax.touched)" class="alert alert-danger">
                         <div [hidden]="!fax.errors.required">
                           Fax is required!
                         </div>
                         <div [hidden]="!fax.errors.maxlength">
                           Fax Number cannot be more than 18 characters long.
+                        </div>
+                        <div [hidden]="!fax.errors.pattern">
+                          Space and special character not Allowed!
                         </div>
                       </div>
                     </div>
@@ -152,7 +170,18 @@
                       </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="number" class="form-control  form-input" [(ngModel)]="ownerDto.pobox" name="pobox" placeholder="P.O.Box" required>
+                      <input type="text" pattern="[0-9_]*" class="form-control  form-input" [(ngModel)]="ownerDto.pobox" name="pobox" #pobox="ngModel"  minlength="6" maxlength="18" placeholder="P.O.Box" required>
+                      <div *ngIf="pobox.errors && (pobox.dirty || pobox.touched)" class="alert alert-danger">
+                        <div [hidden]="!pobox.errors.required">
+                          P.O Box is required!
+                        </div>
+                        <div [hidden]="!pobox.errors.maxlength">
+                          P.O Box cannot be more than 18 characters long.
+                        </div>
+                        <div [hidden]="!pobox.errors.pattern">
+                          Space and special character not Allowed!
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div class="row mt-3">
@@ -182,7 +211,7 @@
                       <a  (click)="addOwner('add')" style=color:white class="btn common-btn btn-light-black">Add Owner</a>
                     </div>
                     <div class="offset-md-6 col-md-3">
-                      <button (click)="addOwner('next')" style=color:white class="btn common-btn" type="submit">Next</button>
+                      <button [disabled]="!ownerDetailsForm.form.valid" (click)="addOwner('next')" style=color:white class="btn common-btn" type="submit">Next</button>
                     </div>
                   </div>
                 </form>

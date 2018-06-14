@@ -12,7 +12,7 @@
                   <div class="row">
                     <div class="col-md-12 form-block-heading mb-2">Area Details:</div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <select class="form-control common-select" [(ngModel)]="propertyDetailsDto.propertyStatus" name="propertyStatus">
+                      <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.propertyStatus" name="propertyStatus">
                         <option>Property Status</option>
                         <option>Off-plan</option>
                         <option>Under Construction</option>
@@ -26,7 +26,7 @@
                       <input type="text" pattern="[a-zA-Z0-9]" class="form-control form-input" [(ngModel)]="propertyDetailsDto.typeArea" name="typeArea" #typeArea="ngModel" placeholder="Type of Area" required>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="number" class="form-control form-input" [(ngModel)]="propertyDetailsDto.titleDeedNo" name="titlDeedNo" #titlDeedNo="ngModel" placeholder="Title Deed Number" required>
+                      <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.titleDeedNo" name="titlDeedNo" #titlDeedNo="ngModel" placeholder="Title Deed Number" required>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.address" name="address" #address="ngModel" placeholder="Address" required>
@@ -38,7 +38,7 @@
                       <input type="text" pattern="[a-zA-Z0-9]" class="form-control form-input" [(ngModel)]="propertyDetailsDto.propertyNo" name="propertyNo" #propertyNo="ngModel" placeholder="Property Number" required>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <select class="form-control common-select" [(ngModel)]="propertyDetailsDto.propertyType" name="propertyType" #propertyType="ngModel">
+                      <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.propertyType" name="propertyType" #propertyType="ngModel">
                         <option>Type of Property</option>
                         <option>Land</option>
                         <option>Villa</option>
@@ -53,13 +53,13 @@
                       <input type="text" pattern="[a-zA-Z0-9]" class="form-control form-input" [(ngModel)]="propertyDetailsDto.projectName" name="projectName" #projectName="ngModel" placeholder="Project Name" required>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.typeArea" name="typeArea" placeholder="Area" required>
+                      <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.area" name="area" placeholder="Area" required>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.ownerAssociationNo" name="ownerAssociationNo" placeholder="Owner Association Number" required>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <select class="form-control common-select" [(ngModel)]="propertyDetailsDto.presentUse" name="presentUse">
+                      <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.presentUse" name="presentUse">
                         <option selected>Present Use</option>
                         <option>Residential</option>
                         <option>Commercial</option>
@@ -76,7 +76,7 @@
                   <div class="row">
                     <div class="col-md-12 form-block-heading mb-3">Specs:</div>
                     <div class="col-md-3 mb-4">
-                      <select class="form-control common-select" [(ngModel)]="propertyDetailsDto.noOfBedrooms" name="noOfBedrooms">
+                      <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.noOfBedrooms" name="noOfBedrooms">
                         <option selected>Bedrooms</option>
                         <option>1</option>
                         <option>2</option>
@@ -84,7 +84,7 @@
                       </select>
                     </div>
                     <div class="col-md-3 mb-4">
-                      <select class="form-control common-select" [(ngModel)]="propertyDetailsDto.noOfBaths" name="noOfBaths">
+                      <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.noOfBaths" name="noOfBaths">
                         <option selected>Bathrooms</option>
                         <option>1</option>
                         <option>2</option>
@@ -92,7 +92,7 @@
                       </select>
                     </div>
                     <div class="col-md-3 mb-4">
-                      <select class="form-control common-select" [(ngModel)]="propertyDetailsDto.carParks" name="carParks">
+                      <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.carParks" name="carParks">
                         <option selected>Car Parks</option>
                         <option>1</option>
                         <option>2</option>
@@ -100,7 +100,7 @@
                       </select>
                     </div>
                     <div class="col-md-3 mb-4">
-                      <select class="form-control common-select" [(ngModel)]="propertyDetailsDto.kitchens" name="kitchens">
+                      <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.kitchens" name="kitchens">
                         <option selected>Kitchens</option>
                         <option>1</option>
                         <option>2</option>
@@ -108,7 +108,7 @@
                       </select>
                     </div>
                     <div class="col-md-3 mb-4">
-                      <select class="form-control common-select" [(ngModel)]="propertyDetailsDto.floorNo" name="floorNo">
+                      <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.floorNo" name="floorNo">
                         <option selected>Floor No.</option>
                         <option>1</option>
                         <option>2</option>
@@ -116,7 +116,7 @@
                       </select>
                     </div>
                     <div class="col-md-3 mb-4">
-                      <select class="form-control common-select" [(ngModel)]="propertyDetailsDto.noUnits" name="noUnits">
+                      <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.noUnits" name="noUnits">
                         <option selected>Unit No.</option>
                         <option>1</option>
                         <option>2</option>
@@ -124,7 +124,7 @@
                       </select>
                     </div>
                     <div class="col-md-3 mb-4">
-                      <select class="form-control common-select" [(ngModel)]="propertyDetailsDto.noOfFloors" name="noOfFloors">
+                      <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.noOfFloors" name="noOfFloors">
                         <option selected>No. of Floors</option>
                         <option>1</option>
                         <option>2</option>
@@ -132,7 +132,7 @@
                       </select>
                     </div>
                     <div class="col-md-3 mb-4">
-                      <select class="form-control common-select" [(ngModel)]="propertyDetailsDto.noShops" name="noShops">
+                      <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.noShops" name="noShops">
                         <option selected>No. of Shops</option>
                         <option>1</option>
                         <option>2</option>
@@ -613,7 +613,7 @@
                       <button class="btn common-btn btn-light-black">Back</button>
                     </div>
                     <div class="col-md-3">
-                      <button  (click)="addPropertyDetails()" class="btn common-btn" type="submit">Next</button>
+                      <button [disabled]="!propertyDetailsForm.form.valid" (click)="addPropertyDetails()" class="btn common-btn" type="submit">Next</button>
                     </div>
                   </div>
                 </form>

@@ -2,7 +2,7 @@ export class PropertyDetailsDto {
 
  userName:string;
  propertyId:number;
-   typeTitle:string;
+ typeTitle:string;
  propertyTitle:string;
  propertyDescription:string;
  propertyStatus:string;
@@ -12,6 +12,7 @@ export class PropertyDetailsDto {
  address:string;
  askingPrice:number;
  areaPermitNo:string;
+ area:string;
  propertyNo:string;
  propertyReferenceNo:string;
  pricePerSqft:number;
