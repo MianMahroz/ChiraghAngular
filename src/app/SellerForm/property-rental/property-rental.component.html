@@ -76,12 +76,14 @@
                         <input  (change)="scannedTenantContract($event)" type="file" name="file" class="doc-upload" />
                       </div>
                       <div class="upload-instuct mt-2">Scanned Tenancy Contract</div>
+                      <p *ngIf="scannedTenentContractFile" style="color:blue"><br>Tanent Contract FileName:{{scannedTenentContractFile.name}}</p>
+                      <p *ngIf="propertyRentalDetailDTO.tenancyContractUpload" style="color:blue"><br>Tanent Contract FileName:{{propertyRentalDetailDTO.tenancyContractUpload}}</p>
                     </div>
                   </div>
                 </div>
                 <div class="row mt-5 submit-btn-row">
                   <div class="offset-md-6 col-md-3 mb-xs-4">
-                    <button class="btn common-btn btn-light-black">Back</button>
+                    <a  routerLink="/propertyFinancialDetails/back" class="btn common-btn btn-light-black">Back</a>
                   </div>
                   <div class="col-md-3">
                     <button [disabled]="!rentalForm.form.valid" (click)="addPropertyRentalDetails()" style=color:white  class="btn common-btn btn-light-black"type="submit">Next</button>

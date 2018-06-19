@@ -1,3 +1,4 @@
+import { SignoutComponent } from './../signout/signout.component';
 import { SellersecuritypaymentComponent } from './../SellerForm/sellersecuritypayment/sellersecuritypayment.component';
 import { ForgotPasswordFormComponent } from './../forgot-password-form/forgot-password-form.component';
 import { ForgotPasswordRequestComponent } from './../forgot-password-request/forgot-password-request.component';
@@ -27,17 +28,26 @@ const routes: Routes = [
   { path: 'confirmEmail', component: ConfirmEmailComponent },
   { path: 'registrationSuccess/:token', component: RegisterSuccessComponent },
   { path: 'sellerOwnerDetails', component: OwnerDetailsComponent },
+  { path: 'sellerOwnerDetails/:action', component: OwnerDetailsComponent },
+  { path: 'sellerPoaDetails/:action', component: PoaDetailsComponent },
   { path: 'sellerPoaDetails', component: PoaDetailsComponent },
   { path: 'propertyDetails', component: PropertyDetailsComponent },
+  { path: 'propertyDetails/:action', component: PropertyDetailsComponent },
   { path: 'propertyFinancialDetails', component: PropertyFinancialsComponent },
+  { path: 'propertyFinancialDetails/:action', component: PropertyFinancialsComponent },
+  { path: 'propertyRental', component: PropertyRentalComponent },
+  { path: 'propertyRental/:action', component: PropertyRentalComponent },
+  { path: 'auctionFeeDetails', component: AuctionFeeDetailsComponent },
+  { path: 'auctionFeeDetails/:action', component: AuctionFeeDetailsComponent },
+
   { path: 'faqs', component: FaqsComponent },
   { path: 'aboutus', component: AboutusComponent },
-  { path: 'propertyRental', component: PropertyRentalComponent },
-  { path: 'auctionFeeDetails', component: AuctionFeeDetailsComponent },
   { path: 'forgotPasswordRequest', component: ForgotPasswordRequestComponent },
   { path: 'forgotPasswordForm/:token', component: ForgotPasswordFormComponent },
   { path: 'forgotPasswordForm/:token', component: ForgotPasswordFormComponent },
   {path: 'sellerSecurityPayments',component:SellersecuritypaymentComponent},
+  {path: 'signout',component:SignoutComponent},
+
 
 ];
 

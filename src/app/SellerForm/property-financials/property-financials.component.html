@@ -115,12 +115,14 @@
                         <input type="file" (change)="selectMorgageNoc($event)" name="file" class="doc-upload">
                       </div>
                       <div class="upload-instuct mt-2">Scanned NOC fromM<br>Mortgage Company</div>
+                      <p *ngIf="morgageNocFile" style="color:blue"><br>Morgage Noc FileName:{{morgageNocFile.name}}</p>
+                      <p *ngIf="propertyFinancialDTO.morgageNoc" style="color:blue"><br>Morgage Noc FileName:{{propertyFinancialDTO.morgageNoc}}</p>
                     </div>
                   </div>
                 </div>
                 <div class="row mt-5 submit-btn-row">
                   <div class="offset-md-6 col-md-3 mb-xs-4">
-                    <button class="btn common-btn btn-light-black">Back</button>
+                    <a  routerLink="/propertyDetails/back" class="btn common-btn btn-light-black">Back</a>
                   </div>
                   <div class="col-md-3">
                     <button [disabled]="!finanicalForm.form.valid"  (click)="addPropertyFinancialDetails()" style=color:white class="btn common-btn" type="submit">Next</button>

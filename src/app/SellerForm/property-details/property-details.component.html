@@ -591,11 +591,14 @@
                     <div class="col-md-12 upload-doc-block">
                       <div class="upload-btn-div mt-4">
                         <div class="file">
-                          <input type="file" name="file" class="doc-upload" required />
+                          <input type="file" name="file"  (change)="selectScannedTitleDeed($event)" class="doc-upload" required />
                         </div>
                         <div class="upload-instuct mt-2">Scanned Title Deed</div>
                       </div>
                     </div>
+                    <p *ngIf="scannedTitleDeedFile" style="color:blue"><br>Scanned Title Deed FileName:{{scannedTitleDeedFile.name}}</p>
+                    <p *ngIf="propertyDetailsDto.scannedTitleDeed" style="color:blue"><br> Title Deed FileName:{{propertyDetailsDto.scannedTitleDeed}}</p>
+
                   </div>
                   <div class="note-block py-3 px-2 mt-5">
                     <div class="col-1 common-checkbox">
@@ -610,10 +613,11 @@
                   </div>
                   <div class="row mt-5 submit-btn-row">
                     <div class="offset-md-6 col-md-3 mb-xs-4">
-                      <button class="btn common-btn btn-light-black">Back</button>
+                      <a routerLink="/sellerPoaDetails/back" class="btn common-btn btn-light-black">Back</a>
                     </div>
                     <div class="col-md-3">
-                      <button [disabled]="!propertyDetailsForm.form.valid" (click)="addPropertyDetails()" class="btn common-btn" type="submit">Next</button>
+                        <!-- [disabled]="!propertyDetailsForm.form.valid" -->
+                      <button  (click)="addPropertyDetails()" class="btn common-btn" type="submit">Next</button>
                     </div>
                   </div>
                 </form>

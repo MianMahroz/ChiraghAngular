@@ -1,3 +1,4 @@
+import { TokenStorage } from './../core/token.storage';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private tokenService:TokenStorage) { }
+  userName:string;
   ngOnInit() {
+    if(this.tokenService.getuserName()!=null)
+    this.userName=this.tokenService.getuserName();
   }
 
 }

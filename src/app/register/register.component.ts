@@ -17,9 +17,19 @@ export class RegisterComponent  {
   registerdto=new registerDTO();
   public barLabel: string = "Password strength:";
   public myColors = ['#DD2C00', '#FF6D00', '#FFD600', '#AEEA00', '#00C853'];
-  public strengthLabels = ['weak', 'medium', 'strong', 'very strong', 'excellent'];
+  public strengthLabels = ['(Useless)', '(Weak)', '(Normal)', '(Strong)', '(Great!)'];
   terms=false;
 
+  bar1=false;
+  bar2=false;
+
+  passwordFocus1(){
+   this.bar1=true;
+  }
+  passwordFocus2(){
+    this.bar1=false;
+    this.bar2=true;
+   }
   onRegister(){
     window.sessionStorage.removeItem('AuthToken');
     this.authService.attemptAuth().subscribe(

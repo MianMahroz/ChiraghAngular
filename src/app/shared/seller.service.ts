@@ -12,10 +12,11 @@ const httpOptions = {
 @Injectable()
 export class SellerService {
 
+  data:Observable<string>;
   constructor(private http: HttpClient,private token:TokenStorage,private authService:AuthService) { }
-  
+
   private sellerUrl = this.token.getServerpath()+'/api/Propertysellerdetails';
-  
+
   public getOwners(propertyId:number,userName:string): Observable<OwnerDetails[]> {
     return this.http.get<OwnerDetails[]>(this.sellerUrl + '/getOwners/'+propertyId+'/'+userName);
   }
@@ -28,20 +29,29 @@ export class SellerService {
   public updateOwner(obj:OwnerDetails): Observable<any> {
     return this.http.put<any>(this.sellerUrl + '/updateOwner', obj,httpOptions);
   }
-  
+
   public createProperty(userName:string): Observable<any> {
     return this.http.post<any>(this.sellerUrl + '/createProperty', userName,httpOptions);
 }
 
-saveDocument(name:string,userName:string,file: File): Observable<any> {
+saveDocument(path:string,name:string,userName:string,file: File): Observable<any> {
+if(file){
   let formdata: FormData = new FormData();
   formdata.append('file', file);
-  const req = new HttpRequest('POST', this.sellerUrl+'/saveDocument/'+name+'/'+userName, formdata, {
+  const req = new HttpRequest('POST', this.sellerUrl+'/saveDocument'+path+''+name+'/'+userName, formdata, {
     reportProgress: true,
     responseType: 'text'
   });
   return this.http.request(req);
-} 
+}
+else{
+  return this.data=new Observable(observer=>{
+      // observer.error(new Error('Image Not saved'))
+      observer.next('Data');
+  });
+}//end of else
+
+}
 
 
 

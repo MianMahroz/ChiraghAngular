@@ -1,3 +1,4 @@
+import { MaterialModule } from './material/material.component';
 import { PaymentsService } from './shared/seller.payments.service';
 import { AuctionService } from './shared/auction.service';
 import { SellersecuritypaymentComponent } from './SellerForm/sellersecuritypayment/sellersecuritypayment.component';
@@ -35,7 +36,8 @@ import { AuctionFeeDetailsComponent } from './SellerForm/auction-fee-details/auc
 import { ForgotPasswordRequestComponent } from './forgot-password-request/forgot-password-request.component';
 import { ForgotPasswordFormComponent } from './forgot-password-form/forgot-password-form.component';
 import { PasswordStrengthBarModule } from 'ng2-password-strength-bar';
-
+import { CustomFormsModule } from 'ng4-validators';
+import { SignoutComponent } from './signout/signout.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,7 @@ import { PasswordStrengthBarModule } from 'ng2-password-strength-bar';
     ForgotPasswordRequestComponent,
     ForgotPasswordFormComponent,
     SellersecuritypaymentComponent,
+    SignoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,6 +72,8 @@ import { PasswordStrengthBarModule } from 'ng2-password-strength-bar';
     FormsModule,
     AppRoutingModule,
     PasswordStrengthBarModule,
+    CustomFormsModule,
+    MaterialModule,
   ],
   entryComponents: [ErrorDialogComponent],
   providers: [ErrorDialogComponent, PaymentsService,AuctionService,UserService,SellerService,AuthService, TokenStorage, TokenStorage,SellerService,PropertyService,

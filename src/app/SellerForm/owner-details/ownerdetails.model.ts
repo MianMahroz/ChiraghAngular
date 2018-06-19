@@ -29,6 +29,6 @@ export class OwnerDetails{
 	poaPropertyAuthority:string;
 	titleDeedUpload:string;
   scannedNotorizedCopy:string;
-
+  isPoaAccepted:string;
 
 }

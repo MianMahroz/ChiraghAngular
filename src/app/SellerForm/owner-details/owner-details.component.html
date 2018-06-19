@@ -7,12 +7,12 @@
           <div class="offset-md-1 col-md-10">
             <div class="row sign-in-row">
               <div class="offset-md-2 col-md-8 sign-in-col">
-                <form #ownerDetailsForm="ngForm" class="common-form" novalidate>
+                <form #ownerDetailsForm="ngForm"  class="common-form"   novalidate>
                   <div class="mb-5 page-primary-title-34">Owner Details</div>
                   <div class="row">
                     <div class="col-md-12 form-block-heading mb-2">Personal Details:</div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input pattern="[a-zA-Z0-9_]*" type="text" class="form-control form-input" minlength="3" name="userFirstName" #userFirstName="ngModel" maxlength="15"  [(ngModel)]="ownerDto.firstName"placeholder="First Name" autofocus>
+                      <input pattern="[a-zA-Z]*" type="text" class="form-control form-input" minlength="3" name="userFirstName" #userFirstName="ngModel" maxlength="15"  [(ngModel)]="ownerDto.firstName"placeholder="First Name" autofocus>
                       <div *ngIf="userFirstName.errors && (userFirstName.dirty || userFirstName.touched)" class="alert alert-danger">
                         <div [hidden]="!userFirstName.errors.required">
                           First Name is required!
@@ -29,7 +29,7 @@
                       </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input pattern="[a-zA-Z0-9_]*" type="text" minlength="3" name="userMiddleName" #userMiddleName="ngModel" maxlength="15" class="form-control form-input"[(ngModel)]="ownerDto.middleName" placeholder="Middle Name">
+                      <input pattern="[a-zA-Z]*" type="text" minlength="3" name="userMiddleName" #userMiddleName="ngModel" maxlength="15" class="form-control form-input"[(ngModel)]="ownerDto.middleName" placeholder="Middle Name">
                       <div *ngIf="userMiddleName.errors && (userMiddleName.dirty || userMiddleName.touched)" class="alert alert-danger">
                         <div [hidden]="!userMiddleName.errors.required">
                           Middle Name is required!
@@ -46,7 +46,7 @@
                       </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input pattern="[a-zA-Z0-9_]*" type="text" minlength="3" name="userLastName" #userLastName="ngModel" maxlength="15" class="form-control form-input" [(ngModel)]="ownerDto.lastName" placeholder="Last Name" required>
+                      <input pattern="[a-zA-Z]*" type="text" minlength="3" name="userLastName" #userLastName="ngModel" maxlength="15" class="form-control form-input" [(ngModel)]="ownerDto.lastName" placeholder="Last Name" required>
                       <div *ngIf="userLastName.errors && (userLastName.dirty || userLastName.touched)" class="alert alert-danger">
                         <div [hidden]="!userLastName.errors.required">
                           Last Name is required!
@@ -72,7 +72,7 @@
                       </select>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input pattern="[0-9_]*" type="text" class="form-control form-input" [(ngModel)]="ownerDto.idCardNo" name="idCardNo" #idCardNo="ngModel" minlength="6" maxlength="18" placeholder="ID Card Number" required>
+                      <input pattern="[0-9]*" type="text" class="form-control form-input" [(ngModel)]="ownerDto.idCardNo" name="idCardNo" #idCardNo="ngModel" minlength="6" maxlength="18" placeholder="ID Card Number" required>
                       <div *ngIf="idCardNo.errors && (idCardNo.dirty || idCardNo.touched)" class="alert alert-danger">
                         <div [hidden]="!idCardNo.errors.required">
                           ID Card Number is required!
@@ -89,7 +89,7 @@
                       <input type="date" class="form-control  form-input"  [(ngModel)]="ownerDto.idCardExpiration" name="idCardExpiration" placeholder="ID Card Expiry Date" required>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input pattern="[0-9_]*" type="text" class="form-control  form-input" [(ngModel)]="ownerDto.passportNo" name="passportNo" #passportNo="ngModel" minlength="6" maxlength="15" placeholder="Passport Number" required>
+                      <input pattern="[0-9]*" type="text" class="form-control  form-input" [(ngModel)]="ownerDto.passportNo" name="passportNo" #passportNo="ngModel" minlength="6" maxlength="15" placeholder="Passport Number" required>
                       <div *ngIf="passportNo.errors && (passportNo.dirty || passportNo.touched)" class="alert alert-danger">
                         <div [hidden]="!passportNo.errors.required">
                           Passport Number is required!
@@ -109,7 +109,7 @@
                   <div class="row mt-3">
                     <div class="col-md-12 form-block-heading mb-2">Contact Details:</div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="text" pattern="[0-9_]*" class="form-control  form-input" [(ngModel)]="ownerDto.telephone" name="telephone" #telephone="ngModel" minlength="6" maxlength="16" placeholder="Phone Number" required>
+                      <input type="text" pattern="[0-9]*" class="form-control  form-input" [(ngModel)]="ownerDto.telephone" name="telephone" #telephone="ngModel" minlength="6" maxlength="16" placeholder="Phone Number" required>
                       <div *ngIf="telephone.errors && (telephone.dirty || telephone.touched)" class="alert alert-danger">
                         <div [hidden]="!telephone.errors.required">
                           Phone number is required!
@@ -123,7 +123,7 @@
                       </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input pattern="[0-9_]*" type="text" class="form-control  form-input" [(ngModel)]="ownerDto.mobile" name="mobile" #mobile="ngModel" minlength="6" maxlength="16" placeholder="Mobile Number" required>
+                      <input pattern="[0-9]*" type="text" class="form-control  form-input" [(ngModel)]="ownerDto.mobile" name="mobile" #mobile="ngModel" minlength="6" maxlength="16" placeholder="Mobile Number" required>
                       <div *ngIf="mobile.errors && (mobile.dirty || mobile.touched)" class="alert alert-danger">
                         <div [hidden]="!mobile.errors.required">
                           Mobile number is required!
@@ -148,7 +148,7 @@
                       </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="text" pattern="[0-9_]*" class="form-control form-input" [(ngModel)]="ownerDto.fax" name="fax" #fax="ngModel"  minlength="6" maxlength="18" placeholder="Fax" required>
+                      <input type="text" pattern="[0-9]*" class="form-control form-input" [(ngModel)]="ownerDto.fax" name="fax" #fax="ngModel"  minlength="6" maxlength="18" placeholder="Fax" required>
                       <div *ngIf="fax.errors && (fax.dirty || fax.touched)" class="alert alert-danger">
                         <div [hidden]="!fax.errors.required">
                           Fax is required!
@@ -162,7 +162,7 @@
                       </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input pattern="[a-zA-Z0-9_]*" type="text" minlength="8" name="userAddress" #userAddress="ngModel" maxlength="60" class="form-control  form-input" [(ngModel)]="ownerDto.address" placeholder="Address" required>
+                      <input pattern="[a-zA-Z0-9]*" type="text" minlength="8" name="userAddress" #userAddress="ngModel" maxlength="60" class="form-control  form-input" [(ngModel)]="ownerDto.address" placeholder="Address" required>
                       <div *ngIf="userAddress.errors && (userAddress.dirty || userAddress.touched)" class="alert alert-danger">
                         <div [hidden]="!userAddress.errors.minlength">
                           Address must be at least 8 characters long.
@@ -170,7 +170,7 @@
                       </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="text" pattern="[0-9_]*" class="form-control  form-input" [(ngModel)]="ownerDto.pobox" name="pobox" #pobox="ngModel"  minlength="6" maxlength="18" placeholder="P.O.Box" required>
+                      <input type="text" pattern="[0-9]*" class="form-control  form-input" [(ngModel)]="ownerDto.pobox" name="pobox" #pobox="ngModel"  minlength="6" maxlength="18" placeholder="P.O.Box" required>
                       <div *ngIf="pobox.errors && (pobox.dirty || pobox.touched)" class="alert alert-danger">
                         <div [hidden]="!pobox.errors.required">
                           P.O Box is required!
@@ -192,32 +192,108 @@
                     <div class="col-md-12 upload-doc-block">
                       <div class="upload-btn-div mt-4">
                         <div class="file">
-                          <input type="file" name="file" (change)="selectPassport($event)" class="doc-upload" />
+                          <input #passFile type="file" name="file" (change)="selectPassport($event)" class="doc-upload" />
                         </div>
                         <div class="upload-instuct mt-2">Scanned passport copy</div>
+                        <p *ngIf="passportFile" style="color:blue"><br>Passport copy FileName:{{passportFile.name}}</p>
+                        <p *ngIf="ownerDto.passportCopyUpload" style="color:blue"><br>Passport copy FileName:{{ownerDto.passportCopyUpload}}</p>
                       </div>
                       <div class="upload-btn-div mt-5">
                         <div class="file">
-                          <input type="file"  (change)="selectIdCopy($event)" name="file" class="doc-upload" />
+                          <input #idFile type="file"  (change)="selectIdCopy($event)" name="file" class="doc-upload" />
                         </div>
                         <div class="upload-instuct mt-2">Scanned ID copy
                           <div class="upload-sub-instruct">(UAE or country of origin)</div>
                         </div>
+                        <p *ngIf="idCopyFile" style="color:blue"><br>ID copy FileName:{{idCopyFile.name}}</p>
+                        <p *ngIf="ownerDto.scannedIdCopy" style="color:blue"><br>ID copy FileName:{{ownerDto.scannedIdCopy}}</p>
+                        <!-- <img src="{{idCardFileUploadPath}}" alt="{{idCardFileUploadPath}}" style="max-width:350px" /> -->
+                        <!-- <img src="{{passportFileUploadPath}}" alt="{{passportFileUploadPath}}" style="max-width:350px" /> -->
                       </div>
                     </div>
                   </div>
                   <div class="row mt-5 submit-btn-row">
                     <div class="col-md-3 mb-xs-4">
-                      <a  (click)="addOwner('add')" style=color:white class="btn common-btn btn-light-black">Add Owner</a>
+                      <a  (click)="addOwner('add')"  style=color:white class="btn common-btn btn-light-black">Add Owner</a>
                     </div>
                     <div class="offset-md-6 col-md-3">
-                      <button [disabled]="!ownerDetailsForm.form.valid" (click)="addOwner('next')" style=color:white class="btn common-btn" type="submit">Next</button>
+                      <!-- [disabled]="!ownerDetailsForm.form.valid" -->
+                      <button   (click)="addOwner('next')" style=color:white class="btn common-btn" type="submit">Next</button>
                     </div>
                   </div>
                 </form>
               </div>
             </div>
           </div>
+        </div>
+        <div *ngIf="atLeastOneOwner" class="example-container mat-elevation-z8">
+          <div class="example-header">
+            <mat-form-field>
+              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            </mat-form-field>
+          </div>
+          <mat-table #table [dataSource]="dataSource" matSort>
+
+            <ng-container matColumnDef="propertySellerId">
+              <mat-header-cell *matHeaderCellDef> Owner Id </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.propertySellerId}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="firstName">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> First Name </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="middleName">
+              <mat-header-cell *matHeaderCellDef> Middle Name </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.middleName}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="lastName">
+              <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="nationality">
+              <mat-header-cell *matHeaderCellDef>  Nationality </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.nationality}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="idCardNo">
+              <mat-header-cell *matHeaderCellDef> Id Card No </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.idCardNo}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="idCardExpiration">
+              <mat-header-cell *matHeaderCellDef> Id Card Expiry </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.idCardExpiration}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="passportNo">
+              <mat-header-cell *matHeaderCellDef> Passport No </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.passportNo}} </mat-cell>
+            </ng-container>
+
+
+            <ng-container matColumnDef="passportExpiryDate">
+              <mat-header-cell *matHeaderCellDef> Passport Expiry  Date</mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.passportExpiryDate}} </mat-cell>
+            </ng-container>
+
+
+            <ng-container matColumnDef="telephone">
+              <mat-header-cell *matHeaderCellDef> Phone Number </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.telephone}} </mat-cell>
+            </ng-container>
+
+
+            <ng-container matColumnDef="mobile">
+              <mat-header-cell *matHeaderCellDef> Mobile </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.mobile}} </mat-cell>
+            </ng-container>
+
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;" (click) = "rowClicked(row)" ></mat-row>
+          </mat-table>
+          <mat-paginator [length]="5" [pageSize]="4" [pageSizeOptions]="[5, 10, 25]">
+          </mat-paginator>
         </div>
 
       </div>
