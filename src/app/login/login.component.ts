@@ -8,6 +8,7 @@ import {User} from '../user/user.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {UserService} from '../shared/user.service';
 import { loginDTO } from './loginDTO';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ import { loginDTO } from './loginDTO';
 })
 export class LoginComponent {
 
-  constructor(private userService:UserService,private http: HttpClient,private router: Router, public dialog: MatDialog, private authService: AuthService, private token: TokenStorage) {
+  constructor(private toastr: ToastrService,private userService:UserService,private http: HttpClient,private router: Router, public dialog: MatDialog, private authService: AuthService, private token: TokenStorage) {
   }
   public barLabel: string = "Password strength:";
   public myColors = ['#DD2C00', '#FF6D00', '#FFD600', '#AEEA00', '#00C853'];
@@ -32,10 +33,12 @@ export class LoginComponent {
       data => {
         this.token.saveToken(data.access_token,data.refresh_token,data.expires_in);
         console.log(data);
+        this.toastr.success('Login', data);
         if(this.token.getToken()!=null){
           this.userService.login(this.logindto.userName,this.logindto.userPassword).subscribe(
             data1=>{
               console.log(data1);
+              this.toastr.success('Login', data1.msg);
                    if(data1.msg=="Login Successfully"){
                      this.token.saveUserName(this.logindto.userName);
                        this.router.navigate(['home']);

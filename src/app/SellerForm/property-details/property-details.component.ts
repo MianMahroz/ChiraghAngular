@@ -23,8 +23,8 @@ export class PropertyDetailsComponent implements OnInit {
 
   ngOnInit() {
     //for testing purpose
-    this.token.saveUserName('BesterCapital2');
-    this.token.savePropertyId('111');
+    // this.token.saveUserName('BesterCapital2');
+    // this.token.savePropertyId('111');
 
     this.action='';
     this.action=this.route.snapshot.params['action'];
@@ -63,7 +63,7 @@ export class PropertyDetailsComponent implements OnInit {
                     this.propertyService.updateProperty(this.propertyDetailsDto).subscribe(
                     propertydata=>{
                         console.log(propertydata);
-                        this.router.navigate(['../propertyFinancialDetails']);
+                        this.router.navigate(['/propertyFinancialDetails']);
                     }//end of propertydata
                   );//end of propertySubscription
                }//end of type check
@@ -71,7 +71,7 @@ export class PropertyDetailsComponent implements OnInit {
                 this.propertyService.updateProperty(this.propertyDetailsDto).subscribe(
                   propertydata=>{
                       console.log(propertydata);
-                      this.router.navigate(['../propertyFinancialDetails/next']);
+                      this.router.navigate(['/propertyFinancialDetails/next']);
                   }//end of propertydata
                 );//end of propertySubscription
                }//end of else if

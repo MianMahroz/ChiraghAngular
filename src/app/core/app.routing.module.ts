@@ -39,7 +39,6 @@ const routes: Routes = [
   { path: 'propertyRental/:action', component: PropertyRentalComponent },
   { path: 'auctionFeeDetails', component: AuctionFeeDetailsComponent },
   { path: 'auctionFeeDetails/:action', component: AuctionFeeDetailsComponent },
-
   { path: 'faqs', component: FaqsComponent },
   { path: 'aboutus', component: AboutusComponent },
   { path: 'forgotPasswordRequest', component: ForgotPasswordRequestComponent },

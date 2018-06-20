@@ -59,13 +59,13 @@ export class OwnerDetailsComponent implements AfterViewInit {
     ngOnInit() {
       this.atLeastOneOwner=false;
       // this.createNewProperty();
-      this.token.saveUserName('BesterCapital2');
-      this.token.savePropertyId('111');
+      // this.token.saveUserName('BesterCapital2');
+      // this.token.savePropertyId('111');
 
      // console.log(this.token.getuserName());
      if(this.token.getuserName()==null){
       console.log('Invalid Session');
-      this.router.navigate(['../login']);
+      this.router.navigate(['/login']);
       return "Invalid Session";
     }//end of if
 
@@ -97,7 +97,7 @@ export class OwnerDetailsComponent implements AfterViewInit {
   addOwner(operation:string): string {
     if(this.token.getuserName()==null){
       console.log('Invalid Session');
-      this.router.navigate(['../login']);
+      this.router.navigate(['/login']);
       return "Invalid Session";
     }
     window.sessionStorage.removeItem('AuthToken');
@@ -213,7 +213,7 @@ export class OwnerDetailsComponent implements AfterViewInit {
 editProcessHelper(operation:string):void{
   if(operation=='next'){
     console.log('next');
-    this.router.navigate(['../sellerPoaDetails/next']);
+    this.router.navigate(['/sellerPoaDetails/next']);
   }
   else if(operation=='add'){
     console.log('Add');

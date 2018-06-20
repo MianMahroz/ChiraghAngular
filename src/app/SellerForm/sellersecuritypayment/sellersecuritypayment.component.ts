@@ -18,7 +18,7 @@ export class SellersecuritypaymentComponent implements OnInit {
   ngOnInit() {
     if(this.token.getuserName()==null){
       console.log('Invalid Session');
-      this.router.navigate(['../login']);
+      this.router.navigate(['/login']);
       return "Invalid Session";
   }
 }

@@ -21,8 +21,8 @@ export class PropertyRentalComponent implements OnInit {
   action:string;
 
   ngOnInit() {
-    this.token.savePropertyId('111');
-    this.token.saveUserName('BesterCapital2');
+    // this.token.savePropertyId('111');
+    // this.token.saveUserName('BesterCapital2');
     this.action='';
     this.action=this.route.snapshot.params['action'];
     console.log(this.action);
@@ -64,7 +64,7 @@ export class PropertyRentalComponent implements OnInit {
                             propertyRentalData=>{
                                     console.log(propertyRentalData);
                                     if(propertyRentalData.msg=='Property Rental Info Updated Successfully'){
-                                      this. router.navigate(['../auctionFeeDetails']);
+                                      this. router.navigate(['/auctionFeeDetails']);
                                     }
 
                                   }//end of propertyFinancialData
@@ -75,7 +75,7 @@ export class PropertyRentalComponent implements OnInit {
                                   propertyRentalData=>{
                                           console.log(propertyRentalData);
                                           if(propertyRentalData.msg=='Property Rental Info Updated Successfully'){
-                                            this. router.navigate(['../auctionFeeDetails/next']);
+                                            this. router.navigate(['/auctionFeeDetails/next']);
                                           }
 
                                         }//end of propertyFinancialData

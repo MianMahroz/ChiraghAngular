@@ -40,7 +40,7 @@ export class AuctionFeeDetailsComponent implements OnInit {
            this.auctionService.saveAuction(this.auctionDTO).subscribe(
              data=>{
                       console.log(data);
-                      this.router.navigate(['sellerSecurityPayments']);
+                      this.router.navigate(['/sellerSecurityPayments']);
              }
            );
         }//end of if

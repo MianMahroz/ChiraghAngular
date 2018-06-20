@@ -21,8 +21,8 @@ export class PropertyFinancialsComponent implements OnInit {
   morgageNocFile:File;
   action:string;
   ngOnInit() {
-    this.token.savePropertyId('111');
-    this.token.saveUserName('BesterCapital2');
+    // this.token.savePropertyId('111');
+    // this.token.saveUserName('BesterCapital2');
     this.action='';
     this.action=this.route.snapshot.params['action'];
     console.log(this.action);
@@ -63,7 +63,7 @@ export class PropertyFinancialsComponent implements OnInit {
                             propertyFinancialData=>{
                                     console.log(propertyFinancialData);
                                    if(propertyFinancialData.msg=='Property Financial Detail Updated Successfully'){
-                                    this.router.navigate(['../propertyRental']);
+                                    this.router.navigate(['/propertyRental']);
                                    }
                                   }//end of propertyFinancialData
                         );//end of subscription of property financial Details
@@ -73,7 +73,7 @@ export class PropertyFinancialsComponent implements OnInit {
                             propertyFinancialData=>{
                                     console.log(propertyFinancialData);
                                    if(propertyFinancialData.msg=='Property Financial Detail Updated Successfully'){
-                                    this. router.navigate(['../propertyRental/next']);
+                                    this. router.navigate(['/propertyRental/next']);
                                    }
                                   }//end of propertyFinancialData
                         );//end of subscription of property financial Details

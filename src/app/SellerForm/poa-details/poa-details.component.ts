@@ -57,8 +57,8 @@ export class PoaDetailsComponent implements AfterViewInit {
   ngOnInit() {
 
     // //for testing purpose
-    this.token.saveUserName('BesterCapital2');
-    this.token.savePropertyId('111');
+    // this.token.saveUserName('BesterCapital2');
+    // this.token.savePropertyId('111');
     this.atLeastOnePoa=false;
     this.action='';
     this.action=this.route.snapshot.params['action'];
@@ -158,7 +158,7 @@ export class PoaDetailsComponent implements AfterViewInit {
 editProcessHelper(operation:string):void{
   if(operation=='next'){
     console.log('next');
-    this.router.navigate(['../propertyDetails/next']);
+    this.router.navigate(['/propertyDetails/next']);
   }
   else if(operation=='add'){
     console.log('Add');

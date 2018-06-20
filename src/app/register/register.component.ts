@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { registerDTO} from './registerDTO';
 import {Router} from '@angular/router';
@@ -19,7 +20,6 @@ export class RegisterComponent  {
   public myColors = ['#DD2C00', '#FF6D00', '#FFD600', '#AEEA00', '#00C853'];
   public strengthLabels = ['(Useless)', '(Weak)', '(Normal)', '(Strong)', '(Great!)'];
   terms=false;
-
   bar1=false;
   bar2=false;
 
@@ -41,10 +41,13 @@ export class RegisterComponent  {
             data1=>{
               console.log(data1);
                    if(data1.msg=="User Created Successfully"){
-                     this.token.saveUserName(this.registerdto.userName);//saving user to session
+                    //  this.token.saveUserName(this.registerdto.userName);//saving user to session
+                     this.token.saveTempUser(this.registerdto.userName);
                     this.userService.confirmEmailRequest(this.registerdto.userName).subscribe(
                       data2=>{
+                        this.registerdto=new registerDTO();
                                console.log(data2);
+
                                if(data2.msg='Email Sent'){
                                  this.router.navigate(['confirmEmail']);
                                }

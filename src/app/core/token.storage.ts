@@ -9,8 +9,8 @@ const TOKEN_EXPIRES_IN = 'expires_in';
 @Injectable()
 export class TokenStorage {
 
-  // serverPath:string='http://18.217.156.5:8080/ChiraghServer';
-  serverPath:string='http://localhost:8080';
+  // serverPath:string='http://18.218.221.103:8080/ChiraghServer';
+  serverPath:string='http://localhost:8082';
 
   constructor() { }
 
@@ -31,6 +31,12 @@ export class TokenStorage {
     window.sessionStorage.setItem(TOKEN_EXPIRES_IN,  expiresIn);
   }
 
+  public saveTempUser(userName:string){
+    window.sessionStorage.setItem("tempUser",  userName);
+  }
+  public getTempUser(): string {
+    return sessionStorage.getItem("tempUser");
+  }
     public saveUserName(userName:string){
       window.sessionStorage.setItem("userName",  userName);
     }

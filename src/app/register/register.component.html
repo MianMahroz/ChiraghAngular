@@ -1,5 +1,7 @@
 
 
+
+
   <div class="container-fluid screen-wrapper">
     <app-header></app-header>
     <div class="row body-section">
@@ -192,7 +194,8 @@
                   </div> -->
                   <div class="row">
                     <div class="col-md-6">
-                      <button [disabled]="!registerForm.form.valid" class="btn form-btn" (click)="onRegister()" type="submit">Register</button>
+                        <!-- [disabled]="!registerForm.form.valid" -->
+                      <button  [disabled]="!terms" class="btn form-btn" (click)="onRegister()" type="submit">Register</button>
                     </div>
                   </div>
                 </form>

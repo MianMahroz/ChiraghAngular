@@ -24,13 +24,13 @@ export class ConfirmEmailComponent implements OnInit {
         this.token.saveToken(data.access_token,data.refresh_token,data.expires_in);
         console.log(data);
         if(this.token.getToken()!=null){
-                   this.sessionUser=this.token.getuserName();
+                   this.sessionUser=this.token.getTempUser();
                   if(this.sessionUser!=null){
                       this.userService.confirmEmailRequest(this.sessionUser).subscribe(
                       data2=>{
                                console.log(data2);
                                if(data2.msg='Email Sent'){
-                                   this.router.navigate(['confirmEmail']);
+                                   this.router.navigate(['/confirmEmail']);
                                }
                       }//end of email data
                     );//end of email subscription

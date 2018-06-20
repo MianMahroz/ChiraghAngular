@@ -3,10 +3,10 @@ import { PaymentsService } from './shared/seller.payments.service';
 import { AuctionService } from './shared/auction.service';
 import { SellersecuritypaymentComponent } from './SellerForm/sellersecuritypayment/sellersecuritypayment.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, enableProdMode } from '@angular/core';
 import { AppComponent } from './app.component';
 import {CustomMaterialModule} from './core/material.module';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 import {FormsModule} from '@angular/forms';
 import { UserComponent } from './user/user.component';
 import {AppRoutingModule} from './core/app.routing.module';
@@ -38,7 +38,10 @@ import { ForgotPasswordFormComponent } from './forgot-password-form/forgot-passw
 import { PasswordStrengthBarModule } from 'ng2-password-strength-bar';
 import { CustomFormsModule } from 'ng4-validators';
 import { SignoutComponent } from './signout/signout.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
+// enableProdMode();
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,8 +66,12 @@ import { SignoutComponent } from './signout/signout.component';
     ForgotPasswordFormComponent,
     SellersecuritypaymentComponent,
     SignoutComponent,
+
   ],
   imports: [
+    CommonModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,

@@ -125,5 +125,6 @@ export class PropertyDetailsDto {
  poloClubAndClubhouse:string;
  publicPark:string;
  park:string;
+ description:string;
 
 }
