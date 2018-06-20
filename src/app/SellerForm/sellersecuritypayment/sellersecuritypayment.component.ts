@@ -1,3 +1,4 @@
+import { ToasterServiceService } from './../../toaster-service.service';
 import { Component, OnInit } from '@angular/core';
 import {TokenStorage} from '../../core/token.storage';
 import {Observable} from 'rxjs/Observable';
@@ -12,14 +13,16 @@ import {AuthService} from '../../core/auth.service';
   styleUrls: ['./sellersecuritypayment.component.css']
 })
 export class SellersecuritypaymentComponent implements OnInit {
-  constructor(private paymentService:PaymentsService,private router: Router,  private authService: AuthService, private token: TokenStorage) { }
+  constructor(private myToast:ToasterServiceService,private paymentService:PaymentsService,private router: Router,  private authService: AuthService, private token: TokenStorage) { }
   sellersecuritypaymentdto=new sellersecuritysspaymentDTO();
 
   ngOnInit() {
     if(this.token.getuserName()==null){
       console.log('Invalid Session');
       this.router.navigate(['/login']);
+      this.myToast.Error('Status','Invalid Session');
       return "Invalid Session";
+
   }
 }
 
@@ -51,6 +54,7 @@ onsellersecuritypost(){
             data1=>{
               console.log(data1);
                    if(data1.msg=="Seller Payments Submitted Successfully"){
+                    this.myToast.Success('Status','Seller Payments Submitted Successfully');
                     // this.router.navigate(['../sellersecurityPayments']);
 
                    }//

@@ -1,3 +1,4 @@
+import { ToasterServiceService } from './../../toaster-service.service';
 import { SellerService } from './../../shared/seller.service';
 import { Component, OnInit } from '@angular/core';
 import { PropertyDetailsDto } from './propertymodel';
@@ -19,7 +20,7 @@ export class PropertyDetailsComponent implements OnInit {
   selectedScannedTitleDeed: FileList;
   scannedTitleDeedFile:File;
 
-  constructor(private sellerService:SellerService,private route:ActivatedRoute,private propertyService:PropertyService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
+  constructor(private myToast:ToasterServiceService,private sellerService:SellerService,private route:ActivatedRoute,private propertyService:PropertyService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
 
   ngOnInit() {
     //for testing purpose
@@ -44,6 +45,7 @@ export class PropertyDetailsComponent implements OnInit {
   addPropertyDetails(): string {
     if(this.token.getuserName()==null){
       console.log('Invalid Session');
+      this.myToast.Error('User Status','Invalid Session');
       return "Invalid Session";
     }
     window.sessionStorage.removeItem('AuthToken');
@@ -71,6 +73,7 @@ export class PropertyDetailsComponent implements OnInit {
                 this.propertyService.updateProperty(this.propertyDetailsDto).subscribe(
                   propertydata=>{
                       console.log(propertydata);
+                      this.myToast.Info('Status','Property Details Added Successfully');
                       this.router.navigate(['/propertyFinancialDetails/next']);
                   }//end of propertydata
                 );//end of propertySubscription
@@ -93,9 +96,10 @@ export class PropertyDetailsComponent implements OnInit {
         if(this.token.getToken()!=null){
           this.propertyService.getPropertyById(this.token.getPropertyId(),this.token.getuserName()).subscribe(
             propertyDetailsData=>{
-                if(propertyDetailsData){
+                if(propertyDetailsData.plotNo!=null){
                     console.log(propertyDetailsData);
                     this.propertyDetailsDto=propertyDetailsData;
+                    this.myToast.Info('Status','Property data loaded Successfully');
                 }//end of if of propertyDetailsData
              }//end of ownerData
          );//end of subscription of getOwners

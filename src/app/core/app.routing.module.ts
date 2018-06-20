@@ -1,3 +1,4 @@
+import { PropertySuccessMsgComponent } from '../SellerForm/property-success-msg/property-success-msg.component';
 import { SignoutComponent } from './../signout/signout.component';
 import { SellersecuritypaymentComponent } from './../SellerForm/sellersecuritypayment/sellersecuritypayment.component';
 import { ForgotPasswordFormComponent } from './../forgot-password-form/forgot-password-form.component';
@@ -46,7 +47,7 @@ const routes: Routes = [
   { path: 'forgotPasswordForm/:token', component: ForgotPasswordFormComponent },
   {path: 'sellerSecurityPayments',component:SellersecuritypaymentComponent},
   {path: 'signout',component:SignoutComponent},
-
+  {path: 'propertySuccess',component:PropertySuccessMsgComponent},
 
 ];
 

@@ -1,3 +1,4 @@
+import { ToasterServiceService } from './../../toaster-service.service';
 import { Component, OnInit } from '@angular/core';
 import { PropertyFinancialDTO } from './propertyfinancialDTO';
 import { TokenStorage } from '../../core/token.storage';
@@ -14,7 +15,7 @@ import { SellerService } from '../../shared/seller.service';
 })
 export class PropertyFinancialsComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute,private sellerService:SellerService,private propertyService:PropertyService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
+  constructor(private myToast:ToasterServiceService,private route:ActivatedRoute,private sellerService:SellerService,private propertyService:PropertyService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
 
   propertyFinancialDTO=new PropertyFinancialDTO();
   selectedMorgageNoc: FileList
@@ -63,6 +64,7 @@ export class PropertyFinancialsComponent implements OnInit {
                             propertyFinancialData=>{
                                     console.log(propertyFinancialData);
                                    if(propertyFinancialData.msg=='Property Financial Detail Updated Successfully'){
+                                    this.myToast.Info('Property Status','Property Financial Details Added Successfully');
                                     this.router.navigate(['/propertyRental']);
                                    }
                                   }//end of propertyFinancialData
@@ -73,6 +75,7 @@ export class PropertyFinancialsComponent implements OnInit {
                             propertyFinancialData=>{
                                     console.log(propertyFinancialData);
                                    if(propertyFinancialData.msg=='Property Financial Detail Updated Successfully'){
+                                    this.myToast.Info('Property Status','Property Financial Details Added Successfully');
                                     this. router.navigate(['/propertyRental/next']);
                                    }
                                   }//end of propertyFinancialData
@@ -100,6 +103,7 @@ export class PropertyFinancialsComponent implements OnInit {
             financialData=>{
               console.log(financialData);
               this.propertyFinancialDTO=financialData;
+              this.myToast.Info('Property Status','Property Financial Details Data Loaded Successfully');
             }
           );
         }//end of if

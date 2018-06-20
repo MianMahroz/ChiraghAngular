@@ -13,6 +13,7 @@ export class SignoutComponent implements OnInit {
 
   ngOnInit() {
     this.token.signOut();
+
     this.router.navigate(['../home']);
   }
 

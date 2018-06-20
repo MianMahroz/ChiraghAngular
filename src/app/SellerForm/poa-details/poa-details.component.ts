@@ -49,6 +49,7 @@ export class PoaDetailsComponent implements AfterViewInit {
   }
   rowClicked(row: any): void {
     console.log(row);
+    this.myToast.Info('Status','POA Data Loaded Successfully');
     this.ownerDto=row;
     this.idCardFileUploadPath='../ChiraghDocuments/propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.scannedIdCopy;
     this.passportFileUploadPath='../ChiraghDocuments/propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.passportCopyUpload;
@@ -65,7 +66,7 @@ export class PoaDetailsComponent implements AfterViewInit {
     this.action=this.route.snapshot.params['action'];
     console.log(this.action);
     if(this.action=='back'||this.action=='next'){
-        console.log('Inside Action');
+          console.log('Inside Action');
           this.getAllEnteredPoa();
       }//end of back if
   }
@@ -88,7 +89,7 @@ export class PoaDetailsComponent implements AfterViewInit {
 
   addPOA(operation:string): string {
     if(this.token.getuserName()==null){
-      this.myToast.Success('Status','User Verified Successfully');
+      this.myToast.Error('Status','Invalid Session');
       console.log('Invalid Session');
       return "Invalid Session";
     }
@@ -102,6 +103,7 @@ export class PoaDetailsComponent implements AfterViewInit {
         //this.token.savePropertyId('88');
 
          if(this.token.getPropertyId()==0||this.token.getPropertyId()==null){
+          this.myToast.Error('Status','Property Not Found');
            return "Property Not Found";
          }
               this.ownerDto.ownerType='poa';
@@ -132,6 +134,7 @@ export class PoaDetailsComponent implements AfterViewInit {
                           this.sellerService.updateOwner(this.ownerDto).subscribe(
                                                 data5=>{
                                                   console.log('Update owner');
+
                                                   console.log(data5);
                                                  this.editProcessHelper(operation);
                                                 }//end of update owner data
@@ -150,6 +153,7 @@ export class PoaDetailsComponent implements AfterViewInit {
                 );//end of Passport subscription
                 }//end of seller data
               ); //end of owner save subscription
+              this.myToast.Success('Status','POA Added Successfully');
               return "POA Add Successfully";
         }//end of if
      }//end of outer data predicate
@@ -177,6 +181,7 @@ editProcessHelper(operation:string):void{
           this.atLeastOnePoa=true;
           this.dataSource.data = ownerData;
             console.log(ownerData);
+            // this.myToast.Success('Status','POA data loaded Successfully');
          }//end of ownerData
       );//end of subscription of getOwners
   }//end of else if
@@ -192,10 +197,11 @@ editProcessHelper(operation:string):void{
         if(this.token.getToken()!=null){
           this.sellerService.getPoas(this.token.getPropertyId(),this.token.getuserName()).subscribe(
             ownerData=>{
-            if(ownerData){
+            if(ownerData.length!=0){
                this.atLeastOnePoa=true;
                console.log(ownerData);
                this.dataSource.data = ownerData;
+               this.myToast.Success('Status','POA data loaded Successfully');
             }//end of if on ownerdata check
              }//end of ownerData
          );//end of subscription of getOwners

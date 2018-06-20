@@ -42,6 +42,7 @@ import { SignoutComponent } from './signout/signout.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import { PropertySuccessMsgComponent } from './SellerForm/property-success-msg/property-success-msg.component';
 // enableProdMode();
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import {ToastModule} from 'ng2-toastr/ng2-toastr';
     ForgotPasswordFormComponent,
     SellersecuritypaymentComponent,
     SignoutComponent,
+    PropertySuccessMsgComponent,
 
   ],
   imports: [

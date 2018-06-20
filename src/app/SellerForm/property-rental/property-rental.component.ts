@@ -1,3 +1,4 @@
+import { ToasterServiceService } from './../../toaster-service.service';
 import { Component, OnInit } from '@angular/core';
 import { SellerService } from '../../shared/seller.service';
 import { PropertyService } from '../../shared/property.service';
@@ -14,7 +15,7 @@ import { PropertyRentalDetailDTO } from './propertyRentalDTO';
 })
 export class PropertyRentalComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute,private sellerService:SellerService,private propertyService:PropertyService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
+  constructor(private myToast:ToasterServiceService,private route:ActivatedRoute,private sellerService:SellerService,private propertyService:PropertyService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
   propertyRentalDetailDTO=new PropertyRentalDetailDTO();
   selectedscannedTenentContract: FileList;
   scannedTenentContractFile:File;
@@ -64,6 +65,7 @@ export class PropertyRentalComponent implements OnInit {
                             propertyRentalData=>{
                                     console.log(propertyRentalData);
                                     if(propertyRentalData.msg=='Property Rental Info Updated Successfully'){
+                                      this.myToast.Success('Property Status','Property Rental Details Added Successfully');
                                       this. router.navigate(['/auctionFeeDetails']);
                                     }
 
@@ -76,6 +78,7 @@ export class PropertyRentalComponent implements OnInit {
                                           console.log(propertyRentalData);
                                           if(propertyRentalData.msg=='Property Rental Info Updated Successfully'){
                                             this. router.navigate(['/auctionFeeDetails/next']);
+                                            this.myToast.Success('Property Status','Property Rental Details Added Successfully');
                                           }
 
                                         }//end of propertyFinancialData
@@ -103,6 +106,7 @@ export class PropertyRentalComponent implements OnInit {
             rentalData=>{
               console.log(rentalData);
               this.propertyRentalDetailDTO=rentalData;
+              this.myToast.Info('Property Status','Property Rental Details data Loaded Successfully');
             }
           );
         }//end of if

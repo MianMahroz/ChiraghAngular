@@ -14,7 +14,7 @@ import { TokenStorage } from '../core/token.storage';
 export class ConfirmEmailComponent implements OnInit {
 
   sessionUser:string;
-   constructor(,private myToast:ToasterServiceService,private userService:UserService,private router: Router,  private authService: AuthService, private token: TokenStorage){}
+   constructor(private myToast:ToasterServiceService,private userService:UserService,private router: Router,  private authService: AuthService, private token: TokenStorage){}
   ngOnInit(){
 
   }
