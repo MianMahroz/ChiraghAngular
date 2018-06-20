@@ -1,3 +1,4 @@
+import { ToasterServiceService } from './../../toaster-service.service';
 import { Component, OnInit } from '@angular/core';
 import { OwnerDetails } from '../owner-details/ownerdetails.model';
 import { SellerService } from '../../shared/seller.service';
@@ -32,7 +33,7 @@ export class PoaDetailsComponent implements AfterViewInit {
   action:string;
 
 
-  constructor(private route:ActivatedRoute,private sellerService:SellerService,private userService:UserService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
+  constructor(private myToast:ToasterServiceService,private route:ActivatedRoute,private sellerService:SellerService,private userService:UserService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -87,6 +88,7 @@ export class PoaDetailsComponent implements AfterViewInit {
 
   addPOA(operation:string): string {
     if(this.token.getuserName()==null){
+      this.myToast.Success('Status','User Verified Successfully');
       console.log('Invalid Session');
       return "Invalid Session";
     }

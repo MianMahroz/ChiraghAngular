@@ -1,3 +1,4 @@
+import { ToasterServiceService } from './../toaster-service.service';
 
 import { Component, OnInit } from '@angular/core';
 import { registerDTO} from './registerDTO';
@@ -14,7 +15,7 @@ import {UserService} from '../shared/user.service';
 })
 export class RegisterComponent  {
 
-  constructor(private userService:UserService,private router: Router,  private authService: AuthService, private token: TokenStorage) { }
+  constructor(private myToast:ToasterServiceService,private userService:UserService,private router: Router,  private authService: AuthService, private token: TokenStorage) { }
   registerdto=new registerDTO();
   public barLabel: string = "Password strength:";
   public myColors = ['#DD2C00', '#FF6D00', '#FFD600', '#AEEA00', '#00C853'];
@@ -42,6 +43,7 @@ export class RegisterComponent  {
               console.log(data1);
                    if(data1.msg=="User Created Successfully"){
                     //  this.token.saveUserName(this.registerdto.userName);//saving user to session
+                    this.myToast.Success('Status',data1.msg);
                      this.token.saveTempUser(this.registerdto.userName);
                     this.userService.confirmEmailRequest(this.registerdto.userName).subscribe(
                       data2=>{
@@ -49,6 +51,7 @@ export class RegisterComponent  {
                                console.log(data2);
 
                                if(data2.msg='Email Sent'){
+                                this.myToast.Info('Status',data2.msg);
                                  this.router.navigate(['confirmEmail']);
                                }
                       }//end of email data

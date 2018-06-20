@@ -1,3 +1,4 @@
+import { ToasterServiceService } from './../toaster-service.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../shared/user.service';
@@ -12,8 +13,8 @@ import { TokenStorage } from '../core/token.storage';
 })
 export class RegisterSuccessComponent implements OnInit {
 
-  
-  constructor(private route:ActivatedRoute,private userService:UserService,private router: Router, private authService: AuthService, private token: TokenStorage) { }
+
+  constructor(private myToast:ToasterServiceService,private route:ActivatedRoute,private userService:UserService,private router: Router, private authService: AuthService, private token: TokenStorage) { }
 
   tokenconst:string;
   ngOnInit() {
@@ -21,7 +22,7 @@ export class RegisterSuccessComponent implements OnInit {
       this.confirmEmailByToken();
   }
   confirmEmailByToken() {
-    
+
     window.sessionStorage.removeItem('AuthToken');
     this.authService.attemptAuth().subscribe(
       data => {
@@ -32,17 +33,19 @@ export class RegisterSuccessComponent implements OnInit {
             data1=>{
               console.log(data1);
                    if(data1.msg=="Verified"){
+                    this.myToast.Success('Status','User Verified Successfully');
                        console.log('User Verified');
                    }//end of if
                    else{
-                    // this.router.navigate(['home']);
+                    this.router.navigate(['home']);
+                    this.myToast.Info('Status','User Not Verified ');
                    }
                 }//end of inner data predicate
-                
+
           );//end of inner subscription
         }//end of if
      }//end of outer data predicate
     );//end of outer subscription
   }//end of loginChiraghUser
-  
+
 }

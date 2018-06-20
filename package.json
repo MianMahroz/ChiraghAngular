@@ -12,7 +12,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^5.2.0",
+    "@angular/animations": "^5.2.11",
     "@angular/cdk": "^5.1.0",
     "@angular/common": "^5.2.0",
     "@angular/compiler": "^5.2.0",
@@ -24,11 +24,15 @@
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
     "angular-oauth2-oidc": "^4.0.2",
+    "angular-toastr": "^2.1.1",
     "angular-validation-match": "^1.9.0",
     "core-js": "^2.4.1",
     "ng2-password-strength-bar": "^1.2.1",
+    "ng2-toastr": "^4.1.2",
     "ng4-validators": "^6.0.0",
+    "ngx-toastr": "^8.8.0",
     "rxjs": "^5.5.6",
+    "toastr": "^2.1.4",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {

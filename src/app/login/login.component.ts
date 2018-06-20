@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { ToasterServiceService } from './../toaster-service.service';
+import { ErrorDialogComponent } from './../core/error-dialog.component';
+
+
+import { Component, OnInit,ViewContainerRef } from '@angular/core';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material';
 import {AuthService} from '../core/auth.service';
@@ -8,7 +12,9 @@ import {User} from '../user/user.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {UserService} from '../shared/user.service';
 import { loginDTO } from './loginDTO';
-import { ToastrService } from 'ngx-toastr';
+
+
+//Import ToastsManager
 
 @Component({
   selector: 'app-login',
@@ -17,8 +23,10 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent {
 
-  constructor(private toastr: ToastrService,private userService:UserService,private http: HttpClient,private router: Router, public dialog: MatDialog, private authService: AuthService, private token: TokenStorage) {
+  constructor(private mytoastr:ToasterServiceService,private userService:UserService,private http: HttpClient,private router: Router, public dialog: MatDialog, private authService: AuthService, private token: TokenStorage) {
+
   }
+
   public barLabel: string = "Password strength:";
   public myColors = ['#DD2C00', '#FF6D00', '#FFD600', '#AEEA00', '#00C853'];
   public strengthLabels = ['weak', 'medium', 'strong', 'very strong', 'excellent'];
@@ -32,14 +40,15 @@ export class LoginComponent {
     this.authService.attemptAuth().subscribe(
       data => {
         this.token.saveToken(data.access_token,data.refresh_token,data.expires_in);
-        console.log(data);
-        this.toastr.success('Login', data);
+        // console.log(data);
+
         if(this.token.getToken()!=null){
           this.userService.login(this.logindto.userName,this.logindto.userPassword).subscribe(
             data1=>{
               console.log(data1);
-              this.toastr.success('Login', data1.msg);
+
                    if(data1.msg=="Login Successfully"){
+                    this.mytoastr.Success('Login',data1.msg);
                      this.token.saveUserName(this.logindto.userName);
                        this.router.navigate(['home']);
                    }//end of if

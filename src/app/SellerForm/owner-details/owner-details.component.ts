@@ -1,3 +1,4 @@
+import { ToasterServiceService } from './../../toaster-service.service';
 import { fileUpload } from './fileUpload';
 import { Component, OnInit } from '@angular/core';
 import { TokenStorage } from '../../core/token.storage';
@@ -32,7 +33,7 @@ export class OwnerDetailsComponent implements AfterViewInit {
   idCardFileUploadPath:string;
   passportFileUploadPath:string;
 
-  constructor(private route:ActivatedRoute,private sellerService:SellerService,private userService:UserService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
+  constructor(private myToast:ToasterServiceService,private route:ActivatedRoute,private sellerService:SellerService,private userService:UserService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -49,6 +50,7 @@ export class OwnerDetailsComponent implements AfterViewInit {
   }
   rowClicked(row: any): void {
     console.log(row);
+    this.myToast.Success('Status','Owner Data Loaded Successfully');
     this.ownerDto=row;
     this.pid=92;
     this.fileName=this.ownerDto.idCardNo;
@@ -96,6 +98,7 @@ export class OwnerDetailsComponent implements AfterViewInit {
 
   addOwner(operation:string): string {
     if(this.token.getuserName()==null){
+      this.myToast.Error('Status','Invalid Session');
       console.log('Invalid Session');
       this.router.navigate(['/login']);
       return "Invalid Session";
@@ -113,6 +116,7 @@ export class OwnerDetailsComponent implements AfterViewInit {
                   this.sellerService.createProperty(this.token.getuserName()).subscribe(
                     data11=>{
                       if(!this.token.getPropertyId){
+                        this.myToast.Error('Status','Property Not Created Successfully');
                         return 'Property not Created';
                       }
                          this.token.savePropertyId(data11)
@@ -227,6 +231,7 @@ editProcessHelper(operation:string):void{
       this.sellerService.getOwners(this.token.getPropertyId(),this.token.getuserName()).subscribe(
          ownerData=>{
           this.atLeastOneOwner=true;
+          this.myToast.Success('Status','Owner Add Successfully');
           console.log(ownerData);
             this.dataSource.data = ownerData;
           }//end of ownerData
@@ -244,6 +249,7 @@ editProcessHelper(operation:string):void{
           this.sellerService.getOwners(this.token.getPropertyId(),this.token.getuserName()).subscribe(
             ownerData=>{
              this.atLeastOneOwner=true;
+             this.myToast.Success('Status','Owner Data Loaded Successfully');
              console.log(ownerData);
                this.dataSource.data = ownerData;
              }//end of ownerData

@@ -1,3 +1,4 @@
+import { ToasterServiceService } from './../toaster-service.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../shared/user.service';
@@ -13,7 +14,7 @@ import { TokenStorage } from '../core/token.storage';
 export class ConfirmEmailComponent implements OnInit {
 
   sessionUser:string;
-   constructor(private userService:UserService,private router: Router,  private authService: AuthService, private token: TokenStorage){}
+   constructor(,private myToast:ToasterServiceService,private userService:UserService,private router: Router,  private authService: AuthService, private token: TokenStorage){}
   ngOnInit(){
 
   }
@@ -30,13 +31,15 @@ export class ConfirmEmailComponent implements OnInit {
                       data2=>{
                                console.log(data2);
                                if(data2.msg='Email Sent'){
+                                 this.myToast.Info('Email Status',data2.msg);
                                    this.router.navigate(['/confirmEmail']);
                                }
                       }//end of email data
                     );//end of email subscription
                   }//end of sessionuser Null Check if
                   else{
-                    console.log('session user was not found')
+                    console.log('session user was not found');
+                    this.myToast.Error('Email Status','session user was not found');
                   }
                    }//end of if
      }//end of outer data predicate

@@ -1,3 +1,5 @@
+import { ToasterServiceService } from './toaster-service.service';
+
 import { MaterialModule } from './material/material.component';
 import { PaymentsService } from './shared/seller.payments.service';
 import { AuctionService } from './shared/auction.service';
@@ -6,7 +8,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, enableProdMode } from '@angular/core';
 import { AppComponent } from './app.component';
 import {CustomMaterialModule} from './core/material.module';
-
 import {FormsModule} from '@angular/forms';
 import { UserComponent } from './user/user.component';
 import {AppRoutingModule} from './core/app.routing.module';
@@ -39,8 +40,8 @@ import { PasswordStrengthBarModule } from 'ng2-password-strength-bar';
 import { CustomFormsModule } from 'ng4-validators';
 import { SignoutComponent } from './signout/signout.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
 // enableProdMode();
 @NgModule({
   declarations: [
@@ -69,9 +70,9 @@ import { CommonModule } from '@angular/common';
 
   ],
   imports: [
+    ToastModule.forRoot(),
     CommonModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(), // ToastrModule added
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -81,9 +82,11 @@ import { CommonModule } from '@angular/common';
     PasswordStrengthBarModule,
     CustomFormsModule,
     MaterialModule,
+
+
   ],
   entryComponents: [ErrorDialogComponent],
-  providers: [ErrorDialogComponent, PaymentsService,AuctionService,UserService,SellerService,AuthService, TokenStorage, TokenStorage,SellerService,PropertyService,
+  providers: [ToasterServiceService,ErrorDialogComponent, PaymentsService,AuctionService,UserService,SellerService,AuthService, TokenStorage, TokenStorage,SellerService,PropertyService,
     {provide: HTTP_INTERCEPTORS,
     useClass: Interceptor,
     multi : true}
