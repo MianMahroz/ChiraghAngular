@@ -46,9 +46,9 @@ export class LoginComponent {
           this.userService.login(this.logindto.userName,this.logindto.userPassword).subscribe(
             data1=>{
               console.log(data1);
-
+              this.mytoastr.Error('Login',data1.msg);
                    if(data1.msg=="Login Successfully"){
-                    this.mytoastr.Success('Login',data1.msg);
+                    // this.mytoastr.Success('Login',data1.msg);
                      this.token.saveUserName(this.logindto.userName);
                        this.router.navigate(['home']);
                    }//end of if

@@ -65,6 +65,7 @@ export class PropertyDetailsComponent implements OnInit {
                     this.propertyService.updateProperty(this.propertyDetailsDto).subscribe(
                     propertydata=>{
                         console.log(propertydata);
+                        this.myToast.Info('Status','Property Details Added Successfully')
                         this.router.navigate(['/propertyFinancialDetails']);
                     }//end of propertydata
                   );//end of propertySubscription
