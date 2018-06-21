@@ -194,19 +194,20 @@
                         <div class="file">
                           <input #passFile type="file" name="file" (change)="selectPassport($event)" class="doc-upload" />
                         </div>
-                        <div class="upload-instuct mt-2">Scanned passport copy</div>
-                        <p *ngIf="passportFile" style="color:blue"><br>Passport copy FileName:{{passportFile.name}}</p>
-                        <p *ngIf="ownerDto.passportCopyUpload" style="color:blue"><br>Passport copy FileName:{{ownerDto.passportCopyUpload}}</p>
+                        <div class="upload-instuct mt-2">Scanned passport copy<i class="fas fa-circle-notch fa-spin ml-2"></i></div>
+                        <p *ngIf="passportFile"><br>{{passportFile.name}}</p>
+                        <p *ngIf="ownerDto.passportCopyUpload"><br>{{ownerDto.passportCopyUpload}}</p>
                       </div>
                       <div class="upload-btn-div mt-5">
                         <div class="file">
                           <input #idFile type="file"  (change)="selectIdCopy($event)" name="file" class="doc-upload" />
                         </div>
                         <div class="upload-instuct mt-2">Scanned ID copy
+                          <i class="fas fa-circle-notch fa-spin ml-2"></i>
                           <div class="upload-sub-instruct">(UAE or country of origin)</div>
                         </div>
-                        <p *ngIf="idCopyFile" style="color:blue"><br>ID copy FileName:{{idCopyFile.name}}</p>
-                        <p *ngIf="ownerDto.scannedIdCopy" style="color:blue"><br>ID copy FileName:{{ownerDto.scannedIdCopy}}</p>
+                        <p *ngIf="idCopyFile"><br>{{idCopyFile.name}}</p>
+                        <p *ngIf="ownerDto.scannedIdCopy"><br>{{ownerDto.scannedIdCopy}}</p>
                         <!-- <img src="{{idCardFileUploadPath}}" alt="{{idCardFileUploadPath}}" style="max-width:350px" /> -->
                         <!-- <img src="{{passportFileUploadPath}}" alt="{{passportFileUploadPath}}" style="max-width:350px" /> -->
                       </div>
@@ -228,8 +229,8 @@
         </div>
         <div *ngIf="atLeastOneOwner" class="example-container mat-elevation-z8">
           <div class="example-header">
-            <mat-form-field>
-              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            <mat-form-field class="ml-4">
+              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
             </mat-form-field>
           </div>
           <mat-table #table [dataSource]="dataSource" matSort>
@@ -272,7 +273,7 @@
 
 
             <ng-container matColumnDef="passportExpiryDate">
-              <mat-header-cell *matHeaderCellDef> Passport Expiry  Date</mat-header-cell>
+              <mat-header-cell *matHeaderCellDef> Passport Expiry</mat-header-cell>
               <mat-cell *matCellDef="let element"> {{element.passportExpiryDate}} </mat-cell>
             </ng-container>
 
@@ -292,8 +293,8 @@
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;" (click) = "rowClicked(row)" ></mat-row>
           </mat-table>
-          <mat-paginator [length]="5" [pageSize]="4" [pageSizeOptions]="[5, 10, 25]">
-          </mat-paginator>
+          <!-- <mat-paginator [length]="5" [pageSize]="4" [pageSizeOptions]="[5, 10, 25]">
+          </mat-paginator> -->
         </div>
 
       </div>

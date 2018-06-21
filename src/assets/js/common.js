@@ -1,4 +1,4 @@
-$(document).ready(function(){ 
+$( window ).on( "load", function() { 
   $('#ucSlider .carousel-item').each(function(){
     var next = $(this).next();
     if (!next.length) {
@@ -15,7 +15,6 @@ $(document).ready(function(){
       next.children(':first-child').clone().appendTo($(this));
     }
   });
-  
   $('#simsSlider .carousel-item').each(function(){
     var next = $(this).next();
     if (!next.length) {
@@ -155,7 +154,8 @@ $(document).ready(function(){
   function getCurrentScroll() {
     return window.pageYOffset || document.documentElement.scrollTop;
     }
-  });    
+  }); 
+
 
   $('.btn-view-images').click(function(){
     $('body').addClass('overflow-hidden');
@@ -214,32 +214,4 @@ $(document).ready(function(){
     }
   });
 });	
-
-// Forms fields error msgs
-
-// $('body').on('keydown', '.onlyText', function(e) {
-   
-//   if ( !$('.number-error').hasClass('d-none') ) {
-//     $('.number-error').addClass('d-none');
-//   }
-
-//   var text = $(this).val();
-//   var charCode = (e.which) ? e.which : e.keyCode;
-//   if ((charCode >= 48 && charCode <= 57) || (charCode >= 96 && charCode <= 105)) {
-      
-//     e.preventDefault();  
-//       $('.number-error').removeClass('d-none');
-//     return false;
-//   }
-
-// });
-
-
-
-
-
-
-
-
-
 

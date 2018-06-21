@@ -397,13 +397,30 @@
                   height: 40px;
                 }
               }
+              p {
+                color: @field-placeholder-color !important;
+                margin-left: 50px;
+                display: flex;
+                align-items: flex-end;
+                &::before {
+                  content: "";
+                  background: url("../../assets/images/sprite-image.png") no-repeat -126px -334px;
+                  margin-right: 10px;
+                  width: 34px;
+                  height: 34px;
+                } 
+              }
               .upload-instuct {
                 font-size: 1.25em;
-                color: @placeholder-color;
+                color: @field-placeholder-color;
                 margin-left: 50px;
+                .fa-spin {
+                  font-size: 14px;
+                  display: none;
+                }
                 .upload-sub-instruct {
                   font-size: 16px;
-                  color: @placeholder-color;
+                  color: @field-placeholder-color;
                 }
               } 
             }
@@ -838,6 +855,10 @@
                     bottom: 0;
                     width: 30px;
                   }
+                }
+                p {
+                  color: @field-placeholder-color !important;
+                  margin-left: 50px;
                 }
               }
             }

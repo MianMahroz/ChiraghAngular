@@ -47,16 +47,16 @@
     color: @secondary-color;
   }
   &::placeholder {
-    color: @placeholder-color;
+    color: @field-placeholder-color;
   }
   &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    color: @placeholder-color;
+    color: @field-placeholder-color;
   }
   &::-moz-placeholder { /* Firefox 19+ */
-    color: @placeholder-color;
+    color: @field-placeholder-color;
   }
   &:-ms-input-placeholder { /* IE 10+ */
-    color: @placeholder-color;
+    color: @field-placeholder-color;
   }
   &.form-control {
     &:focus {
@@ -67,20 +67,20 @@
 }
 .footer-input {
   font-size: 0.875em;
-  color: @mono-color;
+  color: @field-placeholder-color;
   border-radius: 0px;
   border: 1px solid @seprator-color;
   &::placeholder {
-    color: @mono-color;
+    color: @field-placeholder-color;
   }
   &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    color: @mono-color;
+    color: @field-placeholder-color;
   }
   &::-moz-placeholder { /* Firefox 19+ */
-    color: @mono-color;
+    color: @field-placeholder-color;
   }
   &:-ms-input-placeholder { /* IE 10+ */
-    color: @mono-color;
+    color: @field-placeholder-color;
   }
   &.form-control {
     &:focus {
@@ -101,16 +101,16 @@
     color: @secondary-color;
   }
   &::placeholder {
-    color: @placeholder-color;
+    color: @field-placeholder-color;
   }
   &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    color: @placeholder-color;
+    color: @field-placeholder-color;
   }
   &::-moz-placeholder { /* Firefox 19+ */
-    color: @placeholder-color;
+    color: @field-placeholder-color;
   }
   &:-ms-input-placeholder { /* IE 10+ */
-    color: @placeholder-color;
+    color: @field-placeholder-color;
   }
   &.form-control {
     &:focus {
@@ -408,7 +408,7 @@ input[type=number] {
     font-size: 18px;
     height: 45px !important;
     border-radius: 2px;
-    color: @secondary-color;
+    color: @field-placeholder-color;
     -webkit-appearance: none;
     -moz-appearance: none;
     background: url("../../assets/images/dropdown-arrow.png") no-repeat 0 0;
@@ -422,7 +422,7 @@ input[type=number] {
     }
   }
   &.placeholder {
-    color: @placeholder-color;
+    color: @field-placeholder-color;
   }  
 }
 
@@ -453,7 +453,7 @@ input:-webkit-autofill {
 
 
 input[type="date"]::before {
-	color: @placeholder-color;
+	color: @field-placeholder-color;
 	content: attr(placeholder);
   width: 100%;
 }
@@ -465,4 +465,9 @@ input[type="date"]:focus::before,
 input[type="date"]:valid::before {
   content: "" !important;
   position: absolute;
+}
+
+input[type="file"] {
+  cursor: pointer;
+  font-size: 0;
 }

@@ -19,6 +19,17 @@ import { FaqsComponent } from '../faqs/faqs.component';
 import { AboutusComponent } from '../aboutus/aboutus.component';
 import { PropertyRentalComponent } from '../SellerForm/property-rental/property-rental.component';
 import { AuctionFeeDetailsComponent } from '../SellerForm/auction-fee-details/auction-fee-details.component';
+import {PrivacypolicyComponent} from '../privacypolicy/privacypolicy.component';
+import { TermsconditionsComponent } from '../termsconditions/termsconditions.component';
+import {DisclamierComponent } from "../disclamier/disclamier.component";
+import {HowitworksComponent  } from "../howitworks/howitworks.component";
+import {ResourcesComponent}  from "../resources/resources.component";
+import { InternationalpropertiesComponent } from '../internationalproperties/internationalproperties.component';
+import { BuyersInvestorsComponent } from '../buyers-investors/buyers-investors.component';
+import { PressreleasesComponent } from '../pressreleases/pressreleases.component';
+import { MortagecalculatorComponent } from '../mortagecalculator/mortagecalculator.component';
+import { ForbuyersComponent } from '../forbuyers/forbuyers.component';
+import { ForhomeownersComponent } from '../forhomeowners/forhomeowners.component';
 
 const routes: Routes = [
   { path: 'user', component: UserComponent },
@@ -48,11 +59,23 @@ const routes: Routes = [
   {path: 'sellerSecurityPayments',component:SellersecuritypaymentComponent},
   {path: 'signout',component:SignoutComponent},
   {path: 'propertySuccess',component:PropertySuccessMsgComponent},
+  {path: 'privacypolicy',component:PrivacypolicyComponent},
+  {path: 'termsconditions',component:TermsconditionsComponent},
+  {path: 'disclamier',component:DisclamierComponent },
+  {path:'howitworks',component:HowitworksComponent},
+  {path:'resources',component:ResourcesComponent},
+  {path:'internationalproperties',component:InternationalpropertiesComponent},
+  {path:'buyersandinvestors',component:BuyersInvestorsComponent},
+  {path:'pressrelease',component:PressreleasesComponent},
+  {path:'mortagecalculator',component:MortagecalculatorComponent},
+  {path:'forbuyers',component:ForbuyersComponent},
+  {path:'forhomeowners',component:ForhomeownersComponent},
 
 ];
 
 @NgModule({
   imports: [
+    // ,{useHash:true}
     RouterModule.forRoot(routes)
   ],
   exports: [

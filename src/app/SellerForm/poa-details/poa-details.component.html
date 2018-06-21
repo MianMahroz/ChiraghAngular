@@ -209,9 +209,9 @@
                       <div class="file">
                         <input type="file"  (change)="selectPassport($event)" name="file" class="doc-upload" />
                       </div>
-                      <div class="upload-instuct mt-2">Scanned passport copy</div>
-                      <p *ngIf="passportFile" style="color:blue"><br>Passport Copy FileName:{{passportFile.name}}</p>
-                      <p *ngIf="ownerDto.passportCopyUpload" style="color:blue"><br>Passport copy FileName:{{ownerDto.passportCopyUpload}}</p>
+                      <div class="upload-instuct mt-2">Scanned passport copy <i class="fas fa-circle-notch fa-spin ml-2"></i></div>
+                      <p *ngIf="passportFile" class="margin-bottom-20-neg"><br>{{passportFile.name}}</p>
+                      <p *ngIf="ownerDto.passportCopyUpload" class="margin-bottom-20-neg"><br>{{ownerDto.passportCopyUpload}}</p>
 
                     </div>
                     <div class="upload-btn-div mt-5">
@@ -219,22 +219,22 @@
                         <input type="file" name="file" (change)="selectIdCopy($event)" class="doc-upload" />
                       </div>
                       <div class="upload-instuct mt-2">
-                        Scanned ID copy
+                        Scanned ID copy <i class="fas fa-circle-notch fa-spin ml-2"></i>
                         <div class="upload-sub-instruct">(UAE or country of origin)</div>
                       </div>
-                      <p *ngIf="idCopyFile" style="color:blue"><br>Id Copy FileName:{{idCopyFile.name}}</p>
-                      <p *ngIf="ownerDto.scannedIdCopy" style="color:blue"><br>ID copy FileName:{{ownerDto.scannedIdCopy}}</p>
+                      <p *ngIf="idCopyFile"><br>{{idCopyFile.name}}</p>
+                      <p *ngIf="ownerDto.scannedIdCopy"><br>{{ownerDto.scannedIdCopy}}</p>
 
                     </div>
                     <div class="upload-btn-div mt-4">
                       <div class="file">
                         <input type="file" name="file"  (change)="selectScannedPoa($event)" class="doc-upload" />
                       </div>
-                      <div class="upload-instuct mt-2">Scanned NOTORIZED POA
+                      <div class="upload-instuct mt-2">Scanned NOTORIZED POA <i class="fas fa-circle-notch fa-spin ml-2"></i>
                         <div class="upload-sub-instruct">(International POA should have the stamp of external affairs and UAE embassy)</div>
                       </div>
-                      <p *ngIf="scannedNotorizedPoaFile" style="color:blue"><br> Notorized POA FileName:{{scannedNotorizedPoaFile.name}}</p>
-                      <p *ngIf="ownerDto.scannedNotorizedCopy" style="color:blue"><br> Notorized Poa FileName:{{ownerDto.scannedNotorizedCopy}}</p>
+                      <p *ngIf="scannedNotorizedPoaFile"><br>{{scannedNotorizedPoaFile.name}}</p>
+                      <p *ngIf="ownerDto.scannedNotorizedCopy"><br>{{ownerDto.scannedNotorizedCopy}}</p>
 
                     </div>
                     <div class="common-checkbox mt-5">
@@ -263,8 +263,8 @@
       </div>
       <div *ngIf="atLeastOnePoa" class="example-container mat-elevation-z8">
         <div class="example-header">
-          <mat-form-field>
-            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+          <mat-form-field class="ml-4">
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
           </mat-form-field>
         </div>
         <mat-table #table [dataSource]="dataSource" matSort>
@@ -307,7 +307,7 @@
 
 
           <ng-container matColumnDef="passportExpiryDate">
-            <mat-header-cell *matHeaderCellDef> Passport Expiry  Date</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef> Passport Expiry</mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.passportExpiryDate}} </mat-cell>
           </ng-container>
 
@@ -327,8 +327,8 @@
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
           <mat-row *matRowDef="let row; columns: displayedColumns;" (click) = "rowClicked(row)" ></mat-row>
         </mat-table>
-        <mat-paginator [length]="5" [pageSize]="4" [pageSizeOptions]="[5, 10, 25]">
-        </mat-paginator>
+        <!-- <mat-paginator [length]="5" [pageSize]="4" [pageSizeOptions]="[5, 10, 25]">
+        </mat-paginator> -->
       </div>
     </div>
   </div>

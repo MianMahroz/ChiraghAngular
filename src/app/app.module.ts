@@ -1,5 +1,4 @@
 import { ToasterServiceService } from './toaster-service.service';
-
 import { MaterialModule } from './material/material.component';
 import { PaymentsService } from './shared/seller.payments.service';
 import { AuctionService } from './shared/auction.service';
@@ -43,6 +42,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import { PropertySuccessMsgComponent } from './SellerForm/property-success-msg/property-success-msg.component';
+import { PrivacypolicyComponent } from './privacypolicy/privacypolicy.component';
+import { TermsconditionsComponent } from './termsconditions/termsconditions.component';
+import { DisclamierComponent } from './disclamier/disclamier.component';
+import { HowitworksComponent } from './howitworks/howitworks.component';
+import { ResourcesComponent } from './resources/resources.component';
+import { InternationalpropertiesComponent } from './internationalproperties/internationalproperties.component';
+import { BuyersInvestorsComponent } from './buyers-investors/buyers-investors.component';
+import { PressreleasesComponent } from './pressreleases/pressreleases.component';
+import { MortagecalculatorComponent } from './mortagecalculator/mortagecalculator.component';
+import { ForbuyersComponent } from './forbuyers/forbuyers.component';
+import { ForhomeownersComponent } from './forhomeowners/forhomeowners.component';
 // enableProdMode();
 @NgModule({
   declarations: [
@@ -69,7 +79,17 @@ import { PropertySuccessMsgComponent } from './SellerForm/property-success-msg/p
     SellersecuritypaymentComponent,
     SignoutComponent,
     PropertySuccessMsgComponent,
-
+    PrivacypolicyComponent,
+    TermsconditionsComponent,
+    DisclamierComponent,
+    HowitworksComponent,
+    ResourcesComponent,
+    InternationalpropertiesComponent,
+    BuyersInvestorsComponent,
+    PressreleasesComponent,
+    MortagecalculatorComponent,
+    ForbuyersComponent,
+    ForhomeownersComponent,
   ],
   imports: [
     ToastModule.forRoot(),
