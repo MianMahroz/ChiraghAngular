@@ -19,22 +19,10 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        // "styles.css",
-        // "../node_modules/ng2-toastr/bundles/ng2-toastr.min.css",
-        // "/src/assets/css/bootstrap.min.css",
-        // "../src/assets/css/fonts/nunito-font.css",
-        // "https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
-
+        "styles.css",
+        "../node_modules/ng2-toastr/bundles/ng2-toastr.min.css"
       ],
-      "scripts": [
-        // "../src/assets/js/jQuery-v3.3.1.min.js",
-        // "../src/assets/js/bootstrap.min.js",
-        // "../src/assets/js/popper.min.js",
-        // "../src/assets/js/fa-all.js",
-        // "../src/assets/js/common.js",
-        // "https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js",
-        // "https://code.jquery.com/jquery-2.2.4.min.js"
-      ],
+      "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

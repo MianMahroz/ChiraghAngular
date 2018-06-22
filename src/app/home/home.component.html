@@ -2,57 +2,65 @@
 	<div class="container-fluid screen-wrapper">
 		<app-header></app-header>
 		<div class="row body-section">
-			<div class="col-md-12">
-				<div class="row home-slider-row">
-					<div class="col-md-12 px-0 home-slider-col">	
-						<div id="index-main-slider" class="carousel carousel-fade slide" data-ride="carousel">
-						  <div class="carousel-inner">
-						    <div class="carousel-item active">
-						      <img class="b-img d-block h-100 w-100" src="./assets/images/main-header-1.jpg" alt="House View">
-						    </div>
-						  </div>
-						</div>
-						<div class="row mx-0 main-search-row">
-							<div class="offset-md-1 col-md-10">
-								<div class="input-group">
-								  <input type="text" class="form-control main-search" placeholder='Try "Villa in Dubai"'>
-								  <button class="btn common-btn slider-search-btn slider-search-btn-top">Search</button>
-								  <a class="advance-search-link circle-plus closed" data-toggle="collapse" href="#advance-search">
+      <div class="col-md-12">
+        <div class="row home-slider-row">
+          <div class="col-md-12 px-0 home-slider-col">  
+            <div id="index-main-slider" class="carousel carousel-fade slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img class="b-img d-block h-100 w-100" src="./assets/images/main-header-1.jpg" alt="House View">
+                </div>
+              </div>
+            </div>
+            <div class="row mx-0 main-search-row">
+              <div class="offset-md-1 col-md-10">
+                <div class="input-group">
+                  <input type="text" class="form-control main-search" placeholder='Try "Villa in Dubai"'>
+                  <button class="btn common-btn slider-search-btn slider-search-btn-top">Search</button>
+                  <a href="#advance-search" class="advance-search-link circle-plus closed" data-toggle="collapse">
                     <div class="circle">
                       <div class="horizontal"></div>
                       <div class="vertical"></div>
                     </div>        
                   </a>
-                  <div class="collapse advance-search-body" id="advance-search">
+                  <div id="advance-search" class="collapse advance-search-body">
                     <div class="search-heading my-3">Advance Search</div>
                     <div class="advance-options-wrap">
                       <div class="row">
                         <div class="col-md-3 form-label-group mb-xs-3">
                           <select class="form-control adnvance-search-select">
                             <option selected>Type of Area</option>
-                            <option>Square</option>
-                            <option>Feet</option>
+                            <option>N/A</option>
+                            <option>N/A</option>
                           </select>
                         </div>
                         <div class="col-md-3 form-label-group mb-xs-3">
                           <select class="form-control adnvance-search-select">
                             <option selected>Type of Property</option>
-                            <option>Square</option>
-                            <option>Feet</option>
+                            <option>Studio</option>
+                            <option>Apartment</option>
+                            <option>Duplex</option>
+                            <option>Villa</option>
+                            <option>Townhouse</option>
+                            <option>Office</option>
+                            <option>Retail</option>
+                            <option>Land</option>
+                            <option>Labor camp</option>
+                            <option>Full building</option>
                           </select>
                         </div>
                         <div class="col-md-3 form-label-group mb-xs-3">
                           <select class="form-control adnvance-search-select">
                             <option selected>Status</option>
-                            <option>Square</option>
-                            <option>Feet</option>
+                            <option>Offplan</option>
+                            <option>Ready</option>
                           </select>
                         </div>
                         <div class="col-md-3 form-label-group">
                           <select class="form-control adnvance-search-select">
                             <option selected>City</option>
-                            <option>Square</option>
-                            <option>Feet</option>
+                            <option>N/A</option>
+                            <option>N/A</option>
                           </select>
                         </div>
                       </div>
@@ -63,15 +71,22 @@
                             <div class="col-md-6 form-label-group pr-1 pr-xs-15 mb-xs-3">
                               <select class="form-control adnvance-search-select">
                                 <option selected>Beds(min)</option>
-                                <option>1</option>
-                                <option>2</option>
+                                <option>Studio</option>
+                                <option>1 Bed</option>
+                                <option>2 Bed</option>
+                                <option>3 Bed</option>
+                                <option>4 Bed</option>
+                                <option>5 Bed</option>
                               </select>
                             </div>
                             <div class="col-md-6 form-label-group pl-1 pl-xs-15 mb-xs-3">
                               <select class="form-control adnvance-search-select">
                                 <option selected>Beds(max)</option>
-                                <option>5</option>
-                                <option>20</option>
+                                <option>1 Bed</option>
+                                <option>2 Bed</option>
+                                <option>3 Bed</option>
+                                <option>4 Bed</option>
+                                <option>5 Bed</option>
                               </select>
                             </div>
                           </div>
@@ -81,15 +96,15 @@
                             <div class="col-md-6 form-label-group mb-xs-3 pr-1 pr-xs-15">
                               <select class="form-control adnvance-search-select">
                                 <option selected>Baths(min)</option>
-                                <option>1</option>
-                                <option>2</option>
+                                <option>N/A</option>
+                                <option>N/A</option>
                               </select>
                             </div>
                             <div class="col-md-6 form-label-group mb-xs-3 pl-1 pl-xs-15">
                               <select class="form-control adnvance-search-select">
                                 <option selected>Baths(max)</option>
-                                <option>5</option>
-                                <option>20</option>
+                                <option>N/A</option>
+                                <option>N/A</option>
                               </select>
                             </div>
                           </div>
@@ -99,15 +114,15 @@
                             <div class="col-md-6 mb-xs-3 form-label-group pr-1 pr-xs-15">
                               <select class="form-control adnvance-search-select">
                                 <option selected>Car parking</option>
-                                <option>1</option>
-                                <option>2</option>
+                                <option>N/A</option>
+                                <option>N/A</option>
                               </select>
                             </div>
                             <div class="col-md-6 mb-xs-3 form-label-group pl-1 pl-xs-15">
                               <select class="form-control adnvance-search-select">
                                 <option selected>Holding type</option>
-                                <option>5</option>
-                                <option>20</option>
+                                <option>Freehold</option>
+                                <option>Leasehold</option>
                               </select>
                             </div>
                           </div>
@@ -117,15 +132,15 @@
                             <div class="col-md-6 mb-xs-3 form-label-group pr-1 pr-xs-15">
                               <select class="form-control adnvance-search-select">
                                 <option selected>Price(min)</option>
-                                <option>1</option>
-                                <option>2</option>
+                                <option>N/A</option>
+                                <option>N/A</option>
                               </select>
                             </div>
                             <div class="col-md-6 mb-xs-3 form-label-group pl-1 pl-xs-15">
                               <select class="form-control adnvance-search-select">
                                 <option selected>Price(max)</option>
-                                <option>5</option>
-                                <option>20</option>
+                                <option>N/A</option>
+                                <option>N/A</option>
                               </select>
                             </div>
                           </div>
@@ -138,15 +153,15 @@
                             <div class="col-md-6 mb-xs-3 form-label-group pr-1 pr-xs-15">
                               <select class="form-control adnvance-search-select">
                                 <option selected>Size(min)</option>
-                                <option>1</option>
-                                <option>2</option>
+                                <option>N/A</option>
+                                <option>N/A</option>
                               </select>
                             </div>
                             <div class="col-md-6 mb-xs-3 form-label-group pl-1 pl-xs-15">
                               <select class="form-control adnvance-search-select">
                                 <option selected>Size(max)</option>
-                                <option>5</option>
-                                <option>20</option>
+                                <option>N/A</option>
+                                <option>N/A</option>
                               </select>
                             </div>
                           </div>
@@ -156,15 +171,15 @@
                             <div class="col-md-6 mb-xs-3 form-label-group pr-1 pr-xs-15">
                               <select class="form-control adnvance-search-select">
                                 <option selected>Rent status</option>
-                                <option>1</option>
-                                <option>2</option>
+                                <option>Rented</option>
+                                <option>Vacant</option>
                               </select>
                             </div>
                             <div class="col-md-6 mb-xs-3 form-label-group pl-1 pl-xs-15">
                               <select class="form-control adnvance-search-select">
                                 <option selected>Furnished</option>
-                                <option>5</option>
-                                <option>20</option>
+                                <option>Yes</option>
+                                <option>No</option>
                               </select>
                             </div>
                           </div>
@@ -174,15 +189,15 @@
                             <div class="col-md-6 mb-xs-3 pr-xs-15 form-label-group pr-1">
                               <select class="form-control adnvance-search-select">
                                 <option selected>Kitchen</option>
-                                <option>1</option>
-                                <option>2</option>
+                                <option>Open</option>
+                                <option>Close</option>
                               </select>
                             </div>
                             <div class="col-md-6 mb-xs-3 form-label-group pl-1 pl-xs-15">
                               <select class="form-control adnvance-search-select">
                                 <option selected>Maid's room</option>
-                                <option>5</option>
-                                <option>20</option>
+                                <option>Yes</option>
+                                <option>No</option>
                               </select>
                             </div>
                           </div>
@@ -191,18 +206,18 @@
                     </div>
                     <button class="btn common-btn slider-search-btn mt-3">Search</button>
                   </div>
-								</div>
-							</div>
-						</div>
-					</div>	
-				</div>
-				<div class="row mt-5 mt-xs-3">
-					<div class="offset-md-1 col-md-10">
-						<div class="row current-auction-row">
-							<div class="col-md-12 current-auction-col">
-								<div class="up-header title-secondary-26 pb-3">Upcomming Auctions</div>
-							</div>
-						</div>
+                </div>
+              </div>
+            </div>
+          </div>  
+        </div>
+        <div class="row mt-5 mt-xs-3">
+          <div class="offset-md-1 col-md-10">
+            <div class="row current-auction-row">
+              <div class="col-md-12 current-auction-col">
+                <div class="up-header title-secondary-26 pb-3">Upcomming Auctions</div>
+              </div>
+            </div>
             <div id="ucSlider" class="auc-index-slider ca-blocks-row pb-5 carousel slide w-100" data-ride="carousel" data-interval="false">
               <div class="carousel-inner block-inner w-100" role="listbox">
                 <div class="carousel-item block-item active">
@@ -217,10 +232,10 @@
                         <a href="#" class="watch-list-link"></a>
                       </div>
                     </div>
-                    <div class="ca-block-heading mt-2">
+                    <a href="#" class="ca-block-heading mt-2">
                       Awesome Property Heading
                       <div class="ca-sub-block-heading">Location</div>
-                    </div>
+                    </a>
                     <div class="ca-entity mt-3 pb-4"><span class="count square-icon">167</span><span class="count ml-4 bed-icon">3</span><span class="count ml-4 bath-icon">4</span></div>   
                   </div>
                 </div>
@@ -236,10 +251,10 @@
                         <a href="#" class="watch-list-link"></a>
                       </div>
                     </div>
-                    <div class="ca-block-heading mt-2">
+                    <a href="#" class="ca-block-heading mt-2">
                       Awesome Property Heading
                       <div class="ca-sub-block-heading">Location</div>
-                    </div>
+                    </a>
                     <div class="ca-entity mt-3 pb-4"><span class="count square-icon">167</span><span class="count ml-4 bed-icon">3</span><span class="count ml-4 bath-icon">4</span></div>   
                   </div> 
                 </div>
@@ -255,10 +270,10 @@
                         <a href="#" class="watch-list-link"></a>
                       </div>
                     </div>
-                    <div class="ca-block-heading mt-2">
+                    <a href="#" class="ca-block-heading mt-2">
                       Awesome Property Heading
                       <div class="ca-sub-block-heading">Location</div>
-                    </div>
+                    </a>
                     <div class="ca-entity mt-3 pb-4"><span class="count square-icon">167</span><span class="count ml-4 bed-icon">3</span><span class="count ml-4 bath-icon">4</span></div>   
                   </div>
                 </div>
@@ -274,10 +289,10 @@
                         <a href="#" class="watch-list-link"></a>
                       </div>
                     </div>
-                    <div class="ca-block-heading mt-2">
+                    <a href="#" class="ca-block-heading mt-2">
                       Awesome Property Heading
                       <div class="ca-sub-block-heading">Location</div>
-                    </div>
+                    </a>
                     <div class="ca-entity mt-3 pb-4"><span class="count square-icon">167</span><span class="count ml-4 bed-icon">3</span><span class="count ml-4 bath-icon">4</span></div>   
                   </div>
                 </div>
@@ -291,109 +306,109 @@
                   <span class="sr-only">Next</span>
               </a>
             </div>
-					</div>
-				</div>
-				<div class="row mt-5 mt-xs-3">
-					<div class="offset-md-1 col-md-10">
-						<div class="row current-auction-row-wrap">
-							<div class="col-md-12 current-auction-col">
-								<div class="title-secondary-26 auction-title pb-3">
-									Current Auctions
-									<div class="sub-title">The motivated sellers are keen to seek your attention</div>
-								</div>
-								<div class="auctions-wrapper">
-									<div class="table-responsive">
-										<table class="table auctions-table table-hover">
-										  <thead>
-										    <tr>
-										      <th scope="col">Property Name</th>
-										      <th scope="col">Type</th>
-										      <th scope="col">Basic Info</th>
-										      <th scope="col">Price</th>
-										      <th scope="col"></th>
-										    </tr>
-										  </thead>
-										  <tbody>
-										    <tr>
-										      <td class="prop-name-td">
-										      	<div class="prop-name-td-block">
-										      		<div class="auction-img"></div>
-											      	<div class="ac-img-descript">
-											      		<span class="ac-title mt-2">466 Smith Street</span>
-																<span class="ac-descript mt-2">Collingwood, VIC 3066</span>	
-											      	</div>
-										      	</div>
-										      </td>
-										      <td>Building</td>
-										      <td>
-										      	<span class="mr-3">168ft<sup>2</sup></span><span class="mr-3">3 bed</span><span>2 bath</span>
-										      </td>
-										      <td>460,000</td>
-										      <td class="text-center">
-										      	<button class="btn common-btn ac-detail-btn">More detail</button>
-										      </td>
-										    </tr>
-										    <tr>
-										      <td class="prop-name-td">
-										      	<div class="prop-name-td-block">
-										      		<div class="auction-img"></div>
-											      	<div class="ac-img-descript">
-											      		<span class="ac-title mt-2">466 Smith Street</span>
-																<span class="ac-descript mt-2">Collingwood, VIC 3066</span>	
-											      	</div>
-										      	</div>
-										      </td>
-										      <td>Building</td>
-										      <td>
-										      	<span class="mr-3">168ft<sup>2</sup></span><span class="mr-3">3 bed</span><span>2 bath</span>
-										      </td>
-										      <td>460,000</td>
-										      <td class="text-center">
-										      	<button class="btn common-btn ac-detail-btn">More detail</button>
-										      </td>
-										    </tr>
-										    <tr>
-										      <td class="prop-name-td">
-										      	<div class="prop-name-td-block">
-										      		<div class="auction-img"></div>
-											      	<div class="ac-img-descript">
-											      		<span class="ac-title mt-2">466 Smith Street</span>
-																<span class="ac-descript mt-2">Collingwood, VIC 3066</span>	
-											      	</div>
-										      	</div>
-										      </td>
-										      <td>Building</td>
-										      <td>
-										      	<span class="mr-3">168ft<sup>2</sup></span><span class="mr-3">3 bed</span><span>2 bath</span>
-										      </td>
-										      <td>460,000</td>
-										      <td class="text-center">
-										      	<button class="btn common-btn ac-detail-btn">More detail</button>
-										      </td>
-										    </tr>
-										    <tr>
-										      <td class="prop-name-td">
-										      	<div class="prop-name-td-block">
-										      		<div class="auction-img"></div>
-											      	<div class="ac-img-descript">
-											      		<span class="ac-title mt-2">466 Smith Street</span>
-																<span class="ac-descript mt-2">Collingwood, VIC 3066</span>	
-											      	</div>
-										      	</div>
-										      </td>
-										      <td>Building</td>
-										      <td>
-										      	<span class="mr-3">168ft<sup>2</sup></span><span class="mr-3">3 bed</span><span>2 bath</span>
-										      </td>
-										      <td>460,000</td>
-										      <td class="text-center">
-										      	<button class="btn common-btn ac-detail-btn">More detail</button>
-										      </td>
-										    </tr>
-										  </tbody>
-										</table>
-									</div>	
-									<div class="pagination-wrap pb-4">
+          </div>
+        </div>
+        <div class="row mt-5 mt-xs-3">
+          <div class="offset-md-1 col-md-10">
+            <div class="row current-auction-row-wrap">
+              <div class="col-md-12 current-auction-col">
+                <div class="title-secondary-26 auction-title pb-3">
+                  Current Auctions
+                  <div class="sub-title">The motivated sellers are keen to seek your attention</div>
+                </div>
+                <div class="auctions-wrapper">
+                  <div class="table-responsive">
+                    <table class="table auctions-table table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">Property Name</th>
+                          <th scope="col">Type</th>
+                          <th scope="col">Basic Info</th>
+                          <th scope="col">Price</th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="prop-name-td">
+                            <div class="prop-name-td-block">
+                              <div class="auction-img"></div>
+                              <div class="ac-img-descript">
+                                <span class="ac-title mt-2">466 Smith Street</span>
+                                <span class="ac-descript mt-2">Collingwood, VIC 3066</span> 
+                              </div>
+                            </div>
+                          </td>
+                          <td>Building</td>
+                          <td>
+                            <span class="mr-3">168ft<sup>2</sup></span><span class="mr-3">3 bed</span><span>2 bath</span>
+                          </td>
+                          <td>460,000</td>
+                          <td class="text-center">
+                            <button class="btn common-btn ac-detail-btn">More detail</button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="prop-name-td">
+                            <div class="prop-name-td-block">
+                              <div class="auction-img"></div>
+                              <div class="ac-img-descript">
+                                <span class="ac-title mt-2">466 Smith Street</span>
+                                <span class="ac-descript mt-2">Collingwood, VIC 3066</span> 
+                              </div>
+                            </div>
+                          </td>
+                          <td>Building</td>
+                          <td>
+                            <span class="mr-3">168ft<sup>2</sup></span><span class="mr-3">3 bed</span><span>2 bath</span>
+                          </td>
+                          <td>460,000</td>
+                          <td class="text-center">
+                            <button class="btn common-btn ac-detail-btn">More detail</button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="prop-name-td">
+                            <div class="prop-name-td-block">
+                              <div class="auction-img"></div>
+                              <div class="ac-img-descript">
+                                <span class="ac-title mt-2">466 Smith Street</span>
+                                <span class="ac-descript mt-2">Collingwood, VIC 3066</span> 
+                              </div>
+                            </div>
+                          </td>
+                          <td>Building</td>
+                          <td>
+                            <span class="mr-3">168ft<sup>2</sup></span><span class="mr-3">3 bed</span><span>2 bath</span>
+                          </td>
+                          <td>460,000</td>
+                          <td class="text-center">
+                            <button class="btn common-btn ac-detail-btn">More detail</button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="prop-name-td">
+                            <div class="prop-name-td-block">
+                              <div class="auction-img"></div>
+                              <div class="ac-img-descript">
+                                <span class="ac-title mt-2">466 Smith Street</span>
+                                <span class="ac-descript mt-2">Collingwood, VIC 3066</span> 
+                              </div>
+                            </div>
+                          </td>
+                          <td>Building</td>
+                          <td>
+                            <span class="mr-3">168ft<sup>2</sup></span><span class="mr-3">3 bed</span><span>2 bath</span>
+                          </td>
+                          <td>460,000</td>
+                          <td class="text-center">
+                            <button class="btn common-btn ac-detail-btn">More detail</button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>  
+                  <div class="pagination-wrap pb-4">
                     <nav>
                       <ul class="pagination justify-content-center mb-0">
                         <li class="page-item d-none"><a class="page-link prev-link mr-2" href="#"><i class="fas fa-chevron-left"></i></a></li>
@@ -406,18 +421,18 @@
                       </ul>
                     </nav>
                   </div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row mt-5 mt-xs-3">
-					<div class="offset-md-1 col-md-10">
-						<div class="row current-auction-row">
-							<div class="col-md-12 current-auction-col">
-								<div class="up-header title-secondary-26 pb-3">Similar Searches</div>
-							</div>
-						</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-5 mt-xs-3">
+          <div class="offset-md-1 col-md-10">
+            <div class="row current-auction-row">
+              <div class="col-md-12 current-auction-col">
+                <div class="up-header title-secondary-26 pb-3">Similar Searches</div>
+              </div>
+            </div>
             <div id="simsSlider" class="auc-index-slider ca-blocks-row pb-5 carousel slide w-100" data-ride="carousel" data-interval="false">
               <div class="carousel-inner block-inner2 w-100" role="listbox">
                 <div class="carousel-item block-item2 active">
@@ -432,10 +447,10 @@
                         <a href="#" class="watch-list-link"></a>
                       </div>
                     </div>
-                    <div class="ca-block-heading mt-2">
+                    <a href="#" class="ca-block-heading mt-2">
                       Awesome Property Heading
                       <div class="ca-sub-block-heading">Location</div>
-                    </div>
+                    </a>
                     <div class="ca-entity mt-3 border-none"><span class="count square-icon">167</span><span class="count ml-4 bed-icon">3</span><span class="count ml-4 bath-icon">4</span></div>   
                   </div>
                 </div>
@@ -451,10 +466,10 @@
                         <a href="#" class="watch-list-link"></a>
                       </div>
                     </div>
-                    <div class="ca-block-heading mt-2">
+                    <a href="#" class="ca-block-heading mt-2">
                       Awesome Property Heading
                       <div class="ca-sub-block-heading">Location</div>
-                    </div>
+                    </a>
                     <div class="ca-entity mt-3 border-none"><span class="count square-icon">167</span><span class="count ml-4 bed-icon">3</span><span class="count ml-4 bath-icon">4</span></div>   
                   </div> 
                 </div>
@@ -470,10 +485,10 @@
                         <a href="#" class="watch-list-link"></a>
                       </div>
                     </div>
-                    <div class="ca-block-heading mt-2">
+                    <a href="#" class="ca-block-heading mt-2">
                       Awesome Property Heading
                       <div class="ca-sub-block-heading">Location</div>
-                    </div>
+                    </a>
                     <div class="ca-entity mt-3 border-none"><span class="count square-icon">167</span><span class="count ml-4 bed-icon">3</span><span class="count ml-4 bath-icon">4</span></div>   
                   </div>
                 </div>
@@ -489,10 +504,10 @@
                         <a href="#" class="watch-list-link"></a>
                       </div>
                     </div>
-                    <div class="ca-block-heading mt-2">
+                    <a href="#" class="ca-block-heading mt-2">
                       Awesome Property Heading
                       <div class="ca-sub-block-heading">Location</div>
-                    </div>
+                    </a>
                     <div class="ca-entity mt-3 border-none"><span class="count square-icon">167</span><span class="count ml-4 bed-icon">3</span><span class="count ml-4 bath-icon">4</span></div>   
                   </div>
                 </div>
@@ -506,10 +521,10 @@
                   <span class="sr-only">Next</span>
               </a>
             </div>
-					</div>
-				</div>
-			</div>
-		</div>
+          </div>
+        </div>
+      </div>
+    </div>
 		<app-footer></app-footer>
 	</div>
   

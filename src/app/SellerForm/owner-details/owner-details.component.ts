@@ -16,6 +16,16 @@ import {AfterViewInit, ViewChild} from '@angular/core';
   styleUrls: ['./owner-details.component.css']
 })
 export class OwnerDetailsComponent implements AfterViewInit {
+   
+  private loadScript(scriptUrl: string) {
+    return new Promise((resolve, reject) => {
+      const scriptElement = document.createElement('script');
+      scriptElement.src = scriptUrl;
+      scriptElement.onload = resolve;
+      document.body.appendChild(scriptElement);
+    })
+  }
+
   displayedColumns = ['propertySellerId', 'firstName', 'middleName', 'lastName','nationality','idCardNo','idCardExpiration','passportNo','passportExpiryDate','telephone','mobile'];
   dataSource = new MatTableDataSource<OwnerDetails>();
   atLeastOneOwner=false;
@@ -39,6 +49,7 @@ export class OwnerDetailsComponent implements AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
   ngAfterViewInit() {
+    this.loadScript('./assets/js/common.js');
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }

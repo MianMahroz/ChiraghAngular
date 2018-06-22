@@ -16,6 +16,14 @@ import {AfterViewInit, ViewChild} from '@angular/core';
   styleUrls: ['./poa-details.component.css']
 })
 export class PoaDetailsComponent implements AfterViewInit {
+  private loadScript(scriptUrl: string) {
+    return new Promise((resolve, reject) => {
+      const scriptElement = document.createElement('script');
+      scriptElement.src = scriptUrl;
+      scriptElement.onload = resolve;
+      document.body.appendChild(scriptElement);
+    })
+  }
   ownerDto=new OwnerDetails();
   selectedPassport: FileList
   selectedIdCopy: FileList
@@ -40,6 +48,7 @@ export class PoaDetailsComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.loadScript('./assets/js/common.js');
   }
 
   applyFilter(filterValue: string) {

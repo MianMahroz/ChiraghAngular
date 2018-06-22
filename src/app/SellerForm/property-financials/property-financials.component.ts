@@ -15,6 +15,19 @@ import { SellerService } from '../../shared/seller.service';
 })
 export class PropertyFinancialsComponent implements OnInit {
 
+  async ngAfterViewInit() {
+		await this.loadScript('./assets/js/common.js');
+	}
+
+  private loadScript(scriptUrl: string) {
+    return new Promise((resolve, reject) => {
+      const scriptElement = document.createElement('script');
+      scriptElement.src = scriptUrl;
+      scriptElement.onload = resolve;
+      document.body.appendChild(scriptElement);
+    })
+  }
+
   constructor(private myToast:ToasterServiceService,private route:ActivatedRoute,private sellerService:SellerService,private propertyService:PropertyService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
 
   propertyFinancialDTO=new PropertyFinancialDTO();

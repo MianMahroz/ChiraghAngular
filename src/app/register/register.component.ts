@@ -14,7 +14,18 @@ import {UserService} from '../shared/user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent  {
-
+  async ngAfterViewInit() {
+		await this.loadScript('./assets/js/common.js');
+	}
+   
+  private loadScript(scriptUrl: string) {
+    return new Promise((resolve, reject) => {
+      const scriptElement = document.createElement('script');
+      scriptElement.src = scriptUrl;
+      scriptElement.onload = resolve;
+      document.body.appendChild(scriptElement);
+    })
+  }
   constructor(private myToast:ToasterServiceService,private userService:UserService,private router: Router,  private authService: AuthService, private token: TokenStorage) { }
   registerdto=new registerDTO();
   public barLabel: string = "Password strength:";
