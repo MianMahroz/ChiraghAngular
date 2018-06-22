@@ -211,7 +211,7 @@
                       </div>
                       <div class="upload-instuct mt-2">Scanned passport copy <i class="fas fa-circle-notch fa-spin ml-2"></i></div>
                       <p *ngIf="passportFile" class="margin-bottom-20-neg"><br>{{passportFile.name}}</p>
-                      <p *ngIf="ownerDto.passportCopyUpload" class="margin-bottom-20-neg"><br>{{ownerDto.passportCopyUpload}}</p>
+                      <p *ngIf="ownerDto.passportCopyUpload&&action=='next'||action=='back'" class="margin-bottom-20-neg"><br>{{ownerDto.passportCopyUpload}}</p>
 
                     </div>
                     <div class="upload-btn-div mt-5">
@@ -223,7 +223,7 @@
                         <div class="upload-sub-instruct">(UAE or country of origin)</div>
                       </div>
                       <p *ngIf="idCopyFile"><br>{{idCopyFile.name}}</p>
-                      <p *ngIf="ownerDto.scannedIdCopy"><br>{{ownerDto.scannedIdCopy}}</p>
+                      <p *ngIf="ownerDto.scannedIdCopy&&action=='next'||action=='back'"><br>{{ownerDto.scannedIdCopy}}</p>
 
                     </div>
                     <div class="upload-btn-div mt-4">
@@ -234,7 +234,7 @@
                         <div class="upload-sub-instruct">(International POA should have the stamp of external affairs and UAE embassy)</div>
                       </div>
                       <p *ngIf="scannedNotorizedPoaFile"><br>{{scannedNotorizedPoaFile.name}}</p>
-                      <p *ngIf="ownerDto.scannedNotorizedCopy"><br>{{ownerDto.scannedNotorizedCopy}}</p>
+                      <p *ngIf="ownerDto.scannedNotorizedCopy&&action=='next'||action=='back'"><br>{{ownerDto.scannedNotorizedCopy}}</p>
 
                     </div>
                     <div class="common-checkbox mt-5">
@@ -269,20 +269,20 @@
         </div>
         <mat-table #table [dataSource]="dataSource" matSort>
 
-          <ng-container matColumnDef="propertySellerId">
+          <!-- <ng-container matColumnDef="propertySellerId">
             <mat-header-cell *matHeaderCellDef> Owner Id </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.propertySellerId}} </mat-cell>
-          </ng-container>
+          </ng-container> -->
 
           <ng-container matColumnDef="firstName">
             <mat-header-cell *matHeaderCellDef mat-sort-header> First Name </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="middleName">
+          <!-- <ng-container matColumnDef="middleName">
             <mat-header-cell *matHeaderCellDef> Middle Name </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.middleName}} </mat-cell>
-          </ng-container>
+          </ng-container> -->
 
           <ng-container matColumnDef="lastName">
             <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
@@ -292,14 +292,14 @@
             <mat-header-cell *matHeaderCellDef>  Nationality </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.nationality}} </mat-cell>
           </ng-container>
-          <ng-container matColumnDef="idCardNo">
+          <!-- <ng-container matColumnDef="idCardNo">
             <mat-header-cell *matHeaderCellDef> Id Card No </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.idCardNo}} </mat-cell>
-          </ng-container>
-          <ng-container matColumnDef="idCardExpiration">
+          </ng-container> -->
+          <!-- <ng-container matColumnDef="idCardExpiration">
             <mat-header-cell *matHeaderCellDef> Id Card Expiry </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.idCardExpiration}} </mat-cell>
-          </ng-container>
+          </ng-container> -->
           <ng-container matColumnDef="passportNo">
             <mat-header-cell *matHeaderCellDef> Passport No </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.passportNo}} </mat-cell>
@@ -312,11 +312,11 @@
           </ng-container>
 
 
-          <ng-container matColumnDef="telephone">
+          <!-- <ng-container matColumnDef="telephone">
             <mat-header-cell *matHeaderCellDef> Phone Number </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.telephone}} </mat-cell>
           </ng-container>
-
+-->
 
           <ng-container matColumnDef="mobile">
             <mat-header-cell *matHeaderCellDef> Mobile </mat-header-cell>

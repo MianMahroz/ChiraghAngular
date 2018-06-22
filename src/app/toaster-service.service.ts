@@ -18,4 +18,5 @@ Error(title:string,message?:string){
 Info(title:string,message?:string){
   toastr.info(title,message);
 }
+
 }

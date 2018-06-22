@@ -31,13 +31,7 @@
                   </div>
                   <div class="input-wrapper form-label-group mb-4">
                     <input  minlength="8"  #userPassword="ngModel" maxlength="15" type="password" class="form-control form-input" name="userPassword" [(ngModel)]="logindto.userPassword" placeholder="Password" required>
-                    <ng2-password-strength-bar
-                    [passwordToCheck]="logindto.userPassword"
-                    [barLabel]="barLabel"
-                    [barColors]="myColors"
 
-                    [strengthLabels]="strengthLabels">
-                  </ng2-password-strength-bar>
                     <label for="stuff" class="fa fa-lock input-icon"></label>
 
                     <div *ngIf="userPassword.errors && (userPassword.dirty || userPassword.touched)" class="alert alert-danger">
