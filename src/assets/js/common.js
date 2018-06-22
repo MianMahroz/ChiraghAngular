@@ -1,4 +1,4 @@
-$( window ).on( "load", function() { 
+$(document).ready(function(){
   $('#ucSlider .carousel-item').each(function(){
     var next = $(this).next();
     if (!next.length) {
@@ -31,32 +31,6 @@ $( window ).on( "load", function() {
       next.children(':first-child').clone().appendTo($(this));
     }
   });
-  // $('#ucSlider').on('slide.bs.carousel', function (e) {
-  //   /*
-
-  //   CC 2.0 License Iatek LLC 2018
-  //   Attribution required
-    
-  //   */
-
-  //   var $e = $(e.relatedTarget);
-  //   var idx = $e.index();
-  //   var itemsPerSlide = 3;
-  //   var totalItems = $('.block-item').length;
-    
-  //   if (idx >= totalItems-(itemsPerSlide-1)) {
-  //       var it = itemsPerSlide - (totalItems - idx);
-  //       for (var i=0; i<it; i++) {
-  //           // append slides to end
-  //           if (e.direction=="left") {
-  //               $('.block-item').eq(i).appendTo('.block-inner');
-  //           }
-  //           else {
-  //               $('.block-item').eq(0).appendTo('.block-inner');
-  //           }
-  //       }
-  //   }
-  // });
   
 
   var checkitem = function() {
@@ -77,8 +51,6 @@ $( window ).on( "load", function() {
 
   $("#ucSlider").on("slid.bs.carousel", "", checkitem);
 
-
-
   var checkitem = function() {
     var $this;
     $this = $("#simsSlider");
@@ -95,32 +67,6 @@ $( window ).on( "load", function() {
   checkitem();
 
   $("#simsSlider").on("slid.bs.carousel", "", checkitem);
-  // $('#acceptBiducSlider').on('slide.bs.carousel', function (e) {
-  //   /*
-
-  //   CC 2.0 License Iatek LLC 2018
-  //   Attribution required
-    
-  //   */
-
-  //   var $e = $(e.relatedTarget);
-  //   var idx = $e.index();
-  //   var itemsPerSlide = 3;
-  //   var totalItems = $('.block-item-ab').length;
-    
-  //   if (idx >= totalItems-(itemsPerSlide-1)) {
-  //       var it = itemsPerSlide - (totalItems - idx);
-  //       for (var i=0; i<it; i++) {
-  //           // append slides to end
-  //           if (e.direction=="left") {
-  //               $('.block-item-ab').eq(i).appendTo('.block-inner-ab');
-  //           }
-  //           else {
-  //               $('.block-item-ab').eq(0).appendTo('.block-inner-ab');
-  //           }
-  //       }
-  //   }
-  // });
 
   (function() {
     'use strict';
@@ -155,7 +101,7 @@ $( window ).on( "load", function() {
     return window.pageYOffset || document.documentElement.scrollTop;
     }
   }); 
-
+  
 
   $('.btn-view-images').click(function(){
     $('body').addClass('overflow-hidden');
@@ -213,5 +159,13 @@ $( window ).on( "load", function() {
      $(this).removeClass('placeholder');
     }
   });
+
+  $('#sell').click(function() {
+    $('#sellItem').toggleClass('active');
+  });
+  $('#faq').click(function() {
+    $('#faqItem').toggleClass('active');
+  });
+
 });	
 

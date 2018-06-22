@@ -13,6 +13,19 @@ import {AuthService} from '../../core/auth.service';
   styleUrls: ['./sellersecuritypayment.component.css']
 })
 export class SellersecuritypaymentComponent implements OnInit {
+  async ngAfterViewInit() {
+		await this.loadScript('./assets/js/common.js');
+	}
+
+  private loadScript(scriptUrl: string) {
+    return new Promise((resolve, reject) => {
+      const scriptElement = document.createElement('script');
+      scriptElement.src = scriptUrl;
+      scriptElement.onload = resolve;
+      document.body.appendChild(scriptElement);
+    })
+  }
+  
   constructor(private myToast:ToasterServiceService,private paymentService:PaymentsService,private router: Router,  private authService: AuthService, private token: TokenStorage) { }
   sellersecuritypaymentdto=new sellersecuritysspaymentDTO();
 

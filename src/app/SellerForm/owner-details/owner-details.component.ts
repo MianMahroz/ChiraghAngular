@@ -16,7 +16,20 @@ import {AfterViewInit, ViewChild} from '@angular/core';
   styleUrls: ['./owner-details.component.css']
 })
 export class OwnerDetailsComponent implements AfterViewInit {
-  displayedColumns = ['propertySellerId', 'firstName', 'middleName', 'lastName','nationality','idCardNo','idCardExpiration','passportNo','passportExpiryDate','telephone','mobile'];
+
+  private loadScript(scriptUrl: string) {
+    return new Promise((resolve, reject) => {
+      const scriptElement = document.createElement('script');
+      scriptElement.src = scriptUrl;
+      scriptElement.onload = resolve;
+      document.body.appendChild(scriptElement);
+    })
+  }
+  // 'idCardExpiration',
+  // 'passportExpiryDate'
+  //telephone
+  //mobile
+  displayedColumns = ['firstName', 'lastName','nationality','passportNo','passportExpiryDate','mobile'];
   dataSource = new MatTableDataSource<OwnerDetails>();
   atLeastOneOwner=false;
 
@@ -39,6 +52,7 @@ export class OwnerDetailsComponent implements AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
   ngAfterViewInit() {
+    this.loadScript('./assets/js/common.js');
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -50,7 +64,7 @@ export class OwnerDetailsComponent implements AfterViewInit {
   }
   rowClicked(row: any): void {
     console.log(row);
-    this.myToast.Success('Status','Owner Data Loaded Successfully');
+    this.myToast.Success('Status','Edit your details now');
     this.ownerDto=row;
     this.pid=92;
     this.fileName=this.ownerDto.idCardNo;
@@ -102,6 +116,9 @@ export class OwnerDetailsComponent implements AfterViewInit {
       console.log('Invalid Session');
       this.router.navigate(['/login']);
       return "Invalid Session";
+    }
+    if(this.ownerDto.firstName==null || this.ownerDto.firstName==''&&operation=='next'){
+      this.router.navigate(['/sellerPoaDetails/next']);
     }
     window.sessionStorage.removeItem('AuthToken');
     this.authService.attemptAuth().subscribe(

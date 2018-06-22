@@ -7,6 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PropertySuccessMsgComponent implements OnInit {
 
+  async ngAfterViewInit() {
+		await this.loadScript('./assets/js/common.js');
+	}
+
+  private loadScript(scriptUrl: string) {
+    return new Promise((resolve, reject) => {
+      const scriptElement = document.createElement('script');
+      scriptElement.src = scriptUrl;
+      scriptElement.onload = resolve;
+      document.body.appendChild(scriptElement);
+    })
+  }
+
   constructor() { }
 
   ngOnInit() {

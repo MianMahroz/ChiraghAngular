@@ -17,6 +17,19 @@ import { SellerService } from '../../shared/seller.service';
 })
 export class AuctionFeeDetailsComponent implements OnInit {
 
+  async ngAfterViewInit() {
+		await this.loadScript('./assets/js/common.js');
+	}
+
+  private loadScript(scriptUrl: string) {
+    return new Promise((resolve, reject) => {
+      const scriptElement = document.createElement('script');
+      scriptElement.src = scriptUrl;
+      scriptElement.onload = resolve;
+      document.body.appendChild(scriptElement);
+    })
+  }
+
   auctionDTO=new auctionDTO();
 
   constructor(private auctionService:AuctionService,private sellerService:SellerService,private userService:UserService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }

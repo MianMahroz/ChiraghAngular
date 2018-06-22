@@ -86,108 +86,68 @@
                     <div class="row">
                       <div class="col-md-12 form-block-heading mb-3">Specs:</div>
                       <div class="col-md-3 mb-4">
-                        <input type="text"  pattern="[0-9]*" class="form-control form-input" [(ngModel)]="propertyDetailsDto.noOfBedrooms" name="noOfBedrooms" #noOfBedrooms="ngModel" placeholder="noOfBedrooms">
+                        <input type="text"  pattern="[0-9]*" class="form-control form-input" [(ngModel)]="propertyDetailsDto.noOfBedrooms" name="noOfBedrooms" #noOfBedrooms="ngModel" placeholder="Bedrooms">
                         <div *ngIf="noOfBedrooms.errors && (noOfBedrooms.dirty || noOfBedrooms.touched)" class="alert alert-danger">
-                            <div [hidden]="!noOfBedrooms.errors.pattern">
-                                Space,Alaphabets and Special Character not Allowed!
-                              </div>
-                            </div>
-                          <!-- <option selected>Bedrooms</option>
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                        </select> -->
+                          <div [hidden]="!noOfBedrooms.errors.pattern">
+                            Space,Alaphabets and Special Character not Allowed!
+                          </div>
+                        </div>
                       </div>
                       <div class="col-md-3 mb-4">
-                        <input type="text" pattern="[0-9]*" class="form-control form-input"  [(ngModel)]="propertyDetailsDto.noOfBaths" #noOfBaths="ngModel" name="noOfBaths" placeholder="noOfBaths">
+                        <input type="text" pattern="[0-9]*" class="form-control form-input"  [(ngModel)]="propertyDetailsDto.noOfBaths" #noOfBaths="ngModel" name="noOfBaths" placeholder="Bathrooms">
                         <div *ngIf="noOfBaths.errors && (noOfBaths.dirty || noOfBaths.touched)" class="alert alert-danger">
-                            <div [hidden]="!noOfBaths.errors.pattern">
-                                Space,Alaphabets and Special Character not Allowed!
-                              </div>
-                            </div>
-                          <!-- <option selected>Bathrooms</option>
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                        </select> -->
+                          <div [hidden]="!noOfBaths.errors.pattern">
+                            Space,Alaphabets and Special Character not Allowed!
+                          </div>
+                        </div>
                       </div>
                       <div class="col-md-3 mb-4">
-                        <input type="text" pattern="[0-9]*" class="form-control form-input" [(ngModel)]="propertyDetailsDto.carParks" #carParks="ngModel" name="carParks" placeholder="carParks">
+                        <input type="text" pattern="[0-9]*" class="form-control form-input" [(ngModel)]="propertyDetailsDto.carParks" #carParks="ngModel" name="carParks" placeholder="Car Parks">
                         <div *ngIf="carParks.errors && (carParks.dirty || carParks.touched)" class="alert alert-danger">
-                            <div [hidden]="!carParks.errors.pattern">
-                                Space,Alaphabets and Special Character not Allowed!
-                              </div>
-                            </div>
-                          <!-- <option selected>Car Parks</option>
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                        </select> -->
+                          <div [hidden]="!carParks.errors.pattern">
+                            Space,Alaphabets and Special Character not Allowed!
+                          </div>
+                        </div>
                       </div>
                       <div class="col-md-3 mb-4">
-                        <input type="text" pattern="[0-9]*" class="form-control form-input" [(ngModel)]="propertyDetailsDto.kitchens" name="kitchens" #kitchens="ngModel" placeholder="kitchens">
+                        <input type="text" pattern="[0-9]*" class="form-control form-input" [(ngModel)]="propertyDetailsDto.kitchens" name="kitchens" #kitchens="ngModel" placeholder="Kitchens">
                         <div *ngIf="kitchens.errors && (kitchens.dirty || kitchens.touched)" class="alert alert-danger">
-                            <div [hidden]="!kitchens.errors.pattern">
-                                Space,Alaphabets and Special Character not Allowed!
-                              </div>
-                            </div>
-                          <!-- <option selected>Kitchens</option>
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                        </select> -->
+                          <div [hidden]="!kitchens.errors.pattern">
+                            Space,Alaphabets and Special Character not Allowed!
+                          </div>
+                        </div>
                       </div>
                       <div class="col-md-3 mb-4">
-                        <input type="text" pattern="[0-9]*"  class="form-control form-input" [(ngModel)]="propertyDetailsDto.floorNo" name="floorNo" #floorNo="ngModel" placeholder="floorNo">
+                        <input type="text" pattern="[0-9]*"  class="form-control form-input" [(ngModel)]="propertyDetailsDto.floorNo" name="floorNo" #floorNo="ngModel" placeholder="Floor No.">
                         <div *ngIf="floorNo.errors && (floorNo.dirty || floorNo.touched)" class="alert alert-danger">
-                            <div [hidden]="!floorNo.errors.pattern">
-                                Space,Alaphabets and Special Character not Allowed!
-                              </div>
-                            </div>
-                          <!-- <option selected>Floor No.</option>
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                        </select> -->
+                          <div [hidden]="!floorNo.errors.pattern">
+                            Space,Alaphabets and Special Character not Allowed!
+                          </div>
+                        </div>
                       </div>
                       <div class="col-md-3 mb-4">
-                        <input type="text" pattern="[0-9]*"  class="form-control form-input" [(ngModel)]="propertyDetailsDto.noUnits" name="noUnits" #noUnits="ngModel" placeholder="noUnits">
+                        <input type="text" pattern="[0-9]*"  class="form-control form-input" [(ngModel)]="propertyDetailsDto.noUnits" name="noUnits" #noUnits="ngModel" placeholder="Unit No.">
                         <div *ngIf="noUnits.errors && (noUnits.dirty || noUnits.touched)" class="alert alert-danger">
-                            <div [hidden]="!noUnits.errors.pattern">
-                                Space,Alaphabets and Special Character not Allowed!
-                              </div>
-                            </div>
-                          <!-- <option selected>Unit No.</option>
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                        </select> -->
+                          <div [hidden]="!noUnits.errors.pattern">
+                            Space,Alaphabets and Special Character not Allowed!
+                          </div>
+                        </div>
                       </div>
                       <div class="col-md-3 mb-4">
-                        <input type="text" pattern="[0-9]*"  class="form-control form-input" [(ngModel)]="propertyDetailsDto.noOfFloors" name="noOfFloors" #noOfFloors="ngModel" placeholder="noOfFloors">
+                        <input type="text" pattern="[0-9]*"  class="form-control form-input" [(ngModel)]="propertyDetailsDto.noOfFloors" name="noOfFloors" #noOfFloors="ngModel" placeholder="No. of Floors">
                         <div *ngIf="noOfFloors.errors && (noOfFloors.dirty || noOfFloors.touched)" class="alert alert-danger">
-                            <div [hidden]="!noOfFloors.errors.pattern">
-                                Space,Alaphabets and Special Character not Allowed!
-                              </div>
-                            </div>
-                          <!-- <option selected>No. of Floors</option>
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                        </select> -->
+                          <div [hidden]="!noOfFloors.errors.pattern">
+                            Space,Alaphabets and Special Character not Allowed!
+                          </div>
+                        </div>
                       </div>
                       <div class="col-md-3 mb-4">
-                        <input type="text" pattern="[0-9]*"  class="form-control form-input" [(ngModel)]="propertyDetailsDto.noShops" name="noShops" #noShops="ngModel" placeholder="noShops">
+                        <input type="text" pattern="[0-9]*"  class="form-control form-input" [(ngModel)]="propertyDetailsDto.noShops" name="noShops" #noShops="ngModel" placeholder="No. of Shops">
                         <div *ngIf="noShops.errors && (noShops.dirty || noShops.touched)" class="alert alert-danger">
-                            <div [hidden]="!noShops.errors.pattern">
-                                Space,Alaphabets and Special Character not Allowed!
-                              </div>
-                            </div>
-                          <!-- <option selected>No. of Shops</option>
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                        </select> -->
+                          <div [hidden]="!noShops.errors.pattern">
+                            Space,Alaphabets and Special Character not Allowed!
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div class="section-seprator">

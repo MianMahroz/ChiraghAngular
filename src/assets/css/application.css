@@ -421,6 +421,7 @@
 .screen-wrapper .form-wrapper-row .sign-in-row .sign-in-col .common-form .upload-doc-block .upload-btn-div .file .doc-upload {
   width: 40px;
   opacity: 0;
+  left: 0;
   position: absolute;
   top: -10px;
   height: 40px;
@@ -1366,6 +1367,9 @@ a:hover {
   border-color: transparent;
   padding: 0;
   z-index: 9;
+}
+img {
+  cursor: pointer;
 }
 .page-footer .footer-wrap {
   border-bottom: 1px solid #e3e3e3;
@@ -2466,9 +2470,6 @@ input[type="file"] {
   background: url("../../assets/images/sprite-image.png") no-repeat -226px -220px;
   padding: 8px 16px;
 }
-.info-header-row .info-header-col .social-media-nav {
-  border-left: 1px solid #e3e3e3;
-}
 .info-header-row .info-header-col .social-media-nav .social-links .svg-inline--fa {
   color: #7e7e7e;
 }
@@ -2476,7 +2477,7 @@ input[type="file"] {
   color: #5c5c5c;
 }
 .info-header-row .info-header-col .language-flags {
-  display: flex;
+  display: none;
 }
 .info-header-row .info-header-col .language-flags .country-flags {
   opacity: 0.2;
@@ -2789,7 +2790,7 @@ input[type="file"] {
     font-size: 1em !important;
   }
   .screen-wrapper .body-section {
-    margin-top: 5.9em;
+    margin-top: 3.5em;
   }
   .screen-wrapper .body-section .ca-header-xs {
     display: block;
@@ -2909,6 +2910,7 @@ input[type="file"] {
   }
   .screen-wrapper .info-header-row {
     padding: 5px 0;
+    display: none;
   }
   .screen-wrapper .info-header-row .info-header-col .chiragh-info-mail {
     display: none;
@@ -2955,7 +2957,7 @@ input[type="file"] {
     margin-bottom: 0;
   }
   .header.shrink {
-    margin-top: -38px;
+    margin-top: 0;
     transition: all 0.5s;
   }
   .ud-navbar {

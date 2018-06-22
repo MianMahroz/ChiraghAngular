@@ -23,6 +23,8 @@ export class RegisterComponent  {
   terms=false;
   bar1=false;
   bar2=false;
+  point:number;
+  status:string;
 
   passwordFocus1(){
    this.bar1=true;
@@ -38,6 +40,10 @@ export class RegisterComponent  {
         this.token.saveToken(data.access_token,data.refresh_token,data.expires_in);
         console.log(data);
         if(this.token.getToken()!=null){
+        if(this.checkForm()=='false'){
+           this.myToast.Error('','Field Missing!');
+          return '';
+        }
           this.userService.register(this.registerdto).subscribe(
             data1=>{
               console.log(data1);
@@ -60,13 +66,33 @@ export class RegisterComponent  {
                 }//end of inner data predicate
           );//end of inner subscription
         }//end of if
-
      }//end of outer data predicate
     );//end of outer subscription
-
   }//end of onRegister
 
 
+  checkField(field:string):void{
+   if(field!=null||field!='')
+     {
+          this.point=this.point+1;
+     }
+  }
 
+  checkForm():string{
+      this.checkField(this.registerdto.firstName);
+      this.checkField(this.registerdto.lastName);
+      this.checkField(this.registerdto.userName);
+      this.checkField(this.registerdto.userPassword);
+      this.checkField(this.registerdto.confirmPassword);
+      this.checkField(this.registerdto.userEmail);
+      this.checkField(this.registerdto.mobileOtpCode);
+      this.checkField(this.registerdto.mobileNo);
+      if(this.point==8){
+      return 'true';
+      }
+      else{
+           return 'false';
+      }//end of else
+  }//end of method
 
 }
