@@ -58,7 +58,7 @@ export class PoaDetailsComponent implements AfterViewInit {
   }
   rowClicked(row: any): void {
     console.log(row);
-    this.myToast.Info('Status','Edit your details now');
+    this.myToast.Info('Status','POA Data Loaded Successfully');
     this.ownerDto=row;
     this.idCardFileUploadPath='../ChiraghDocuments/propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.scannedIdCopy;
     this.passportFileUploadPath='../ChiraghDocuments/propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.passportCopyUpload;
@@ -118,6 +118,7 @@ export class PoaDetailsComponent implements AfterViewInit {
           this.myToast.Error('Status','Property Not Found');
            return "Property Not Found";
          }
+
               this.ownerDto.ownerType='poa';
               this.ownerDto.propertyId=this.token.getPropertyId();//setting proeprty Id
               this.ownerDto.userName=this.token.getuserName();

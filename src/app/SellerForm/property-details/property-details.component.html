@@ -616,7 +616,7 @@
                         </div>
                       </div>
                       <p *ngIf="scannedTitleDeedFile" style="color:blue"><br>Scanned Title Deed FileName:{{scannedTitleDeedFile.name}}</p>
-                      <p *ngIf="propertyDetailsDto.scannedTitleDeed" style="color:blue"><br> Title Deed FileName:{{propertyDetailsDto.scannedTitleDeed}}</p>
+                      <p *ngIf="propertyDetailsDto.scannedTitleDeed&&action=='next'||action=='back'" style="color:blue"><br> Title Deed FileName:{{propertyDetailsDto.scannedTitleDeed}}</p>
 
                     </div>
                     <div class="note-block py-3 px-2 mt-5">

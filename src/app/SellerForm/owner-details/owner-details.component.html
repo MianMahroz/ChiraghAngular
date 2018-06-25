@@ -235,69 +235,69 @@
           </div>
           <mat-table #table [dataSource]="dataSource" matSort>
 
-            <!-- <ng-container matColumnDef="propertySellerId">
-              <mat-header-cell *matHeaderCellDef> Owner Id </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.propertySellerId}} </mat-cell>
-            </ng-container> -->
+                        <!-- <ng-container matColumnDef="propertySellerId">
+                          <mat-header-cell *matHeaderCellDef> Owner Id </mat-header-cell>
+                          <mat-cell *matCellDef="let element"> {{element.propertySellerId}} </mat-cell>
+                        </ng-container> -->
 
-            <ng-container matColumnDef="firstName">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> First Name </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
-            </ng-container>
+                        <ng-container matColumnDef="firstName">
+                          <mat-header-cell *matHeaderCellDef mat-sort-header> First Name </mat-header-cell>
+                          <mat-cell *matCellDef="let element"> {{element.firstName}} </mat-cell>
+                        </ng-container>
 
-            <!-- <ng-container matColumnDef="middleName">
-              <mat-header-cell *matHeaderCellDef> Middle Name </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.middleName}} </mat-cell>
-            </ng-container> -->
+                        <!-- <ng-container matColumnDef="middleName">
+                          <mat-header-cell *matHeaderCellDef> Middle Name </mat-header-cell>
+                          <mat-cell *matCellDef="let element"> {{element.middleName}} </mat-cell>
+                        </ng-container> -->
 
-            <ng-container matColumnDef="lastName">
-              <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="nationality">
-              <mat-header-cell *matHeaderCellDef>  Nationality </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.nationality}} </mat-cell>
-            </ng-container>
-            <!-- <ng-container matColumnDef="idCardNo">
-              <mat-header-cell *matHeaderCellDef> Id Card No </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.idCardNo}} </mat-cell>
-            </ng-container> -->
-            <!-- <ng-container matColumnDef="idCardExpiration">
-              <mat-header-cell *matHeaderCellDef> Id Card Expiry </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.idCardExpiration}} </mat-cell>
-            </ng-container> -->
-            <ng-container matColumnDef="passportNo">
-              <mat-header-cell *matHeaderCellDef> Passport No </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.passportNo}} </mat-cell>
-            </ng-container>
-
-
-            <ng-container matColumnDef="passportExpiryDate">
-              <mat-header-cell *matHeaderCellDef> Passport Expiry</mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.passportExpiryDate}} </mat-cell>
-            </ng-container>
+                        <ng-container matColumnDef="lastName">
+                          <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+                          <mat-cell *matCellDef="let element"> {{element.lastName}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="nationality">
+                          <mat-header-cell *matHeaderCellDef>  Nationality </mat-header-cell>
+                          <mat-cell *matCellDef="let element"> {{element.nationality}} </mat-cell>
+                        </ng-container>
+                        <!-- <ng-container matColumnDef="idCardNo">
+                          <mat-header-cell *matHeaderCellDef> Id Card No </mat-header-cell>
+                          <mat-cell *matCellDef="let element"> {{element.idCardNo}} </mat-cell>
+                        </ng-container> -->
+                        <!-- <ng-container matColumnDef="idCardExpiration">
+                          <mat-header-cell *matHeaderCellDef> Id Card Expiry </mat-header-cell>
+                          <mat-cell *matCellDef="let element"> {{element.idCardExpiration}} </mat-cell>
+                        </ng-container> -->
+                        <ng-container matColumnDef="passportNo">
+                          <mat-header-cell *matHeaderCellDef> Passport No </mat-header-cell>
+                          <mat-cell *matCellDef="let element"> {{element.passportNo}} </mat-cell>
+                        </ng-container>
 
 
-            <!-- <ng-container matColumnDef="telephone">
-              <mat-header-cell *matHeaderCellDef> Phone Number </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.telephone}} </mat-cell>
-            </ng-container> -->
+                        <ng-container matColumnDef="passportExpiryDate">
+                          <mat-header-cell *matHeaderCellDef> Passport Expiry</mat-header-cell>
+                          <mat-cell *matCellDef="let element"> {{element.passportExpiryDate}} </mat-cell>
+                        </ng-container>
 
 
-            <ng-container matColumnDef="mobile">
-              <mat-header-cell *matHeaderCellDef> Mobile </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.mobile}} </mat-cell>
-            </ng-container>
+                        <!-- <ng-container matColumnDef="telephone">
+                          <mat-header-cell *matHeaderCellDef> Phone Number </mat-header-cell>
+                          <mat-cell *matCellDef="let element"> {{element.telephone}} </mat-cell>
+                        </ng-container> -->
 
 
-            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns;" (click) = "rowClicked(row)" ></mat-row>
-          </mat-table>
-          <!-- <mat-paginator [length]="5" [pageSize]="4" [pageSizeOptions]="[5, 10, 25]">
-          </mat-paginator> -->
-        </div>
+                        <ng-container matColumnDef="mobile">
+                          <mat-header-cell *matHeaderCellDef> Mobile </mat-header-cell>
+                          <mat-cell *matCellDef="let element"> {{element.mobile}} </mat-cell>
+                        </ng-container>
 
-      </div>
-    </div>
-    <app-footer></app-footer>
-  </div>
+
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns;" (click) = "rowClicked(row)" ></mat-row>
+                      </mat-table>
+                      <!-- <mat-paginator [length]="5" [pageSize]="4" [pageSizeOptions]="[5, 10, 25]">
+                      </mat-paginator> -->
+                    </div>
+
+                  </div>
+                </div>
+                <app-footer></app-footer>
+              </div>
