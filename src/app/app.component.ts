@@ -9,7 +9,11 @@ enableProdMode();
 })
 export class AppComponent {
 
-  constructor() {
+  constructor(private router : Router) {
+  }
+
+  routeIsActive(routePath: string) {
+    return this.router.url == routePath;
   }
 
 }

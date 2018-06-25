@@ -205,3 +205,9 @@ $("#ni-shows-round").click(function(){
     $(this).siblings("div:gt(0)").slideToggle('slow');
     $(this).text($(this).text() == "Show all" ? "Show less" : "Show all");
 });
+$(function(){
+  $('.sub-links-wrap li').click(function(){
+    $('.sub-links').removeClass('active show');
+    $(this).addClass('active show');
+  });
+});
