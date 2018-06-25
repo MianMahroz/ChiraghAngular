@@ -173,3 +173,95 @@ img {
 // .ng-invalid:not(form)  {
 //   border-left: 5px solid #a94442; /* red */
 // }
+.page-locator-wrap {
+  .back {
+    position: sticky;
+    top: 230px;
+    .process-heading {
+      font-size: 1.25em;
+      color: @secondary-color;
+    }
+    ul {
+      display: block;
+      margin-bottom: 0;
+      list-style: none;
+      li {
+        white-space: nowrap;
+        a {
+          text-decoration: none;
+        }
+      }
+    }
+    ul.nav-history {
+      padding-left: 36px;
+      padding-top: 15px;
+      pointer-events: none;
+      li {
+        margin-bottom: 10px;
+        &::after {
+          content: "";
+          position: absolute;
+          left: 2px;
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: @mono-color;
+          transform: scale(0.9);
+          transition: all 0.2s ease;
+        }
+        &:not(:last-child) {
+          &::before {
+            content: "";
+            position: absolute;
+            left: 7px;
+            margin-top: 10px;
+            width: 2px;
+            height: 28px;
+            background: @seprator-color;
+            transition: all 0.2s ease;
+          }
+        }
+        a {
+          color: @mono-color;
+          display: inline-block;
+          opacity: 0;
+          transform: translateY(-10px);
+          transition: all 0.2s ease;
+          &:hover {
+            color: @primary-color;
+          }
+        }
+      }
+      li.active {
+        pointer-events: none;
+        &::after {
+          background: @primary-color;
+        }
+        a {
+          color: @primary-color;
+        }
+      }
+    }
+    ul.nav-history {
+      transform: translateY(0);
+      pointer-events: auto;
+      li {
+        margin-bottom: 8px;
+        &::after {
+          background: @mono-color;
+          transform: translateY(6px);
+        }
+        a {
+          opacity: 1;
+          transform: translateY(0);
+          cursor: pointer;
+        }
+      }
+      li.active {
+        &::after {
+          background: @primary-color;
+        }
+      }
+    }
+  }   
+}

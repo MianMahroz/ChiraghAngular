@@ -1371,6 +1371,92 @@ a:hover {
 img {
   cursor: pointer;
 }
+.page-locator-wrap .back {
+  position: sticky;
+  top: 230px;
+}
+.page-locator-wrap .back .process-heading {
+  font-size: 1.25em;
+  color: #606060;
+}
+.page-locator-wrap .back ul {
+  display: block;
+  margin-bottom: 0;
+  list-style: none;
+}
+.page-locator-wrap .back ul li {
+  white-space: nowrap;
+}
+.page-locator-wrap .back ul li a {
+  text-decoration: none;
+}
+.page-locator-wrap .back ul.nav-history {
+  padding-left: 36px;
+  padding-top: 15px;
+  pointer-events: none;
+}
+.page-locator-wrap .back ul.nav-history li {
+  margin-bottom: 10px;
+}
+.page-locator-wrap .back ul.nav-history li::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #7e7e7e;
+  transform: scale(0.9);
+  transition: all 0.2s ease;
+}
+.page-locator-wrap .back ul.nav-history li:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  margin-top: 10px;
+  width: 2px;
+  height: 28px;
+  background: #e3e3e3;
+  transition: all 0.2s ease;
+}
+.page-locator-wrap .back ul.nav-history li a {
+  color: #7e7e7e;
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+}
+.page-locator-wrap .back ul.nav-history li a:hover {
+  color: #212121;
+}
+.page-locator-wrap .back ul.nav-history li.active {
+  pointer-events: none;
+}
+.page-locator-wrap .back ul.nav-history li.active::after {
+  background: #212121;
+}
+.page-locator-wrap .back ul.nav-history li.active a {
+  color: #212121;
+}
+.page-locator-wrap .back ul.nav-history {
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.page-locator-wrap .back ul.nav-history li {
+  margin-bottom: 8px;
+}
+.page-locator-wrap .back ul.nav-history li::after {
+  background: #7e7e7e;
+  transform: translateY(6px);
+}
+.page-locator-wrap .back ul.nav-history li a {
+  opacity: 1;
+  transform: translateY(0);
+  cursor: pointer;
+}
+.page-locator-wrap .back ul.nav-history li.active::after {
+  background: #212121;
+}
 .page-footer .footer-wrap {
   border-bottom: 1px solid #e3e3e3;
 }
@@ -1651,6 +1737,7 @@ img {
   padding: 0;
   margin: 0.5rem 0 0;
   font-size: 0.875em;
+  transition: all 0.8s;
 }
 .navbar-wrap-row .navbar-row-wrapper .navbar-col .navbar .navbar-collapse .navbar-nav .nav-item.nav-dropdown .dropdown-menu .dropdown-item:hover {
   background-color: #212121;
