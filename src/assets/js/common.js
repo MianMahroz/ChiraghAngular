@@ -5,13 +5,29 @@ $(document).ready(function(){
     next = $(this).siblings(':first');
     }
     next.children(':first-child').clone().appendTo($(this));
-    
+
     for (var i=0;i<1;i++) {
       next=next.next();
       if (!next.length) {
           next = $(this).siblings(':first');
       }
-      
+
+      next.children(':first-child').clone().appendTo($(this));
+    }
+  });
+  $('#caSlider .carousel-item').each(function(){
+    var next = $(this).next();
+    if (!next.length) {
+    next = $(this).siblings(':first');
+    }
+    next.children(':first-child').clone().appendTo($(this));
+
+    for (var i=0;i<1;i++) {
+      next=next.next();
+      if (!next.length) {
+          next = $(this).siblings(':first');
+      }
+
       next.children(':first-child').clone().appendTo($(this));
     }
   });
@@ -21,17 +37,35 @@ $(document).ready(function(){
     next = $(this).siblings(':first');
     }
     next.children(':first-child').clone().appendTo($(this));
-    
+
     for (var i=0;i<1;i++) {
       next=next.next();
       if (!next.length) {
           next = $(this).siblings(':first');
       }
-      
+
       next.children(':first-child').clone().appendTo($(this));
     }
   });
-  
+
+
+  var checkitem = function() {
+    var $this;
+    $this = $("#caSlider");
+    if ($("#caSlider .block-inner3 .block-item3:first").hasClass("active")) {
+      $this.children(".carousel-control-prev").hide();
+      $this.children(".carousel-control-next").show();
+    } else if ($("#caSlider .block-inner3 .block-item3:last").hasClass("active")) {
+      $this.children(".carousel-control-next").hide();
+      $this.children(".carousel-control-prev").show();
+    } else {
+      $this.children(".control-btn").show();
+    }
+  };
+
+  checkitem();
+
+  $("#caSlider").on("slid.bs.carousel", "", checkitem);
 
   var checkitem = function() {
     var $this;
@@ -46,9 +80,7 @@ $(document).ready(function(){
       $this.children(".control-btn").show();
     }
   };
-
   checkitem();
-
   $("#ucSlider").on("slid.bs.carousel", "", checkitem);
 
   var checkitem = function() {
@@ -65,7 +97,6 @@ $(document).ready(function(){
     }
   };
   checkitem();
-
   $("#simsSlider").on("slid.bs.carousel", "", checkitem);
 
   (function() {
@@ -84,7 +115,7 @@ $(document).ready(function(){
         }, false);
       });
     }, false);
-  })();    
+  })();
 
   $(function(){
    var shrinkHeader = 300;
@@ -100,8 +131,8 @@ $(document).ready(function(){
   function getCurrentScroll() {
     return window.pageYOffset || document.documentElement.scrollTop;
     }
-  }); 
-  
+  });
+
 
   $('.btn-view-images').click(function(){
     $('body').addClass('overflow-hidden');
@@ -110,44 +141,6 @@ $(document).ready(function(){
     $('body').removeClass('overflow-hidden');
   });
 
-  $(".facilities-checkboxes-wrap > div:gt(0)").hide();
-  $("#facilities-shows").click(function(){
-      $(this).siblings("div:gt(0)").slideToggle('slow'); 
-      $(this).text($(this).text() == "Show all" ? "Show less" : "Show all");
-  });
-
-  $(".features-checkboxes-wrap > div:gt(0)").hide();
-  $("#features-shows").click(function(){
-      $(this).siblings("div:gt(0)").slideToggle('slow'); 
-      $(this).text($(this).text() == "Show all" ? "Show less" : "Show all");
-  });
-
-  $(".features-checkboxes-wrap > div:gt(0)").hide();
-  $("#features-shows-round").click(function(){
-      $(this).siblings("div:gt(0)").slideToggle('slow'); 
-      $(this).text($(this).text() == "Show all" ? "Show less" : "Show all");
-  });
-
-  $(".facilities-checkboxes-wrap > div:gt(0)").hide();
-  $("#facilities-shows-round").click(function(){
-      $(this).siblings("div:gt(0)").slideToggle('slow'); 
-      $(this).text($(this).text() == "Show all" ? "Show less" : "Show all");
-  });
-
-  $(".ni-checkboxes-wrap > div:gt(0)").hide();
-  $("#ni-shows-round").click(function(){
-      $(this).siblings("div:gt(0)").slideToggle('slow'); 
-      $(this).text($(this).text() == "Show all" ? "Show less" : "Show all");
-  });
-
-
-  
-  $('.advance-search-link').click(function() {
-    $('.slider-search-btn-top').toggle();
-  });
-  $('.circle-plus').on('click', function(){
-    $(this).toggleClass('opened');
-  });
 
   $('select').each(function(){
     $(this).find('option:first').prop('selected', 'selected');
@@ -166,6 +159,49 @@ $(document).ready(function(){
   $('#faq').click(function() {
     $('#faqItem').toggleClass('active');
   });
+});
 
-});	
+$('.advance-search-link').click(function() {
+  $('.slider-search-btn-top').toggle();
+  $('html, body').animate({
+    scrollTop: ($('.main-search-row').offset().top)
+  },1000);
+});
+$('.circle-plus').on('click', function(){
+  $(this).toggleClass('opened');
+});
+$("mat-cell").click(function() {
+  $("html, body").animate({ scrollTop: 0 }, "slow");
+  return false;
+});
 
+
+$(".facilities-checkboxes-wrap > div:gt(0)").hide();
+$("#facilities-shows").click(function(){
+    $(this).siblings("div:gt(0)").slideToggle('slow');
+    $(this).text($(this).text() == "Show all" ? "Show less" : "Show all");
+});
+
+$(".features-checkboxes-wrap > div:gt(0)").hide();
+$("#features-shows").click(function(){
+    $(this).siblings("div:gt(0)").slideToggle('slow');
+    $(this).text($(this).text() == "Show all" ? "Show less" : "Show all");
+});
+
+$(".features-checkboxes-wrap > div:gt(0)").hide();
+$("#features-shows-round").click(function(){
+    $(this).siblings("div:gt(0)").slideToggle('slow');
+    $(this).text($(this).text() == "Show all" ? "Show less" : "Show all");
+});
+
+$(".facilities-checkboxes-wrap > div:gt(0)").hide();
+$("#facilities-shows-round").click(function(){
+    $(this).siblings("div:gt(0)").slideToggle('slow');
+    $(this).text($(this).text() == "Show all" ? "Show less" : "Show all");
+});
+
+$(".ni-checkboxes-wrap > div:gt(0)").hide();
+$("#ni-shows-round").click(function(){
+    $(this).siblings("div:gt(0)").slideToggle('slow');
+    $(this).text($(this).text() == "Show all" ? "Show less" : "Show all");
+});

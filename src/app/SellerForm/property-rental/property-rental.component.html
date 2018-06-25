@@ -78,7 +78,7 @@
                         </div>
                         <div class="upload-instuct mt-2">Scanned Tenancy Contract</div>
                         <p *ngIf="scannedTenentContractFile" style="color:blue"><br>Tanent Contract FileName:{{scannedTenentContractFile.name}}</p>
-                        <p *ngIf="propertyRentalDetailDTO.tenancyContractUpload" style="color:blue"><br>Tanent Contract FileName:{{propertyRentalDetailDTO.tenancyContractUpload}}</p>
+                        <p *ngIf="propertyRentalDetailDTO.tenancyContractUpload&&action=='next'||action=='back'" style="color:blue"><br>Tanent Contract FileName:{{propertyRentalDetailDTO.tenancyContractUpload}}</p>
                       </div>
                     </div>
                   </div>
@@ -87,7 +87,7 @@
                       <a  routerLink="/propertyFinancialDetails/back" class="btn common-btn btn-light-black">Back</a>
                     </div>
                     <div class="col-md-3">
-                      <button [disabled]="!rentalForm.form.valid" (click)="addPropertyRentalDetails()" style=color:white  class="btn common-btn btn-light-black"type="submit">Submit</button>
+                      <button [disabled]="!rentalForm.form.valid" (click)="addPropertyRentalDetails()" style=color:white  class="btn common-btn btn-light-black"type="submit">Next</button>
                     </div>
                   </div>
                 </form>

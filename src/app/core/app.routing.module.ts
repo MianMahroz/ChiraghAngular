@@ -1,3 +1,4 @@
+import { SellerDashboardComponent } from './../seller-dashboard/seller-dashboard.component';
 import { PropertySuccessMsgComponent } from '../SellerForm/property-success-msg/property-success-msg.component';
 import { SignoutComponent } from './../signout/signout.component';
 import { SellersecuritypaymentComponent } from './../SellerForm/sellersecuritypayment/sellersecuritypayment.component';
@@ -70,6 +71,7 @@ const routes: Routes = [
   {path:'mortagecalculator',component:MortagecalculatorComponent},
   {path:'forbuyers',component:ForbuyersComponent},
   {path:'forhomeowners',component:ForhomeownersComponent},
+  {path:'sellerDashboard',component:SellerDashboardComponent},
 
 ];
 

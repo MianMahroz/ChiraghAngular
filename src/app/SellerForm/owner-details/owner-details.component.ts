@@ -25,10 +25,7 @@ export class OwnerDetailsComponent implements AfterViewInit {
       document.body.appendChild(scriptElement);
     })
   }
-  // 'idCardExpiration',
-  // 'passportExpiryDate'
-  //telephone
-  //mobile
+
   displayedColumns = ['firstName', 'lastName','nationality','passportNo','passportExpiryDate','mobile'];
   dataSource = new MatTableDataSource<OwnerDetails>();
   atLeastOneOwner=false;
@@ -64,7 +61,7 @@ export class OwnerDetailsComponent implements AfterViewInit {
   }
   rowClicked(row: any): void {
     console.log(row);
-    this.myToast.Success('Status','Edit your details now');
+    this.myToast.Success('Status','Owner Data Loaded Successfully');
     this.ownerDto=row;
     this.pid=92;
     this.fileName=this.ownerDto.idCardNo;

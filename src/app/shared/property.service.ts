@@ -38,5 +38,8 @@ public getPropertyRentalById(propertyId:number,userName:string): Observable<Prop
   return this.http.get<PropertyRentalDetailDTO>(this.propertyUrl + '/getPropertyRentalDetails/'+propertyId+'/'+userName);
 }
 
+public getPropertyByUserName(userName:string): Observable<any> {
+  return this.http.get<any>(this.propertyUrl + '/getAll/'+userName);
+}
 
 }

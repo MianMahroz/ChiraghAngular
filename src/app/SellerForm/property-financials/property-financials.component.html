@@ -116,7 +116,7 @@
                         </div>
                         <div class="upload-instuct mt-2">Scanned NOC fromM<br>Mortgage Company</div>
                         <p *ngIf="morgageNocFile" style="color:blue"><br>Morgage Noc FileName:{{morgageNocFile.name}}</p>
-                        <p *ngIf="propertyFinancialDTO.morgageNoc" style="color:blue"><br>Morgage Noc FileName:{{propertyFinancialDTO.morgageNoc}}</p>
+                        <p *ngIf="propertyFinancialDTO.morgageNoc&&action=='next'||action=='back'" style="color:blue"><br>Morgage Noc FileName:{{propertyFinancialDTO.morgageNoc}}</p>
                       </div>
                     </div>
                   </div>
