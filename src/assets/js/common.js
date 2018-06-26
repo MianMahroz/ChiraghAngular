@@ -142,9 +142,6 @@ $(document).ready(function(){
   });
 
 
-  $('select').each(function(){
-    $(this).find('option:first').prop('selected', 'selected');
-  });
   $('select').change(function() {
     if ($(this).children('option:first-child').is(':selected')) {
       $(this).addClass('placeholder');
