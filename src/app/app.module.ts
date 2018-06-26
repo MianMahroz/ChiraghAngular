@@ -54,6 +54,7 @@ import { MortagecalculatorComponent } from './mortagecalculator/mortagecalculato
 import { ForbuyersComponent } from './forbuyers/forbuyers.component';
 import { ForhomeownersComponent } from './forhomeowners/forhomeowners.component';
 import { SellerDashboardComponent } from './seller-dashboard/seller-dashboard.component';
+import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 // enableProdMode();
 @NgModule({
   declarations: [
@@ -92,6 +93,7 @@ import { SellerDashboardComponent } from './seller-dashboard/seller-dashboard.co
     ForbuyersComponent,
     ForhomeownersComponent,
     SellerDashboardComponent,
+    AdminLoginComponent,
   ],
   imports: [
     ToastModule.forRoot(),
