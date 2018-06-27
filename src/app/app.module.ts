@@ -54,6 +54,7 @@ import { MortagecalculatorComponent } from './mortagecalculator/mortagecalculato
 import { ForbuyersComponent } from './forbuyers/forbuyers.component';
 import { ForhomeownersComponent } from './forhomeowners/forhomeowners.component';
 import { SellerDashboardComponent } from './seller-dashboard/seller-dashboard.component';
+import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 // enableProdMode();
 @NgModule({
@@ -93,6 +94,7 @@ import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
     ForbuyersComponent,
     ForhomeownersComponent,
     SellerDashboardComponent,
+    ChangepasswordComponent,
     AdminLoginComponent,
   ],
   imports: [

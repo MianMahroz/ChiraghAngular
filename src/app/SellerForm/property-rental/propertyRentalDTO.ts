@@ -3,8 +3,8 @@ export class PropertyRentalDetailDTO{
 
     userName:string;
     propertyId:number;
-      leaseStartDate:DateTimeFormat;
-    leaseExpiryDate:DateTimeFormat;
+    leaseStartDate:Date;
+    leaseExpiryDate:Date;
     tenantName:string;
     tenancyContractUpload:string;
     rentalEjariNo:number;

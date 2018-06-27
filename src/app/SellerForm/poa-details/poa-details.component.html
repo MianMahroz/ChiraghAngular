@@ -226,7 +226,7 @@
                       </div>
                       <div class="upload-instuct mt-2">Scanned passport copy <i class="fas fa-circle-notch fa-spin ml-2"></i></div>
                       <p *ngIf="passportFile" class="margin-bottom-20-neg"><br>{{passportFile.name}}</p>
-                      <p *ngIf="ownerDto.passportCopyUpload&&action=='next'||action=='back'" class="margin-bottom-20-neg"><br>{{ownerDto.passportCopyUpload}}</p>
+                      <p *ngIf="ownerDto.passportCopyUpload && action=='next'||action=='back'" class="margin-bottom-20-neg"><br>{{ownerDto.passportCopyUpload}}</p>
                     </div>
                     <div class="upload-btn-div mt-5">
                       <div class="file">

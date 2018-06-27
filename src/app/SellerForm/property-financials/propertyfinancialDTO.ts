@@ -11,7 +11,7 @@ export class PropertyFinancialDTO{
  morgageAmount:number;
  preClosureCharges:number;
  paymentSchedule:string;
- date:DateTimeFormat;
+ date:Date;
  amount:number;
  morgageNoc:string;
  balanceAmount:number;
