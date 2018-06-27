@@ -17,7 +17,18 @@ import { personalInfoDTO } from './../register/personalInfoDTO';
   styleUrls: ['./seller-dashboard.component.css']
 })
 export class SellerDashboardComponent implements OnInit {
+  async ngAfterViewInit() {
+		await this.loadScript('./assets/js/common.js');
+	}
 
+  private loadScript(scriptUrl: string) {
+    return new Promise((resolve, reject) => {
+      const scriptElement = document.createElement('script');
+      scriptElement.src = scriptUrl;
+      scriptElement.onload = resolve;
+      document.body.appendChild(scriptElement);
+    })
+  }
   constructor(private propertyService:PropertyService,private myToast:ToasterServiceService,private userService:UserService,private router: Router,  private authService: AuthService, private token: TokenStorage) { }
 
   currentProperty:any;

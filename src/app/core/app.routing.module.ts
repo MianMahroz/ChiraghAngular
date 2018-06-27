@@ -1,3 +1,4 @@
+import { AdminLoginComponent } from './../admin/admin-login/admin-login.component';
 import { SellerDashboardComponent } from './../seller-dashboard/seller-dashboard.component';
 import { PropertySuccessMsgComponent } from '../SellerForm/property-success-msg/property-success-msg.component';
 import { SignoutComponent } from './../signout/signout.component';
@@ -75,6 +76,11 @@ const routes: Routes = [
   { path:'sellerDashboard',component:SellerDashboardComponent},
   { path:'changepassword',component:ChangepasswordComponent},
 
+
+
+
+  //admin module path
+  {path:'adminlogin',component:AdminLoginComponent},
 ];
 
 @NgModule({

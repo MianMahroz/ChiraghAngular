@@ -65,6 +65,7 @@
                                    <a class="sub-links" data-toggle="collapse"  href="#/sell-sub-links/{{obj2.propertySellerId}}">POA ID:{{obj2.propertySellerId}} </a>
                                  </li>
                                </ul>
+
                             </li> -->
                         <li *ngFor="let propertyArr of userData">
                           <a class="sub-links" data-toggle="collapse" (click)="setCurrentProperty(propertyArr)" href="#sell-sub-links/{{propertyArr.propertyId}}">Property ID :{{propertyArr.propertyId}}</a>

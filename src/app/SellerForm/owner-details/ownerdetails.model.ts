@@ -28,8 +28,7 @@ export class OwnerDetails{
 	poaAgreementExpiry:string;
 	poaPropertyAuthority:string;
 	titleDeedUpload:string;
-    scannedNotorizedCopy:string;
-	isPoaAccepted:string;
+  	scannedNotorizedCopy:string;
+  	isPoaAccepted:string;
 	specificproperty:string;
-
 }

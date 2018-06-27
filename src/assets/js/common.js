@@ -142,9 +142,6 @@ $(document).ready(function(){
   });
 
 
-  $('select').each(function(){
-    $(this).find('option:first').prop('selected', 'selected');
-  });
   $('select').change(function() {
     if ($(this).children('option:first-child').is(':selected')) {
       $(this).addClass('placeholder');
@@ -204,4 +201,10 @@ $(".ni-checkboxes-wrap > div:gt(0)").hide();
 $("#ni-shows-round").click(function(){
     $(this).siblings("div:gt(0)").slideToggle('slow');
     $(this).text($(this).text() == "Show all" ? "Show less" : "Show all");
+});
+$(function(){
+  $('.sub-links-wrap li').click(function(){
+    $('.sub-links').removeClass('active show');
+    $(this).addClass('active show');
+  });
 });
