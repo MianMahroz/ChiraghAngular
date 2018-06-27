@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  $(window).scrollTop(0);
   $('#ucSlider .carousel-item').each(function(){
     var next = $(this).next();
     if (!next.length) {
@@ -47,6 +48,17 @@ $(document).ready(function(){
       next.children(':first-child').clone().appendTo($(this));
     }
   });
+  
+  var date_input=$('input[for="date"]'); 
+  var container=$('.bootstrap-iso').length>0 ? $('.bootstrap-iso').parent() : "body";
+  var options={
+    format: 'mm/dd/yyyy',
+    container: container,
+    orientation: "top right",
+    todayHighlight: true,
+    autoclose: true,
+  };
+  date_input.datepicker(options);
 
 
   var checkitem = function() {

@@ -1,5 +1,5 @@
 
-  <div class="container-fluid screen-wrapper">
+  <div class="container-fluid bootstrap-iso screen-wrapper">
     <app-header></app-header>
     <div class="row body-section">
       <div class="col-md-12">
@@ -12,7 +12,7 @@
                   <div class="row">
                     <div class="col-md-12 form-block-heading mb-3">Personal Details:</div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <label class="form-label">First Name</label>
+                      <label class="form-label required-input-label">First Name</label>
                       <input pattern="[a-zA-Z]*" type="text" class="form-control form-input" minlength="3" name="userFirstName" #userFirstName="ngModel" maxlength="15"  [(ngModel)]="ownerDto.firstName" autofocus>
                       <div *ngIf="userFirstName.errors && (userFirstName.dirty || userFirstName.touched)" class="alert alert-danger">
                         <div [hidden]="!userFirstName.errors.required">
@@ -33,9 +33,9 @@
                       <label class="form-label">Middle Name</label>
                       <input pattern="[a-zA-Z]*" type="text" minlength="3" name="userMiddleName" #userMiddleName="ngModel" maxlength="15" class="form-control form-input"[(ngModel)]="ownerDto.middleName">
                       <div *ngIf="userMiddleName.errors && (userMiddleName.dirty || userMiddleName.touched)" class="alert alert-danger">
-                        <div [hidden]="!userMiddleName.errors.required">
+                        <!-- <div [hidden]="!userMiddleName.errors.required">
                           Middle Name is required!
-                        </div>
+                        </div> -->
                         <div [hidden]="!userMiddleName.errors.minlength">
                           Middle Name must be at least 3 characters long.
                         </div>
@@ -48,7 +48,7 @@
                       </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <label class="form-label">Last Name</label>
+                      <label class="form-label required-input-label">Last Name</label>
                       <input pattern="[a-zA-Z]*" type="text" minlength="3" name="userLastName" #userLastName="ngModel" maxlength="15" class="form-control form-input" [(ngModel)]="ownerDto.lastName" required>
                       <div *ngIf="userLastName.errors && (userLastName.dirty || userLastName.touched)" class="alert alert-danger">
                         <div [hidden]="!userLastName.errors.required">
@@ -66,7 +66,7 @@
                       </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <label class="form-label">Select Nationality</label>
+                      <label class="form-label required-input-label">Select Nationality</label>
                       <select [(ngModel)]="ownerDto.nationality" name="nationality" class="form-control common-select">
                         <option>Pakistani</option>
                         <option>Indian</option>
@@ -76,11 +76,11 @@
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label">ID Card Number</label>
-                      <input pattern="[0-9]*" type="text" class="form-control form-input" [(ngModel)]="ownerDto.idCardNo" name="idCardNo" #idCardNo="ngModel" minlength="6" maxlength="18" required>
+                      <input pattern="[0-9]*" type="text" class="form-control form-input" [(ngModel)]="ownerDto.idCardNo" name="idCardNo" #idCardNo="ngModel" minlength="6" maxlength="18">
                       <div *ngIf="idCardNo.errors && (idCardNo.dirty || idCardNo.touched)" class="alert alert-danger">
-                        <div [hidden]="!idCardNo.errors.required">
+                        <!-- <div [hidden]="!idCardNo.errors.required">
                           ID Card Number is required!
-                        </div>
+                        </div> -->
                         <div [hidden]="!idCardNo.errors.maxlength">
                           ID Card Number cannot be more than 18 characters long.
                         </div>
@@ -91,10 +91,10 @@
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label">ID Card Expiry Date</label>
-                      <input type="date" class="form-control  form-input"  [(ngModel)]="ownerDto.idCardExpiration" name="idCardExpiration" required>
+                      <input type="text" for="date" class="form-control  form-input" [(ngModel)]="ownerDto.idCardExpiration" name="idCardExpiration">
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <label class="form-label">Passport Number</label>
+                      <label class="form-label required-input-label">Passport Number</label>
                       <input pattern="[0-9]*" type="text" class="form-control  form-input" [(ngModel)]="ownerDto.passportNo" name="passportNo" #passportNo="ngModel" minlength="6" maxlength="15" required>
                       <div *ngIf="passportNo.errors && (passportNo.dirty || passportNo.touched)" class="alert alert-danger">
                         <div [hidden]="!passportNo.errors.required">
@@ -109,19 +109,19 @@
                       </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <label class="form-label">Passport Expiry Date</label>
-                      <input type="date" class="form-control  form-input" [(ngModel)]="ownerDto.passportExpiryDate" name="passportExpiryDate" required>
+                      <label class="form-label required-input-label">Passport Expiry Date</label>
+                      <input type="text" for="date" class="form-control  form-input" [(ngModel)]="ownerDto.passportExpiryDate" name="passportExpiryDate" required>
                     </div>
                   </div>
                   <div class="row mt-3">
                     <div class="col-md-12 form-block-heading mb-3">Contact Details:</div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label">Phone Number</label>
-                      <input type="text" pattern="[0-9]*" class="form-control  form-input" [(ngModel)]="ownerDto.telephone" name="telephone" #telephone="ngModel" minlength="6" maxlength="16" required>
+                      <input type="text" pattern="[0-9]*" class="form-control form-input" [(ngModel)]="ownerDto.telephone" name="telephone" #telephone="ngModel" minlength="6" maxlength="16">
                       <div *ngIf="telephone.errors && (telephone.dirty || telephone.touched)" class="alert alert-danger">
-                        <div [hidden]="!telephone.errors.required">
+                        <!-- <div [hidden]="!telephone.errors.required">
                           Phone number is required!
-                        </div>
+                        </div> -->
                         <div [hidden]="!telephone.errors.maxlength">
                           Please enter a 16 digit number.
                         </div>
@@ -131,7 +131,7 @@
                       </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <label class="form-label">Mobile Number</label>
+                      <label class="form-label required-input-label">Mobile Number</label>
                       <input pattern="[0-9]*" type="text" class="form-control  form-input" [(ngModel)]="ownerDto.mobile" name="mobile" #mobile="ngModel" minlength="6" maxlength="16" required>
                       <div *ngIf="mobile.errors && (mobile.dirty || mobile.touched)" class="alert alert-danger">
                         <div [hidden]="!mobile.errors.required">
@@ -146,7 +146,7 @@
                       </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <label class="form-label">Email</label>
+                      <label class="form-label required-input-label">Email</label>
                       <input type="email" pattern="[^ @]*@[^ @]*" class="form-control form-input" [(ngModel)]="ownerDto.email" name="email" #email="ngModel" required>
                       <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
                         <div [hidden]="!email.errors.required">
@@ -159,11 +159,11 @@
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label">Fax</label>
-                      <input type="text" pattern="[0-9]*" class="form-control form-input" [(ngModel)]="ownerDto.fax" name="fax" #fax="ngModel" minlength="6" maxlength="18" required>
+                      <input type="text" pattern="[0-9]*" class="form-control form-input" [(ngModel)]="ownerDto.fax" name="fax" #fax="ngModel" minlength="6" maxlength="18">
                       <div *ngIf="fax.errors && (fax.dirty || fax.touched)" class="alert alert-danger">
-                        <div [hidden]="!fax.errors.required">
+                        <!-- <div [hidden]="!fax.errors.required">
                           Fax is required!
-                        </div>
+                        </div> -->
                         <div [hidden]="!fax.errors.maxlength">
                           Fax Number cannot be more than 18 characters long.
                         </div>
@@ -173,7 +173,7 @@
                       </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <label class="form-label">Address</label>
+                      <label class="form-label required-input-label">Address</label>
                       <input pattern="[a-zA-Z0-9]*" type="text" minlength="8" name="userAddress" #userAddress="ngModel" maxlength="60" class="form-control  form-input" [(ngModel)]="ownerDto.address" required>
                       <div *ngIf="userAddress.errors && (userAddress.dirty || userAddress.touched)" class="alert alert-danger">
                         <div [hidden]="!userAddress.errors.minlength">
@@ -183,11 +183,11 @@
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label">P.O.Box</label>
-                      <input type="text" pattern="[0-9]*" class="form-control  form-input" [(ngModel)]="ownerDto.pobox" name="pobox" #pobox="ngModel"  minlength="6" maxlength="18" required>
+                      <input type="text" pattern="[0-9]*" class="form-control  form-input" [(ngModel)]="ownerDto.pobox" name="pobox" #pobox="ngModel"  minlength="6" maxlength="18">
                       <div *ngIf="pobox.errors && (pobox.dirty || pobox.touched)" class="alert alert-danger">
-                        <div [hidden]="!pobox.errors.required">
+                        <!-- <div [hidden]="!pobox.errors.required">
                           P.O Box is required!
-                        </div>
+                        </div> -->
                         <div [hidden]="!pobox.errors.maxlength">
                           P.O Box cannot be more than 18 characters long.
                         </div>
@@ -232,7 +232,7 @@
                     </div>
                     <div class="offset-md-6 col-md-3">
                       <!-- [disabled]="!ownerDetailsForm.form.valid" -->
-                      <button   (click)="addOwner('next')" style=color:white class="btn common-btn" type="submit">Next</button>
+                      <button (click)="addOwner('next')" style=color:white class="btn common-btn" type="submit">Next</button>
                     </div>
                   </div>
                 </form>
@@ -248,8 +248,8 @@
                     </li>
                     <li class="StepProgress-item"><a>POA Details</a></li>
                     <li class="StepProgress-item"><a>Property Details</a></li>
+                    <li class="StepProgress-item"><a>Property Mortgage Details</a></li>
                     <li class="StepProgress-item"><a>Property Rent Details</a></li>
-                    <li class="StepProgress-item"><a>Property Financial Details</a></li>
                   </ul>
                 </div>
               </div>
