@@ -31,6 +31,7 @@ import { PressreleasesComponent } from '../pressreleases/pressreleases.component
 import { MortagecalculatorComponent } from '../mortagecalculator/mortagecalculator.component';
 import { ForbuyersComponent } from '../forbuyers/forbuyers.component';
 import { ForhomeownersComponent } from '../forhomeowners/forhomeowners.component';
+import { ChangepasswordComponent  } from '../changepassword/changepassword.component';
 
 const routes: Routes = [
   { path: 'user', component: UserComponent },
@@ -57,21 +58,22 @@ const routes: Routes = [
   { path: 'forgotPasswordRequest', component: ForgotPasswordRequestComponent },
   { path: 'forgotPasswordForm/:token', component: ForgotPasswordFormComponent },
   { path: 'forgotPasswordForm/:token', component: ForgotPasswordFormComponent },
-  {path: 'sellerSecurityPayments',component:SellersecuritypaymentComponent},
-  {path: 'signout',component:SignoutComponent},
-  {path: 'propertySuccess',component:PropertySuccessMsgComponent},
-  {path: 'privacypolicy',component:PrivacypolicyComponent},
-  {path: 'termsconditions',component:TermsconditionsComponent},
-  {path: 'disclamier',component:DisclamierComponent },
-  {path:'howitworks',component:HowitworksComponent},
-  {path:'resources',component:ResourcesComponent},
-  {path:'internationalproperties',component:InternationalpropertiesComponent},
-  {path:'buyersandinvestors',component:BuyersInvestorsComponent},
-  {path:'pressrelease',component:PressreleasesComponent},
-  {path:'mortagecalculator',component:MortagecalculatorComponent},
-  {path:'forbuyers',component:ForbuyersComponent},
-  {path:'forhomeowners',component:ForhomeownersComponent},
-  {path:'sellerDashboard',component:SellerDashboardComponent},
+  { path: 'sellerSecurityPayments',component:SellersecuritypaymentComponent},
+  { path: 'signout',component:SignoutComponent},
+  { path: 'propertySuccess',component:PropertySuccessMsgComponent},
+  { path: 'privacypolicy',component:PrivacypolicyComponent},
+  { path: 'termsconditions',component:TermsconditionsComponent},
+  { path: 'disclamier',component:DisclamierComponent },
+  { path:'howitworks',component:HowitworksComponent},
+  { path:'resources',component:ResourcesComponent},
+  { path:'internationalproperties',component:InternationalpropertiesComponent},
+  { path:'buyersandinvestors',component:BuyersInvestorsComponent},
+  { path:'pressrelease',component:PressreleasesComponent},
+  { path:'mortagecalculator',component:MortagecalculatorComponent},
+  { path:'forbuyers',component:ForbuyersComponent},
+  { path:'forhomeowners',component:ForhomeownersComponent},
+  { path:'sellerDashboard',component:SellerDashboardComponent},
+  { path:'changepassword',component:ChangepasswordComponent},
 
 ];
 

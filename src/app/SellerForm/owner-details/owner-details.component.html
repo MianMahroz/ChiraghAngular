@@ -29,7 +29,7 @@
                       </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input pattern="[a-zA-Z]*" type="text" minlength="3" name="userMiddleName" #userMiddleName="ngModel" maxlength="15" class="form-control form-input"[(ngModel)]="ownerDto.middleName" placeholder="Middle Name">
+                      <input pattern="[a-zA-Z]*" type="text" minlength="3" name="userMiddleName" #userMiddleName="ngModel" maxlength="15" class="form-control form-input" [(ngModel)]="ownerDto.middleName" placeholder="Middle Name">
                       <div *ngIf="userMiddleName.errors && (userMiddleName.dirty || userMiddleName.touched)" class="alert alert-danger">
                         <div [hidden]="!userMiddleName.errors.required">
                           Middle Name is required!
@@ -208,8 +208,8 @@
                         </div>
                         <p *ngIf="idCopyFile"><br>{{idCopyFile.name}}</p>
                         <p *ngIf="ownerDto.scannedIdCopy&&action=='back'"><br>{{ownerDto.scannedIdCopy}}</p>
-                        <!-- <img src="{{idCardFileUploadPath}}" alt="{{idCardFileUploadPath}}" style="max-width:350px" /> -->
-                        <!-- <img src="{{passportFileUploadPath}}" alt="{{passportFileUploadPath}}" style="max-width:350px" /> -->
+                        <!-- <img src="../Chiragh{{idCardFileUploadPath}}" alt="{{idCardFileUploadPath}}" style="max-width:350px" /> -->
+                        <!-- <img src="../Chiragh{{passportFileUploadPath}}" alt="{{passportFileUploadPath}}" style="max-width:350px" /> -->
                       </div>
                     </div>
                   </div>
