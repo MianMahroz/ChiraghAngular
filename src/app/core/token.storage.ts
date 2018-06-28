@@ -21,6 +21,7 @@ export class TokenStorage {
     window.sessionStorage.clear();
   }
 
+
   public saveToken(token: string,refreshToken:string,expiresIn:string) {
     window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.removeItem(TOKEN_Refresh_KEY);
@@ -31,6 +32,12 @@ export class TokenStorage {
     window.sessionStorage.setItem(TOKEN_EXPIRES_IN,  expiresIn);
   }
 
+  public saveAdminUserName(userName:string){
+    window.sessionStorage.setItem("adminUserName",  userName);
+  }
+  public getAdminuserName(): string {
+    return sessionStorage.getItem("adminUserName");
+  }
   public saveTempUser(userName:string){
     window.sessionStorage.setItem("tempUser",  userName);
   }

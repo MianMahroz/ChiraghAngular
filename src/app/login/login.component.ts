@@ -47,7 +47,7 @@ export class LoginComponent {
             data1=>{
               console.log(data1);
               this.mytoastr.Success('Login',data1.msg);
-                   if(data1.msg=="Login Successfully"){
+                   if(data1.msg=="Login Successfully"&&data1.role=='chiraghuser'){
                     // this.mytoastr.Success('Login',data1.msg);
                      this.token.saveUserName(this.logindto.userName);
                        this.router.navigate(['home']);

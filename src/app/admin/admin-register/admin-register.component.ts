@@ -1,21 +1,19 @@
-import { ToasterServiceService } from './../toaster-service.service';
-
+import { TokenStorage } from './../../core/token.storage';
+import { AuthService } from './../../core/auth.service';
+import { Router } from '@angular/router';
+import { UserService } from './../../shared/user.service';
+import { ToasterServiceService } from './../../toaster-service.service';
+import { registerDTO } from './../../register/registerDTO';
 import { Component, OnInit } from '@angular/core';
-import { registerDTO} from './registerDTO';
-import {Router} from '@angular/router';
-import {AuthService} from '../core/auth.service';
-import {TokenStorage} from '../core/token.storage';
-import {Observable} from 'rxjs/Observable';
-import {UserService} from '../shared/user.service';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-admin-register',
+  templateUrl: './admin-register.component.html',
+  styleUrls: ['./admin-register.component.css']
 })
-export class RegisterComponent  {
+export class AdminRegisterComponent {
   async ngAfterViewInit() {
-		await this.loadScript('./assets/js/common.js');
+		await this.loadScript('./../../assets/js/common.js');
 	}
 
   private loadScript(scriptUrl: string) {
@@ -45,33 +43,21 @@ export class RegisterComponent  {
     this.bar1=false;
     this.bar2=true;
    }
-  onRegister(){
+  onRegisterAdmin(){
     window.sessionStorage.removeItem('AuthToken');
     this.authService.attemptAuth().subscribe(
       data => {
         this.token.saveToken(data.access_token,data.refresh_token,data.expires_in);
         console.log(data);
         if(this.token.getToken()!=null){
-          this.registerdto.role='chiraghuser';
           this.userService.register(this.registerdto).subscribe(
             data1=>{
               console.log(data1);
                    if(data1.msg=="User Created Successfully"){
-                    //  this.token.saveUserName(this.registerdto.userName);//saving user to session
-                    this.myToast.Success('Status',data1.msg);
-                     this.token.saveTempUser(this.registerdto.userName);
-                    this.userService.confirmEmailRequest(this.registerdto.userName).subscribe(
-                      data2=>{
-                        this.registerdto=new registerDTO();
-                               console.log(data2);
-
-                               if(data2.msg='Email Sent'){
-                                this.myToast.Info('Status',data2.msg);
-                                 this.router.navigate(['confirmEmail']);
-                               }
-                      }//end of email data
-                    );//end of email subscription
-                   }//end of if
+                     this.myToast.Success('Status',data1.msg);
+                    this.registerdto=new registerDTO();
+                    this.router.navigate(['adminsignin']);
+                    }//end of if
                 }//end of inner data predicate
           );//end of inner subscription
         }//end of if
@@ -94,9 +80,9 @@ export class RegisterComponent  {
        this.checkField(this.registerdto.userPassword);
        this.checkField(this.registerdto.confirmPassword);
        this.checkField(this.registerdto.userEmail);
-       this.checkField(this.registerdto.mobileOtpCode);
+      //  this.checkField(this.registerdto.mobileOtpCode);
        this.checkField(this.registerdto.mobileNo);
-       if(this.point==8){
+       if(this.point==7){
        return 'true';
        }
        else{

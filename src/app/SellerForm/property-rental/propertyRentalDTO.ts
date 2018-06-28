@@ -3,7 +3,7 @@ export class PropertyRentalDetailDTO{
 
     userName:string;
     propertyId:number;
-      leaseStartDate:DateTimeFormat;
+    leaseStartDate:DateTimeFormat;
     leaseExpiryDate:DateTimeFormat;
     tenantName:string;
     tenancyContractUpload:string;
@@ -13,5 +13,7 @@ export class PropertyRentalDetailDTO{
     paymentStructure:string;
     isRented:string;
     isVacant:string;
+    sellerUserName:string;
+    dateReceived:DateTimeFormat;
 
   }

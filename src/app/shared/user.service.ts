@@ -1,3 +1,4 @@
+import { ChiraghUser } from './../admin/adminsellerhome/ChiraghUserPOJO';
 import { ForgotPasswordDTO } from './../forgot-password-form/forgotPasswordDTO';
 import { ForgotPasswordRequestDTO } from './../forgot-password-request/forgotPasswordRequestDTO';
 import { Injectable } from '@angular/core';
@@ -53,6 +54,10 @@ public forgotPasswordServiceRequest(forgotPasswordRequestDTO:ForgotPasswordReque
 
 public resetPassword(forgotPasswordDTO:ForgotPasswordDTO): Observable<any> {
   return this.http.post<any>(this.userUrl + '/resetPassword', forgotPasswordDTO,httpOptions);
+}
+
+public getUserswithCompleteProperties(userName:string): Observable<ChiraghUser[]> {
+  return this.http.get<ChiraghUser[]>(this.userUrl + '/getUserWithCompleteProperties/'+userName);
 }
 
 }
