@@ -66,7 +66,9 @@ export class RegisterComponent  {
 
                                if(data2.msg='Email Sent'){
                                 this.myToast.Info('Status',data2.msg);
-                                 this.router.navigate(['confirmEmail']);
+                                
+                                                     
+                                
                                }
                       }//end of email data
                     );//end of email subscription

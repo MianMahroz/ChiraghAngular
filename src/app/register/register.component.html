@@ -116,7 +116,7 @@
                         <div class="col-md-12 form-label-group mb-4">
                           <label class="form-label">Confirm Password</label>
                           <input (focus)="passwordFocus2()" #userConfirmPassword="ngModel"  type="password" class="form-control form-input" name="userConfirmPassword" [(ngModel)]="registerdto.confirmPassword"  [equal]="registerdto.userPassword" required>
-                          <p style="color:red" *ngIf="userConfirmPassword.errors?.equal">Password not match</p>
+                          <p style="color:red" *ngIf="userConfirmPassword?.errors?.equal">Password not match</p>
                           <div *ngIf="bar2">
                             <ng2-password-strength-bar
                             [passwordToCheck]="registerdto.confirmPassword"
