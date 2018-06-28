@@ -1,6 +1,6 @@
 import { ToasterServiceService } from './../../toaster-service.service';
 import { fileUpload } from './fileUpload';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { TokenStorage } from '../../core/token.storage';
 import { AuthService } from '../../core/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -17,6 +17,7 @@ import {AfterViewInit, ViewChild} from '@angular/core';
 })
 export class OwnerDetailsComponent implements AfterViewInit {
 
+  @Input() clickedPropertyData:any;
   private loadScript(scriptUrl: string) {
     return new Promise((resolve, reject) => {
       const scriptElement = document.createElement('script');
@@ -70,12 +71,18 @@ export class OwnerDetailsComponent implements AfterViewInit {
   }
 
     ngOnInit() {
-      this.atLeastOneOwner=false;
-      // this.createNewProperty();
-      // this.token.saveUserName('BesterCapital2');
-      // this.token.savePropertyId('111');
 
-     // console.log(this.token.getuserName());
+      if(this.token.getAdminuserName()){
+          this.token.savePropertyId(this.clickedPropertyData.propertyId);
+          this.token.saveUserName(this.token.getAdminuserName());
+          this.getAllEnteredOwner();
+      }//end of if
+      else{
+        this.router.navigate(['/adminsignin']);
+      }
+      this.atLeastOneOwner=false;
+
+      console.log(this.token.getuserName());
      if(this.token.getuserName()==null){
       console.log('Invalid Session');
       this.router.navigate(['/login']);
@@ -92,7 +99,8 @@ export class OwnerDetailsComponent implements AfterViewInit {
       else{
         this.token.savePropertyId('0');
       }
-    }
+
+  }//end of nginit
     selectPassport(event) {
       this.selectedPassport = event.target.files;
       this.passportFile=this.selectedPassport.item(0);

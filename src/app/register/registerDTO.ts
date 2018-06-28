@@ -10,9 +10,9 @@ export class registerDTO {
     userPassword:string;
     confirmPassword:string;
     mobileOtpCode:string;
-    
+    role:string;
+
     constructor(){
 
     }
   }
-  

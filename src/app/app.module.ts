@@ -56,6 +56,13 @@ import { ForhomeownersComponent } from './forhomeowners/forhomeowners.component'
 import { SellerDashboardComponent } from './seller-dashboard/seller-dashboard.component';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
+import { AdminRegisterComponent } from './admin/admin-register/admin-register.component';
+import { AdminhomeComponent } from './admin/adminhome/adminhome.component';
+import { AdminsellerhomeComponent } from './admin/adminsellerhome/adminsellerhome.component';
+import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
+import { VerificationHomeComponent } from './admin/verification-home/verification-home.component';
+import { AdminsignoutComponent } from './admin/adminsignout/adminsignout.component';
+import { AdminSellerDetailsComponent } from './admin/admin-seller-details/admin-seller-details.component';
 // enableProdMode();
 @NgModule({
   declarations: [
@@ -96,6 +103,13 @@ import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
     SellerDashboardComponent,
     ChangepasswordComponent,
     AdminLoginComponent,
+    AdminRegisterComponent,
+    AdminhomeComponent,
+    AdminsellerhomeComponent,
+    AdminHeaderComponent,
+    VerificationHomeComponent,
+    AdminsignoutComponent,
+    AdminSellerDetailsComponent,
   ],
   imports: [
     ToastModule.forRoot(),

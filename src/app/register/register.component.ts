@@ -52,6 +52,7 @@ export class RegisterComponent  {
         this.token.saveToken(data.access_token,data.refresh_token,data.expires_in);
         console.log(data);
         if(this.token.getToken()!=null){
+          this.registerdto.role='chiraghuser';
           this.userService.register(this.registerdto).subscribe(
             data1=>{
               console.log(data1);

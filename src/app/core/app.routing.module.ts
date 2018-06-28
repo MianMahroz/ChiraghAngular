@@ -1,3 +1,10 @@
+import { AdminSellerDetailsComponent } from './../admin/admin-seller-details/admin-seller-details.component';
+import { AdminsignoutComponent } from './../admin/adminsignout/adminsignout.component';
+import { VerificationHomeComponent } from './../admin/verification-home/verification-home.component';
+import { AdminsellerhomeComponent } from './../admin/adminsellerhome/adminsellerhome.component';
+import { AdminhomeComponent } from './../admin/adminhome/adminhome.component';
+import { AdminRegisterComponent } from './../admin/admin-register/admin-register.component';
+
 import { AdminLoginComponent } from './../admin/admin-login/admin-login.component';
 import { SellerDashboardComponent } from './../seller-dashboard/seller-dashboard.component';
 import { PropertySuccessMsgComponent } from '../SellerForm/property-success-msg/property-success-msg.component';
@@ -76,11 +83,17 @@ const routes: Routes = [
   { path:'sellerDashboard',component:SellerDashboardComponent},
   { path:'changepassword',component:ChangepasswordComponent},
 
-
-
-
   //admin module path
-  {path:'adminlogin',component:AdminLoginComponent},
+  {path:'adminsignin',component:AdminLoginComponent},
+  {path:'adminsignup',component:AdminRegisterComponent},
+  {path:'adminhome',component:AdminhomeComponent},
+  {path:'adminsellerhome',component:AdminsellerhomeComponent},
+  {path:'adminverificationhome',component:VerificationHomeComponent},
+  {path:'adminsignout',component:AdminsignoutComponent},
+  {path:'adminsellerdetails',component:AdminSellerDetailsComponent},
+  {path:'adminverificationhome/:action',component:VerificationHomeComponent},
+  {path:'adminverificationhome/:action/:propertyId',component:VerificationHomeComponent},
+
 ];
 
 @NgModule({

@@ -42,4 +42,16 @@ public getPropertyByUserName(userName:string): Observable<any> {
   return this.http.get<any>(this.propertyUrl + '/getAll/'+userName);
 }
 
+public getCompleteProperties(userName:string): Observable<any> {
+  return this.http.get<any>(this.propertyUrl + '/getCompleteProperties/'+userName);
 }
+
+public getAdminSellerHomeData(userName:string): Observable<any> {
+  return this.http.get<any>(this.propertyUrl + '/getAdminSellerHomeData/'+userName);
+}
+
+public getPropertyByIdadmin(propertyId:number,userName:string): Observable<any> {
+  return this.http.get<any>(this.propertyUrl + '/getPropertyById/'+propertyId+'/'+userName);
+}
+
+}//end of class

@@ -279,6 +279,7 @@ input[type=number] {
     padding-left: 0;
     display: flex;
     margin-bottom: 0;
+    color: @primary-color;
     &::selection {
       background-color: transparent;
       color: @primary-color;
@@ -346,7 +347,7 @@ input[type=number] {
       left: 8px;
       top: 2px;
       content: "";
-      background-color: @background_color_1;
+      background-color: @secondary-color;
       height: 4px;
       width: 4px;
       border-radius: 100%;
@@ -404,7 +405,11 @@ input[type=number] {
   }
 }
 
-
+.location-input {
+  background: url("../../assets/images/location-icon.png") no-repeat 0 0;
+  background-position: calc(~'100% - 12px') center;
+  padding-right: 30px;
+}
 .common-select {
   &.form-control {
     font-size: 18px;
@@ -415,6 +420,10 @@ input[type=number] {
     -moz-appearance: none;
     background: url("../../assets/images/dropdown-arrow.png") no-repeat 0 0;
     background-position: calc(~'100% - 12px') center;
+    &:disabled {
+      background-color: #e9ecef;
+      opacity: 1;
+    }
     option {
       color: @secondary-color;
     }
