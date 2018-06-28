@@ -10,41 +10,46 @@
                   <form #propertyDetailsForm="ngForm" class="common-form" novalidate>
                     <div class="mb-5 page-primary-title-34">Property Details</div>
                     <div class="row">
-                      <div class="col-md-12 form-block-heading mb-2">Area Details:</div>
+                      <div class="col-md-12 form-block-heading mb-3">Area Details:</div>
                       <div class="col-md-6 form-label-group mb-4">
+                        <label class="form-label required-input-label">Property Status</label>
                         <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.propertyStatus" name="propertyStatus">
-                          <option>Property Status</option>
                           <option>Off-plan</option>
                           <option>Under Construction</option>
                           <option>Completed</option>
                         </select>
                       </div>
                       <div class="col-md-6 form-label-group mb-4">
-                        <input type="text" pattern="[a-zA-Z0-9]" class="form-control form-input" [(ngModel)]="propertyDetailsDto.plotNo" name="plotNo" placeholder="Plot Number" required>
+                        <label class="form-label required-input-label">Plot Number</label>
+                        <input type="text" pattern="[a-zA-Z0-9]" class="form-control form-input" [(ngModel)]="propertyDetailsDto.plotNo" name="plotNo" required>
                       </div>
                       <div class="col-md-6 form-label-group mb-4">
-                        <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.typeArea" name="typeArea" #typeArea="ngModel" >
-                            <option>Type of Area</option>
-                            <option>Free Hold</option>
-                            <option>Non-Free Hold</option>
-                            <option>Lease Hold</option>
-                          </select>
+                        <label class="form-label">Type of Area</label>
+                        <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.typeArea" name="typeArea" #typeArea="ngModel">
+                          <option>Free Hold</option>
+                          <option>Non-Free Hold</option>
+                          <option>Lease Hold</option>
+                        </select>
                       </div>
                       <div class="col-md-6 form-label-group mb-4">
-                        <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.titleDeedNo" name="titlDeedNo" #titlDeedNo="ngModel" placeholder="Title Deed Number" required>
+                        <label class="form-label required-input-label">Title Deed Number</label>
+                        <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.titleDeedNo" name="titlDeedNo" #titlDeedNo="ngModel" required>
                       </div>
                       <div class="col-md-6 form-label-group mb-4">
-                        <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.address" name="address" #address="ngModel" placeholder="Address" required>
+                        <label class="form-label required-input-label">Address</label>
+                        <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.address" name="address" #address="ngModel" required>
                       </div>
                       <div class="col-md-6 form-label-group mb-4">
-                        <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.mapLocation" name="mapLocation" #mapLocation="ngModel" placeholder="Location Map" required>
+                        <label class="form-label">Location Map</label>
+                        <input type="text" class="form-control form-input location-input" [(ngModel)]="propertyDetailsDto.mapLocation" name="mapLocation" #mapLocation="ngModel">
                       </div>
                       <div class="col-md-6 form-label-group mb-4">
-                        <input type="text" pattern="[a-zA-Z0-9]" class="form-control form-input" [(ngModel)]="propertyDetailsDto.propertyNo" name="propertyNo" #propertyNo="ngModel" placeholder="Property Number" required>
+                        <label class="form-label required-input-label">Property Number</label>
+                        <input type="text" pattern="[a-zA-Z0-9]" class="form-control form-input" [(ngModel)]="propertyDetailsDto.propertyNo" name="propertyNo" #propertyNo="ngModel" required>
                       </div>
                       <div class="col-md-6 form-label-group mb-4">
+                        <label class="form-label required-input-label">Type of Property</label>
                         <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.propertyType" name="propertyType" #propertyType="ngModel">
-                          <option>Type of Property</option>
                           <option>Land</option>
                           <option>Villa</option>
                           <option>Building</option>
@@ -55,38 +60,51 @@
                         </select>
                       </div>
                       <div class="col-md-6 form-label-group mb-4">
-                        <input type="text" pattern="[a-zA-Z0-9]" class="form-control form-input" [(ngModel)]="propertyDetailsDto.projectName" name="projectName" #projectName="ngModel" placeholder="Project Name" required>
+                        <label class="form-label required-input-label">Project Name</label>
+                        <input type="text" pattern="[a-zA-Z0-9]" class="form-control form-input" [(ngModel)]="propertyDetailsDto.projectName" name="projectName" #projectName="ngModel">
                       </div>
-                      <div class="col-md-6 form-label-group mb-4">
-                        <input type="text" pattern="[0-9.]*" class="form-control form-input" [(ngModel)]="propertyDetailsDto.area" name="area" #area="ngModel" placeholder="Area[sqm]" required>
+                      <div class="col-md-4 form-label-group mb-4 pr-1 pr-xs-15">
+                        <label class="form-label required-input-label">Area</label>
+                        <input type="text" pattern="[0-9.]*" class="form-control form-input" [(ngModel)]="propertyDetailsDto.area" name="area" #area="ngModel" required>
                         <div *ngIf="area.errors && (area.dirty || area.touched)" class="alert alert-danger">
-                            <div [hidden]="!area.errors.pattern">
-                                Space,Alaphabets and Special Character not Allowed!
-                              </div>
-                            </div>
+                          <div [hidden]="!area.errors.pattern">
+                            Space,Alaphabets and Special Character not Allowed!
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-2 form-label-group mb-4">
+                          <label class="form-label required-input-label">Unit</label>
+                          <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.areaUnit" name="areaUnit" #areaUnit="ngModel">
+                            <option>sqm</option>
+                            <option>sqft</option>    
+                          </select>
+                        </div>
+                      <div class="col-md-6 form-label-group mb-4">
+                        <label class="form-label">Owner Association Number</label>
+                        <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.ownerAssociationNo" name="ownerAssociationNo">
                       </div>
                       <div class="col-md-6 form-label-group mb-4">
-                        <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.ownerAssociationNo" name="ownerAssociationNo"  placeholder="Owner Association Number" required>
-                      </div>
-                      <div class="col-md-6 form-label-group mb-4">
+                        <label class="form-label">Present Use</label>
                         <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.presentUse" name="presentUse" #presentUse="ngModel">
-                          <option selected>Present Use</option>
                           <option>Residential</option>
                           <option>Commercial</option>
                           <option>Industrial</option>
                         </select>
                       </div>
                       <div class="col-md-6 form-label-group mb-4">
-                        <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.communityNo" name="communityNo" #communityNo="ngModel" placeholder="Community Number" required>
+                        <label class="form-label">Community Number</label>
+                        <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.communityNo" name="communityNo" #communityNo="ngModel">
                       </div>
                       <div class="col-md-6 form-label-group mb-4">
-                        <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.propertyAge" name="propertyAge" #propertyAge="ngModel" placeholder="Property Approx. Age" required>
+                        <label class="form-label">Property Approx. Age</label>
+                        <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.propertyAge" name="propertyAge" #propertyAge="ngModel">
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-12 form-block-heading mb-3">Specs:</div>
                       <div class="col-md-3 mb-4">
-                        <input type="text"  pattern="[0-9]*" class="form-control form-input" [(ngModel)]="propertyDetailsDto.noOfBedrooms" name="noOfBedrooms" #noOfBedrooms="ngModel" placeholder="Bedrooms">
+                        <label class="form-label">Bedrooms</label>
+                        <input type="text"  pattern="[0-9]*" class="form-control form-input" [(ngModel)]="propertyDetailsDto.noOfBedrooms" name="noOfBedrooms" #noOfBedrooms="ngModel">
                         <div *ngIf="noOfBedrooms.errors && (noOfBedrooms.dirty || noOfBedrooms.touched)" class="alert alert-danger">
                           <div [hidden]="!noOfBedrooms.errors.pattern">
                             Space,Alaphabets and Special Character not Allowed!
@@ -94,7 +112,8 @@
                         </div>
                       </div>
                       <div class="col-md-3 mb-4">
-                        <input type="text" pattern="[0-9]*" class="form-control form-input"  [(ngModel)]="propertyDetailsDto.noOfBaths" #noOfBaths="ngModel" name="noOfBaths" placeholder="Bathrooms">
+                        <label class="form-label">Bathrooms</label>
+                        <input type="text" pattern="[0-9]*" class="form-control form-input"  [(ngModel)]="propertyDetailsDto.noOfBaths" #noOfBaths="ngModel" name="noOfBaths">
                         <div *ngIf="noOfBaths.errors && (noOfBaths.dirty || noOfBaths.touched)" class="alert alert-danger">
                           <div [hidden]="!noOfBaths.errors.pattern">
                             Space,Alaphabets and Special Character not Allowed!
@@ -102,7 +121,8 @@
                         </div>
                       </div>
                       <div class="col-md-3 mb-4">
-                        <input type="text" pattern="[0-9]*" class="form-control form-input" [(ngModel)]="propertyDetailsDto.carParks" #carParks="ngModel" name="carParks" placeholder="Car Parks">
+                        <label class="form-label">Car Parks</label>
+                        <input type="text" pattern="[0-9]*" class="form-control form-input" [(ngModel)]="propertyDetailsDto.carParks" #carParks="ngModel" name="carParks">
                         <div *ngIf="carParks.errors && (carParks.dirty || carParks.touched)" class="alert alert-danger">
                           <div [hidden]="!carParks.errors.pattern">
                             Space,Alaphabets and Special Character not Allowed!
@@ -110,7 +130,8 @@
                         </div>
                       </div>
                       <div class="col-md-3 mb-4">
-                        <input type="text" pattern="[0-9]*" class="form-control form-input" [(ngModel)]="propertyDetailsDto.kitchens" name="kitchens" #kitchens="ngModel" placeholder="Kitchens">
+                        <label class="form-label">Kitchens</label>
+                        <input type="text" pattern="[0-9]*" class="form-control form-input" [(ngModel)]="propertyDetailsDto.kitchens" name="kitchens" #kitchens="ngModel">
                         <div *ngIf="kitchens.errors && (kitchens.dirty || kitchens.touched)" class="alert alert-danger">
                           <div [hidden]="!kitchens.errors.pattern">
                             Space,Alaphabets and Special Character not Allowed!
@@ -118,7 +139,8 @@
                         </div>
                       </div>
                       <div class="col-md-3 mb-4">
-                        <input type="text" pattern="[0-9]*"  class="form-control form-input" [(ngModel)]="propertyDetailsDto.floorNo" name="floorNo" #floorNo="ngModel" placeholder="Floor No.">
+                        <label class="form-label">Floor No.</label>
+                        <input type="text" pattern="[0-9]*"  class="form-control form-input" [(ngModel)]="propertyDetailsDto.floorNo" name="floorNo" #floorNo="ngModel">
                         <div *ngIf="floorNo.errors && (floorNo.dirty || floorNo.touched)" class="alert alert-danger">
                           <div [hidden]="!floorNo.errors.pattern">
                             Space,Alaphabets and Special Character not Allowed!
@@ -126,7 +148,8 @@
                         </div>
                       </div>
                       <div class="col-md-3 mb-4">
-                        <input type="text" pattern="[0-9]*"  class="form-control form-input" [(ngModel)]="propertyDetailsDto.noUnits" name="noUnits" #noUnits="ngModel" placeholder="Unit No.">
+                        <label class="form-label">Unit No.</label>
+                        <input type="text" pattern="[0-9]*"  class="form-control form-input" [(ngModel)]="propertyDetailsDto.noUnits" name="noUnits" #noUnits="ngModel">
                         <div *ngIf="noUnits.errors && (noUnits.dirty || noUnits.touched)" class="alert alert-danger">
                           <div [hidden]="!noUnits.errors.pattern">
                             Space,Alaphabets and Special Character not Allowed!
@@ -134,7 +157,8 @@
                         </div>
                       </div>
                       <div class="col-md-3 mb-4">
-                        <input type="text" pattern="[0-9]*"  class="form-control form-input" [(ngModel)]="propertyDetailsDto.noOfFloors" name="noOfFloors" #noOfFloors="ngModel" placeholder="No. of Floors">
+                        <label class="form-label">No. of Floors</label>
+                        <input type="text" pattern="[0-9]*"  class="form-control form-input" [(ngModel)]="propertyDetailsDto.noOfFloors" name="noOfFloors" #noOfFloors="ngModel">
                         <div *ngIf="noOfFloors.errors && (noOfFloors.dirty || noOfFloors.touched)" class="alert alert-danger">
                           <div [hidden]="!noOfFloors.errors.pattern">
                             Space,Alaphabets and Special Character not Allowed!
@@ -142,7 +166,8 @@
                         </div>
                       </div>
                       <div class="col-md-3 mb-4">
-                        <input type="text" pattern="[0-9]*"  class="form-control form-input" [(ngModel)]="propertyDetailsDto.noShops" name="noShops" #noShops="ngModel" placeholder="No. of Shops">
+                        <label class="form-label">No. of Shops</label>
+                        <input type="text" pattern="[0-9]*"  class="form-control form-input" [(ngModel)]="propertyDetailsDto.noShops" name="noShops" #noShops="ngModel">
                         <div *ngIf="noShops.errors && (noShops.dirty || noShops.touched)" class="alert alert-danger">
                           <div [hidden]="!noShops.errors.pattern">
                             Space,Alaphabets and Special Character not Allowed!
@@ -590,14 +615,14 @@
                       <div class="row mt-3">
                         <div class="col-md-12 form-block-heading mb-3">Description</div>
                         <div class="form-group col-md-12">
-                          <textarea class="form-control common-textarea" [(ngModel)]="propertyDetailsDto.description" name="description" #description="ngModel" placeholder="Max 200 words" maxlength="200"required></textarea>
+                          <textarea class="form-control common-textarea" [(ngModel)]="propertyDetailsDto.description" name="description" #description="ngModel" maxlength="200"required></textarea>
                           <div *ngIf="description.errors && (description.dirty || description.touched)" class="alert alert-danger">
-                              <div [hidden]="!description.errors.required">
-                                  Description is required and cannot be more than 200 characters long.!
-                              </div>
-                              <div [hidden]="!description.errors.maxlength">
-                                  Description cannot be more than 200 characters long.
-                              </div>
+                            <div [hidden]="!description.errors.required">
+                              Description is required and cannot be more than 200 characters long.!
+                            </div>
+                            <div [hidden]="!description.errors.maxlength">
+                              Description cannot be more than 200 characters long.
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -642,18 +667,16 @@
                   </form>
                 </div>
                 <div class="col-md-2 page-locator-wrap">
-                  <div class="back">
+                  <div class="page-locator">
                     <div class="process-heading">Process Steps</div>
-                    <div class="menu-back">
-                      <ul class="nav-history">
-                        <li routerLinkActive="active"><a routerLink="/sellerOwnerDetails">Owner Details</a></li>
-                        <li routerLinkActive="active"><a routerLink="/sellerPoaDetails">POA Details</a></li>
-                        <li routerLinkActive="active"><a routerLink="/propertyDetails">Property Details</a></li>
-                        <li><a>Property Rent Details</a></li>
-                        <li><a>Property Financial Details</a></li>
-                      </ul>
-                    </div>
-                  </div>    
+                    <ul class="StepProgress">
+                      <li class="StepProgress-item is-done"><a routerLink="/sellerOwnerDetails">Owner Details<span>Done</span></a></li>
+                      <li class="StepProgress-item is-done"><a routerLink="/sellerPoaDetails">POA Details<span>Done</span></a></li>
+                      <li class="StepProgress-item" routerLinkActive="current"><a routerLink="/propertyDetails">Property Details<span>Processing</span></a></li>
+                      <li class="StepProgress-item"><a>Property Mortgage Details</a></li>
+                      <li class="StepProgress-item"><a>Property Rent Details</a></li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>

@@ -3,10 +3,11 @@ import { ForgotPasswordDTO } from './../forgot-password-form/forgotPasswordDTO';
 import { ForgotPasswordRequestDTO } from './../forgot-password-request/forgotPasswordRequestDTO';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
-import {User} from '../user/user.model';
+import { Observable} from 'rxjs/Observable';
+import { User} from '../user/user.model';
 import { registerDTO } from '../register/registerDTO';
 import { TokenStorage } from '../core/token.storage';
+import { ChangePasswordDTO } from './../changepassword/changepasswordDTO';
 
 
 const httpOptions = {
@@ -56,8 +57,20 @@ public resetPassword(forgotPasswordDTO:ForgotPasswordDTO): Observable<any> {
   return this.http.post<any>(this.userUrl + '/resetPassword', forgotPasswordDTO,httpOptions);
 }
 
+<<<<<<< HEAD
 public getUserswithCompleteProperties(userName:string): Observable<ChiraghUser[]> {
   return this.http.get<ChiraghUser[]>(this.userUrl + '/getUserWithCompleteProperties/'+userName);
 }
 
+=======
+public getpersonalinfo(userName:string): Observable<any> {
+  return this.http.get<any>(this.userUrl + '/getpersonalinfo/'+userName,httpOptions);
+}
+
+public changePassword(userName:string,changePasswordDTO:ChangePasswordDTO): Observable<any> {
+  return this.http.put<any>(this.userUrl + '/changePassword/'+userName,changePasswordDTO,httpOptions);
+}
+
+
+>>>>>>> 8ae0caefed8b08355da44a7a4d443b825234e1f0
 }

@@ -126,5 +126,5 @@ export class PropertyDetailsDto {
  publicPark:string;
  park:string;
  description:string;
-
+ areaUnit:string;
 }

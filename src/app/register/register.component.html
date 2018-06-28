@@ -18,9 +18,10 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="row">
-                        <div class="col-md-12 form-block-heading mb-2">Personal Details:</div>
+                        <div class="col-md-12 form-block-heading mb-3">Personal Details:</div>
                         <div class="col-md-12 form-label-group mb-4">
-                          <input pattern="[a-zA-Z]*" type="text" class="form-control form-input" [(ngModel)]="registerdto.firstName" minlength="3" name="userFirstName" #userFirstName="ngModel" maxlength="15" placeholder="First Name" autofocus>
+                          <label class="form-label required-input-label">First Name</label>
+                          <input pattern="[a-zA-Z]*" type="text" class="form-control form-input" [(ngModel)]="registerdto.firstName" minlength="3" name="userFirstName" #userFirstName="ngModel" maxlength="15" autofocus>
                           <div *ngIf="userFirstName.errors && (userFirstName.dirty || userFirstName.touched)" class="alert alert-danger">
                             <div [hidden]="!userFirstName.errors.required">
                               First Name is required!
@@ -37,7 +38,8 @@
                           </div>
                         </div>
                         <div class="col-md-12 form-label-group mb-4">
-                          <input pattern="[a-zA-Z]*" type="text" minlength="3" name="userMiddleName" #userMiddleName="ngModel" maxlength="15" class="form-control form-input" [(ngModel)]="registerdto.middleName" placeholder="Middle Name">
+                          <label class="form-label">Middle Name</label>
+                          <input pattern="[a-zA-Z]*" type="text" minlength="3" name="userMiddleName" #userMiddleName="ngModel" maxlength="15" class="form-control form-input" [(ngModel)]="registerdto.middleName">
                           <div *ngIf="userMiddleName.errors && (userMiddleName.dirty || userMiddleName.touched)" class="alert alert-danger">
                             <div [hidden]="!userMiddleName.errors.required">
                               Middle Name is required!
@@ -54,7 +56,8 @@
                           </div>
                         </div>
                         <div class="col-md-12 form-label-group mb-4">
-                          <input pattern="[a-zA-Z0-9_]*" type="text" minlength="3" name="userLastName" #userLastName="ngModel" maxlength="15" class="form-control form-input" [(ngModel)]="registerdto.lastName"  placeholder="Last Name" required>
+                          <label class="form-label required-input-label">Last Name</label>
+                          <input pattern="[a-zA-Z0-9_]*" type="text" minlength="3" name="userLastName" #userLastName="ngModel" maxlength="15" class="form-control form-input" [(ngModel)]="registerdto.lastName" required>
                           <div *ngIf="userLastName.errors && (userLastName.dirty || userLastName.touched)" class="alert alert-danger">
                             <div [hidden]="!userLastName.errors.required">
                               Last Name is required!
@@ -74,9 +77,10 @@
                     </div>
                     <div class="col-md-6">
                       <div class="row">
-                        <div class="col-md-12 form-block-heading mb-2">Account Details:</div>
+                        <div class="col-md-12 form-block-heading mb-3">Account Details:</div>
                         <div class="col-md-12 form-label-group mb-4">
-                          <input pattern="[a-zA-Z0-9_]*" type="text" class="form-control form-input" minlength="8" name="userName" #userName="ngModel" maxlength="15" [(ngModel)]="registerdto.userName"  placeholder="Create Username" required>
+                          <label class="form-label required-input-label">Create Username</label>
+                          <input pattern="[a-zA-Z0-9_]*" type="text" class="form-control form-input" minlength="8" name="userName" #userName="ngModel" maxlength="15" [(ngModel)]="registerdto.userName" required>
                           <div *ngIf="userName.errors && (userName.dirty || userName.touched)" class="alert alert-danger">
                             <div [hidden]="!userName.errors.required">
                               Username is required!
@@ -93,15 +97,16 @@
                           </div>
                         </div>
                         <div class="col-md-12 form-label-group mb-4">
-                          <input  (focus)="passwordFocus1()" #userPassword="ngModel"  type="password" class="form-control form-input" name="userPassword" [(ngModel)]="registerdto.userPassword" placeholder="Create Password" required>
-                      <div *ngIf="bar1">
-                          <ng2-password-strength-bar
-                          [passwordToCheck]="registerdto.userPassword"
-                          [barLabel]="barLabel"
-                          [barColors]="myColors"
-                          [strengthLabels]="strengthLabels">
-                        </ng2-password-strength-bar>
-                      </div>
+                          <label class="form-label required-input-label">Create Password</label>
+                          <input  (focus)="passwordFocus1()" #userPassword="ngModel"  type="password" class="form-control form-input" name="userPassword" [(ngModel)]="registerdto.userPassword" required>
+                          <div *ngIf="bar1">
+                            <ng2-password-strength-bar
+                            [passwordToCheck]="registerdto.userPassword"
+                            [barLabel]="barLabel"
+                            [barColors]="myColors"
+                            [strengthLabels]="strengthLabels">
+                            </ng2-password-strength-bar>
+                          </div>
                           <div *ngIf="userPassword.errors && (userPassword.dirty || userPassword.touched)" class="alert alert-danger">
                             <div [hidden]="!userPassword.errors.required">
                               User Password is required!
@@ -109,30 +114,31 @@
                           </div>
                         </div>
                         <div class="col-md-12 form-label-group mb-4">
-                          <input (focus)="passwordFocus2()" #userConfirmPassword="ngModel"  type="password" class="form-control form-input" name="userConfirmPassword" [(ngModel)]="registerdto.confirmPassword"  [equal]="registerdto.userPassword" placeholder="Confirm Password" required>
+                          <label class="form-label required-input-label">Confirm Password</label>
+                          <input (focus)="passwordFocus2()" #userConfirmPassword="ngModel"  type="password" class="form-control form-input" name="userConfirmPassword" [(ngModel)]="registerdto.confirmPassword"  [equal]="registerdto.userPassword" required>
                           <p style="color:red" *ngIf="userConfirmPassword.errors?.equal">Password not match</p>
-                      <div *ngIf="bar2">
-                          <ng2-password-strength-bar
-                          [passwordToCheck]="registerdto.confirmPassword"
-                          [barLabel]="barLabel"
-                          [barColors]="myColors"
-                          [strengthLabels]="strengthLabels">
-                        </ng2-password-strength-bar>
-                      </div>
-                        <div *ngIf="userConfirmPassword.errors && (userConfirmPassword.dirty || userConfirmPassword.touched)" class="alert alert-danger">
+                          <div *ngIf="bar2">
+                            <ng2-password-strength-bar
+                            [passwordToCheck]="registerdto.confirmPassword"
+                            [barLabel]="barLabel"
+                            [barColors]="myColors"
+                            [strengthLabels]="strengthLabels">
+                            </ng2-password-strength-bar>
+                          </div>
+                          <div *ngIf="userConfirmPassword.errors && (userConfirmPassword.dirty || userConfirmPassword.touched)" class="alert alert-danger">
                             <div [hidden]="!userConfirmPassword.errors.required">
                               Confirm Password is required!
                             </div>
-
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="row mt-3">
-                    <div class="col-md-12 form-block-heading mb-2">Contact Details:</div>
+                    <div class="col-md-12 form-block-heading mb-3">Contact Details:</div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="email" pattern="[^ @]*@[^ @]*" class="form-control form-input" #userEmail="ngModel" [(ngModel)]="registerdto.userEmail" name="userEmail" placeholder="Your Email" required>
+                      <label class="form-label required-input-label">Your Email</label>
+                      <input type="email" pattern="[^ @]*@[^ @]*" class="form-control form-input" #userEmail="ngModel" [(ngModel)]="registerdto.userEmail" name="userEmail" required>
                       <div *ngIf="userEmail.errors && (userEmail.dirty || userEmail.touched)" class="alert alert-danger">
                         <div [hidden]="!userEmail.errors.required">
                           Email must be like name@gmail.com
@@ -145,7 +151,8 @@
                   </div>
                   <div class="row">
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="number" max="16" class="form-control form-input" #mobileNo="ngModel"  name="mobileNo" [(ngModel)]="registerdto.mobileNo" placeholder="Mobile Number" required>
+                      <label class="form-label required-input-label">Mobile Number</label>
+                      <input type="number" max="16" class="form-control form-input" #mobileNo="ngModel"  name="mobileNo" [(ngModel)]="registerdto.mobileNo" required>
                       <div *ngIf="mobileNo.errors && (mobileNo.dirty || mobileNo.touched)" class="alert alert-danger">
                         <div [hidden]="!mobileNo.errors.required">
                           Mobile number is required!
@@ -166,7 +173,8 @@
                   </div>
                   <div class="row">
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="text" pattern="[0-9_]*" class="form-control form-input" #otpCode="ngModel" [(ngModel)]="registerdto.mobileOtpCode" name="otpCode" maxlength="4" placeholder="Enter OTP code" required>
+                      <label class="form-label required-input-label">Enter OTP code</label>
+                      <input type="text" pattern="[0-9_]*" class="form-control form-input" #otpCode="ngModel" [(ngModel)]="registerdto.mobileOtpCode" name="otpCode" maxlength="4" required>
                       <div *ngIf="otpCode.errors && (otpCode.dirty || otpCode.touched)" class="alert alert-danger">
                         <div [hidden]="!otpCode.errors.required">
                           OTP code is required!
@@ -181,10 +189,11 @@
                     </div>
                   </div>
                   <div class="row my-4">
-                    <div class="col-md-12 common-checkbox">
+                    <div class="col-md-6 d-flex justify-content-between flex-wrap common-checkbox">
                       <label>
                         <input type="checkbox" name="terms" [(ngModel)]="terms" required><span class="checkbox-material"><span class="check mr-2"></span></span> Accept Terms & Conditions
                       </label>
+                      <a href="#" class="read-more-link">(Read More)</a>
                     </div>
                   </div>
                   <!-- <div class="form-group mb-5">
@@ -196,7 +205,7 @@
                     <div class="col-md-6">
                         <!-- [disabled]="!registerForm.form.valid" -->
                         <!-- [disabled]="!terms" -->
-                      <button  class="btn form-btn" (click)="onRegister()" type="submit">Register</button>
+                      <button class="btn form-btn" (click)="onRegister()" type="submit">Register</button>
                     </div>
                   </div>
                 </form>

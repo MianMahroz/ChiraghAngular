@@ -1,4 +1,4 @@
-<div class="container-fluid screen-wrapper">
+<div class="container-fluid bootstrap-iso screen-wrapper">
     <app-header></app-header>
     <div class="row body-section">
       <div class="col-md-12">
@@ -9,58 +9,82 @@
                 <form #rentalForm="ngForm" class="common-form" novalidate>
                   <div class="mb-5 page-primary-title-34">Property Details</div>
                   <div class="row">
-                    <div class="col-md-12 form-block-heading mb-2">Rent Details</div>
+                    <div class="col-md-12 form-block-heading mb-3">Rent Details</div>
                     <div class="col-md-6 form-label-group mb-4">
+                      <label class="form-label required-input-label">Property Rented</label>
                       <select  [(ngModel)]="propertyRentalDetailDTO.isRented" name ="isRented" class="form-control common-select placeholder">
-                        <option>Property Rented</option>
                         <option>Yes</option>
                         <option>No</option>
                       </select>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <select [(ngModel)]="propertyRentalDetailDTO.isVacant" name="isVacant"  class="form-control common-select placeholder" [disabled]="propertyRentalDetailDTO.isRented=='No'">
-                        <option>Vacant</option>
-                        <option>Yes</option>
-                        <option>No</option>
-                      </select>
-                    </div>
-                    <div class="col-md-6 form-label-group mb-4">
-                      <input  pattern="[a-zA-Z]*" type="text" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.tenantName" name="tenantName" #tenantName="ngModel" placeholder="Tenant Name" [disabled]="propertyRentalDetailDTO.isRented=='No'" required>
+                      <label class="form-label">Tenant Name</label>
+                      <input  pattern="[a-zA-Z]*" type="text" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.tenantName" name="tenantName" #tenantName="ngModel" [disabled]="propertyRentalDetailDTO.isRented=='No'">
                       <div *ngIf="tenantName.errors && (tenantName.dirty ||tenantName.touched)" class="alert alert-danger">
-                        <div [hidden]="!tenantName.errors.required">Tenant Name is required!</div>
                         <div [hidden]="!tenantName.errors.pattern">Must be a valid Tenant Name!</div>
                       </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
+                      <label class="form-label">Payment Structure</label>
                       <select [(ngModel)]="propertyRentalDetailDTO.paymentStructure" name="paymentStructure" class="form-control common-select placeholder" [disabled]="propertyRentalDetailDTO.isRented=='No'" >
-                        <option>Payment Structure</option>
-                        <option>Yearly</option>
-                        <option>Monthly</option>
-                        <option>Quarterly</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                        <option>16</option>
+                        <option>17</option>
+                        <option>18</option>
+                        <option>19</option>
+                        <option>20</option>
+                        <option>21</option>
+                        <option>22</option>
+                        <option>23</option>
+                        <option>24</option>
+                        <option>25</option>
+                        <option>26</option>
+                        <option>27</option>
+                        <option>28</option>
+                        <option>29</option>
+                        <option>30</option>
                       </select>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input  pattern="[0-9_]*" type="text" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.rentalEjariNo" name="rentalEjariNo" #rentalEjariNo="ngModel" placeholder="Ejari Number" [disabled]="propertyRentalDetailDTO.isRented=='No'"  required>
+                      <label class="form-label required-input-label">Ejari Number</label>
+                      <input  pattern="[0-9_]*" type="text" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.rentalEjariNo" name="rentalEjariNo" #rentalEjariNo="ngModel" [disabled]="propertyRentalDetailDTO.isRented=='No'"  required>
                       <div *ngIf="rentalEjariNo.errors && (rentalEjariNo.dirty ||rentalEjariNo.touched)" class="alert alert-danger">
                           <div [hidden]="!rentalEjariNo.errors.required">Rental Ejari Number is required!</div>
-                           <div [hidden]="!rentalEjariNo.errors.pattern"> Must be a valid Rental Ejari Number!</div>
+                          <div [hidden]="!rentalEjariNo.errors.pattern"> Must be a valid Rental Ejari Number!</div>
                       </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input  pattern="[0-9_]*" type="text" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.rentalAnnualRent" name="rentalAnnualRent" #rentalAnnualRent="ngModel" placeholder="Annual Rent" [disabled]="propertyRentalDetailDTO.isRented=='No'"  required>
+                      <label class="form-label">Annual Rent</label>
+                      <input  pattern="[0-9_]*" type="text" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.rentalAnnualRent" name="rentalAnnualRent" #rentalAnnualRent="ngModel" [disabled]="propertyRentalDetailDTO.isRented=='No'">
                       <div *ngIf="rentalAnnualRent.errors && (rentalAnnualRent.dirty ||rentalAnnualRent.touched)" class="alert alert-danger">
-                          <div [hidden]="!rentalAnnualRent.errors.required">Rental Annual Aent is required!</div>
+                          <!-- <div [hidden]="!rentalAnnualRent.errors.required">Rental Annual Aent is required!</div> -->
                           <div [hidden]="!rentalAnnualRent.errors.pattern"> Must be a valid Rental Annual Rent !</div>
                       </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseStartDate" name="leaseStartDate"  #leaseStartDate="ngModel" placeholder="Lease Start Date" [disabled]="propertyRentalDetailDTO.isRented=='No'"  required>
+                      <label class="form-label required-input-label">Lease Start Date</label>
+                      <input type="text" for="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseStartDate" name="leaseStartDate" #leaseStartDate="ngModel" [disabled]="propertyRentalDetailDTO.isRented=='No'"  required>
                       <!-- <div *ngIf="leaseStartDate.errors" class="alert alert-danger">
                         <div [hidden]="!leaseStartDate.errors.required">Date is required! </div>
                       </div> -->
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <input type="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseExpiryDate" name="leaseExpiryDate"  #leaseExpiryDate="ngModel" placeholder="Lease Expiry Date" [disabled]="propertyRentalDetailDTO.isRented=='No'"  required>
+                      <label class="form-label required-input-label">Lease Expiry Date</label>
+                      <input type="text" for="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseExpiryDate" name="leaseExpiryDate"  #leaseExpiryDate="ngModel" [disabled]="propertyRentalDetailDTO.isRented=='No'"  required>
                       <!-- <div *ngIf="leaseExpiryDate.errors" class="alert alert-danger">
                         <div [hidden]="!leaseExpiryDate.errors.required">Date is required! </div>
                       </div> -->
@@ -74,7 +98,7 @@
                     <div class="col-md-12 upload-doc-block">
                       <div class="upload-btn-div mt-4">
                         <div class="file">
-                          <input  (change)="scannedTenantContract($event)" type="file" name="file" class="doc-upload" />
+                          <input (change)="scannedTenantContract($event)" type="file" name="file" class="doc-upload" [disabled]="propertyRentalDetailDTO.isRented=='No'">
                         </div>
                         <div class="upload-instuct mt-2">Scanned Tenancy Contract</div>
                         <p *ngIf="scannedTenentContractFile" style="color:blue"><br>Tanent Contract FileName:{{scannedTenentContractFile.name}}</p>
@@ -87,24 +111,22 @@
                       <a  routerLink="/propertyFinancialDetails/back" class="btn common-btn btn-light-black">Back</a>
                     </div>
                     <div class="col-md-3">
-                      <button [disabled]="!rentalForm.form.valid" (click)="addPropertyRentalDetails()" style=color:white  class="btn common-btn btn-light-black"type="submit">Next</button>
+                      <button [disabled]="!rentalForm.form.valid" (click)="addPropertyRentalDetails()" style=color:white  class="btn common-btn"type="submit">Next</button>
                     </div>
                   </div>
                 </form>
               </div>
               <div class="col-md-2 page-locator-wrap">
-                <div class="back">
+                <div class="page-locator">
                   <div class="process-heading">Process Steps</div>
-                  <div class="menu-back">
-                    <ul class="nav-history">
-                      <li routerLinkActive="active"><a routerLink="/sellerOwnerDetails">Owner Details</a></li>
-                      <li routerLinkActive="active"><a routerLink="/sellerPoaDetails">POA Details</a></li>
-                      <li routerLinkActive="active"><a routerLink="/propertyDetails">Property Details</a></li>
-                      <li routerLinkActive="active"><a routerLink="/propertyRental">Property Rent Details</a></li>
-                      <li><a>Property Financial Details</a></li>
-                    </ul>
-                  </div>
-                </div>    
+                  <ul class="StepProgress">
+                    <li class="StepProgress-item is-done"><a routerLink="/sellerOwnerDetails">Owner Details<span>Done</span></a></li>
+                    <li class="StepProgress-item is-done"><a routerLink="/sellerPoaDetails">POA Details<span>Done</span></a></li>
+                    <li class="StepProgress-item is-done"><a routerLink="/propertyDetails">Property Details<span>Done</span></a></li>
+                    <li class="StepProgress-item is-done"><a routerLink="/propertyFinancialDetails">Property Mortgage Details<span>Done</span></a></li>
+                    <li class="StepProgress-item" routerLinkActive="current"><a routerLink="/propertyRental">Property Rent Details<span>Processing</span></a></li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>

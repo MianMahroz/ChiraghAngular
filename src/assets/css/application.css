@@ -178,6 +178,7 @@
   cursor: pointer;
   border-bottom: 1px solid #e3e3e3;
   font-size: 1.125em;
+  color: #606060;
 }
 .screen-wrapper .body-section .listing-detail-wrap .listing-detail-seprator .listing-detail-row .listing-detail-col .listing-block .google-map-wrap .prop-viewed {
   color: #606060;
@@ -371,6 +372,9 @@
 .screen-wrapper .form-wrapper-row .sign-in-row .sign-in-col .common-form .section-seprator {
   border-top: 1px solid #e3e3e3;
 }
+.screen-wrapper .form-wrapper-row .sign-in-row .sign-in-col .common-form .section-seprator .common-checkbox label {
+  color: #606060;
+}
 .screen-wrapper .form-wrapper-row .sign-in-row .sign-in-col .common-form .facilities-checkboxes-wrap {
   display: none;
 }
@@ -379,6 +383,7 @@
 }
 .screen-wrapper .form-wrapper-row .sign-in-row .sign-in-col .common-form .show-all-link {
   cursor: pointer;
+  color: #606060;
 }
 .screen-wrapper .form-wrapper-row .sign-in-row .sign-in-col .common-form .note-block {
   background-color: #212121;
@@ -745,6 +750,7 @@
 }
 .screen-wrapper .ud-body-row .tab-content .tab-pane .show-all-link {
   cursor: pointer;
+  color: #606060;
 }
 .screen-wrapper .ud-body-row .tab-content .tab-pane .watch-prop-row .watch-prop-col .watch-prop-block {
   color: #606060;
@@ -1371,91 +1377,132 @@ a:hover {
 img {
   cursor: pointer;
 }
-.page-locator-wrap .back {
-  position: sticky;
-  top: 230px;
-}
-.page-locator-wrap .back .process-heading {
-  font-size: 1.25em;
+.form-label {
+  font-size: 18px;
   color: #606060;
 }
-.page-locator-wrap .back ul {
-  display: block;
-  margin-bottom: 0;
+.form-label.required-input-label::after {
+  content: "*";
+  margin-left: 5px;
+}
+.page-locator-wrap {
+  margin-top: 5.2rem;
+}
+.page-locator-wrap .page-locator {
+  position: sticky;
+  top: 80px;
+  width: 230px;
+}
+.page-locator-wrap .page-locator .process-heading {
+  font-size: 1.25em;
+  margin-bottom: 1rem;
+  color: #606060;
+}
+.page-locator-wrap .page-locator .StepProgress {
+  position: relative;
+  padding-left: 35px;
   list-style: none;
 }
-.page-locator-wrap .back ul li {
-  white-space: nowrap;
+.page-locator-wrap .page-locator .StepProgress a {
+  color: #d8d8d8;
 }
-.page-locator-wrap .back ul li a {
-  text-decoration: none;
-}
-.page-locator-wrap .back ul.nav-history {
-  padding-left: 36px;
-  padding-top: 15px;
-  pointer-events: none;
-}
-.page-locator-wrap .back ul.nav-history li {
-  margin-bottom: 10px;
-}
-.page-locator-wrap .back ul.nav-history li::after {
-  content: "";
-  position: absolute;
-  left: 2px;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #7e7e7e;
-  transform: scale(0.9);
-  transition: all 0.2s ease;
-}
-.page-locator-wrap .back ul.nav-history li:not(:last-child)::before {
-  content: "";
-  position: absolute;
-  left: 7px;
-  margin-top: 10px;
-  width: 2px;
-  height: 28px;
-  background: #e3e3e3;
-  transition: all 0.2s ease;
-}
-.page-locator-wrap .back ul.nav-history li a {
-  color: #7e7e7e;
+.page-locator-wrap .page-locator .StepProgress::before {
   display: inline-block;
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: all 0.2s ease;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10px;
+  width: 10px;
+  height: 100%;
+  border-left: 2px solid #d8d8d8;
 }
-.page-locator-wrap .back ul.nav-history li a:hover {
+.page-locator-wrap .page-locator .StepProgress-item {
+  position: relative;
+  counter-increment: list;
+}
+.page-locator-wrap .page-locator .StepProgress-item:not(:last-child) {
+  padding-bottom: 10px;
+}
+.page-locator-wrap .page-locator .StepProgress-item::before {
+  display: inline-block;
+  content: '';
+  position: absolute;
+  left: -25px;
+  height: 100%;
+  width: 10px;
+  top: 4px;
+}
+.page-locator-wrap .page-locator .StepProgress-item::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 4px;
+  left: -34px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #d8d8d8;
+  border-radius: 50%;
+  background-color: #ffffff;
+}
+.page-locator-wrap .page-locator .StepProgress-item.is-done a {
   color: #212121;
+  display: flex;
+  flex-direction: column;
 }
-.page-locator-wrap .back ul.nav-history li.active {
-  pointer-events: none;
+.page-locator-wrap .page-locator .StepProgress-item.is-done a span {
+  color: #7e7e7e;
+  font-size: 14px;
 }
-.page-locator-wrap .back ul.nav-history li.active::after {
-  background: #212121;
+.page-locator-wrap .page-locator .StepProgress-item.is-done::before {
+  border-left: 2px solid #212121;
 }
-.page-locator-wrap .back ul.nav-history li.active a {
+.page-locator-wrap .page-locator .StepProgress-item.is-done:last-child::before {
+  top: 0;
+}
+.page-locator-wrap .page-locator .StepProgress-item.is-done:last-child::after {
+  top: 4px;
+}
+.page-locator-wrap .page-locator .StepProgress-item.is-done::after {
+  content: "✔";
+  font-size: 10px;
+  color: #ffffff;
+  text-align: center;
+  border: 2px solid #212121;
+  background-color: #212121;
+  top: 0;
+}
+.page-locator-wrap .page-locator .StepProgress-item.current:last-child::before {
+  top: 0;
+}
+.page-locator-wrap .page-locator .StepProgress-item.current:last-child::after {
+  top: 4px;
+}
+.page-locator-wrap .page-locator .StepProgress-item.current::before {
+  border-left: 2px solid #212121;
+}
+.page-locator-wrap .page-locator .StepProgress-item.current a {
   color: #212121;
+  display: flex;
+  flex-direction: column;
 }
-.page-locator-wrap .back ul.nav-history {
-  transform: translateY(0);
-  pointer-events: auto;
+.page-locator-wrap .page-locator .StepProgress-item.current a span {
+  color: #7e7e7e;
+  font-size: 14px;
 }
-.page-locator-wrap .back ul.nav-history li {
-  margin-bottom: 8px;
+.page-locator-wrap .page-locator .StepProgress-item.current::after {
+  content: counter(list);
+  width: 20px;
+  height: 20px;
+  top: 0;
+  left: -34px;
+  font-size: 12px;
+  text-align: center;
+  color: #212121;
+  border: 2px solid #212121;
+  background-color: #ffffff;
 }
-.page-locator-wrap .back ul.nav-history li::after {
-  background: #7e7e7e;
-  transform: translateY(6px);
-}
-.page-locator-wrap .back ul.nav-history li a {
-  opacity: 1;
-  transform: translateY(0);
-  cursor: pointer;
-}
-.page-locator-wrap .back ul.nav-history li.active::after {
-  background: #212121;
+.page-locator-wrap .page-locator .StepProgress strong {
+  display: block;
 }
 .page-footer .footer-wrap {
   border-bottom: 1px solid #e3e3e3;
@@ -2384,6 +2431,7 @@ input[type=number] {
   padding-left: 0;
   display: flex;
   margin-bottom: 0;
+  color: #212121;
 }
 .common-checkbox label::selection {
   background-color: transparent;
@@ -2434,7 +2482,7 @@ input[type=number] {
   left: 8px;
   top: 2px;
   content: "";
-  background-color: black;
+  background-color: #606060;
   height: 4px;
   width: 4px;
   border-radius: 100%;
@@ -2477,6 +2525,11 @@ input[type=number] {
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
+.location-input {
+  background: url("../../assets/images/location-icon.png") no-repeat 0 0;
+  background-position: calc(100% - 12px) center;
+  padding-right: 30px;
+}
 .common-select.form-control {
   font-size: 18px;
   height: 45px !important;
@@ -2486,6 +2539,10 @@ input[type=number] {
   -moz-appearance: none;
   background: url("../../assets/images/dropdown-arrow.png") no-repeat 0 0;
   background-position: calc(100% - 12px) center;
+}
+.common-select.form-control:disabled {
+  background-color: #e9ecef;
+  opacity: 1;
 }
 .common-select.form-control option {
   color: #606060;

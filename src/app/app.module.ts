@@ -54,6 +54,7 @@ import { MortagecalculatorComponent } from './mortagecalculator/mortagecalculato
 import { ForbuyersComponent } from './forbuyers/forbuyers.component';
 import { ForhomeownersComponent } from './forhomeowners/forhomeowners.component';
 import { SellerDashboardComponent } from './seller-dashboard/seller-dashboard.component';
+import { ChangepasswordComponent } from './changepassword/changepassword.component';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { AdminRegisterComponent } from './admin/admin-register/admin-register.component';
 import { AdminhomeComponent } from './admin/adminhome/adminhome.component';
@@ -100,6 +101,7 @@ import { AdminSellerDetailsComponent } from './admin/admin-seller-details/admin-
     ForbuyersComponent,
     ForhomeownersComponent,
     SellerDashboardComponent,
+    ChangepasswordComponent,
     AdminLoginComponent,
     AdminRegisterComponent,
     AdminhomeComponent,
