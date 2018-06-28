@@ -205,7 +205,7 @@
                     <div class="col-md-12 upload-doc-block">
                       <div class="upload-btn-div mt-4">
                         <div class="file">
-                          <input #passFile type="file" name="file" (change)="selectPassport($event)" class="doc-upload" />
+                          <input id="ownerPassCopy" #passFile type="file" name="file" (change)="selectPassport($event)" class="doc-upload" />
                         </div>
                         <div class="upload-instuct mt-2">Scanned passport copy<i class="fas fa-circle-notch fa-spin ml-2"></i></div>
                         <p *ngIf="passportFile"><br>{{passportFile.name}}</p>
@@ -213,7 +213,7 @@
                       </div>
                       <div class="upload-btn-div mt-5">
                         <div class="file">
-                          <input #idFile type="file"  (change)="selectIdCopy($event)" name="file" class="doc-upload" />
+                          <input id="owneIdCopy" #idFile type="file" (change)="selectIdCopy($event)" name="file" class="doc-upload" />
                         </div>
                         <div class="upload-instuct mt-2">Scanned ID copy
                           <i class="fas fa-circle-notch fa-spin ml-2"></i>
@@ -228,7 +228,7 @@
                   </div>
                   <div class="row mt-5 submit-btn-row">
                     <div class="col-md-3 mb-xs-4">
-                      <a  (click)="addOwner('add')"  style=color:white class="btn common-btn btn-light-black">Add Owner</a>
+                      <a id="addOwnerBtn" (click)="addOwner('add')" style=color:white class="btn common-btn btn-light-black">Add Owner</a>
                     </div>
                     <div class="offset-md-6 col-md-3">
                       <!-- [disabled]="!ownerDetailsForm.form.valid" -->

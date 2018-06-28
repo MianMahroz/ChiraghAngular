@@ -220,3 +220,10 @@ $(function(){
     $(this).addClass('active show');
   });
 });
+
+$(function(){
+  $('.sub-prop-links-wrap li').click(function(){
+    $('.sub-prop-links').removeClass('active show');
+    $(this).addClass('active show');
+  });
+});
