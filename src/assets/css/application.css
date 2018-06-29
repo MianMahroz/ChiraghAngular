@@ -1369,10 +1369,11 @@ a:hover {
   position: absolute;
   font-size: 12px;
   color: #e66454;
-  background-color: transparent;
+  background-color: #ffffff;
   border-color: transparent;
   padding: 0;
   z-index: 9;
+  width: 100%;
 }
 img {
   cursor: pointer;

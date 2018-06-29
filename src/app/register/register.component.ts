@@ -26,6 +26,7 @@ export class RegisterComponent  {
       document.body.appendChild(scriptElement);
     })
   }
+
   constructor(private myToast:ToasterServiceService,private userService:UserService,private router: Router,  private authService: AuthService, private token: TokenStorage) { }
   registerdto=new registerDTO();
   public barLabel: string = "Password strength:";
@@ -67,7 +68,9 @@ export class RegisterComponent  {
 
                                if(data2.msg='Email Sent'){
                                 this.myToast.Info('Status',data2.msg);
-                                 this.router.navigate(['confirmEmail']);
+                                
+                                                     
+                                
                                }
                       }//end of email data
                     );//end of email subscription

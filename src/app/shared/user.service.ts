@@ -61,6 +61,10 @@ public getUserswithCompleteProperties(userName:string): Observable<ChiraghUser[]
   return this.http.get<ChiraghUser[]>(this.userUrl + '/getUserWithCompleteProperties/'+userName);
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1c9afc6b8ffa3187d487d2b61e971b81391ffe59
 public getpersonalinfo(userName:string): Observable<any> {
   return this.http.get<any>(this.userUrl + '/getpersonalinfo/'+userName,httpOptions);
 }
@@ -68,6 +72,9 @@ public getpersonalinfo(userName:string): Observable<any> {
 public changePassword(userName:string,changePasswordDTO:ChangePasswordDTO): Observable<any> {
   return this.http.put<any>(this.userUrl + '/changePassword/'+userName,changePasswordDTO,httpOptions);
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 1c9afc6b8ffa3187d487d2b61e971b81391ffe59
 }

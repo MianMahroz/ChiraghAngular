@@ -22,7 +22,18 @@ import { loginDTO } from './loginDTO';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  async ngAfterViewInit() {
+		await this.loadScript('./assets/js/common.js');
+	}
 
+  private loadScript(scriptUrl: string) {
+    return new Promise((resolve, reject) => {
+      const scriptElement = document.createElement('script');
+      scriptElement.src = scriptUrl;
+      scriptElement.onload = resolve;
+      document.body.appendChild(scriptElement);
+    })
+  }
   constructor(private mytoastr:ToasterServiceService,private userService:UserService,private http: HttpClient,private router: Router, public dialog: MatDialog, private authService: AuthService, private token: TokenStorage) {
 
   }

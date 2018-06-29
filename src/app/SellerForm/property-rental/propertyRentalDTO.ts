@@ -1,6 +1,4 @@
 export class PropertyRentalDetailDTO{
-
-
     userName:string;
     propertyId:number;
     leaseStartDate:Date;
@@ -14,6 +12,6 @@ export class PropertyRentalDetailDTO{
     isRented:string;
     isVacant:string;
     sellerUserName:string;
-    dateReceived:DateTimeFormat;
+    dateReceived:Date;
 
   }

@@ -16,7 +16,6 @@ import { SellerService } from '../../shared/seller.service';
   styleUrls: ['./auction-fee-details.component.css']
 })
 export class AuctionFeeDetailsComponent implements OnInit {
-
   async ngAfterViewInit() {
 		await this.loadScript('./assets/js/common.js');
 	}

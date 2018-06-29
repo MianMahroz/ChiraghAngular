@@ -51,10 +51,10 @@
                     <input pattern="[a-zA-Z]*" type="text" minlength="3" name="userLastName" #userLastName="ngModel" maxlength="15" class="form-control form-input" [(ngModel)]="ownerDto.lastName" required>
                     <div *ngIf="userLastName.errors && (userLastName.dirty || userLastName.touched)" class="alert alert-danger">
                       <div [hidden]="!userLastName.errors.required">
-                        Name is required!
+                       Last Name is required!
                       </div>
                       <div [hidden]="!userLastName.errors.minlength">
-                        Last Middle Name must be at least 3 characters long.
+                        Last Name must be at least 3 characters long.
                       </div>
                       <div [hidden]="!userLastName.errors.maxlength">
                         Last Name cannot be more than 15 characters long.

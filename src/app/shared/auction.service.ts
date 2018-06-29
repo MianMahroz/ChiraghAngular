@@ -19,5 +19,4 @@ export class AuctionService {
   public saveAuction(auctiondto:auctionDTO): Observable<any> {
     return this.http.post<any>(this.auctionUrl + '/saveAuction', auctiondto,httpOptions);
 }
-
 }
