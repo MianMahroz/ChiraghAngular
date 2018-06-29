@@ -54,7 +54,8 @@ export class AdminsellerhomeComponent implements AfterViewInit,OnInit {
   }
   rowClicked(row: any): void {
     // console.log(row.propertyId);
-    this.router.navigate(['/adminverificationhome/true/'+row.propertyId]);
+    this.router.navigate(['/sellerOwnerDetails']);
+    this.token.saveAdminPropertyId(row.propertyId);
   }
 
   ngOnInit() {

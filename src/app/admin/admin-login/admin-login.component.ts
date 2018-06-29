@@ -39,6 +39,7 @@ export class AdminLoginComponent implements OnInit {
                          if(data1.role=='admin'){
                         // this.mytoastr.Success('Login',data1.msg);
                            this.token.saveAdminUserName(this.logindto.userName);
+                           this.token.saveUserRole(data1.role);
                            this.router.navigate(['/adminhome']);
                          }
                        }//end of if
