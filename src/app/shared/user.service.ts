@@ -57,12 +57,6 @@ public resetPassword(forgotPasswordDTO:ForgotPasswordDTO): Observable<any> {
   return this.http.post<any>(this.userUrl + '/resetPassword', forgotPasswordDTO,httpOptions);
 }
 
-<<<<<<< HEAD
-public getUserswithCompleteProperties(userName:string): Observable<ChiraghUser[]> {
-  return this.http.get<ChiraghUser[]>(this.userUrl + '/getUserWithCompleteProperties/'+userName);
-}
-
-=======
 public getpersonalinfo(userName:string): Observable<any> {
   return this.http.get<any>(this.userUrl + '/getpersonalinfo/'+userName,httpOptions);
 }
@@ -70,7 +64,4 @@ public getpersonalinfo(userName:string): Observable<any> {
 public changePassword(userName:string,changePasswordDTO:ChangePasswordDTO): Observable<any> {
   return this.http.put<any>(this.userUrl + '/changePassword/'+userName,changePasswordDTO,httpOptions);
 }
-
-
->>>>>>> 8ae0caefed8b08355da44a7a4d443b825234e1f0
 }

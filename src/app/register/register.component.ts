@@ -26,6 +26,7 @@ export class RegisterComponent  {
       document.body.appendChild(scriptElement);
     })
   }
+
   constructor(private myToast:ToasterServiceService,private userService:UserService,private router: Router,  private authService: AuthService, private token: TokenStorage) { }
   registerdto=new registerDTO();
   public barLabel: string = "Password strength:";
