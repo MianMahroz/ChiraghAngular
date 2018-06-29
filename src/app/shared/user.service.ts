@@ -61,6 +61,7 @@ public getUserswithCompleteProperties(userName:string): Observable<ChiraghUser[]
   return this.http.get<ChiraghUser[]>(this.userUrl + '/getUserWithCompleteProperties/'+userName);
 }
 
+
 public getpersonalinfo(userName:string): Observable<any> {
   return this.http.get<any>(this.userUrl + '/getpersonalinfo/'+userName,httpOptions);
 }

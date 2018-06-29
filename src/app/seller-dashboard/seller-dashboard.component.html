@@ -71,7 +71,6 @@
                           <li *ngFor="let propertyArr of userData">
                             <a class="sub-links" data-toggle="collapse" (click)="setCurrentProperty(propertyArr)" href="#sell-sub-links/{{propertyArr.propertyId}}">Property ID :{{propertyArr.propertyId}}</a>
                             <ul class="collapse sub-prop-links-wrap" id="sell-sub-links/{{propertyArr.propertyId}}">
-                              <li></li>
                               <li><a data-toggle="tab" href="#owner-detail" class="sub-prop-links">- Owners details</a></li>
                               <li><a data-toggle="tab" href="#POA-detail" class="sub-prop-links">- POA details</a></li>
                               <!-- <li *ngFor="let ownerArr of propertyArr.propertysellerdetailses"><a *ngIf="ownerArr.ownerType=='owner'" data-toggle="tab" href="#owner-detail"  (click)="getOwnerDetails(ownerArr)" class="sub-prop-links">- Owner ID:{{ownerArr.propertySellerId}}</a></li> -->

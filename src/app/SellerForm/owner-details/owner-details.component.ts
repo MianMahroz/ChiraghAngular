@@ -72,35 +72,35 @@ export class OwnerDetailsComponent implements AfterViewInit {
 
     ngOnInit() {
 
-      if(this.token.getAdminuserName()){
-          this.token.savePropertyId(this.clickedPropertyData.propertyId);
-          this.token.saveUserName(this.token.getAdminuserName());
-          this.getAllEnteredOwner();
-      }//end of if
-      else{
-        this.router.navigate(['/adminsignin']);
-      }
-      this.atLeastOneOwner=false;
+      // if(this.token.getAdminuserName()){
+      //     this.token.savePropertyId(this.clickedPropertyData.propertyId);
+      //     this.token.saveUserName(this.token.getAdminuserName());
+      //     this.getAllEnteredOwner();
+      // }//end of if
+      // else{
+      //   this.router.navigate(['/adminsignin']);
+      // }
+      // this.atLeastOneOwner=false;
 
-      console.log(this.token.getuserName());
-     if(this.token.getuserName()==null){
-      console.log('Invalid Session');
-      this.router.navigate(['/login']);
-      return "Invalid Session";
-    }//end of if
+      // console.log(this.token.getuserName());
+      // if(this.token.getuserName()==null){
+      //   console.log('Invalid Session');
+      //   this.router.navigate(['/login']);
+      //   return "Invalid Session";
+      // }//end of if
+      
+      this.action='';
+      this.action=this.route.snapshot.params['action'];
+      console.log(this.action);
+      if(this.action=='back'){
+          console.log('Inside Action');
+            this.getAllEnteredOwner();
+        }//end of back if
+        else{
+          this.token.savePropertyId('0');
+        }
 
-    this.action='';
-    this.action=this.route.snapshot.params['action'];
-    console.log(this.action);
-    if(this.action=='back'){
-        console.log('Inside Action');
-          this.getAllEnteredOwner();
-      }//end of back if
-      else{
-        this.token.savePropertyId('0');
-      }
-
-  }//end of nginit
+    }//end of nginit
     selectPassport(event) {
       this.selectedPassport = event.target.files;
       this.passportFile=this.selectedPassport.item(0);

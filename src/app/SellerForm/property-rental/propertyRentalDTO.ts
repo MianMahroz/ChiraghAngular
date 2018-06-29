@@ -1,6 +1,4 @@
 export class PropertyRentalDetailDTO{
-
-
     userName:string;
     propertyId:number;
     leaseStartDate:Date;
