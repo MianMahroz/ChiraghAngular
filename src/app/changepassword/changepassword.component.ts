@@ -17,6 +17,22 @@ export class ChangepasswordComponent implements OnInit {
   
   changepasswordDTO=new ChangePasswordDTO();
 
+  public barLabel: string = "Password strength:";
+  public myColors = ['#DD2C00', '#FF6D00', '#FFD600', '#AEEA00', '#00C853'];
+  public strengthLabels = ['(Useless)', '(Weak)', '(Normal)', '(Strong)', '(Great!)'];
+  terms=false;
+  bar1=false;
+  bar2=false;
+  status:string;
+
+  passwordFocus1(){
+    this.bar1=true;
+   }
+   passwordFocus2(){
+     this.bar1=false;
+     this.bar2=true;
+    }
+
   ngOnInit() {
   }
 
@@ -30,6 +46,28 @@ export class ChangepasswordComponent implements OnInit {
              this.userService.changePassword(this.token.getuserName(),this.changepasswordDTO).subscribe(
                data=>{
                      console.log(data);
+                     if(data.msg=="Your Password Changed Successfully"){
+                      this.myToast.Success('Status',data.msg);
+
+                      this.router.navigate(['sellerDashboard']);
+
+                     }
+
+                     else if(data.msg=="Use different password from the previous!")
+                     {
+                      this.myToast.Error('Status',data.msg);
+                     }
+
+                     else if(data.msg=="Password not match!")
+                     {
+                      this.myToast.Error('Status',data.msg);
+                     }
+
+                     else if(data.msg=="User not found!")
+                     {
+                      this.myToast.Error('Status',data.msg);
+                     }
+
                      
                }
              );
