@@ -96,7 +96,6 @@ export class OwnerDetailsComponent implements AfterViewInit {
   }
 
     ngOnInit() {
-<<<<<<< HEAD
       this.role=this.token.getUserRole();
       this.adminPropertyId=this.token.getAdminPropertyId();
       console.log(this.role);
@@ -125,38 +124,6 @@ export class OwnerDetailsComponent implements AfterViewInit {
           }
     }//end of admin else
   }//end of nginit
-=======
-
-      // if(this.token.getAdminuserName()){
-      //     this.token.savePropertyId(this.clickedPropertyData.propertyId);
-      //     this.token.saveUserName(this.token.getAdminuserName());
-      //     this.getAllEnteredOwner();
-      // }//end of if
-      // else{
-      //   this.router.navigate(['/adminsignin']);
-      // }
-      // this.atLeastOneOwner=false;
-
-      // console.log(this.token.getuserName());
-      // if(this.token.getuserName()==null){
-      //   console.log('Invalid Session');
-      //   this.router.navigate(['/login']);
-      //   return "Invalid Session";
-      // }//end of if
-      
-      this.action='';
-      this.action=this.route.snapshot.params['action'];
-      console.log(this.action);
-      if(this.action=='back'){
-          console.log('Inside Action');
-            this.getAllEnteredOwner();
-        }//end of back if
-        else{
-          this.token.savePropertyId('0');
-        }
-
-    }//end of nginit
->>>>>>> 1c9afc6b8ffa3187d487d2b61e971b81391ffe59
     selectPassport(event) {
       this.selectedPassport = event.target.files;
       this.passportFile=this.selectedPassport.item(0);
