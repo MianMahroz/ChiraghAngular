@@ -68,27 +68,30 @@ export class OwnerDetailsComponent implements AfterViewInit {
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
-  rowClicked(row: any): void {
-    console.log(row);
-    this.myToast.Success('Status','Owner Data Loaded Successfully');
-    this.ownerDto=row;
-    console.log(this.token.getImagepath());
-
+  getOwnerImages():void{
     this.images = [
       new Image(
         0,
         { // modal
-          img: ''+this.token.getImagepath()+'propertyId-'+this.adminPropertyId+'/'+this.ownerDto.scannedIdCopy,
-          extUrl: 'http://www.google.com'
+          img: ''+this.token.getImagepath()+'propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.scannedIdCopy,
+          extUrl: 'http://demo.chiragh.com/'
         }
       ),
       new Image(
         1,
         { // modal
-          img: 'https://raw.githubusercontent.com/Ks89/angular-modal-gallery/v4/examples/systemjs/assets/images/gallery/img2.png',
-          description: 'Description 2'
+          img: ''+this.token.getImagepath()+'propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.passportCopyUpload,
+          extUrl: 'http://demo.chiragh.com/'
         }
       )];
+}//end of get owner details
+
+  rowClicked(row: any): void {
+    console.log(row);
+    this.myToast.Success('Status','Owner Data Loaded Successfully');
+    this.ownerDto=row;
+    console.log(this.token.getImagepath());
+     this.getOwnerImages();
     this.pid=92;
     this.fileName=this.ownerDto.idCardNo;
     this.idCardFileUploadPath='../ChiraghDocuments/propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.scannedIdCopy;
@@ -99,12 +102,8 @@ export class OwnerDetailsComponent implements AfterViewInit {
       this.role=this.token.getUserRole();
       this.adminPropertyId=this.token.getAdminPropertyId();
       console.log(this.role);
-      if(this.adminPropertyId!=0||this.adminPropertyId!=null&&this.token.getUserRole()!='chiraghuser'){
-        console.log(this.adminPropertyId);
-        this.token.saveUserName(this.token.getAdminuserName());
-        this.getAllEnteredOwner(this.adminPropertyId);
-      }//end of admin code if
-      else if(this.role=='chiraghuser'){
+
+       if(this.role=='chiraghuser'){
         console.log('its here ');
         this.atLeastOneOwner=false;
             if(this.token.getuserName()==null){
