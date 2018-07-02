@@ -803,6 +803,28 @@
   background: url("../../assets/images/sprite-image.png") no-repeat -622px -218px;
   margin-left: 1rem;
 }
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .document-upload {
+  font-size: 1.25em;
+  color: #606060;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .document-upload .sub-details {
+  font-size: 14px;
+  color: #606060;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .otp-code-div .code-instruct {
+  float: left;
+  color: #7e7e7e;
+  font-size: 0.875em;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .otp-code-div .resend-otp-link {
+  float: right;
+  font-size: 0.875em;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .otp-code-div .click-here-link {
+  font-size: 0.875em;
+  display: flex;
+  justify-content: center;
+}
 .screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-block .upload-doc-div {
   height: 220px;
   width: 100%;
@@ -811,7 +833,7 @@
 }
 .screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-block .upload-instuct {
   font-size: 1.125em;
-  color: #d8d8d8;
+  color: #7c7c7c;
 }
 .screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-block .upload-instuct .ui-subtitle {
   font-size: 14px;
@@ -1385,6 +1407,9 @@ img {
 .form-label.required-input-label::after {
   content: "*";
   margin-left: 5px;
+}
+.disabled {
+  pointer-events: none;
 }
 .page-locator-wrap {
   margin-top: 5.2rem;
@@ -2591,6 +2616,89 @@ input[type="date"]:valid::before {
 input[type="file"] {
   cursor: pointer;
   font-size: 0;
+}
+.radio-btn-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+.radio-btn-wrap .radio-btn label {
+  font-size: 16px;
+  color: #7e7e7e;
+}
+.radio-btn-wrap [type="radio"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+.radio-btn-wrap [type="radio"]:checked + label {
+  position: relative;
+  padding-left: 20px;
+  cursor: pointer;
+  line-height: 15px;
+  display: inline-block;
+  color: #212121;
+}
+.radio-btn-wrap [type="radio"]:checked + label:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #212121;
+  border-radius: 100%;
+  background: #ffffff;
+}
+.radio-btn-wrap [type="radio"]:checked + label:after {
+  content: '';
+  width: 11px;
+  height: 11px;
+  background: #212121;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: 100%;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.radio-btn-wrap [type="radio"]:not(:checked) {
+  position: absolute;
+  left: -9999px;
+}
+.radio-btn-wrap [type="radio"]:not(:checked) + label {
+  position: relative;
+  padding-left: 20px;
+  cursor: pointer;
+  line-height: 15px;
+  display: inline-block;
+}
+.radio-btn-wrap [type="radio"]:not(:checked) + label:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #212121;
+  border-radius: 100%;
+  background: #ffffff;
+}
+.radio-btn-wrap [type="radio"]:not(:checked) + label:after {
+  content: '';
+  width: 14px;
+  height: 14px;
+  background: #212121;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  border-radius: 100%;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  opacity: 0;
+  -webkit-transform: scale(0);
+  transform: scale(0);
 }
 .info-header-row {
   background-color: #f8f8f8;
