@@ -8,6 +8,7 @@ import { User} from '../user/user.model';
 import { registerDTO } from '../register/registerDTO';
 import { TokenStorage } from '../core/token.storage';
 import { ChangePasswordDTO } from './../changepassword/changepasswordDTO';
+import { personalInfoDTO } from './../register/personalInfoDTO';
 
 
 const httpOptions = {
@@ -68,5 +69,9 @@ public getpersonalinfo(userName:string): Observable<any> {
 
 public changePassword(userName:string,changePasswordDTO:ChangePasswordDTO): Observable<any> {
   return this.http.put<any>(this.userUrl + '/changePassword/'+userName,changePasswordDTO,httpOptions);
+}
+
+public updatepersonalinfo(userName:string,personalinfoDTO:personalInfoDTO): Observable<any> {
+  return this.http.put<any>(this.userUrl + '//updatePersonalInfo/'+userName,personalinfoDTO,httpOptions);
 }
 }
