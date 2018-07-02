@@ -1,6 +1,5 @@
 
-
-  <div class="container-fluid screen-wrapper">
+  <div class="container-fluid bootstrap-iso screen-wrapper">
     <app-header></app-header>
     <div class="row body-section">
       <div class="col-md-12">
@@ -45,7 +44,7 @@
                       <li>
                         <a class="ud-pers-info active" data-toggle="tab" href="#personal-info" (click)="getpersonalinfoDetails(personalinfo)">Personal Info</a>
                       </li>
-                      <li>
+                      <li class="disabled">
                         <a class="ud-buyers" data-toggle="collapse" href="#buyers-links">Buy</a>
                         <ul class="collapse sub-links-wrap" id="buyers-links">
                           <li><a data-toggle="tab" href="#watch-list" class="sub-links">Watch List</a></li>
@@ -71,8 +70,8 @@
                           <li *ngFor="let propertyArr of userData">
                             <a class="sub-links" data-toggle="collapse" (click)="setCurrentProperty(propertyArr)" href="#sell-sub-links/{{propertyArr.propertyId}}">Property ID :{{propertyArr.propertyId}}</a>
                             <ul class="collapse sub-prop-links-wrap" id="sell-sub-links/{{propertyArr.propertyId}}">
-                              <li><a data-toggle="tab" href="#owner-detail" class="sub-prop-links">- Owners details</a></li>
-                              <li><a data-toggle="tab" href="#POA-detail" class="sub-prop-links">- POA details</a></li>
+                              <li><a data-toggle="tab" (click)="refreshPoaHtml()" href="#owner-detail" class="sub-prop-links">- Owners details</a></li>
+                              <li><a data-toggle="tab" (click)="refreshPoaHtml()" href="#POA-detail" class="sub-prop-links">- POA details</a></li>
                               <!-- <li *ngFor="let ownerArr of propertyArr.propertysellerdetailses"><a *ngIf="ownerArr.ownerType=='owner'" data-toggle="tab" href="#owner-detail"  (click)="getOwnerDetails(ownerArr)" class="sub-prop-links">- Owner ID:{{ownerArr.propertySellerId}}</a></li> -->
                               <!-- <li *ngFor="let ownerArr of propertyArr.propertysellerdetailses"><a  *ngIf="ownerArr.ownerType=='poa'"  data-toggle="tab" href="#POA-detail"  (click)="getPOADetails(ownerArr)" class="sub-prop-links">- POA ID {{ownerArr.propertySellerId}}</a></li>  -->
                               <li><a  data-toggle="tab" href="#prop-detail" (click)="getPropertyDetails(propertyArr)" class="sub-prop-links">- Property details</a></li>
@@ -102,7 +101,7 @@
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
                             <!-- <label class="form-label required-input-label">First Name</label> -->
-                            <input pattern="[a-zA-Z]*"  minlength="3" maxlength="15" type="text" class="form-control form-input" [(ngModel)]="personalinfoDTO.firstName" name="firstName" #firstName="ngModel"autofocus placeholder="First Name">
+                            <input pattern="[a-zA-Z]*"  minlength="3" maxlength="15" type="text" class="form-control form-input" [(ngModel)]="personalinfoDTO.firstName" name="firstName" #firstName="ngModel"  placeholder="First Name" autofocus>
                             <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)" class="alert alert-danger">
                               <div [hidden]="!firstName.errors.minlength">
                                 Fisrt Name must be at least 3 characters long.
@@ -149,7 +148,6 @@
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
                             <select [(ngModel)]="personalinfoDTO.nationality" name="nationality" #nationality="ngModel"  class="form-control common-select">
-                              <option>Select Nationality</option>
                               <option>Pakistani</option>
                               <option>Indian</option>
                               <option>Australian</option>
@@ -168,7 +166,7 @@
                               </div>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                            <input type="text" class="form-control form-input" [(ngModel)]="personalinfoDTO.idCardExpiryDate" name="idCardExpiryDate" #idCardExpiryDate="ngModel" placeholder="ID Card Expiry Date">
+                            <input type="text" for="date" class="form-control form-input" [(ngModel)]="personalinfoDTO.idCardExpiryDate" name="idCardExpiryDate" #idCardExpiryDate="ngModel" placeholder="ID Card Expiry Date">
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
                             <input type="text" pattern="[a-zA-Z]*" minlength="6" maxlength="15" class="form-control form-input" [(ngModel)]="personalinfoDTO.passportNumber" name="passportNumber" #passportNumber="ngModel"  placeholder="Passport Number">
@@ -185,7 +183,7 @@
                               </div>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                            <input type="text" class="form-control form-input" [(ngModel)]="personalinfoDTO.passportExpiryDate" name="passportExpiryDate" #passportExpiryDate="ngModel"  placeholder="Passport Expiry Date">
+                            <input type="text" for="date" class="form-control form-input" [(ngModel)]="personalinfoDTO.passportExpiryDate" name="passportExpiryDate" #passportExpiryDate="ngModel"  placeholder="Passport Expiry Date">
                           </div>
                         </div>
                         <div class="row mt-3">
@@ -222,6 +220,12 @@
                                 </div>
                               </div>
                           </div>
+                          <div class="offset-md-6 col-md-6 my-xs-4 mb-4 form-label-group otp-code-div">
+                            <a href="#" class="click-here-link mb-1">Click here</a>
+                            <button class="btn form-btn mb-1">Send OTP code on my mobile</button>
+                            <span class="code-instruct">Code Valid for 5 mins</span>
+                            <a href="#" class="resend-otp-link">Resend OTP code</a>
+                          </div>
                           <div class="col-md-6 form-label-group mb-4">
                             <input type="email" pattern="[^ @]*@[^ @]*" class="form-control form-input" [(ngModel)]="personalinfoDTO.userEmail" name="userEmail" #userEmail="ngModel" placeholder="Email" required>
                             <div *ngIf="userEmail.errors && (userEmail.dirty || userEmail.touched)" class="alert alert-danger">
@@ -246,7 +250,6 @@
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
                             <select [(ngModel)]="personalinfoDTO.country" name="country" #country="ngModel" class="form-control common-select">
-                              <option>Country</option>
                               <option>Pakistani</option>
                               <option>Indian</option>
                               <option>Australian</option>
@@ -255,11 +258,10 @@
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
                             <select [(ngModel)]="personalinfoDTO.userCity" name="userCity" #userCity="ngModel" class="form-control common-select">
-                              <option>City</option>
-                              <option>Pakistani</option>
-                              <option>Indian</option>
-                              <option>Australian</option>
-                              <option>American</option>
+                              <option>Lahore</option>
+                              <option>Karachi</option>
+                              <option>New York</option>
+                              <option>Mumbai</option>
                             </select>
                           </div>
                           <div class="col-md-12 form-label-group mb-4">
@@ -272,6 +274,45 @@
                           </div>
                           <div class="col-md-4 form-label-group mb-4 mt-5 m-xs-0">
                             <button routerLink="/changepassword"  class="btn form-btn">Change Password</button>
+                          </div>
+                        </div>
+                        <div class="row align-items-center">
+                          <div class="col-md-6 form-block-heading">Please Classify Yourself:</div>
+                          <div class="col-md-6 radio-btn-wrap">
+                            <p class="mr-4 mb-0 radio-btn">
+                              <input type="radio" id="ownerRadioBtn" [(ngModel)]="personalinfoDTO.classifyYourself" name="classifyYourself" #classifyYourself="ngModel">
+                              <label for="ownerRadioBtn">Owner</label>
+                            </p>
+                            <p class="mr-4 mb-0 radio-btn">
+                              <input type="radio" id="poaRadioBtn" value="poa" [(ngModel)]="personalinfoDTO.classifyYourself" name="classifyYourself" #classifyYourself="ngModel">
+                              <label for="poaRadioBtn">POA</label>
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row mt-3">
+                          <div class="col-md-12 document-upload form-block-heading mb-4">
+                            Uploaded Documents
+                            <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>    
+                          </div>
+                          <div class="col-md-4">
+                            <div class="upload-doc-block">
+                              <div class="upload-doc-div"></div>
+                              <div class="upload-btn-div mt-3">
+                                <div class="file doc-upload">
+                                  <input type="file" [(ngModel)]="personalinfoDTO.scannedPassportCopyUpload" name="scannedPassportCopyUpload" #scannedPassportCopyUpload="ngModel"/>
+                                </div>
+                                <span class="upload-instuct ml-2">Scanned passport copy</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="offset-md-2 col-md-4">
+                            <div class="upload-doc-block">
+                              <div class="upload-doc-div"></div>
+                              <div class="upload-btn-div mt-3">
+                                <div class="file doc-upload"><input type="file" [(ngModel)]="personalinfoDTO.scannedIdCopyUpload" name="scannedIdCopyUpload" #scannedIdCopyUpload="ngModel"/></div>
+                                <span class="upload-instuct ml-2">Scanned ID copy<div class="ui-subtitle">(UAE or country of origin)</div></span>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </form>
@@ -582,7 +623,6 @@
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
                               <select  [(ngModel)]="ownerDto.nationality" name="nationality" class="form-control common-select">
-                                <option>Select Nationality</option>
                                 <option>Pakistani</option>
                                 <option>Indian</option>
                                 <option>Australian</option>
@@ -689,7 +729,6 @@
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
                               <select class="form-control common-select">
-                                <option>Select Nationality</option>
                                 <option>Pakistani</option>
                                 <option>Indian</option>
                                 <option>Australian</option>
@@ -743,10 +782,10 @@
                                 <input type="text" for="date" class="form-control form-input" [(ngModel)]="ownerDto.poaAgreementExpiry" name="poaAgreementExpiry" required>
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
-                                <select class="form-control common-select" [(ngModel)]="ownerDto.specificproperty" name="specificproperty">
-                                    <option>Individual Property</option>
-                                    <option>Multiple Properties</option>
-                                  </select>
+                              <select class="form-control common-select" [(ngModel)]="ownerDto.specificproperty" name="specificproperty">
+                                <option>Individual Property</option>
+                                <option>Multiple Properties</option>
+                              </select>
                             </div>
                           </div>
                           <div class="row mt-3">
@@ -806,8 +845,7 @@
                         <div class="row">
                           <div class="col-md-12 form-block-heading mb-2">Area Details:</div>
                           <div class="col-md-6 form-label-group mb-4">
-                            <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.propertyStatus" name="propertyStatus" placeholder="Property Status">
-                              <option>Property Status</option>
+                            <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.propertyStatus" name="propertyStatus">
                               <option>Off-plan</option>
                               <option>Under Construction</option>
                               <option>Completed</option>
@@ -817,8 +855,7 @@
                               <input type="text" pattern="[a-zA-Z0-9]" class="form-control form-input" [(ngModel)]="propertyDetailsDto.plotNo" name="plotNo" required placeholder="Plot Number">
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                            <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.typeArea" name="typeArea" #typeArea="ngModel" placeholder="Type Area">
-                              <option>Type of Area</option>
+                            <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.typeArea" name="typeArea" #typeArea="ngModel">
                               <option>Free Hold</option>
                               <option>Non-Free Hold</option>
                               <option>Lease Hold</option>
@@ -837,15 +874,15 @@
                               <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.propertyNo" name="propertyNo" #propertyNo="ngModel" placeholder="Property Number" required>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                              <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.propertyType" name="propertyType" #propertyType="ngModel" Placeholder="Property Type">
-                                  <option>Land</option>
-                                  <option>Villa</option>
-                                  <option>Building</option>
-                                  <option>Warehouse</option>
-                                  <option>Office</option>
-                                  <option>Apartment</option>
-                                  <option>Shop</option>
-                                </select>
+                            <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.propertyType" name="propertyType" #propertyType="ngModel">
+                              <option>Land</option>
+                              <option>Villa</option>
+                              <option>Building</option>
+                              <option>Warehouse</option>
+                              <option>Office</option>
+                              <option>Apartment</option>
+                              <option>Shop</option>
+                            </select>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
                               <input type="text"  class="form-control form-input" [(ngModel)]="propertyDetailsDto.projectName" name="projectName" #projectName="ngModel" placeholder="Project Name">
@@ -854,20 +891,20 @@
                               <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.area" name="area" #area="ngModel" required placeholder="Area">
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                              <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.areaUnit" name="areaUnit" #areaUnit="ngModel" placeholder="Area Unit">
-                                <option>sqm</option>
-                                <option>sqft</option>    
-                              </select>
-                            </div>
+                            <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.areaUnit" name="areaUnit" #areaUnit="ngModel">
+                              <option>sqm</option>
+                              <option>sqft</option>    
+                            </select>
+                          </div>
                           <div class="col-md-6 form-label-group mb-4">
                               <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.ownerAssociationNo" name="ownerAssociationNo" placeholder="Onwer Association Number">
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                              <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.presentUse" name="presentUse" #presentUse="ngModel" placeholder="Present Use">
-                                  <option>Residential</option>
-                                  <option>Commercial</option>
-                                  <option>Industrial</option>
-                                </select>
+                            <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.presentUse" name="presentUse" #presentUse="ngModel">
+                              <option>Residential</option>
+                              <option>Commercial</option>
+                              <option>Industrial</option>
+                            </select>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
                             <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.communityNo" name="communityNo" #communityNo="ngModel" placeholder="Community Number">
@@ -1378,8 +1415,7 @@
                         <div class="row">
                           <div class="col-md-12 form-block-heading mb-2">Mortgage Details</div>
                           <div class="col-md-6 form-label-group mb-4">
-                            <select [(ngModel)]="propertyFinancialDTO.morgageStatus" name="morgageStatus" class="form-control common-select placeholder" placeholder="Morgage Status">
-                              <option>Mortgage Status</option>
+                            <select [(ngModel)]="propertyFinancialDTO.morgageStatus" name="morgageStatus" class="form-control common-select placeholder">
                               <option>Yes</option>
                               <option>No</option>
                             </select>
@@ -1406,7 +1442,6 @@
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
                             <select [(ngModel)]="propertyFinancialDTO.bank" ng-disabled="all"  name="bank" class="form-control common-select placeholder">
-                              <option>Bank</option>
                               <option>Islamic</option>
                               <option>World Bank</option>
                             </select>
@@ -1419,7 +1454,6 @@
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
                             <select  [(ngModel)]="propertyFinancialDTO.paymentSchedule" name="paymentSchedule" class="form-control common-select placeholder">
-                              <option>Payment Schedule</option>
                               <option>Quarterly</option>
                               <option>Monthly</option>
                               <option>Yearly</option>
@@ -1460,14 +1494,12 @@
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
                             <select  [(ngModel)]="propertyRentalDetailDTO.isRented" name ="isRented" class="form-control common-select placeholder">
-                              <option>Property Rented</option>
                               <option>Yes</option>
                               <option>No</option>
                             </select>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
                             <select [(ngModel)]="propertyRentalDetailDTO.isVacant" name="isVacant"  class="form-control common-select placeholder" [disabled]="propertyRentalDetailDTO.isRented=='No'">
-                              <option>Vacant</option>
                               <option>Yes</option>
                               <option>No</option>
                             </select>
@@ -1477,7 +1509,6 @@
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
                             <select [(ngModel)]="propertyRentalDetailDTO.paymentStructure" name="paymentStructure" class="form-control common-select placeholder" >
-                              <option>Payment Structure</option>
                               <option>Yearly</option>
                               <option>Monthly</option>
                               <option>Quarterly</option>
@@ -1490,10 +1521,10 @@
                               <input  type="text" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.rentalAnnualRent" name="rentalAnnualRent" #rentalAnnualRent="ngModel" placeholder="Annual Rent">
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                              <input type="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseStartDate" name="leaseStartDate"  #leaseStartDate="ngModel" placeholder="Lease Start Date">
+                              <input type="text" for="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseStartDate" name="leaseStartDate"  #leaseStartDate="ngModel" placeholder="Lease Start Date">
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                              <input type="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseExpiryDate" name="leaseExpiryDate"  #leaseExpiryDate="ngModel" placeholder="Lease Expiry Date">
+                              <input type="text" for="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseExpiryDate" name="leaseExpiryDate"  #leaseExpiryDate="ngModel" placeholder="Lease Expiry Date">
                           </div>
                         </div>
                         <div class="row mt-3">
@@ -1645,7 +1676,6 @@
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
                             <select class="form-control common-select">
-                              <option>Select Nationality</option>
                               <option>Pakistani</option>
                               <option>Indian</option>
                               <option>Australian</option>
@@ -1685,7 +1715,6 @@
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
                             <select class="form-control common-select">
-                              <option>Country</option>
                               <option>Pakistani</option>
                               <option>Indian</option>
                               <option>Australian</option>
@@ -1694,11 +1723,10 @@
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
                             <select class="form-control common-select">
-                              <option>City</option>
-                              <option>Pakistani</option>
-                              <option>Indian</option>
-                              <option>Australian</option>
-                              <option>American</option>
+                              <option>New York</option>
+                              <option>Mumbai</option>
+                              <option>Karachi</option>
+                              <option>Lahore</option>
                             </select>
                           </div>
                           <div class="col-md-12 form-label-group mb-4">

@@ -482,3 +482,92 @@ input[type="file"] {
   cursor: pointer;
   font-size: 0;
 }
+
+
+.radio-btn-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  .radio-btn {
+    label {
+      font-size: 16px;
+      color: @mono-color;
+    }
+  }
+  [type="radio"] {
+    &:checked {
+      position: absolute;
+      left: -9999px;
+      &+label {
+        position: relative;
+        padding-left: 20px;
+        cursor: pointer;
+        line-height: 15px;
+        display: inline-block;
+        color: @primary-color;
+        &:before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 15px;
+          height: 15px;
+          border: 1px solid @primary-color;
+          border-radius: 100%;
+          background: @white-color;
+        }
+        &:after {
+          content: '';
+          width: 11px;
+          height: 11px;
+          background: @primary-color;
+          position: absolute;
+          top: 2px;
+          left: 2px;
+          border-radius: 100%;
+          -webkit-transition: all 0.2s ease;
+          transition: all 0.2s ease;
+          opacity: 1;
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+    }
+    &:not(:checked) {
+      position: absolute;
+      left: -9999px;
+      &+label {
+        position: relative;
+        padding-left: 20px;
+        cursor: pointer;
+        line-height: 15px;
+        display: inline-block;
+        &:before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 15px;
+          height: 15px;
+          border: 1px solid @primary-color;
+          border-radius: 100%;
+          background: @white-color;
+        }
+        &:after {
+          content: '';
+          width: 14px;
+          height: 14px;
+          background: @primary-color;
+          position: absolute;
+          top: 4px;
+          left: 4px;
+          border-radius: 100%;
+          -webkit-transition: all 0.2s ease;
+          transition: all 0.2s ease;
+          opacity: 0;
+          -webkit-transform: scale(0);
+          transform: scale(0);
+        }
+      }
+    }
+  }
+}
