@@ -76,7 +76,7 @@
                           <label class="form-label required-input-label">Unit</label>
                           <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.areaUnit" name="areaUnit" #areaUnit="ngModel">
                             <option>sqm</option>
-                            <option>sqft</option>    
+                            <option>sqft</option>
                           </select>
                         </div>
                       <div class="col-md-6 form-label-group mb-4">
@@ -647,7 +647,7 @@
                     <div class="note-block py-3 px-2 mt-5">
                       <div class="col-1 common-checkbox">
                         <label>
-                          <input type="checkbox"><span class="checkbox-material"><span class="check"></span></span>
+                          <input  [(ngModel)]="propertyDetailsDto.thirdPartyVerification" type="checkbox"><span class="checkbox-material"><span class="check"></span></span>
                         </label>
                       </div>
                       <div class="note-text">

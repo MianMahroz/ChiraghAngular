@@ -60,6 +60,7 @@ export class LoginComponent {
               this.mytoastr.Success('Login',data1.msg);
                    if(data1.msg=="Login Successfully"&&data1.role=='chiraghuser'){
                     // this.mytoastr.Success('Login',data1.msg);
+                    this.token.saveUserRole(data1.role);
                      this.token.saveUserName(this.logindto.userName);
                        this.router.navigate(['home']);
                    }//end of if

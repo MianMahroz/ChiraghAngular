@@ -20,8 +20,8 @@ export class AuthService {
 
   let data = "username=" + 'Chiragh' + "&password=" +'password'+"&grant_type=password&" +
             "client_secret=devglan-secret&client_id=chiragh-client";
-    
-    console.log('Getting Chiragh OAuth 2  Token');
+
+    // console.log('Getting Chiragh OAuth 2  Token');
     return this.http.post<any>(this.token.getServerpath()+'/oauth/token', data,httpOptions);
   }
 
@@ -32,10 +32,10 @@ export class AuthService {
           'Authorization': 'Basic ' + btoa('chiragh-client' + ':' + 'devglan-secret')
       })
   };
-  
+
     let data = "username=" + 'Chiragh' + "&password=" +'password'+"&grant_type=refresh_token&" +
               "client_secret=devglan-secret&client_id=chiragh-client&refresh_token="+refreshToken;
-      
+
       console.log('Refreshing Chiragh OAuth 2  Token');
       return this.http.post<any>(this.token.getServerpath()+'/oauth/token', data,httpOptions);
     }

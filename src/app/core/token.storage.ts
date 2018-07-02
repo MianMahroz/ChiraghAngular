@@ -8,9 +8,11 @@ const TOKEN_EXPIRES_IN = 'expires_in';
 
 @Injectable()
 export class TokenStorage {
-  
-  serverPath:string='http://18.218.221.103/ChiraghServer';
-  // serverPath:string='http://localhost:8082';
+
+  // serverPath:string='http://18.218.221.103/ChiraghServer';
+  serverPath:string='http://localhost:8082';
+  imagepath:string='http://demo.chiragh.com/ChiraghDocuments/';
+  // imagepath:string='D:/workspace/ChiraghDocuments/';
 
   constructor() { }
 
@@ -30,6 +32,13 @@ export class TokenStorage {
     window.sessionStorage.setItem(TOKEN_KEY,  token);
     window.sessionStorage.setItem(TOKEN_Refresh_KEY,  refreshToken);
     window.sessionStorage.setItem(TOKEN_EXPIRES_IN,  expiresIn);
+  }
+
+  public saveUserRole(role:string){
+    window.sessionStorage.setItem("role",  role);
+  }
+  public getUserRole(): string {
+    return sessionStorage.getItem("role");
   }
 
   public saveAdminUserName(userName:string){
@@ -56,6 +65,12 @@ export class TokenStorage {
     public getPropertyId(): number {
       return Number(sessionStorage.getItem('propertyId'));
     }
+    public saveAdminPropertyId(propertyId:string){
+      window.sessionStorage.setItem("adminPropertyId",  propertyId);
+    }
+    public getAdminPropertyId(): number {
+      return Number(sessionStorage.getItem('adminPropertyId'));
+    }
     public getPropertyIdString(): string {
       return sessionStorage.getItem('propertyId');
     }
@@ -74,4 +89,8 @@ export class TokenStorage {
   public getServerpath():string{
     return this.serverPath;
   }
+  public getImagepath():string{
+    return this.imagepath;
+  }
+
 }

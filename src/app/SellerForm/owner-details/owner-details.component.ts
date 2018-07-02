@@ -10,6 +10,7 @@ import { SellerService } from '../../shared/seller.service';
 import { OwnerDetails } from './ownerdetails.model';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {AfterViewInit, ViewChild} from '@angular/core';
+import {ModalGalleryModule,Image} from 'angular-modal-gallery';
 @Component({
   selector: 'app-owner-details',
   templateUrl: './owner-details.component.html',
@@ -17,7 +18,9 @@ import {AfterViewInit, ViewChild} from '@angular/core';
 })
 export class OwnerDetailsComponent implements AfterViewInit {
 
-  @Input() clickedPropertyData:any;
+ adminPropertyId:number;
+ role:string;
+
   private loadScript(scriptUrl: string) {
     return new Promise((resolve, reject) => {
       const scriptElement = document.createElement('script');
@@ -44,6 +47,11 @@ export class OwnerDetailsComponent implements AfterViewInit {
   idCardFileUploadPath:string;
   passportFileUploadPath:string;
 
+  images: Image[]=[] ;
+
+
+
+
   constructor(private myToast:ToasterServiceService,private route:ActivatedRoute,private sellerService:SellerService,private userService:UserService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -64,6 +72,23 @@ export class OwnerDetailsComponent implements AfterViewInit {
     console.log(row);
     this.myToast.Success('Status','Owner Data Loaded Successfully');
     this.ownerDto=row;
+    console.log(this.token.getImagepath());
+
+    this.images = [
+      new Image(
+        0,
+        { // modal
+          img: ''+this.token.getImagepath()+'propertyId-'+this.adminPropertyId+'/'+this.ownerDto.scannedIdCopy,
+          extUrl: 'http://www.google.com'
+        }
+      ),
+      new Image(
+        1,
+        { // modal
+          img: 'https://raw.githubusercontent.com/Ks89/angular-modal-gallery/v4/examples/systemjs/assets/images/gallery/img2.png',
+          description: 'Description 2'
+        }
+      )];
     this.pid=92;
     this.fileName=this.ownerDto.idCardNo;
     this.idCardFileUploadPath='../ChiraghDocuments/propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.scannedIdCopy;
@@ -71,36 +96,34 @@ export class OwnerDetailsComponent implements AfterViewInit {
   }
 
     ngOnInit() {
+      this.role=this.token.getUserRole();
+      this.adminPropertyId=this.token.getAdminPropertyId();
+      console.log(this.role);
+      if(this.adminPropertyId!=0||this.adminPropertyId!=null&&this.token.getUserRole()!='chiraghuser'){
+        console.log(this.adminPropertyId);
+        this.token.saveUserName(this.token.getAdminuserName());
+        this.getAllEnteredOwner(this.adminPropertyId);
+      }//end of admin code if
+      else if(this.role=='chiraghuser'){
+        console.log('its here ');
+        this.atLeastOneOwner=false;
+            if(this.token.getuserName()==null){
+            this.router.navigate(['/login']);
+            return "Invalid Session";
+          }//end of if
 
-      // if(this.token.getAdminuserName()){
-      //     this.token.savePropertyId(this.clickedPropertyData.propertyId);
-      //     this.token.saveUserName(this.token.getAdminuserName());
-      //     this.getAllEnteredOwner();
-      // }//end of if
-      // else{
-      //   this.router.navigate(['/adminsignin']);
-      // }
-      // this.atLeastOneOwner=false;
-
-      // console.log(this.token.getuserName());
-      // if(this.token.getuserName()==null){
-      //   console.log('Invalid Session');
-      //   this.router.navigate(['/login']);
-      //   return "Invalid Session";
-      // }//end of if
-      
-      this.action='';
-      this.action=this.route.snapshot.params['action'];
-      console.log(this.action);
-      if(this.action=='back'){
-          console.log('Inside Action');
-            this.getAllEnteredOwner();
-        }//end of back if
-        else{
-          this.token.savePropertyId('0');
-        }
-
-    }//end of nginit
+        this.action='';
+        this.action=this.route.snapshot.params['action'];
+        console.log(this.action);
+        if(this.action=='back'){
+            console.log('Inside Action');
+              this.getAllEnteredOwner(this.token.getPropertyId());
+          }//end of back if
+          else{
+            this.token.savePropertyId('0');
+          }
+    }//end of admin else
+  }//end of nginit
     selectPassport(event) {
       this.selectedPassport = event.target.files;
       this.passportFile=this.selectedPassport.item(0);
@@ -261,19 +284,25 @@ editProcessHelper(operation:string):void{
   }//end of else if
 }
 
-  getAllEnteredOwner(): void {
+  getAllEnteredOwner(propertyId:number): void {
     window.sessionStorage.removeItem('AuthToken');
     this.authService.attemptAuth().subscribe(
       data => {
         this.token.saveToken(data.access_token,data.refresh_token,data.expires_in);
         // console.log(data);
         if(this.token.getToken()!=null){
-          this.sellerService.getOwners(this.token.getPropertyId(),this.token.getuserName()).subscribe(
+          this.sellerService.getOwners(propertyId,this.token.getuserName()).subscribe(
             ownerData=>{
-             this.atLeastOneOwner=true;
-             this.myToast.Success('Status','Owner Data Loaded Successfully');
-             console.log(ownerData);
-               this.dataSource.data = ownerData;
+              if(ownerData.length!=0){
+                  this.atLeastOneOwner=true;
+                  this.myToast.Success('Status','Owner Data Loaded Successfully');
+                  console.log(ownerData);
+                  this.dataSource.data = ownerData;
+              }//end of lenght condition
+              else{
+                this.dataSource.data = ownerData;
+                this.atLeastOneOwner=false;
+              }//end of else
              }//end of ownerData
          );//end of subscription of getOwners
 
@@ -283,7 +312,31 @@ editProcessHelper(operation:string):void{
   }//end of loginChiraghUser
 
 
+//start of admin methods
+
+ownerVerified(): void {
+  window.sessionStorage.removeItem('AuthToken');
+  this.authService.attemptAuth().subscribe(
+    data => {
+      this.token.saveToken(data.access_token,data.refresh_token,data.expires_in);
+      if(this.token.getToken()!=null){
+        this.ownerDto.isPersonalDetailsVerified='true';
+        this.ownerDto.userName=this.token.getAdminuserName();
+        this.ownerDto.propertyId=this.adminPropertyId;
+       this.sellerService.updateOwner(this.ownerDto).subscribe(
+         data=>{
+                   this.myToast.Info('Status','Owner Verified Successfully');
+                   this.ownerDto=new OwnerDetails();
+                   this.getAllEnteredOwner(this.adminPropertyId);
+         }//end of
+       );
+      }//end of if
+
+   }//end of outer data predicate
+  );//end of outer subscription
+
+}//end of loginChiraghUser
 
 
 
-}
+}//end of class

@@ -63,6 +63,10 @@ import { AdminHeaderComponent } from './admin/admin-header/admin-header.componen
 import { VerificationHomeComponent } from './admin/verification-home/verification-home.component';
 import { AdminsignoutComponent } from './admin/adminsignout/adminsignout.component';
 import { AdminSellerDetailsComponent } from './admin/admin-seller-details/admin-seller-details.component';
+import 'hammerjs';
+import 'mousetrap';
+
+import {ModalGalleryModule} from 'angular-modal-gallery';
 // enableProdMode();
 @NgModule({
   declarations: [
@@ -112,6 +116,8 @@ import { AdminSellerDetailsComponent } from './admin/admin-seller-details/admin-
     AdminSellerDetailsComponent,
   ],
   imports: [
+
+    ModalGalleryModule.forRoot(),
     ToastModule.forRoot(),
     CommonModule,
     BrowserAnimationsModule, // required animations module
