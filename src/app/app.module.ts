@@ -65,6 +65,7 @@ import { AdminsignoutComponent } from './admin/adminsignout/adminsignout.compone
 import { AdminSellerDetailsComponent } from './admin/admin-seller-details/admin-seller-details.component';
 import 'hammerjs';
 import 'mousetrap';
+
 import {ModalGalleryModule} from 'angular-modal-gallery';
 // enableProdMode();
 @NgModule({
@@ -115,6 +116,7 @@ import {ModalGalleryModule} from 'angular-modal-gallery';
     AdminSellerDetailsComponent,
   ],
   imports: [
+
     ModalGalleryModule.forRoot(),
     ToastModule.forRoot(),
     CommonModule,

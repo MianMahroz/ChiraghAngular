@@ -13,5 +13,5 @@ export class PropertyRentalDetailDTO{
     isVacant:string;
     sellerUserName:string;
     dateReceived:Date;
-
+    isPropertyRentalDetailsVerified:string;
   }
