@@ -45,6 +45,10 @@ export class SellerDashboardComponent implements OnInit {
   this.getUserDashboardData();
   this.getDashboardPersonalInfo();
   }
+  refreshPoaHtml()
+  {
+    this.ownerDto=new OwnerDetails();
+  }
 
   setCurrentProperty(prop:any){
     this.currentProperty=prop;
@@ -101,7 +105,7 @@ export class SellerDashboardComponent implements OnInit {
      }//end of outer data predicate
     );//end of outer subscription
 
-  }//end of loginChiraghUser
+  }//end 
   
   getDashboardPersonalInfo(): void {
     window.sessionStorage.removeItem('AuthToken');
@@ -113,6 +117,37 @@ export class SellerDashboardComponent implements OnInit {
                data=>{
                      console.log(data);
                      this.personalinfo=data;
+               }
+             );
+        }//end of if
+
+     }//end of outer data predicate
+    );//end of outer subscription
+
+  }//end 
+
+  UpdatePersonalInfo(): void {
+    window.sessionStorage.removeItem('AuthToken');
+    this.authService.attemptAuth().subscribe(
+      data => {
+        this.token.saveToken(data.access_token,data.refresh_token,data.expires_in);
+        if(this.token.getToken()!=null){
+             this.userService.updatepersonalinfo(this.token.getuserName(),this.personalinfoDTO).subscribe(
+               data=>{
+                     console.log(data);
+                     if(data.msg=="Personal Info Not Updated!"){
+                      this.myToast.Error('Status',data.msg);
+                     }
+
+                     else if(data.msg=="Personal Info Updated Successfully")
+                     {
+                      this.myToast.Success('Status',data.msg);
+                     }
+
+                     else if(data.msg=="Invalid Session")
+                     {
+                      this.myToast.Error('Status',data.msg);
+                     }
                }
              );
         }//end of if

@@ -35,9 +35,9 @@ export class PropertyDetailsDto {
  propertyAge:string;
  noUnits:string;
  noShops:string;
- thirdPartyVerification:number;
- isThirdPartyPayment:number;
- verificationHodApproved:number;
+ thirdPartyVerification:string;
+ isThirdPartyPayment:string;
+ verificationHodApproved:string;
  valuationReportDocument:string;
  valuationHodApproved:number;
  statusval:number;
@@ -127,4 +127,5 @@ export class PropertyDetailsDto {
  park:string;
  description:string;
  areaUnit:string;
+ isPropertyDetailsVerified:string;
 }
