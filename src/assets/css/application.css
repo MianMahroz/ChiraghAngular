@@ -802,6 +802,18 @@
   width: 32px;
   background: url("../../assets/images/sprite-image.png") no-repeat -622px -218px;
   margin-left: 1rem;
+  display: none;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .form-block-heading .cancel-form-link {
+  background: url("../../assets/images/sprite-image.png") no-repeat -523px -218px;
+  display: flex;
+  height: 32px;
+  float: right;
+  width: 32px;
+  background: url("../../assets/images/sprite-image.png") no-repeat -622px -218px;
+  display: none;
+  background: url("../../assets/images/sprite-image.png") no-repeat -665px -218px;
+  margin-left: 1rem;
 }
 .screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .document-upload {
   font-size: 1.25em;
@@ -1251,6 +1263,10 @@ body {
   font-family: 'futura-font';
   font-size: 16px;
   color: #212121;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: none;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility !important;
 }
 a {
   text-decoration: none;
@@ -1321,6 +1337,9 @@ a:hover {
 }
 .full-parent-height {
   height: 100%;
+}
+.display-none {
+  display: none;
 }
 .pagination-wrap nav .pagination .page-item.active .page-link {
   background-color: #7e7e7e;
