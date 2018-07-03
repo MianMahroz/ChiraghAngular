@@ -305,26 +305,32 @@
                             Uploaded Documents
                             <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>    
                           </div>
-                          <div class="col-md-4">
-                            <div class="upload-doc-block">
-                              <div class="upload-doc-div"></div>
-                              <div class="upload-btn-div mt-3">
-                                <div class="file doc-upload">
-                                  <input type="file" [(ngModel)]="personalinfoDTO.scannedPassportCopyUpload" name="scannedPassportCopyUpload" #scannedPassportCopyUpload="ngModel"/>
-                                </div>
-                                <span class="upload-instuct ml-2">Scanned passport copy</span>
+                          <div class="col-md-12 upload-doc-block">
+                            <div class="upload-btn-div mt-4">
+                              <div class="file">
+                                <input id="ownerPassCopy" #passFile type="file" name="file" (change)="selectPassport($event)" class="doc-upload" />
                               </div>
+                              <div class="upload-instuct mt-2">Scanned passport copy<i class="fas fa-circle-notch fa-spin ml-2"></i></div>
+                              <p *ngIf="passportFile"><br>{{passportFile.name}}</p>
+                              <!-- <p *ngIf="ownerDto.passportCopyUpload"><br>{{ownerDto.passportCopyUpload}}</p> -->
+            
+                            </div>
+                            <div class="upload-btn-div mt-5">
+                              <div class="file">
+                                <input id="owneIdCopy" #idFile type="file" (change)="selectIdCopy($event)" name="file" class="doc-upload" />
+                              </div>
+                              <div  class="upload-instuct mt-2">Scanned ID copy
+                                <i class="fas fa-circle-notch fa-spin ml-2"></i>
+                                <div class="upload-sub-instruct">(UAE or country of origin)</div>
+                              </div>
+                              <p *ngIf="idCopyFile"><br>{{idCopyFile.name}}</p>
+                              <!-- <p *ngIf="ownerDto.scannedIdCopy"><br>{{ownerDto.scannedIdCopy}}</p> -->
                             </div>
                           </div>
-                          <div class="offset-md-2 col-md-4">
-                            <div class="upload-doc-block">
-                              <div class="upload-doc-div"></div>
-                              <div class="upload-btn-div mt-3">
-                                <div class="file doc-upload"><input type="file" [(ngModel)]="personalinfoDTO.scannedIdCopyUpload" name="scannedIdCopyUpload" #scannedIdCopyUpload="ngModel"/></div>
-                                <span class="upload-instuct ml-2">Scanned ID copy<div class="ui-subtitle">(UAE or country of origin)</div></span>
-                              </div>
-                            </div>
-                          </div>
+                          <!-- <ks-modal-gallery [modalImages]="images"
+                            [downloadable]="true"></ks-modal-gallery>                      
+                            <p *ngIf="personalinfoDTO.scannedIdCopyUpload"><br>{{personalinfoDTO.scannedIdCopyUpload}}</p>
+                            <p *ngIf="personalinfoDTO.scannedPassportCopyUpload"><br>{{personalinfoDTO.scannedPassportCopyUpload}}</p> -->
                         </div>
                       </form>
                     </div>
@@ -678,32 +684,10 @@
                           </div>
                           <div class="row mt-3">
                             <div class="col-md-12 form-block-heading mb-2">Uploaded Documents</div>
-                            <div class="col-md-4">
-                              <div class="upload-doc-block">
-                                <div class="upload-doc-div"></div>
-                                <div class="upload-instuct mt-2">Scanned passport copy</div>
-                                <div class="upload-btn-div mt-4">
-                                  <div class="file doc-upload">
-                                    <input type="file" [(ngModel)]="ownerDto.passportCopyUpload" name="passportCopyUpload" #passportCopyUpload="ngModel"  name="file"/>
-                                  </div>
-                                  <span class="upload-instuct ml-4">Upload Again</span>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="offset-md-2 col-md-4">
-                              <div class="upload-doc-block">
-                                <div class="upload-doc-div"></div>
-                                <div class="upload-instuct mt-2">
-                                  Scanned ID copy<div class="ui-subtitle">(UAE or country of origin)</div>
-                                </div>
-                                <div class="upload-btn-div mt-4">
-                                  <div class="file doc-upload">
-                                    <input type="file" name="file"/>
-                                  </div>
-                                  <span class="upload-instuct ml-4">Upload Again</span>
-                                </div>
-                              </div>
-                            </div>
+                            <ks-modal-gallery [modalImages]="images"
+                            [downloadable]="true"></ks-modal-gallery>                      
+                            <p *ngIf="ownerDto.scannedIdCopy"><br>{{ownerDto.scannedIdCopy}}</p>
+                            <p *ngIf="ownerDto.passportCopyUpload"><br>{{ownerDto.passportCopyUpload}}</p>
                           </div>
                         </form>
                       </div>
@@ -801,6 +785,7 @@
                           </div>
                           <div class="row mt-3">
                             <div class="col-md-12 form-block-heading mb-2">Uploaded Documents</div>
+<<<<<<< HEAD
                             <div class="col-md-4">
                               <div class="upload-doc-block">
                                 <div class="upload-doc-div"></div>
@@ -844,6 +829,14 @@
                                 </div>
                               </div>
                             </div> -->
+=======
+                            
+                            <ks-modal-gallery [modalImages]="images"
+                            [downloadable]="true"></ks-modal-gallery>                      
+                            <p *ngIf="ownerDto.scannedIdCopy"><br>{{ownerDto.scannedIdCopy}}</p>
+                            <p *ngIf="ownerDto.passportCopyUpload"><br>{{ownerDto.passportCopyUpload}}</p>
+                            <p *ngIf="ownerDto.scannedNotorizedCopy"><br>{{ownerDto.scannedNotorizedCopy}} </p>
+>>>>>>> 6b6d362b9e077ecce9198307af61d06f8d36ac94
                           </div>
                         </form>
                       </div>
@@ -1403,18 +1396,9 @@
                         </div>
                         <div class="row mt-3">
                           <div class="col-md-12 form-block-heading mb-2">Uploaded Documents</div>
-                          <div class="col-md-4">
-                            <div class="upload-doc-block">
-                              <div class="upload-doc-div"></div>
-                              <div class="upload-instuct mt-2">Scanned Titke Deed</div>
-                              <div class="upload-btn-div mt-4">
-                                <div class="file doc-upload">
-                                  <input type="file" name="file"/>
-                                </div>
-                                <span class="upload-instuct ml-4">Upload Again</span>
-                              </div>
-                            </div>
-                          </div>
+                          <ks-modal-gallery [modalImages]="images"
+                          [downloadable]="true"></ks-modal-gallery>                      
+                          <p *ngIf=propertyDetailsDto.scannedTitleDeed><br>{{propertyDetailsDto.scannedTitleDeed}}</p>
                         </div>
                       </form>
                     </div>
@@ -1479,18 +1463,9 @@
                         </div>  
                         <div class="row mt-3">
                           <div class="col-md-12 form-block-heading mb-2">Uploaded Documents</div>
-                          <div class="col-md-4">
-                            <div class="upload-doc-block">
-                              <div class="upload-doc-div"></div>
-                              <div class="upload-instuct mt-2">Scanned NOC from Mortgage Company</div>
-                              <div class="upload-btn-div mt-4">
-                                <div class="file doc-upload">
-                                  <input type="file" name="file"/>
-                                </div>
-                                <span class="upload-instuct ml-4">Upload Again</span>
-                              </div>
-                            </div>
-                          </div>
+                          <ks-modal-gallery [modalImages]="images"
+                          [downloadable]="true"></ks-modal-gallery>                      
+                          <p *ngIf="propertyFinancialDTO.morgageNoc"><br>{{propertyFinancialDTO.morgageNoc}}</p>
                         </div>
                       </form>
                     </div>
@@ -1540,18 +1515,9 @@
                         </div>
                         <div class="row mt-3">
                           <div class="col-md-12 form-block-heading mb-2">Uploaded Documents</div>
-                          <div class="col-md-4">
-                            <div class="upload-doc-block">
-                              <div class="upload-doc-div"></div>
-                              <div class="upload-instuct mt-2">Scanned Tenancy Contract</div>
-                              <div class="upload-btn-div mt-4">
-                                <div class="file doc-upload">
-                                  <input type="file" name="file"/>
-                                </div>
-                                <span class="upload-instuct ml-4">Upload Again</span>
-                              </div>
-                            </div>
-                          </div>
+                          <ks-modal-gallery [modalImages]="images"
+                          [downloadable]="true"></ks-modal-gallery>                      
+                          <p *ngIf="propertyRentalDetailDTO.tenancyContractUpload"><br>{{propertyRentalDetailDTO.tenancyContractUpload}}</p>
                         </div>
                       </form>
                     </div>

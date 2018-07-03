@@ -10,7 +10,7 @@ import { PropertyDetailsDto } from './../SellerForm/property-details/propertymod
 import {PropertyRentalDetailDTO  } from './../SellerForm/property-rental/propertyRentalDTO';
 import { PropertyFinancialDTO } from './../SellerForm/property-financials/propertyfinancialDTO';
 import { personalInfoDTO } from './../register/personalInfoDTO';
-
+import {ModalGalleryModule,Image} from 'angular-modal-gallery';
 @Component({
   selector: 'app-seller-dashboard',
   templateUrl: './seller-dashboard.component.html',
@@ -39,12 +39,134 @@ export class SellerDashboardComponent implements OnInit {
   propertyRentalDetailDTO=new PropertyRentalDetailDTO();
   propertyFinancialDTO=new PropertyFinancialDTO();
   personalinfoDTO =new personalInfoDTO();
+  selectedPassport: FileList;
+  selectedIdCopy: FileList;
+  passportFile:File;
+  idCopyFile:File;
 
+
+  images: Image[]=[] ;
 
   ngOnInit() {
-  this.getUserDashboardData();
-  this.getDashboardPersonalInfo();
-  }
+    this.getUserDashboardData();
+    this.getDashboardPersonalInfo();
+    }
+
+  getOwnerImages():void{
+    this.images = [
+      new Image(
+        0,
+        { // modal
+          img: ''+this.token.getImagepath()+'propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.scannedIdCopy,
+          extUrl: 'http://demo.chiragh.com/'
+        }
+      ),
+      new Image(
+        1,
+        { // modal
+          img: ''+this.token.getImagepath()+'propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.passportCopyUpload,
+          extUrl: 'http://demo.chiragh.com/'
+        }
+      )
+    ];
+
+}//end of get owner details
+
+getPOAImages():void{
+  this.images = [
+    new Image(
+      0,
+      { // modal
+        img: ''+this.token.getImagepath()+'propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.scannedIdCopy,
+        extUrl: 'http://demo.chiragh.com/'
+      }
+    ),
+    new Image(
+      1,
+      { // modal
+        img: ''+this.token.getImagepath()+'propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.passportCopyUpload,
+        extUrl: 'http://demo.chiragh.com/'
+      }
+    ),
+    new Image(
+      2,
+      { // modal
+        img: ''+this.token.getImagepath()+'propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.scannedNotorizedCopy,
+        extUrl: 'http://demo.chiragh.com/'
+      }
+    )
+  ];
+}//end of get owner details
+
+
+getPropertyFinancialDetailsImages():void{
+  this.images = [
+    new Image(
+      0,
+      { // modal
+        img: ''+this.token.getImagepath()+'propertyId-'+this.propertyFinancialDTO.propertyId+'/'+this.propertyFinancialDTO.morgageNoc,
+        extUrl: 'http://demo.chiragh.com/'
+      }
+    )];
+}//end of get owner details
+
+getPropertyRentalDetailsImages():void{
+  this.images = [
+    new Image(
+      0,
+      { // modal
+        img: ''+this.token.getImagepath()+'propertyId-'+this.propertyRentalDetailDTO.propertyId+'/'+this.propertyRentalDetailDTO.tenancyContractUpload,
+        extUrl: 'http://demo.chiragh.com/'
+      }
+    )];
+}//end of get owner details
+
+getPropertyDetailsImages():void{
+  this.images = [
+    new Image(
+      0,
+      { // modal
+        img: ''+this.token.getImagepath()+'propertyId-'+this.propertyDetailsDto.propertyId+'/'+this.propertyDetailsDto.scannedTitleDeed,
+        extUrl: 'http://demo.chiragh.com/'
+      }
+    )];
+}//end of get owner details
+
+
+getPersonalInfoImages():void{
+  this.images = [
+    new Image(
+      0,
+      { // modal
+        img: ''+this.token.getImagepath()+'propertyId-'+this.personalinfoDTO.userId+'/'+this.personalinfoDTO.scannedIdCopyUpload,
+        extUrl: 'http://demo.chiragh.com/'
+      }
+    ),
+    new Image(
+      1,
+      { // modal
+        img: ''+this.token.getImagepath()+'propertyId-'+this.personalinfoDTO.userId+'/'+this.personalinfoDTO.scannedPassportCopyUpload,
+        extUrl: 'http://demo.chiragh.com/'
+      }
+    )
+  ];
+
+}//end of get owner details
+
+
+selectPassport(event) {
+  this.selectedPassport = event.target.files;
+  this.passportFile=this.selectedPassport.item(0);
+  event.srcElement.value = null;
+  // console.log(this.passportFile);
+}
+selectIdCopy(event) {
+  this.selectedIdCopy = event.target.files;
+  this.idCopyFile=this.selectedIdCopy.item(0);
+  // console.log(this.idCopyFile);
+  event.srcElement.value = null;
+}
+ 
   refreshPoaHtml()
   {
     this.ownerDto=new OwnerDetails();
@@ -57,12 +179,14 @@ export class SellerDashboardComponent implements OnInit {
    console.log(' Owner Clicked!!');
    if(data.ownerType=='owner'){
       this.ownerDto=data;
+      this.getOwnerImages();
    }
   }
   getPOADetails(data:any):void{
     console.log(' POA Clicked!!');
     if(data.ownerType=='poa'){
        this.ownerDto=data;
+       this.getPOAImages();
     }
    }
 
@@ -70,22 +194,26 @@ export class SellerDashboardComponent implements OnInit {
    getPropertyDetails(data:any):void{
     console.log(' Property Clicked!!');
     this.propertyDetailsDto=data;
+    this.getPropertyDetailsImages();
    }
 
 
    getPropertyRentalDetails(data:any):void{
-    console.log(' Property Clicked!!');
+    console.log(' Property Rental Clicked!!');
     this.propertyRentalDetailDTO=data;
+    this.getPropertyRentalDetailsImages();
    }
 
    getPropertyFinancialDetails(data:any):void{
-    console.log(' Property Clicked!!');
+    console.log(' Property Mortage Clicked!!');
     this.propertyFinancialDTO=data;
+    this.getPropertyFinancialDetailsImages();
    }
 
    getpersonalinfoDetails(data:any):void{
     console.log(' Personal info Clicked!!');
     this.personalinfoDTO=data;
+    this.getPersonalInfoImages();
    }
 
   getUserDashboardData(): void {
