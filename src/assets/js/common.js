@@ -194,8 +194,9 @@ $(document).ready(function(){
   $('.ud-sidebar > ul > li').click(function(){
     $('a').removeClass('active show');
     $(this).addClass('active show');
-  });
+  });  
 });
+
 
 $('.advance-search-link').click(function() {
   $('.slider-search-btn-top').toggle();
@@ -206,11 +207,11 @@ $('.advance-search-link').click(function() {
 $('.circle-plus').on('click', function(){
   $(this).toggleClass('opened');
 });
-$("mat-cell").click(function() {
+
+$(".mat-elevation-z8").click(function() {
   $("html, body").animate({ scrollTop: 0 }, "slow");
   return false;
 });
-
 
 $(".facilities-checkboxes-wrap > div:gt(0)").hide();
 $("#facilities-shows").click(function(){
