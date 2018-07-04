@@ -29,7 +29,7 @@
                     </div>
                   </div>
                   <div class="col-md-6 form-label-group mb-4">
-                    <label class="form-label">Middle Name</label>  
+                    <label class="form-label">Middle Name</label>
                     <input pattern="[a-zA-Z]*" type="text" minlength="3" name="userMiddleName" #userMiddleName="ngModel" maxlength="15" class="form-control form-input"[(ngModel)]="ownerDto.middleName">
                     <div *ngIf="userMiddleName.errors && (userMiddleName.dirty || userMiddleName.touched)" class="alert alert-danger">
                       <!-- <div [hidden]="!userMiddleName.errors.required">
@@ -226,7 +226,7 @@
                       </div>
                       <div class="upload-instuct mt-2">Scanned passport copy <i class="fas fa-circle-notch fa-spin ml-2"></i></div>
                       <p *ngIf="passportFile" class="margin-bottom-20-neg"><br>{{passportFile.name}}</p>
-                      <p *ngIf="ownerDto.passportCopyUpload && action=='next'||action=='back'" class="margin-bottom-20-neg"><br>{{ownerDto.passportCopyUpload}}</p>
+                      <p *ngIf="!passportFile&&ownerDto.passportCopyUpload && action=='next'||action=='back'" class="margin-bottom-20-neg"><br>{{ownerDto.passportCopyUpload}}</p>
                     </div>
                     <div class="upload-btn-div mt-5">
                       <div class="file">
@@ -237,7 +237,7 @@
                         <div class="upload-sub-instruct">(UAE or country of origin)</div>
                       </div>
                       <p *ngIf="idCopyFile"><br>{{idCopyFile.name}}</p>
-                      <p *ngIf="ownerDto.scannedIdCopy&&action=='next'||action=='back'"><br>{{ownerDto.scannedIdCopy}}</p>
+                      <p *ngIf="!idCopyFile&&ownerDto.scannedIdCopy&&action=='next'||action=='back'"><br>{{ownerDto.scannedIdCopy}}</p>
                     </div>
                     <div class="upload-btn-div mt-4">
                       <div class="file">
@@ -247,7 +247,7 @@
                         <div class="upload-sub-instruct">(International POA should have the stamp of external affairs and UAE embassy)</div>
                       </div>
                       <p *ngIf="scannedNotorizedPoaFile"><br>{{scannedNotorizedPoaFile.name}}</p>
-                      <p *ngIf="ownerDto.scannedNotorizedCopy&&action=='next'||action=='back'"><br>{{ownerDto.scannedNotorizedCopy}}</p>
+                      <p *ngIf="!scannedNotorizedPoaFile&&ownerDto.scannedNotorizedCopy&&action=='next'||action=='back'"><br>{{ownerDto.scannedNotorizedCopy}}</p>
 
                     </div>
                     <div class="common-checkbox mt-5">
@@ -288,7 +288,7 @@
                   <li class="StepProgress-item"><a>Property Mortgage Details</a></li>
                   <li class="StepProgress-item"><a>Property Rent Details</a></li>
                 </ul>
-              </div>    
+              </div>
             </div>
           </div>
         </div>

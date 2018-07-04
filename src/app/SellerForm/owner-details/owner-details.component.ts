@@ -102,14 +102,15 @@ export class OwnerDetailsComponent implements AfterViewInit {
       this.role=this.token.getUserRole();
       this.adminPropertyId=this.token.getAdminPropertyId();
       console.log(this.role);
-
+      if(this.token.getuserName()==null){
+        this.router.navigate(['/login']);
+        return "Invalid Session";
+      }//end of if
        if(this.role=='chiraghuser'){
         console.log('its here ');
         this.atLeastOneOwner=false;
-            if(this.token.getuserName()==null){
-            this.router.navigate(['/login']);
-            return "Invalid Session";
-          }//end of if
+
+
 
         this.action='';
         this.action=this.route.snapshot.params['action'];
@@ -122,6 +123,9 @@ export class OwnerDetailsComponent implements AfterViewInit {
             this.token.savePropertyId('0');
           }
     }//end of admin else
+    else{
+      this.router.navigate(['/login']);
+    }
   }//end of nginit
     selectPassport(event) {
       this.selectedPassport = event.target.files;
@@ -165,7 +169,7 @@ export class OwnerDetailsComponent implements AfterViewInit {
                       }
                          this.token.savePropertyId(data11)
                          this.ownerDto.propertyId=this.token.getPropertyId();
-
+                         this.ownerDto.isPersonalDetailsVerified='false';
                   this.sellerService.addOwner(this.ownerDto).subscribe(
                     data1=>{
                       console.log('Owner');
@@ -211,6 +215,7 @@ export class OwnerDetailsComponent implements AfterViewInit {
              else{
               this.ownerDto.propertyId=this.token.getPropertyId();//setting proeprty Id
               this.ownerDto.userName=this.token.getuserName();
+              this.ownerDto.isPersonalDetailsVerified='false';
             this.sellerService.addOwner(this.ownerDto).subscribe(
                data1=>{
                 console.log(' owner');
@@ -223,7 +228,7 @@ export class OwnerDetailsComponent implements AfterViewInit {
                         if(data2.type==3){
                           // console.log(data2.partialText);
                          this.ownerDto.passportCopyUpload= data2.partialText;
-            this.sellerService.saveDocument('/propertyId,'+this.token.getPropertyId()+'/',data1+',Sowner-IdCopy'+this.token.getPropertyId(),this.token.getuserName(),this.idCopyFile).subscribe(
+            this.sellerService.saveDocument('/propertyId-'+this.token.getPropertyId()+'/',data1+',Sowner-IdCopy'+this.token.getPropertyId(),this.token.getuserName(),this.idCopyFile).subscribe(
                            data3=>{
                             //  console.log(data3);
                                   if(data3.type==3){
