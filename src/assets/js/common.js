@@ -162,15 +162,11 @@ $(document).ready(function(){
   });
 
   $(".save-form-link, .cancel-form-link").click(function(){
-    $("#personalInfoForm, #contactDetailCancel ").addClass('disabled');
-    $(".save-form-link").hide('slow');
-    $(".cancel-form-link").hide('slow');
+    $("#personalInfoForm, #contactDetailForm").addClass('disabled');
+    $(".save-form-link, .cancel-form-link").hide('slow');
     $(".edit-form-link").show('slow');
   });
 
-  // $(".cancel-form-link").click(function(){
-  //   window.location.reload();    
-  // });
 
   $("#contactDetailEdit").click(function(){
     $("#contactDetailForm").removeClass('disabled');
