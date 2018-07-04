@@ -1,11 +1,6 @@
 $(document).ready(function(){
   $(window).scrollTop(0);
-  $(function(){
-    $('.sub-links-wrap li .sub-prop-links-wrap li').click(function(){
-      $('a').removeClass('active show');
-      $(this).addClass('active show');
-    });
-  });
+  
   $('#ucSlider .carousel-item').each(function(){
     var next = $(this).next();
     if (!next.length) {
@@ -58,7 +53,7 @@ $(document).ready(function(){
   var date_input=$('input[for="date"]'); 
   var container=$('.bootstrap-iso').length>0 ? $('.bootstrap-iso').parent() : "body";
   var options={
-    format: 'mm/dd/yyyy',
+    format: 'yyyy/mm/dd',
     container: container,
     orientation: "top right",
     todayHighlight: true,
@@ -158,14 +153,25 @@ $(document).ready(function(){
   $('.close').click(function(){
     $('body').removeClass('overflow-hidden');
   });
-
+  
   $("#personalInfoEdit").click(function(){
     $("#personalInfoForm").removeClass('disabled');
     $(this).hide();
     $("#personalInfoSave").show('slow');
     $("#personalInfoCancel").show('slow');
   });
-  
+
+  $(".save-form-link, .cancel-form-link").click(function(){
+    $("#personalInfoForm, #contactDetailCancel ").addClass('disabled');
+    $(".save-form-link").hide('slow');
+    $(".cancel-form-link").hide('slow');
+    $(".edit-form-link").show('slow');
+  });
+
+  // $(".cancel-form-link").click(function(){
+  //   window.location.reload();    
+  // });
+
   $("#contactDetailEdit").click(function(){
     $("#contactDetailForm").removeClass('disabled');
     $(this).hide();
@@ -184,12 +190,13 @@ $(document).ready(function(){
      $(this).removeClass('placeholder');
     }
   });
-
+  
   $('.ud-sidebar > ul > li').click(function(){
     $('a').removeClass('active show');
     $(this).addClass('active show');
-  });
+  });  
 });
+
 
 $('.advance-search-link').click(function() {
   $('.slider-search-btn-top').toggle();
@@ -200,11 +207,11 @@ $('.advance-search-link').click(function() {
 $('.circle-plus').on('click', function(){
   $(this).toggleClass('opened');
 });
-$("mat-cell").click(function() {
+
+$(".mat-elevation-z8").click(function() {
   $("html, body").animate({ scrollTop: 0 }, "slow");
   return false;
 });
-
 
 $(".facilities-checkboxes-wrap > div:gt(0)").hide();
 $("#facilities-shows").click(function(){

@@ -825,6 +825,7 @@
                 height: 32px;
                 float: right;
                 width: 32px;
+                cursor: pointer;
               }
               .save-form-link {
                 .edit-form-link;
@@ -860,6 +861,56 @@
                 font-size: 0.875em;    
                 display: flex;
                 justify-content: center;
+              }
+            }
+            .upload-doc-wrap-inline {
+              .upload-doc-div{
+                height: 220px;
+                width: 100%;
+                background-color: @navbar-bg-color;
+                overflow: hidden;
+              }
+              .upload-instuct {
+                font-size: 1.125em;
+                color: @field-placeholder-color;
+                margin-left: 50px;
+                .ui-subtitle {
+                  font-size: 14px;
+                }
+              }
+              .upload-btn-div {
+                position: relative;
+                .file {
+                  position: absolute;
+                  left: 0;
+                  top: 10px;
+                  &::before {
+                    content: "";
+                    background: url("../../assets/images/sprite-image.png") no-repeat -570px -218px;
+                    padding: 12px 17px;
+                  }
+                  .doc-upload {
+                    width: 40px;
+                    opacity: 0;
+                    left: 0;
+                    position: absolute;
+                    top: -10px;
+                    height: 40px;
+                  }
+                }
+                p {
+                  color: @field-placeholder-color !important;
+                  margin-left: 50px;
+                  display: flex;
+                  align-items: flex-end;
+                  &::before {
+                    content: "";
+                    background: url("../../assets/images/sprite-image.png") no-repeat -126px -334px;
+                    margin-right: 10px;
+                    width: 34px;
+                    height: 34px;
+                  } 
+                }
               }
             }
             .upload-doc-block {

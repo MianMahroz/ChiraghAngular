@@ -86,16 +86,10 @@ export class PropertyRentalComponent implements OnInit {
                         );//end of subscription of property financial Details
                         }//end of if of type==3 check
                         else if(data2=='Data'){
-                                this.propertyService.updatePropertyRental(this.propertyRentalDetailDTO).subscribe(
-                                  propertyRentalData=>{
-                                          console.log(propertyRentalData);
-                                          if(propertyRentalData.msg=='Property Rental Info Updated Successfully'){
-                                            this. router.navigate(['/auctionFeeDetails/next']);
-                                            this.myToast.Success('Property Status','Property Rental Details Added Successfully');
-                                          }
+                          this.myToast.Success('Property Status','Property Rental Details Added Successfully');
+                          this. router.navigate(['/propertySuccess']);
+              
 
-                                        }//end of propertyFinancialData
-                              );//end of subscription of property financial Details
                         }//end of else of Data
             }//end of data2
           );//end of save document subscription
