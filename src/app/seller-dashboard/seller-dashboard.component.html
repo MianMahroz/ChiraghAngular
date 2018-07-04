@@ -19,7 +19,7 @@
                 <div class="col-md-12 ud-navbar-col p-xs-0">
                   <ul class="nav nav-tabs ud-nav-tabs full-parent-height">
                     <li class="ud-nav-item">
-                      <a class="account-link active" data-toggle="tab" href="#account">Account</a>
+                      <a class="account-link active" data-toggle="tab"  href="#account">Account</a>
                     </li>
                     <li class="ud-nav-item">
                       <a class="activity-link" data-toggle="tab" href="#activity">Activity</a>
@@ -98,15 +98,15 @@
                         <div class="row">
                           <div class="col-md-12 form-block-heading mb-2">
                             Personal Details:
-                            <a id="personalInfoCancel" class="cancel-form-link"></a>
-                            <a id="personalInfoSave" class="save-form-link"></a>
-                            <a id="personalInfoEdit" class="edit-form-link"></a>
+                            <a id="personalInfoCancel" (click)="getpersonalinfoDetails(personalinfo)" class="cancel-form-link"></a>
+                            <a id="personalInfoSave" (click)= "UpdatePersonalInfo()" class="save-form-link"></a>
+                            <a id="personalInfoEdit"  class="edit-form-link"></a>
                           </div>
                         </div>  
                         <div id="personalInfoForm" class="row disabled">
                           <div class="col-md-6 form-label-group mb-4">
                             <!-- <label class="form-label required-input-label">First Name</label> -->
-                            <input pattern="[a-zA-Z]*"  minlength="3" maxlength="15" type="text" class="form-control form-input" [(ngModel)]="personalinfoDTO.firstName" name="firstName" #firstName="ngModel"  placeholder="First Name" autofocus>
+                            <input pattern="[a-zA-Z]*"  minlength="3" maxlength="15" type="text" class="form-control form-input" [(ngModel)]="personalinfoDTO.firstName" name="firstName" #firstName="ngModel"  placeholder="First Name" required>
                             <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)" class="alert alert-danger">
                               <div [hidden]="!firstName.errors.minlength">
                                 Fisrt Name must be at least 3 characters long.

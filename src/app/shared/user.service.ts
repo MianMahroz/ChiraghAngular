@@ -72,6 +72,6 @@ public changePassword(userName:string,changePasswordDTO:ChangePasswordDTO): Obse
 }
 
 public updatepersonalinfo(userName:string,personalinfoDTO:personalInfoDTO): Observable<any> {
-  return this.http.put<any>(this.userUrl + '//updatePersonalInfo/'+userName,personalinfoDTO,httpOptions);
+  return this.http.put<any>(this.userUrl + '/updatePersonalInfo/'+userName,personalinfoDTO,httpOptions);
 }
 }
