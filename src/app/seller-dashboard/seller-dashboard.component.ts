@@ -217,7 +217,7 @@ selectIdCopy(event) {
     this.getPersonalInfoImages();
    }
 
-   canelinfo():void{
+   cancelinfo():void{
     console.log(' Personal info Changes Discard!');
     this.getDashboardPersonalInfo();
     this.myToast.Success('Changes Are Discared Sucessfully');
