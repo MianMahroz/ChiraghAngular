@@ -793,6 +793,7 @@
   height: 32px;
   float: right;
   width: 32px;
+  cursor: pointer;
 }
 .screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .form-block-heading .save-form-link {
   background: url("../../assets/images/sprite-image.png") no-repeat -523px -218px;
@@ -800,6 +801,7 @@
   height: 32px;
   float: right;
   width: 32px;
+  cursor: pointer;
   background: url("../../assets/images/sprite-image.png") no-repeat -622px -218px;
   margin-left: 1rem;
   display: none;
@@ -810,6 +812,7 @@
   height: 32px;
   float: right;
   width: 32px;
+  cursor: pointer;
   background: url("../../assets/images/sprite-image.png") no-repeat -622px -218px;
   display: none;
   background: url("../../assets/images/sprite-image.png") no-repeat -665px -218px;
@@ -836,6 +839,54 @@
   font-size: 0.875em;
   display: flex;
   justify-content: center;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-wrap-inline .upload-doc-div {
+  height: 220px;
+  width: 100%;
+  background-color: #a0a0a0;
+  overflow: hidden;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-wrap-inline .upload-instuct {
+  font-size: 1.125em;
+  color: #7c7c7c;
+  margin-left: 50px;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-wrap-inline .upload-instuct .ui-subtitle {
+  font-size: 14px;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-wrap-inline .upload-btn-div {
+  position: relative;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-wrap-inline .upload-btn-div .file {
+  position: absolute;
+  left: 0;
+  top: 10px;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-wrap-inline .upload-btn-div .file::before {
+  content: "";
+  background: url("../../assets/images/sprite-image.png") no-repeat -570px -218px;
+  padding: 12px 17px;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-wrap-inline .upload-btn-div .file .doc-upload {
+  width: 40px;
+  opacity: 0;
+  left: 0;
+  position: absolute;
+  top: -10px;
+  height: 40px;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-wrap-inline .upload-btn-div p {
+  color: #7c7c7c !important;
+  margin-left: 50px;
+  display: flex;
+  align-items: flex-end;
+}
+.screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-wrap-inline .upload-btn-div p::before {
+  content: "";
+  background: url("../../assets/images/sprite-image.png") no-repeat -126px -334px;
+  margin-right: 10px;
+  width: 34px;
+  height: 34px;
 }
 .screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-block .upload-doc-div {
   height: 220px;
@@ -1850,6 +1901,9 @@ img {
   align-items: center;
   justify-content: center;
   min-width: 10.42em;
+}
+.ud-navbar .ud-navbar-row .ud-navbar-col .ud-nav-tabs .ud-nav-item.active {
+  background-color: #686868;
 }
 .ud-navbar .ud-navbar-row .ud-navbar-col .ud-nav-tabs .ud-nav-item a {
   display: flex;
