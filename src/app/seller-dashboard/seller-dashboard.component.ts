@@ -50,7 +50,8 @@ export class SellerDashboardComponent implements OnInit {
   ngOnInit() {
     this.getUserDashboardData();
     this.getDashboardPersonalInfo();
-    }
+    
+  }
 
   getOwnerImages():void{
     this.images = [
@@ -245,6 +246,7 @@ selectIdCopy(event) {
                data=>{
                      console.log(data);
                      this.personalinfo=data;
+                     this.getpersonalinfoDetails(data);
                }
              );
         }//end of if
