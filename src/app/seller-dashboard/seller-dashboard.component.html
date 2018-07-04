@@ -21,12 +21,12 @@
                     <li class="ud-nav-item active">
                       <a class="account-link active show" data-toggle="tab" href="#account">Account</a>
                     </li>
-                    <li class="ud-nav-item disabled">
+                    <!-- <li class="ud-nav-item">
                       <a class="activity-link" data-toggle="tab" href="#activity">Activity</a>
                     </li>
-                    <li class="ud-nav-item disabled">
+                    <li class="ud-nav-item">
                       <a class="inbox-link" data-toggle="tab" href="#inbox">Inbox</a>
-                    </li>
+                    </li> -->
                   </ul>
                 </div>
               </div>
@@ -75,9 +75,9 @@
                               <!-- <li *ngFor="let ownerArr of propertyArr.propertysellerdetailses"><a *ngIf="ownerArr.ownerType=='owner'" data-toggle="tab" href="#owner-detail"  (click)="getOwnerDetails(ownerArr)" class="sub-prop-links">- Owner ID:{{ownerArr.propertySellerId}}</a></li> -->
                               <!-- <li *ngFor="let ownerArr of propertyArr.propertysellerdetailses"><a  *ngIf="ownerArr.ownerType=='poa'"  data-toggle="tab" href="#POA-detail"  (click)="getPOADetails(ownerArr)" class="sub-prop-links">- POA ID {{ownerArr.propertySellerId}}</a></li>  -->
                               <li><a  data-toggle="tab" href="#prop-detail" (click)="getPropertyDetails(propertyArr)" class="sub-prop-links">- Property details</a></li>
-                              <li><a data-toggle="tab" href="#prop-financials" (click)="getPropertyFinancialDetails(propertyArr)" class="sub-prop-links">- Property financials</a></li>
+                              <li><a data-toggle="tab" href="#prop-financials" (click)="getPropertyFinancialDetails(propertyArr)" class="sub-prop-links">- Property mortgage</a></li>
                               <li><a data-toggle="tab" href="#prop-rent" (click)="getPropertyRentalDetails(propertyArr)" class="sub-prop-links">- Property rent</a></li>
-                              <li><a data-toggle="tab" href="#prop-pics" class="sub-prop-links">- Property pics</a></li>
+                              <!-- <li><a data-toggle="tab" href="#prop-pics" class="sub-prop-links">- Property pics</a></li> -->
                             </ul>
                           </li>
                           <!-- <li><a href="#" class="sub-links">Property ID 2</a></li>
@@ -305,30 +305,28 @@
                             Uploaded Documents
                             <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>    
                           </div>
-                          <div class="col-md-12 upload-doc-wrap-inline">
+                          <div class="col-md-4 upload-doc-block">
+                            <div class="upload-doc-div"></div>
+                            <div class="upload-instuct mt-2">Scanned passport copy</div>
                             <div class="upload-btn-div mt-4">
-                              <div class="file">
+                              <div class="file doc-upload">
                                 <input id="ownerPassCopy" #passFile type="file" name="file" (change)="selectPassport($event)" class="doc-upload" />
                               </div>
-                              <div class="upload-instuct mt-1">
-                                Scanned passport copy
-                                <!-- <i class="fas fa-circle-notch fa-spin ml-2"></i> -->
-                              </div>
-                              <p *ngIf="passportFile"><br>{{passportFile.name}}</p>
-                              <!-- <p *ngIf="ownerDto.passportCopyUpload"><br>{{ownerDto.passportCopyUpload}}</p> -->
-            
+                              <span class="upload-instuct ml-4">Upload Again</span>
                             </div>
-                            <div class="upload-btn-div mt-5">
-                              <div class="file">
+                          </div>
+                          <div class="offset-md-2 col-md-4 upload-doc-block">
+                            <div class="upload-doc-div"></div> 
+                            <div  class="upload-instuct mt-2">Scanned ID copy
+                              <!-- <i class="fas fa-circle-notch fa-spin ml-2"></i> -->
+                              <div class="upload-sub-instruct">(UAE or country of origin)</div>
+                            </div>  
+                            <div class="upload-btn-div mt-3">
+                              <div class="file doc-upload">
                                 <input id="owneIdCopy" #idFile type="file" (change)="selectIdCopy($event)" name="file" class="doc-upload" />
-                              </div>
-                              <div  class="upload-instuct mt-1">Scanned ID copy
-                                <!-- <i class="fas fa-circle-notch fa-spin ml-2"></i> -->
-                                <div class="upload-sub-instruct">(UAE or country of origin)</div>
-                              </div>
-                              <p *ngIf="idCopyFile"><br>{{idCopyFile.name}}</p>
-                              <!-- <p *ngIf="ownerDto.scannedIdCopy"><br>{{ownerDto.scannedIdCopy}}</p> -->
-                            </div>
+                              </div>  
+                              <span class="upload-instuct ml-4">Upload Again</span>
+                            </div> 
                           </div>
                           <!-- <ks-modal-gallery [modalImages]="images"
                             [downloadable]="true"></ks-modal-gallery>                      
@@ -675,9 +673,9 @@
                             <div class="col-md-6 form-label-group mb-4">
                               <input type="email" class="form-control form-input"  [(ngModel)]="ownerDto.email" name="email" #email="ngModel" placeholder="Email" required>
                             </div>
-                            <div class="col-md-6 form-label-group mb-4">
+                            <!-- <div class="col-md-6 form-label-group mb-4">
                               <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.fax" name="fax" #fax="ngModel" placeholder="Fax">
-                            </div>
+                            </div> -->
                             <div class="col-md-6 form-label-group mb-4">
                               <input  type="text" class="form-control form-input" [(ngModel)]="ownerDto.address" name="userAddress" #userAddress="ngModel" placeholder="Address">
                             </div>
@@ -687,6 +685,20 @@
                           </div>
                           <div class="row mt-3">
                             <div class="col-md-12 form-block-heading mb-2">Uploaded Documents</div>
+                            <div class="col-md-4">
+                              <div class="upload-doc-block">
+                                <div class="upload-doc-div"></div>
+                                <div class="upload-instuct mt-2">Scanned passport copy</div>
+                              </div>
+                            </div>
+                            <div class="offset-md-2 col-md-4">
+                              <div class="upload-doc-block">
+                                <div class="upload-doc-div"></div>
+                                <div class="upload-instuct mt-2">
+                                  Scanned ID copy<div class="ui-subtitle">(UAE or country of origin)</div>
+                                </div>
+                              </div>
+                            </div>
                             <ks-modal-gallery [modalImages]="images"
                             [downloadable]="true"></ks-modal-gallery>                      
                             <p *ngIf="ownerDto.scannedIdCopy"><br>{{ownerDto.scannedIdCopy}}</p>
@@ -759,9 +771,9 @@
                             <div class="col-md-6 form-label-group mb-4">
                               <input type="email" class="form-control form-input"  [(ngModel)]="ownerDto.email" name="email" #email="ngModel" placeholder="Email" required>
                             </div>
-                            <div class="col-md-6 form-label-group mb-4">
+                            <!-- <div class="col-md-6 form-label-group mb-4">
                               <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.fax" name="fax" #fax="ngModel" placeholder="Fax">
-                            </div>
+                            </div> -->
                             <div class="col-md-6 form-label-group mb-4">
                               <input class="form-control form-input" name="userAddress" #userAddress="ngModel" [(ngModel)]="ownerDto.address" placeholder="Address" required>
                             </div>
@@ -792,12 +804,6 @@
                               <div class="upload-doc-block">
                                 <div class="upload-doc-div"></div>
                                 <div class="upload-instuct mt-2">Scanned passport copy</div>
-                                <div class="upload-btn-div mt-4">
-                                  <div class="file doc-upload">
-                                    <input type="file" name="file" />
-                                  </div>
-                                  <span class="upload-instuct ml-4">Upload Again</span>
-                                </div>
                               </div>
                             </div>
                             <div class="offset-md-2 col-md-4">
@@ -806,15 +812,9 @@
                                 <div class="upload-instuct mt-2">
                                   Scanned ID copy<div class="ui-subtitle">(UAE or country of origin)</div>
                                 </div>
-                                <div class="upload-btn-div mt-4">
-                                  <div class="file doc-upload">
-                                    <input type="file" name="file"/>
-                                  </div>
-                                  <span class="upload-instuct ml-4">Upload Again</span>
-                                </div>
                               </div>
                             </div>
-                            <!-- <div class="col-md-4 mt-3">
+                            <div class="col-md-4 mt-3">
                               <div class="upload-doc-block">
                                 <div class="upload-doc-div"></div>
                                 <div class="upload-instuct mt-2">
@@ -823,14 +823,8 @@
                                     (International POA should have the stamp of external affairs and UAE embassy)
                                   </div>
                                 </div>
-                                <div class="upload-btn-div mt-4">
-                                  <div class="file doc-upload">
-                                    <input type="file" name="file"/>
-                                  </div>
-                                  <span class="upload-instuct ml-4">Upload Again</span>
-                                </div>
                               </div>
-                            </div> -->     
+                            </div>     
                             <ks-modal-gallery [modalImages]="images"
                             [downloadable]="true"></ks-modal-gallery>                      
                             <p *ngIf="ownerDto.scannedIdCopy"><br>{{ownerDto.scannedIdCopy}}</p>
@@ -1395,6 +1389,12 @@
                         </div>
                         <div class="row mt-3">
                           <div class="col-md-12 form-block-heading mb-2">Uploaded Documents</div>
+                          <div class="col-md-4">
+                            <div class="upload-doc-block">
+                              <div class="upload-doc-div"></div>
+                              <div class="upload-instuct mt-2">Scanned Title Deed</div>
+                            </div>
+                          </div>
                           <ks-modal-gallery [modalImages]="images"
                           [downloadable]="true"></ks-modal-gallery>                      
                           <p *ngIf=propertyDetailsDto.scannedTitleDeed><br>{{propertyDetailsDto.scannedTitleDeed}}</p>
@@ -1462,6 +1462,15 @@
                         </div>  
                         <div class="row mt-3">
                           <div class="col-md-12 form-block-heading mb-2">Uploaded Documents</div>
+                          <div class="col-md-4 mt-3">
+                            <div class="upload-doc-block">
+                              <div class="upload-doc-div"></div>
+                              <div class="upload-instuct mt-2">
+                                Scanned NOC from
+                                <div class="ui-subtitle">Mortgage Company</div>
+                              </div>
+                            </div>
+                          </div>
                           <ks-modal-gallery [modalImages]="images"
                           [downloadable]="true"></ks-modal-gallery>                      
                           <p *ngIf="propertyFinancialDTO.morgageNoc"><br>{{propertyFinancialDTO.morgageNoc}}</p>
@@ -1514,6 +1523,12 @@
                         </div>
                         <div class="row mt-3">
                           <div class="col-md-12 form-block-heading mb-2">Uploaded Documents</div>
+                          <div class="col-md-4 mt-3">
+                            <div class="upload-doc-block">
+                              <div class="upload-doc-div"></div>
+                              <div class="upload-instuct mt-2">Scanned Tenancy Contract</div>
+                            </div>
+                          </div>
                           <ks-modal-gallery [modalImages]="images"
                           [downloadable]="true"></ks-modal-gallery>                      
                           <p *ngIf="propertyRentalDetailDTO.tenancyContractUpload"><br>{{propertyRentalDetailDTO.tenancyContractUpload}}</p>
@@ -1686,9 +1701,9 @@
                           <div class="col-md-6 form-label-group mb-4">
                             <input type="email" class="form-control form-input" placeholder="Email">
                           </div>
-                          <div class="col-md-6 form-label-group mb-4">
+                          <!-- <div class="col-md-6 form-label-group mb-4">
                             <input type="text" class="form-control form-input" placeholder="Fax">
-                          </div>
+                          </div> -->
                           <div class="col-md-6 form-label-group mb-4">
                             <select class="form-control common-select">
                               <option>Pakistani</option>

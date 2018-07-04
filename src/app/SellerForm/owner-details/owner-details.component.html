@@ -101,7 +101,7 @@
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label required-input-label">Passport Number</label>
-                      <input pattern="[a-zA-Z]*" type="text" class="form-control  form-input" [(ngModel)]="ownerDto.passportNo" name="passportNo" #passportNo="ngModel" minlength="6" maxlength="15" required>
+                      <input pattern="[a-zA-Z0-9]*" type="text" class="form-control  form-input" [(ngModel)]="ownerDto.passportNo" name="passportNo" #passportNo="ngModel" minlength="6" maxlength="15" required>
                       <div *ngIf="passportNo.errors && (passportNo.dirty || passportNo.touched)" class="alert alert-danger">
                         <div [hidden]="!passportNo.errors.required">
                           Passport Number is required!
@@ -163,13 +163,13 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-6 form-label-group mb-4">
+                    <!-- <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label">Fax</label>
                       <input type="text" pattern="[0-9]*" class="form-control form-input" [(ngModel)]="ownerDto.fax" name="fax" #fax="ngModel" minlength="6" maxlength="18">
                       <div *ngIf="fax.errors && (fax.dirty || fax.touched)" class="alert alert-danger">
-                        <!-- <div [hidden]="!fax.errors.required">
+                        <div [hidden]="!fax.errors.required">
                           Fax is required!
-                        </div> -->
+                        </div>
                         <div [hidden]="!fax.errors.maxlength">
                           Fax Number cannot be more than 18 characters long.
                         </div>
@@ -177,7 +177,7 @@
                           Space and special character not Allowed!
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label required-input-label">Address</label>
                       <input pattern="[a-zA-Z0-9]*" type="text" minlength="8" name="userAddress" #userAddress="ngModel" maxlength="60" class="form-control  form-input" [(ngModel)]="ownerDto.address" required>
