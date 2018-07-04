@@ -159,6 +159,23 @@ $(document).ready(function(){
     $('body').removeClass('overflow-hidden');
   });
 
+  $("#personalInfoEdit").click(function(){
+    $("#personalInfoForm").removeClass('disabled');
+    $(this).hide();
+    $("#personalInfoSave").show('slow');
+    $("#personalInfoCancel").show('slow');
+  });
+  
+  $("#contactDetailEdit").click(function(){
+    $("#contactDetailForm").removeClass('disabled');
+    $(this).hide();
+    $("#contactDetailCancel").show('slow');
+    $("#contactDetailSave").show('slow');
+  });
+
+  $("#mobileNumber input").focus(function() {
+    $('.otp-code-div').show('slow');
+  });
 
   $('select').change(function() {
     if ($(this).children('option:first-child').is(':selected')) {

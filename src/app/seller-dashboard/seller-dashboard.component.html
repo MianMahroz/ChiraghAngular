@@ -98,7 +98,12 @@
                         <div class="row">
                           <div class="col-md-12 form-block-heading mb-2">
                             Personal Details:
+                            <a id="personalInfoCancel" class="cancel-form-link"></a>
+                            <a id="personalInfoSave" class="save-form-link"></a>
+                            <a id="personalInfoEdit" class="edit-form-link"></a>
                           </div>
+                        </div>  
+                        <div id="personalInfoForm" class="row disabled">
                           <div class="col-md-6 form-label-group mb-4">
                             <!-- <label class="form-label required-input-label">First Name</label> -->
                             <input pattern="[a-zA-Z]*"  minlength="3" maxlength="15" type="text" class="form-control form-input" [(ngModel)]="personalinfoDTO.firstName" name="firstName" #firstName="ngModel"  placeholder="First Name" autofocus>
@@ -186,12 +191,15 @@
                             <input type="text" for="date" class="form-control form-input" [(ngModel)]="personalinfoDTO.passportExpiryDate" name="passportExpiryDate" #passportExpiryDate="ngModel"  placeholder="Passport Expiry Date">
                           </div>
                         </div>
-                        <div class="row mt-3">
+                        <div class="row">
                           <div class="col-md-12 form-block-heading mb-2">
                             Contact Details:
-                            <a href="#" class="save-form-link"></a>
-                            <a href="#" class="edit-form-link"></a>
+                            <a id="contactDetailCancel" class="cancel-form-link"></a>
+                            <a id="contactDetailSave" class="save-form-link"></a>
+                            <a id="contactDetailEdit" class="edit-form-link"></a>
                           </div>
+                        </div>  
+                        <div id="contactDetailForm" class="row disabled mt-3">
                           <div class="col-md-6 form-label-group mb-4">
                             <input type="text" pattern="[0-9]*" minlength="6" maxlength="16" class="form-control form-input" [(ngModel)]="personalinfoDTO.phoneNumber" name="phoneNumber" #phoneNumber="ngModel" placeholder="Phone Number">
                             <div *ngIf="phoneNumber.errors && (phoneNumber.dirty || phoneNumber.touched)" class="alert alert-danger">
@@ -206,7 +214,7 @@
                                 </div>
                               </div>
                           </div>
-                          <div class="col-md-6 form-label-group mb-4">
+                          <div id="mobileNumber" class="col-md-6 form-label-group mb-4">
                             <input pattern="[0-9]*" minlength="6" maxlength="16" type="text" class="form-control form-input" [(ngModel)]="personalinfoDTO.mobileNo" name="mobileNo" #mobileNo="ngModel" placeholder="Mobile Number" required>
                             <div *ngIf="mobileNo.errors && (mobileNo.dirty || mobileNo.touched)" class="alert alert-danger">
                                 <div [hidden]="!mobileNo.errors.required">
@@ -220,7 +228,7 @@
                                 </div>
                               </div>
                           </div>
-                          <div class="offset-md-6 col-md-6 my-xs-4 mb-4 form-label-group otp-code-div">
+                          <div class="offset-md-6 col-md-6 my-xs-4 mb-4 form-label-group otp-code-div display-none">
                             <a href="#" class="click-here-link mb-1">Click here</a>
                             <button class="btn form-btn mb-1">Send OTP code on my mobile</button>
                             <span class="code-instruct">Code Valid for 5 mins</span>
@@ -237,16 +245,19 @@
                                 </div>
                               </div>
                           </div>
-                          <div class="col-md-6 form-label-group mb-4">
-                            <input pattern="[0-9]*" minlength="6" maxlength="18" type="text" class="form-control form-input" [(ngModel)]="personalinfoDTO.fax" name="fax" #fax="ngModel" placeholder="Fax">
-                              <div *ngIf="fax.errors && (fax.dirty || fax.touched)" class="alert alert-danger">
-                                <div [hidden]="!fax.errors.maxlength">
-                                  Fax Number cannot be more than 18 characters long.
-                                </div>
-                                <div [hidden]="!fax.errors.pattern">
-                                  Space and special character not Allowed!
-                                </div>
+                          <div class="col-md-6 form-label-group mb-4 otp-code-div display-none">
+                            <input type="text" pattern="[0-9_]*" class="form-control form-input" #otpCode="ngModel" [(ngModel)]="personalinfoDTO.mobileOtpCode" name="otpCode" maxlength="4" placeholder="Enter OTP code" required>
+                            <div *ngIf="otpCode.errors && (otpCode.dirty || otpCode.touched)" class="alert alert-danger">
+                              <div [hidden]="!otpCode.errors.required">
+                                OTP code is required!
                               </div>
+                              <div [hidden]="!otpCode.errors.maxlength">
+                                OTP code should be 4 digit number.
+                              </div>
+                              <div [hidden]="!otpCode.errors.pattern">
+                                Space and special character not Allowed!
+                              </div>
+                            </div>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
                             <select [(ngModel)]="personalinfoDTO.country" name="country" #country="ngModel" class="form-control common-select">
@@ -294,26 +305,32 @@
                             Uploaded Documents
                             <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>    
                           </div>
-                          <div class="col-md-4">
-                            <div class="upload-doc-block">
-                              <div class="upload-doc-div"></div>
-                              <div class="upload-btn-div mt-3">
-                                <div class="file doc-upload">
-                                  <input type="file" [(ngModel)]="personalinfoDTO.scannedPassportCopyUpload" name="scannedPassportCopyUpload" #scannedPassportCopyUpload="ngModel"/>
-                                </div>
-                                <span class="upload-instuct ml-2">Scanned passport copy</span>
+                          <div class="col-md-12 upload-doc-block">
+                            <div class="upload-btn-div mt-4">
+                              <div class="file">
+                                <input id="ownerPassCopy" #passFile type="file" name="file" (change)="selectPassport($event)" class="doc-upload" />
                               </div>
+                              <div class="upload-instuct mt-2">Scanned passport copy<i class="fas fa-circle-notch fa-spin ml-2"></i></div>
+                              <p *ngIf="passportFile"><br>{{passportFile.name}}</p>
+                              <!-- <p *ngIf="ownerDto.passportCopyUpload"><br>{{ownerDto.passportCopyUpload}}</p> -->
+            
+                            </div>
+                            <div class="upload-btn-div mt-5">
+                              <div class="file">
+                                <input id="owneIdCopy" #idFile type="file" (change)="selectIdCopy($event)" name="file" class="doc-upload" />
+                              </div>
+                              <div  class="upload-instuct mt-2">Scanned ID copy
+                                <i class="fas fa-circle-notch fa-spin ml-2"></i>
+                                <div class="upload-sub-instruct">(UAE or country of origin)</div>
+                              </div>
+                              <p *ngIf="idCopyFile"><br>{{idCopyFile.name}}</p>
+                              <!-- <p *ngIf="ownerDto.scannedIdCopy"><br>{{ownerDto.scannedIdCopy}}</p> -->
                             </div>
                           </div>
-                          <div class="offset-md-2 col-md-4">
-                            <div class="upload-doc-block">
-                              <div class="upload-doc-div"></div>
-                              <div class="upload-btn-div mt-3">
-                                <div class="file doc-upload"><input type="file" [(ngModel)]="personalinfoDTO.scannedIdCopyUpload" name="scannedIdCopyUpload" #scannedIdCopyUpload="ngModel"/></div>
-                                <span class="upload-instuct ml-2">Scanned ID copy<div class="ui-subtitle">(UAE or country of origin)</div></span>
-                              </div>
-                            </div>
-                          </div>
+                          <!-- <ks-modal-gallery [modalImages]="images"
+                            [downloadable]="true"></ks-modal-gallery>                      
+                            <p *ngIf="personalinfoDTO.scannedIdCopyUpload"><br>{{personalinfoDTO.scannedIdCopyUpload}}</p>
+                            <p *ngIf="personalinfoDTO.scannedPassportCopyUpload"><br>{{personalinfoDTO.scannedPassportCopyUpload}}</p> -->
                         </div>
                       </form>
                     </div>
@@ -607,7 +624,7 @@
                     </div>
                     <div class="offset-md-1 col-md-11 sign-in-col">
                       <div class="tab-content">
-                        <form id="owner-1" class="tab-pane fade common-form in active show">
+                        <form id="owner-1" class="tab-pane fade common-form disabled in active show">
                           <div class="row">
                             <div class="col-md-12 form-block-heading mb-2">
                               Personal Details:
@@ -667,32 +684,10 @@
                           </div>
                           <div class="row mt-3">
                             <div class="col-md-12 form-block-heading mb-2">Uploaded Documents</div>
-                            <div class="col-md-4">
-                              <div class="upload-doc-block">
-                                <div class="upload-doc-div"></div>
-                                <div class="upload-instuct mt-2">Scanned passport copy</div>
-                                <div class="upload-btn-div mt-4">
-                                  <div class="file doc-upload">
-                                    <input type="file" [(ngModel)]="ownerDto.passportCopyUpload" name="passportCopyUpload" #passportCopyUpload="ngModel"  name="file"/>
-                                  </div>
-                                  <span class="upload-instuct ml-4">Upload Again</span>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="offset-md-2 col-md-4">
-                              <div class="upload-doc-block">
-                                <div class="upload-doc-div"></div>
-                                <div class="upload-instuct mt-2">
-                                  Scanned ID copy<div class="ui-subtitle">(UAE or country of origin)</div>
-                                </div>
-                                <div class="upload-btn-div mt-4">
-                                  <div class="file doc-upload">
-                                    <input type="file" name="file"/>
-                                  </div>
-                                  <span class="upload-instuct ml-4">Upload Again</span>
-                                </div>
-                              </div>
-                            </div>
+                            <ks-modal-gallery [modalImages]="images"
+                            [downloadable]="true"></ks-modal-gallery>                      
+                            <p *ngIf="ownerDto.scannedIdCopy"><br>{{ownerDto.scannedIdCopy}}</p>
+                            <p *ngIf="ownerDto.passportCopyUpload"><br>{{ownerDto.passportCopyUpload}}</p>
                           </div>
                         </form>
                       </div>
@@ -713,7 +708,7 @@
                     </div>
                     <div class="offset-md-1 col-md-11 sign-in-col">
                       <div class="tab-content">
-                        <form id="POA-1" class="tab-pane fade common-form in active show">
+                        <form id="POA-1" class="tab-pane fade common-form disabled in active show">
                           <div class="row">
                             <div class="col-md-12 form-block-heading mb-2">
                               Personal Details:
@@ -790,13 +785,14 @@
                           </div>
                           <div class="row mt-3">
                             <div class="col-md-12 form-block-heading mb-2">Uploaded Documents</div>
+<<<<<<< HEAD
                             <div class="col-md-4">
                               <div class="upload-doc-block">
                                 <div class="upload-doc-div"></div>
                                 <div class="upload-instuct mt-2">Scanned passport copy</div>
                                 <div class="upload-btn-div mt-4">
                                   <div class="file doc-upload">
-                                    <input type="file" name="file"/>
+                                    <input type="file" name="file" />
                                   </div>
                                   <span class="upload-instuct ml-4">Upload Again</span>
                                 </div>
@@ -816,7 +812,7 @@
                                 </div>
                               </div>
                             </div>
-                            <div class="col-md-4 mt-3">
+                            <!-- <div class="col-md-4 mt-3">
                               <div class="upload-doc-block">
                                 <div class="upload-doc-div"></div>
                                 <div class="upload-instuct mt-2">
@@ -832,7 +828,15 @@
                                   <span class="upload-instuct ml-4">Upload Again</span>
                                 </div>
                               </div>
-                            </div>
+                            </div> -->
+=======
+                            
+                            <ks-modal-gallery [modalImages]="images"
+                            [downloadable]="true"></ks-modal-gallery>                      
+                            <p *ngIf="ownerDto.scannedIdCopy"><br>{{ownerDto.scannedIdCopy}}</p>
+                            <p *ngIf="ownerDto.passportCopyUpload"><br>{{ownerDto.passportCopyUpload}}</p>
+                            <p *ngIf="ownerDto.scannedNotorizedCopy"><br>{{ownerDto.scannedNotorizedCopy}} </p>
+>>>>>>> 6b6d362b9e077ecce9198307af61d06f8d36ac94
                           </div>
                         </form>
                       </div>
@@ -841,7 +845,7 @@
                   <!-- Property Details Here -->
                   <div id="prop-detail" class="row tab-pane fade sign-in-row">
                     <div class="offset-md-1 col-md-11 sign-in-col">
-                      <form class="common-form">
+                      <form class="common-form disabled">
                         <div class="row">
                           <div class="col-md-12 form-block-heading mb-2">Area Details:</div>
                           <div class="col-md-6 form-label-group mb-4">
@@ -1392,18 +1396,9 @@
                         </div>
                         <div class="row mt-3">
                           <div class="col-md-12 form-block-heading mb-2">Uploaded Documents</div>
-                          <div class="col-md-4">
-                            <div class="upload-doc-block">
-                              <div class="upload-doc-div"></div>
-                              <div class="upload-instuct mt-2">Scanned Titke Deed</div>
-                              <div class="upload-btn-div mt-4">
-                                <div class="file doc-upload">
-                                  <input type="file" name="file"/>
-                                </div>
-                                <span class="upload-instuct ml-4">Upload Again</span>
-                              </div>
-                            </div>
-                          </div>
+                          <ks-modal-gallery [modalImages]="images"
+                          [downloadable]="true"></ks-modal-gallery>                      
+                          <p *ngIf=propertyDetailsDto.scannedTitleDeed><br>{{propertyDetailsDto.scannedTitleDeed}}</p>
                         </div>
                       </form>
                     </div>
@@ -1411,7 +1406,7 @@
                   <!-- Property Financilas Here -->
                   <div id="prop-financials" class="row tab-pane fade sign-in-row">
                     <div class="offset-md-1 col-md-11 sign-in-col">
-                      <form class="common-form">
+                      <form class="common-form disabled">
                         <div class="row">
                           <div class="col-md-12 form-block-heading mb-2">Mortgage Details</div>
                           <div class="col-md-6 form-label-group mb-4">
@@ -1468,18 +1463,9 @@
                         </div>  
                         <div class="row mt-3">
                           <div class="col-md-12 form-block-heading mb-2">Uploaded Documents</div>
-                          <div class="col-md-4">
-                            <div class="upload-doc-block">
-                              <div class="upload-doc-div"></div>
-                              <div class="upload-instuct mt-2">Scanned NOC from Mortgage Company</div>
-                              <div class="upload-btn-div mt-4">
-                                <div class="file doc-upload">
-                                  <input type="file" name="file"/>
-                                </div>
-                                <span class="upload-instuct ml-4">Upload Again</span>
-                              </div>
-                            </div>
-                          </div>
+                          <ks-modal-gallery [modalImages]="images"
+                          [downloadable]="true"></ks-modal-gallery>                      
+                          <p *ngIf="propertyFinancialDTO.morgageNoc"><br>{{propertyFinancialDTO.morgageNoc}}</p>
                         </div>
                       </form>
                     </div>
@@ -1487,7 +1473,7 @@
                   <!-- Property Rent Here -->
                   <div id="prop-rent" class="row tab-pane fade sign-in-row">
                     <div class="offset-md-1 col-md-11 sign-in-col">
-                      <form class="common-form">
+                      <form class="common-form disabled">
                         <div class="row">
                           <div class="col-md-12 form-block-heading mb-2">
                             Rent Details
@@ -1529,18 +1515,9 @@
                         </div>
                         <div class="row mt-3">
                           <div class="col-md-12 form-block-heading mb-2">Uploaded Documents</div>
-                          <div class="col-md-4">
-                            <div class="upload-doc-block">
-                              <div class="upload-doc-div"></div>
-                              <div class="upload-instuct mt-2">Scanned Tenancy Contract</div>
-                              <div class="upload-btn-div mt-4">
-                                <div class="file doc-upload">
-                                  <input type="file" name="file"/>
-                                </div>
-                                <span class="upload-instuct ml-4">Upload Again</span>
-                              </div>
-                            </div>
-                          </div>
+                          <ks-modal-gallery [modalImages]="images"
+                          [downloadable]="true"></ks-modal-gallery>                      
+                          <p *ngIf="propertyRentalDetailDTO.tenancyContractUpload"><br>{{propertyRentalDetailDTO.tenancyContractUpload}}</p>
                         </div>
                       </form>
                     </div>
@@ -1548,7 +1525,7 @@
                   <!-- Property Rent Here -->
                   <div id="prop-pics" class="row tab-pane fade sign-in-row">
                     <div class="offset-md-1 col-md-11 sign-in-col">
-                      <form class="common-form">
+                      <form class="common-form disabled">
                         <div class="row">
                           <div class="col-md-12 form-block-heading mb-2">Property Pics</div>
                         </div>
@@ -1658,12 +1635,12 @@
                 <div class="col-md-9 tab-content mt-5">
                   <div id="personal-info" class="row tab-pane fade sign-in-row in active show">
                     <div class="offset-md-1 col-md-11 sign-in-col">
-                      <form class="common-form">
+                      <form class="common-form disabled">
                         <div class="row">
                           <div class="col-md-12 form-block-heading mb-2">
                             Personal Details:
-                            <a href="#" class="save-form-link"></a>
-                            <a href="#" class="edit-form-link"></a>
+                            <!-- <a href="#" class="save-form-link"></a> -->
+                            <!-- <a href="#" class="edit-form-link"></a> -->
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
                             <input type="text" class="form-control form-input" placeholder="First Name">
@@ -1698,8 +1675,8 @@
                         <div class="row mt-3">
                           <div class="col-md-12 form-block-heading mb-2">
                           Contact Details:
-                          <a href="#" class="save-form-link"></a>
-                          <a href="#" class="edit-form-link"></a>
+                          <!-- <a href="#" class="save-form-link"></a> -->
+                          <!-- <a href="#" class="edit-form-link"></a> -->
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
                             <input type="text" class="form-control form-input" placeholder="Phone Number">

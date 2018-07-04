@@ -10,12 +10,20 @@ const TOKEN_EXPIRES_IN = 'expires_in';
 export class TokenStorage {
 
 
+<<<<<<< HEAD
   //  serverPath:string='http://18.218.221.103/ChiraghServer';
   serverPath:string='http://localhost:8082';
 
 
   // imagepath:string='http://demo.chiragh.com/ChiraghDocuments/';
   imagepath:string='http://localhost:8082/ChiraghDocuments/';
+=======
+   serverPath:string='http://18.218.221.103/ChiraghServer';
+  //serverPath:string='http://localhost:8082';
+  //serverPath:string='http://localhost:8082';
+  imagepath:string='http://demo.chiragh.com/ChiraghDocuments/';
+  // imagepath:string='D:/workspace/ChiraghDocuments/';
+>>>>>>> 6fb63691a918c1a12f1b996fcfcddfa5fd967060
 
   constructor() { }
 
