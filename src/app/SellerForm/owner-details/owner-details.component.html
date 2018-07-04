@@ -215,8 +215,8 @@
                         </div>
                         <div class="upload-instuct mt-2">Scanned passport copy<i class="fas fa-circle-notch fa-spin ml-2"></i></div>
                         <p *ngIf="passportFile"><br>{{passportFile.name}}</p>
-                        <p *ngIf="ownerDto.passportCopyUpload&&action=='back'"><br>{{ownerDto.passportCopyUpload}}</p>
-                        <p *ngIf="adminPropertyId&&ownerDto.passportCopyUpload"><br>{{ownerDto.passportCopyUpload}}</p>
+                        <p *ngIf="!passportFile&&ownerDto.passportCopyUpload&&action=='back'"><br>{{ownerDto.passportCopyUpload}}</p>
+                        <!-- <p *ngIf="adminPropertyId&&ownerDto.passportCopyUpload"><br>{{ownerDto.passportCopyUpload}}</p> -->
 
                       </div>
                       <div class="upload-btn-div mt-5">
@@ -228,8 +228,7 @@
                           <div class="upload-sub-instruct">(UAE or country of origin)</div>
                         </div>
                         <p *ngIf="idCopyFile"><br>{{idCopyFile.name}}</p>
-                        <p *ngIf="ownerDto.scannedIdCopy&&action=='back'"><br>{{ownerDto.scannedIdCopy}}</p>
-                        <p *ngIf="adminPropertyId&&ownerDto.scannedIdCopy"><br>{{ownerDto.scannedIdCopy}}</p>
+                        <p *ngIf="!idCopyFile&&ownerDto.scannedIdCopy&&action=='back'"><br>{{ownerDto.scannedIdCopy}}</p>
 
                         <!-- <img src="../Chiragh{{idCardFileUploadPath}}" alt="{{idCardFileUploadPath}}" style="max-width:350px" /> -->
                         <!-- <img src="../Chiragh{{passportFileUploadPath}}" alt="{{passportFileUploadPath}}" style="max-width:350px" /> -->
@@ -239,7 +238,7 @@
                   <div class="row mt-5 submit-btn-row">
                     <div class="col-md-3 mb-xs-4">
                       <a *ngIf="role=='chiraghuser'" id="addOwnerBtn" (click)="addOwner('add')" style=color:white class="btn common-btn btn-light-black">Add Owner</a>
-                      <a *ngIf="role!='chiraghuser'&& ownerDto.isPersonalDetailsVerified=='false'" (click)="ownerVerified()" id="verifyowners"  style=color:white class="btn common-btn btn-light-black">Verify</a>
+                      <!-- <a *ngIf="role!='chiraghuser'&& ownerDto.isPersonalDetailsVerified=='false'" (click)="ownerVerified()" id="verifyowners"  style=color:white class="btn common-btn btn-light-black">Verify</a> -->
                       <ks-modal-gallery [modalImages]="images"
                       [downloadable]="true"></ks-modal-gallery>
                     </div>
