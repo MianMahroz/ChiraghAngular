@@ -98,7 +98,7 @@
                         <div class="row">
                           <div class="col-md-12 form-block-heading mb-2">
                             Personal Details:
-                            <a id="personalInfoCancel" (click)="getpersonalinfoDetails(personalinfo)" class="cancel-form-link"></a>
+                            <a id="personalInfoCancel" (click)="canelinfo()" class="cancel-form-link"></a>
                             <a id="personalInfoSave" (click)= "UpdatePersonalInfo()" class="save-form-link"></a>
                             <a id="personalInfoEdit"  class="edit-form-link"></a>
                           </div>
@@ -174,7 +174,7 @@
                             <input type="text" for="date" class="form-control form-input" [(ngModel)]="personalinfoDTO.idCardExpiryDate" name="idCardExpiryDate" #idCardExpiryDate="ngModel" placeholder="ID Card Expiry Date">
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                            <input type="text" pattern="[a-zA-Z]*" minlength="6" maxlength="15" class="form-control form-input" [(ngModel)]="personalinfoDTO.passportNumber" name="passportNumber" #passportNumber="ngModel"  placeholder="Passport Number">
+                            <input type="text" pattern="[a-zA-Z0-9]*" minlength="6" maxlength="15" class="form-control form-input" [(ngModel)]="personalinfoDTO.passportNumber" name="passportNumber" #passportNumber="ngModel"  placeholder="Passport Number">
                             <div *ngIf="passportNumber.errors && (passportNumber.dirty || passportNumber.touched)" class="alert alert-danger">
                                 <div [hidden]="!passportNumber.errors.required">
                                   Passport Number is required!
@@ -260,15 +260,17 @@
                             </div>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                            <select [(ngModel)]="personalinfoDTO.country" name="country" #country="ngModel" class="form-control common-select">
-                              <option>Pakistani</option>
+                            <select [(ngModel)]="personalinfoDTO.country" name="country" #country="ngModel" class="form-control common-select placeholder">
+                              <option selected>Country</option>
+                              <option>Pakistan</option>
                               <option>Indian</option>
                               <option>Australian</option>
                               <option>American</option>
                             </select>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                            <select [(ngModel)]="personalinfoDTO.userCity" name="userCity" #userCity="ngModel" class="form-control common-select">
+                            <select [(ngModel)]="personalinfoDTO.userCity" name="userCity" #userCity="ngModel" class="form-control common-select placeholder">
+                              <option selected>City</option>
                               <option>Lahore</option>
                               <option>Karachi</option>
                               <option>New York</option>

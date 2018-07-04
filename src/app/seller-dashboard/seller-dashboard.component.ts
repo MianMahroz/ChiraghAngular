@@ -177,14 +177,14 @@ selectIdCopy(event) {
     this.currentProperty=prop;
   }
   getOwnerDetails(data:any):void{
-   console.log(' Owner Clicked!!');
+   console.log(' Owner Clicked!');
    if(data.ownerType=='owner'){
       this.ownerDto=data;
       this.getOwnerImages();
    }
   }
   getPOADetails(data:any):void{
-    console.log(' POA Clicked!!');
+    console.log(' POA Clicked!');
     if(data.ownerType=='poa'){
        this.ownerDto=data;
        this.getPOAImages();
@@ -193,28 +193,35 @@ selectIdCopy(event) {
 
 
    getPropertyDetails(data:any):void{
-    console.log(' Property Clicked!!');
+    console.log(' Property Clicked!');
     this.propertyDetailsDto=data;
     this.getPropertyDetailsImages();
    }
 
 
    getPropertyRentalDetails(data:any):void{
-    console.log(' Property Rental Clicked!!');
+    console.log(' Property Rental Clicked!');
     this.propertyRentalDetailDTO=data;
     this.getPropertyRentalDetailsImages();
    }
 
    getPropertyFinancialDetails(data:any):void{
-    console.log(' Property Mortage Clicked!!');
+    console.log(' Property Mortage Clicked!');
     this.propertyFinancialDTO=data;
     this.getPropertyFinancialDetailsImages();
    }
 
    getpersonalinfoDetails(data:any):void{
-    console.log(' Personal info Clicked!!');
+    console.log(' Personal info Clicked!');
     this.personalinfoDTO=data;
     this.getPersonalInfoImages();
+   }
+
+   canelinfo():void{
+    console.log(' Personal info Changes Discard!');
+    this.getDashboardPersonalInfo();
+    this.myToast.Success('Changes Are Discared Sucessfully');
+
    }
 
   getUserDashboardData(): void {
@@ -246,7 +253,7 @@ selectIdCopy(event) {
                data=>{
                      console.log(data);
                      this.personalinfo=data;
-                     this.getpersonalinfoDetails(data);
+                     this.getpersonalinfoDetails(this.personalinfo);
                }
              );
         }//end of if

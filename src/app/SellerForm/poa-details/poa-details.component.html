@@ -94,7 +94,7 @@
                   </div>
                   <div class="col-md-6 form-label-group mb-4">
                     <label class="form-label required-input-label">Passport Number</label>
-                    <input pattern="[0-9]*" type="text" class="form-control  form-input" [(ngModel)]="ownerDto.passportNo" name="passportNo" #passportNo="ngModel" minlength="6" maxlength="15" required>
+                    <input pattern="[a-zA-Z0-9]*" type="text" class="form-control  form-input" [(ngModel)]="ownerDto.passportNo" name="passportNo" #passportNo="ngModel" minlength="6" maxlength="15" required>
                     <div *ngIf="passportNo.errors && (passportNo.dirty || passportNo.touched)" class="alert alert-danger">
                       <div [hidden]="!passportNo.errors.required">
                         Passport Number is required!

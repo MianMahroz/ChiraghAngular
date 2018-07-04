@@ -168,9 +168,9 @@ $(document).ready(function(){
     $(".edit-form-link").show('slow');
   });
 
-  $(".cancel-form-link").click(function(){
-    window.location.reload();    
-  });
+  // $(".cancel-form-link").click(function(){
+  //   window.location.reload();    
+  // });
 
   $("#contactDetailEdit").click(function(){
     $("#contactDetailForm").removeClass('disabled');
