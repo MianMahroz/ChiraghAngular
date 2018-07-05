@@ -190,7 +190,12 @@ $(document).ready(function(){
   $('.ud-sidebar > ul > li').click(function(){
     $('a').removeClass('active show');
     $(this).addClass('active show');
-  });  
+  }); 
+
+  $('.ud-nav-item').on('click', function(){
+    $('li').removeClass('active');
+    $(this).addClass('active');
+  }); 
 });
 
 
