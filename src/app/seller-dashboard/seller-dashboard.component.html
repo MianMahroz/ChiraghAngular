@@ -18,13 +18,13 @@
               <div class="row ud-navbar-row full-parent-height">
                 <div class="col-md-12 ud-navbar-col p-xs-0">
                   <ul class="nav nav-tabs ud-nav-tabs full-parent-height">
-                    <li class="ud-nav-item active">
+                    <li class="ud-nav-item">
                       <a class="account-link active show" data-toggle="tab" href="#account">Account</a>
                     </li>
-                    <!-- <li class="ud-nav-item">
+                    <li class="ud-nav-item">
                       <a class="activity-link" data-toggle="tab" href="#activity">Activity</a>
                     </li>
-                    <li class="ud-nav-item">
+                    <!-- <li class="ud-nav-item">
                       <a class="inbox-link" data-toggle="tab" href="#inbox">Inbox</a>
                     </li> -->
                   </ul>
@@ -739,7 +739,6 @@
                   </div>
                   <!-- POA Details Here -->
 
-                  
                   <div id="POA-detail" class="row tab-pane fade sign-in-row">
                     <div class="offset-md-1 col-md-10 sub-prop-mutliple">
                       <ul *ngIf="currentProperty" class="nav nav-tabs sub-prop-tabs">
@@ -1650,7 +1649,7 @@
                       </form>
                     </div>
                   </div>
-                  <!-- Property Rent Here -->
+                  <!-- Property Pics Here -->
                   <div id="prop-pics" class="row tab-pane fade sign-in-row">
                     <div class="offset-md-1 col-md-11 sign-in-col">
                       <form class="common-form disabled">
@@ -1726,6 +1725,36 @@
                       </form>
                     </div>
                   </div>
+
+                  <!-- Property List Here -->
+                  <div id="prop-list" class="row tab-pane fade sign-in-row">
+                    <div class="offset-md-1 col-md-10 sub-prop-mutliple">
+                      <ul class="nav nav-tabs sub-prop-tabs">
+                        <li><a class="sub-prop-tabs-link pl-0 active" data-toggle="tab" href="#prop-list-1">Property List 1</a></li>
+                        <li><a class="sub-prop-tabs-link" data-toggle="tab" href="#prop-list-2">Property List 2</a></li>
+                        <li><a class="sub-prop-tabs-link" data-toggle="tab" href="#prop-list-3">Property List 3</a></li>
+                      </ul>  
+                    </div>
+                    <div class="offset-md-1 col-md-11 sign-in-col">
+                      <div class="tab-content">
+                        <form id="prop-list-1" class="tab-pane fade common-form in active show">
+                          <div class="row">
+                            <div class="col-md-12 form-block-heading mb-2">Property List 1</div>
+                          </div>         
+                        </form>
+                        <form id="prop-list-2" class="tab-pane fade common-form in">
+                          <div class="row">
+                            <div class="col-md-12 form-block-heading mb-2">Property List 2</div>
+                          </div>         
+                        </form>
+                        <form id="prop-list-3" class="tab-pane fade common-form in">
+                          <div class="row">
+                            <div class="col-md-12 form-block-heading mb-2">Property List 3</div>
+                          </div>         
+                        </form>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1739,7 +1768,7 @@
                       <input type="file" name="file"/>
                     </div>
                     <ul class="nav nav-tabs ud-sidebar-links-wrap">
-                      <li><a class="ud-pers-info active" data-toggle="tab" href="#personal-info">Personal Info</a></li>
+                      <li><a class="ud-pers-info" data-toggle="tab" href="#personal-info">Personal Info</a></li>
                       <li>
                         <a class="ud-buyers" data-toggle="collapse" href="#activity-buyers">Buy</a>
                         <ul class="collapse sub-links-wrap" id="activity-buyers">
@@ -1750,8 +1779,8 @@
                       </li>
                       <li>
                         <a class="ud-seller" data-toggle="collapse" href="#activity-seller">Sell</a>
-                        <ul class="collapse sub-links-wrap" id="activity-seller">
-                          <li><a data-toggle="tab" href="#scheduled-link" class="sub-links">Scheduled</a></li>
+                        <ul class="collapse sub-links-wrap collapse show" id="activity-seller">
+                          <li><a data-toggle="tab" href="#scheduled-link" class="sub-links active">Scheduled</a></li>
                           <li><a data-toggle="tab" href="#seller-active" class="sub-links">Active</a></li>
                           <li><a data-toggle="tab" href="#seller-sold-link" class="sub-links">Sold</a></li>
                           <li><a data-toggle="tab" href="#seller-unsold-link" class="sub-links">Unsold</a></li>
@@ -1761,7 +1790,7 @@
                   </div>
                 </div>
                 <div class="col-md-9 tab-content mt-5">
-                  <div id="personal-info" class="row tab-pane fade sign-in-row in active show">
+                  <div id="personal-info" class="row tab-pane fade sign-in-row">
                     <div class="offset-md-1 col-md-11 sign-in-col">
                       <form class="common-form disabled">
                         <div class="row">
@@ -1915,7 +1944,7 @@
                       </div>
                     </div>
                   </div>
-                  <div id="scheduled-link" class="row tab-pane fade sign-in-row">
+                  <div id="scheduled-link" class="row tab-pane fade sign-in-row in active show">
                     <div class="tab-heading">Scheduled</div>
                     <div class="row bid-active-row">
                       <div class="col-md-12 bid-active-col">
