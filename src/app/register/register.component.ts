@@ -57,7 +57,32 @@ export class RegisterComponent  {
           this.userService.register(this.registerdto).subscribe(
             data1=>{
               console.log(data1);
-                   if(data1.msg=="User Created Successfully"){
+              
+
+                  if(data1.msg=="User Name Already Exist!! Try Another User Name"){
+                    this.myToast.Error('Status',data1.msg);
+                    this.myToast.Error('Registeration Fail');
+                  }
+
+                  else if(data1.msg=="Email Already Registered!! Try Another Email"){
+                    this.myToast.Error('Status',data1.msg);
+                    this.myToast.Error('Registeration Fail');
+                  }
+
+                  else if(data1.msg=="Password doesn't match! Entered Again"){
+                    this.myToast.Error('Status',data1.msg);
+                    this.myToast.Error('Registeration Fail');
+                  }
+
+                  else if(data1.msg=="User Name & Password Cannot Be Same!"){
+                    this.myToast.Error('Status',data1.msg);
+                    this.myToast.Error('Registeration Fail');
+                  }
+
+                  else if(data1.msg=="Used Strong Password"){
+                    this.myToast.Warning('Status',data1.msg);
+                  }
+                   else if(data1.msg=="Used Registered Sucessfully"){
                     //  this.token.saveUserName(this.registerdto.userName);//saving user to session
                     this.myToast.Success('Status',data1.msg);
                      this.token.saveTempUser(this.registerdto.userName);

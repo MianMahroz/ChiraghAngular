@@ -152,13 +152,16 @@
                   <div class="row">
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label required-input-label">Mobile Number</label>
-                      <input type="number" max="16" class="form-control form-input" #mobileNo="ngModel"  name="mobileNo" [(ngModel)]="registerdto.mobileNo" required>
+                      <input type="number" minlength="11" maxlength="16" class="form-control form-input" #mobileNo="ngModel"  name="mobileNo" [(ngModel)]="registerdto.mobileNo" required>
                       <div *ngIf="mobileNo.errors && (mobileNo.dirty || mobileNo.touched)" class="alert alert-danger">
                         <div [hidden]="!mobileNo.errors.required">
                           Mobile number is required!
                         </div>
                         <div [hidden]="!mobileNo.errors.maxlength">
                           Please enter a 16 digit number.
+                        </div>
+                        <div [hidden]="!mobileNo.errors.minlength">
+                          Please enter a 11 digit number.
                         </div>
                       </div>
                     </div>

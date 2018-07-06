@@ -25,7 +25,7 @@
                       </div>
                       <div class="col-md-6 form-label-group mb-4">
                         <label class="form-label">Type of Area</label>
-                        <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.typeArea" name="typeArea" #typeArea="ngModel">
+                        <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.typeArea" name="typeArea" #typeArea="ngModel" required>
                           <option>Free Hold</option>
                           <option>Non-Free Hold</option>
                           <option>Lease Hold</option>
@@ -56,7 +56,8 @@
                           <option>Warehouse</option>
                           <option>Office</option>
                           <option>Apartment</option>
-                          <option>Shop</option>
+                          <option>Retail</option>
+                          <option>Other</option>
                         </select>
                       </div>
                       <div class="col-md-6 form-label-group mb-4">

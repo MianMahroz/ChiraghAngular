@@ -30,6 +30,7 @@
                   </ul>
                 </div>
               </div>
+
             </div>
           </div>
           <div class="row tab-content">
@@ -105,8 +106,8 @@
                         </div>  
                         <div id="personalInfoForm" class="row disabled">
                           <div class="col-md-6 form-label-group mb-4">
-                            <!-- <label class="form-label required-input-label">First Name</label> -->
-                            <input pattern="[a-zA-Z]*"  minlength="3" maxlength="15" type="text" class="form-control form-input" [(ngModel)]="personalinfoDTO.firstName" name="firstName" #firstName="ngModel"  placeholder="First Name" required>
+                            <label class="form-label required-input-label">First Name</label> 
+                            <input pattern="[a-zA-Z]*"  minlength="3" maxlength="15" type="text" class="form-control form-input" [(ngModel)]="personalinfoDTO.firstName" name="firstName" #firstName="ngModel" required>
                             <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)" class="alert alert-danger">
                               <div [hidden]="!firstName.errors.minlength">
                                 Fisrt Name must be at least 3 characters long.
@@ -120,7 +121,8 @@
                             </div>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                            <input pattern="[a-zA-Z]*"  minlength="3" maxlength="15" type="text" class="form-control form-input" [(ngModel)]="personalinfoDTO.middleName" name="middleName" #middleName="ngModel" placeholder="Middle Name">
+                              <label class="form-label">Middle Name</label>
+                            <input pattern="[a-zA-Z]*"  minlength="3" maxlength="15" type="text" class="form-control form-input" [(ngModel)]="personalinfoDTO.middleName" name="middleName" #middleName="ngModel">
                             <div *ngIf="middleName.errors && (middleName.dirty || middleName.touched)" class="alert alert-danger">
                               <div [hidden]="!middleName.errors.minlength">
                                 Middle Name must be at least 3 characters long.
@@ -134,8 +136,8 @@
                             </div>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                              <!-- <label class="form-label required-input-label">Last Name</label> -->
-                            <input pattern="[a-zA-Z]*"  minlength="3" maxlength="15" type="text" class="form-control form-input" [(ngModel)]="personalinfoDTO.lastName" name="lastName" #lastName="ngModel" placeholder="Last Name" required>
+                              <label class="form-label required-input-label">Last Name</label> 
+                            <input pattern="[a-zA-Z]*"  minlength="3" maxlength="15" type="text" class="form-control form-input" [(ngModel)]="personalinfoDTO.lastName" name="lastName" #lastName="ngModel" required>
                             <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)" class="alert alert-danger">
                               <div [hidden]="!lastName.errors.required">
                                 Last Name is required!
@@ -152,6 +154,7 @@
                             </div>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
+                              <label class="form-label required-input-label">Select Nationality</label>
                             <select [(ngModel)]="personalinfoDTO.nationality" name="nationality" #nationality="ngModel"  class="form-control common-select">
                               <option>Pakistani</option>
                               <option>Indian</option>
@@ -160,7 +163,8 @@
                             </select>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                            <input type="text" pattern="[0-9]*" minlength="6" maxlength="18" class="form-control form-input" [(ngModel)]="personalinfoDTO.idCardNumber" name="idCardNumber" #idCardNumber="ngModel" placeholder="ID Card Number">
+                              <label class="form-label">ID Card Number</label>
+                            <input type="text" pattern="[0-9]*" minlength="6" maxlength="18" class="form-control form-input" [(ngModel)]="personalinfoDTO.idCardNumber" name="idCardNumber" #idCardNumber="ngModel">
                             <div *ngIf="idCardNumber.errors && (idCardNumber.dirty || idCardNumber.touched)" class="alert alert-danger">
                                 <div [hidden]="!idCardNumber.errors.maxlength">
                                   ID Card Number cannot be more than 18 characters long.
@@ -171,10 +175,12 @@
                               </div>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                            <input type="text" for="date" class="form-control form-input" [(ngModel)]="personalinfoDTO.idCardExpiryDate" name="idCardExpiryDate" #idCardExpiryDate="ngModel" placeholder="ID Card Expiry Date">
+                              <label class="form-label">ID Card Expiry Date</label>
+                            <input type="text" for="date" class="form-control form-input" [(ngModel)]="personalinfoDTO.idCardExpiryDate" name="idCardExpiryDate" #idCardExpiryDate="ngModel">
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                            <input type="text" pattern="[a-zA-Z0-9]*" minlength="6" maxlength="15" class="form-control form-input" [(ngModel)]="personalinfoDTO.passportNumber" name="passportNumber" #passportNumber="ngModel"  placeholder="Passport Number">
+                              <label class="form-label required-input-label">Passport Number</label>
+                            <input type="text" pattern="[a-zA-Z0-9]*" minlength="6" maxlength="15" class="form-control form-input" [(ngModel)]="personalinfoDTO.passportNumber" name="passportNumber" #passportNumber="ngModel" >
                             <div *ngIf="passportNumber.errors && (passportNumber.dirty || passportNumber.touched)" class="alert alert-danger">
                                 <div [hidden]="!passportNumber.errors.required">
                                   Passport Number is required!
@@ -188,7 +194,8 @@
                               </div>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                            <input type="text" for="date" class="form-control form-input" [(ngModel)]="personalinfoDTO.passportExpiryDate" name="passportExpiryDate" #passportExpiryDate="ngModel"  placeholder="Passport Expiry Date">
+                              <label class="form-label required-input-label">Passport Expiry Date</label>
+                            <input type="text" for="date" class="form-control form-input" [(ngModel)]="personalinfoDTO.passportExpiryDate" name="passportExpiryDate" #passportExpiryDate="ngModel">
                           </div>
                         </div>
                         <div class="row">
@@ -201,7 +208,8 @@
                         </div>  
                         <div id="contactDetailForm" class="row disabled mt-3">
                           <div class="col-md-6 form-label-group mb-4">
-                            <input type="text" pattern="[0-9]*" minlength="6" maxlength="16" class="form-control form-input" [(ngModel)]="personalinfoDTO.phoneNumber" name="phoneNumber" #phoneNumber="ngModel" placeholder="Phone Number">
+                              <label class="form-label">Phone Number</label>
+                            <input type="text" pattern="[0-9]*" minlength="6" maxlength="16" class="form-control form-input" [(ngModel)]="personalinfoDTO.phoneNumber" name="phoneNumber" #phoneNumber="ngModel" >
                             <div *ngIf="phoneNumber.errors && (phoneNumber.dirty || phoneNumber.touched)" class="alert alert-danger">
                                 <!-- <div [hidden]="!telephone.errors.required">
                                   Phone number is required!
@@ -215,7 +223,8 @@
                               </div>
                           </div>
                           <div id="mobileNumber" class="col-md-6 form-label-group mb-4">
-                            <input pattern="[0-9]*" minlength="6" maxlength="16" type="text" class="form-control form-input" [(ngModel)]="personalinfoDTO.mobileNo" name="mobileNo" #mobileNo="ngModel" placeholder="Mobile Number" required>
+                              <label class="form-label required-input-label">Mobile Number</label>
+                            <input pattern="[0-9]*" minlength="6" maxlength="16" type="text" class="form-control form-input" [(ngModel)]="personalinfoDTO.mobileNo" name="mobileNo" #mobileNo="ngModel"  required>
                             <div *ngIf="mobileNo.errors && (mobileNo.dirty || mobileNo.touched)" class="alert alert-danger">
                                 <div [hidden]="!mobileNo.errors.required">
                                   Mobile number is required!
@@ -235,7 +244,8 @@
                             <a href="#" class="resend-otp-link">Resend OTP code</a>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                            <input type="email" pattern="[^ @]*@[^ @]*" class="form-control form-input" [(ngModel)]="personalinfoDTO.userEmail" name="userEmail" #userEmail="ngModel" placeholder="Email" required>
+                            <label class="form-label required-input-label">Email</label>
+                            <input type="email" pattern="[^ @]*@[^ @]*" class="form-control form-input" [(ngModel)]="personalinfoDTO.userEmail" name="userEmail" #userEmail="ngModel" required>
                             <div *ngIf="userEmail.errors && (userEmail.dirty || userEmail.touched)" class="alert alert-danger">
                                 <div [hidden]="!userEmail.errors.required">
                                   Email must be like name@gmail.com
@@ -246,7 +256,8 @@
                               </div>
                           </div>
                           <div class="col-md-6 form-label-group mb-4 otp-code-div display-none">
-                            <input type="text" pattern="[0-9_]*" class="form-control form-input" #otpCode="ngModel" [(ngModel)]="personalinfoDTO.mobileOtpCode" name="otpCode" maxlength="4" placeholder="Enter OTP code" required>
+                              <label class="form-label required-input-label">OPT Code</label>
+                            <input type="text" pattern="[0-9_]*" class="form-control form-input" #otpCode="ngModel" [(ngModel)]="personalinfoDTO.mobileOtpCode" name="otpCode" maxlength="4" required>
                             <div *ngIf="otpCode.errors && (otpCode.dirty || otpCode.touched)" class="alert alert-danger">
                               <div [hidden]="!otpCode.errors.required">
                                 OTP code is required!
@@ -260,8 +271,9 @@
                             </div>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                            <select [(ngModel)]="personalinfoDTO.country" name="country" #country="ngModel" class="form-control common-select placeholder">
-                              <option selected>Country</option>
+                              <label class="form-label required-input-label">Country</label>
+                            <select [(ngModel)]="personalinfoDTO.country" name="country" #country="ngModel" class="form-control common-select ">
+                              <!-- <option selected>Country</option> -->
                               <option>Pakistan</option>
                               <option>Indian</option>
                               <option>Australian</option>
@@ -269,7 +281,8 @@
                             </select>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                            <select [(ngModel)]="personalinfoDTO.userCity" name="userCity" #userCity="ngModel" class="form-control common-select placeholder">
+                              <label class="form-label required-input-label">City</label>
+                            <select [(ngModel)]="personalinfoDTO.userCity" name="userCity" #userCity="ngModel" class="form-control common-select ">
                               <option selected>City</option>
                               <option>Lahore</option>
                               <option>Karachi</option>
@@ -278,7 +291,8 @@
                             </select>
                           </div>
                           <div class="col-md-12 form-label-group mb-4">
-                            <input  pattern="[a-zA-Z0-9]*" minlength="8" maxlength="60" type="text" [(ngModel)]="personalinfoDTO.streetAddress" name="streetAddress" #streetAddress="ngModel" class="form-control form-input" placeholder="Address">
+                            <label class="form-label required-input-label">Address</label>
+                            <input  pattern="[a-zA-Z0-9]*" minlength="8" maxlength="60" type="text" [(ngModel)]="personalinfoDTO.streetAddress" name="streetAddress" #streetAddress="ngModel" class="form-control form-input">
                             <div *ngIf="streetAddress.errors && (streetAddress.dirty || streetAddress.touched)" class="alert alert-danger">
                                 <div [hidden]="!streetAddress.errors.minlength">
                                   Address must be at least 8 characters long.
@@ -633,15 +647,19 @@
                               Personal Details:
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
-                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.firstName"  name="firstName"  #userFirstName="ngModel" placeholder="First Name" >
+                                <label class="form-label required-input-label">First Name</label>
+                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.firstName"  name="firstName"  #userFirstName="ngModel"  >
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
-                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.middleName" name="middleName" #middleName="ngModel" placeholder="Middle Name">
+                                <label class="form-label">Middle Name</label>
+                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.middleName" name="middleName" #middleName="ngModel">
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
-                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.lastName" name="lastName" #userLastName="ngModel" placeholder="Last Name">
+                                <label class="form-label required-input-label">Last Name</label>
+                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.lastName" name="lastName" #userLastName="ngModel">
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
+                                <label class="form-label required-input-label">Select Nationality</label>
                               <select  [(ngModel)]="ownerDto.nationality" name="nationality" class="form-control common-select">
                                 <option>Pakistani</option>
                                 <option>Indian</option>
@@ -650,16 +668,20 @@
                               </select>
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
-                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.idCardNo" name="idCardNo" #idCardNo="ngModel" placeholder="ID Card Number">
+                              <label class="form-label">ID Card Number</label>
+                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.idCardNo" name="idCardNo" #idCardNo="ngModel">
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
-                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.idCardExpiration" name="idCardExpiration" placeholder="ID Card Expiry Date">
+                              <label class="form-label">ID Card Expiry Date</label>
+                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.idCardExpiration" name="idCardExpiration">
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
-                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.passportNo" name="passportNo" #passportNo="ngModel"   placeholder="Passport Number">
+                              <label class="form-label required-input-label">Passport Number</label>
+                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.passportNo" name="passportNo" #passportNo="ngModel">
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
-                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.passportExpiryDate" name="passportExpiryDate" placeholder="Passport Expiry Date">
+                                <label class="form-label required-input-label">Passport Expiry Date</label>
+                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.passportExpiryDate" name="passportExpiryDate">
                             </div>
                           </div>
                           <div class="row mt-3">
@@ -667,22 +689,27 @@
                             Contact Details:
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
-                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.telephone" name="telephone" #telephone="ngModel" placeholder="Phone Number">
+                              <label class="form-label">Phone Number</label>
+                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.telephone" name="telephone" #telephone="ngModel">
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
-                              <input  type="text" class="form-control form-input"  [(ngModel)]="ownerDto.mobile" name="mobile" #mobile="ngModel"  placeholder="Mobile Number">
+                              <label class="form-label required-input-label">Mobile Number</label>
+                              <input  type="text" class="form-control form-input"  [(ngModel)]="ownerDto.mobile" name="mobile" #mobile="ngModel">
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
-                              <input type="email" class="form-control form-input"  [(ngModel)]="ownerDto.email" name="email" #email="ngModel" placeholder="Email" required>
+                              <label class="form-label required-input-label">Email</label>
+                              <input type="email" class="form-control form-input"  [(ngModel)]="ownerDto.email" name="email" #email="ngModel" required>
                             </div>
                             <!-- <div class="col-md-6 form-label-group mb-4">
                               <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.fax" name="fax" #fax="ngModel" placeholder="Fax">
                             </div> -->
                             <div class="col-md-6 form-label-group mb-4">
-                              <input  type="text" class="form-control form-input" [(ngModel)]="ownerDto.address" name="userAddress" #userAddress="ngModel" placeholder="Address">
+                              <label class="form-label required-input-label">Address</label>
+                              <input  type="text" class="form-control form-input" [(ngModel)]="ownerDto.address" name="userAddress" #userAddress="ngModel">
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
-                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.pobox" name="pobox" #pobox="ngModel"  placeholder="P.O.Box">
+                              <label class="form-label">P.O.Box</label> 
+                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.pobox" name="pobox" #pobox="ngModel">
                             </div>
                           </div>
                           <div class="row mt-3">
@@ -731,15 +758,19 @@
                               Personal Details:
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
-                              <input type="text" class="form-control form-input"[(ngModel)]="ownerDto.firstName" name="firstName" #firstname="ngModel" placeholder="First Name">
+                              <label class="form-label required-input-label">First Name</label>
+                              <input type="text" class="form-control form-input"[(ngModel)]="ownerDto.firstName" name="firstName" #firstname="ngModel">
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
-                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.middleName" name="middleName" #middleName="ngModel"placeholder="Middle Name">
+                              <label class="form-label">Middle Name</label>
+                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.middleName" name="middleName" #middleName="ngModel">
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
-                              <input class="form-control form-input" [(ngModel)]="ownerDto.lastName" name="lastName" #lastName="ngModel" placeholder="Last Name">
+                              <label class="form-label required-input-label">Last Name</label>
+                              <input class="form-control form-input" [(ngModel)]="ownerDto.lastName" name="lastName" #lastName="ngModel">
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
+                              <label class="form-label required-input-label">Select Nationality</label>
                               <select class="form-control common-select">
                                 <option>Pakistani</option>
                                 <option>Indian</option>
@@ -748,16 +779,20 @@
                               </select>
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
-                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.idCardNo" name="idCardNo"#idCardNo="ngModel" placeholder="ID Card Number">
+                              <label class="form-label">ID Card Number</label>
+                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.idCardNo" name="idCardNo"#idCardNo="ngModel">
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
-                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.idCardExpiration" name="idCardExpiration"  placeholder="ID Card Expiry Date">
+                              <label class="form-label">ID Card Expiry Date</label>
+                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.idCardExpiration" name="idCardExpiration" >
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
-                              <input type="text" class="form-control form-input"  [(ngModel)]="ownerDto.passportNo" name="passportNo" #passportNo="ngModel" placeholder="Passport Number" required>
+                              <label class="form-label required-input-label">Passport Number</label>
+                              <input type="text" class="form-control form-input"  [(ngModel)]="ownerDto.passportNo" name="passportNo" #passportNo="ngModel"required>
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
-                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.passportExpiryDate" name="passportExpiryDate" placeholder="Passport Expiry Date">
+                              <label class="form-label required-input-label">Passport Expiry Date</label>
+                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.passportExpiryDate" name="passportExpiryDate">
                             </div>
                           </div>
                           <div class="row mt-3">
@@ -765,22 +800,27 @@
                             Contact Details:
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
-                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.telephone" name="telephone" #telephone="ngModel" placeholder="Phone Number">
+                              <label class="form-label">Phone Number</label>
+                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.telephone" name="telephone" #telephone="ngModel" >
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
-                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.mobile" name="mobile" #mobile="ngModel" placeholder="Mobile Number">
+                              <label class="form-label required-input-label">Mobile Number</label>
+                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.mobile" name="mobile" #mobile="ngModel">
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
-                              <input type="email" class="form-control form-input"  [(ngModel)]="ownerDto.email" name="email" #email="ngModel" placeholder="Email" required>
+                              <label class="form-label required-input-label">Email</label>
+                              <input type="email" class="form-control form-input"  [(ngModel)]="ownerDto.email" name="email" #email="ngModel" required>
                             </div>
                             <!-- <div class="col-md-6 form-label-group mb-4">
                               <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.fax" name="fax" #fax="ngModel" placeholder="Fax">
                             </div> -->
                             <div class="col-md-6 form-label-group mb-4">
-                              <input class="form-control form-input" name="userAddress" #userAddress="ngModel" [(ngModel)]="ownerDto.address" placeholder="Address" required>
+                                <label class="form-label required-input-label">Address</label>
+                              <input class="form-control form-input" name="userAddress" #userAddress="ngModel" [(ngModel)]="ownerDto.address" required>
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
-                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.pobox" name="pobox" #pobox="ngModel" placeholder="P.O.Box">
+                                <label class="form-label">P.O.Box</label>
+                              <input type="text" class="form-control form-input" [(ngModel)]="ownerDto.pobox" name="pobox" #pobox="ngModel">
                             </div>
                           </div>
                           <div class="row mt-3">
@@ -788,12 +828,15 @@
                             Power of Attorney Details:
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
-                              <input type="text" class="form-control form-input"  [(ngModel)]="ownerDto.poaNumber" name="poaNumber" placeholder="POA Number" required>
+                                <label class="form-label required-input-label">POA Number</label>
+                              <input type="text" class="form-control form-input"  [(ngModel)]="ownerDto.poaNumber" name="poaNumber" required>
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
+                                <label class="form-label required-input-label">POA Expiry Date</label>                         
                                 <input type="text" for="date" class="form-control form-input" [(ngModel)]="ownerDto.poaAgreementExpiry" name="poaAgreementExpiry" required>
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
+                                <label class="form-label required-input-label">Specific Property</label>
                               <select class="form-control common-select" [(ngModel)]="ownerDto.specificproperty" name="specificproperty">
                                 <option>Individual Property</option>
                                 <option>Multiple Properties</option>
@@ -844,6 +887,7 @@
                         <div class="row">
                           <div class="col-md-12 form-block-heading mb-2">Area Details:</div>
                           <div class="col-md-6 form-label-group mb-4">
+                              <label class="form-label required-input-label">Property Status</label>
                             <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.propertyStatus" name="propertyStatus">
                               <option>Off-plan</option>
                               <option>Under Construction</option>
@@ -851,9 +895,11 @@
                             </select>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                              <input type="text" pattern="[a-zA-Z0-9]" class="form-control form-input" [(ngModel)]="propertyDetailsDto.plotNo" name="plotNo" required placeholder="Plot Number">
+                              <label class="form-label required-input-label">Plot Number</label>
+                              <input type="text" pattern="[a-zA-Z0-9]" class="form-control form-input" [(ngModel)]="propertyDetailsDto.plotNo" name="plotNo" required >
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
+                              <label class="form-label">Type of Area</label>
                             <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.typeArea" name="typeArea" #typeArea="ngModel">
                               <option>Free Hold</option>
                               <option>Non-Free Hold</option>
@@ -861,18 +907,23 @@
                             </select>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                              <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.titleDeedNo" name="titlDeedNo" #titlDeedNo="ngModel" placeholder="Title Deed NUmber"required>
+                              <label class="form-label required-input-label">Title Deed Number</label>
+                              <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.titleDeedNo" name="titlDeedNo" #titlDeedNo="ngModel" required>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                              <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.address" name="address" #address="ngModel"placeholder="Address" required>
+                              <label class="form-label required-input-label">Address</label>
+                              <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.address" name="address" #address="ngModel" required>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                            <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.mapLocation" name="mapLocation" #mapLocation="ngModel" placeholder="Location Map">
+                              <label class="form-label">Location Map</label>
+                            <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.mapLocation" name="mapLocation" #mapLocation="ngModel">
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                              <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.propertyNo" name="propertyNo" #propertyNo="ngModel" placeholder="Property Number" required>
+                              <label class="form-label required-input-label">Property Number</label>
+                              <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.propertyNo" name="propertyNo" #propertyNo="ngModel" required>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
+                              <label class="form-label required-input-label">Type of Property</label>
                             <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.propertyType" name="propertyType" #propertyType="ngModel">
                               <option>Land</option>
                               <option>Villa</option>
@@ -884,21 +935,26 @@
                             </select>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                              <input type="text"  class="form-control form-input" [(ngModel)]="propertyDetailsDto.projectName" name="projectName" #projectName="ngModel" placeholder="Project Name">
+                              <label class="form-label required-input-label">Project Name</label>
+                              <input type="text"  class="form-control form-input" [(ngModel)]="propertyDetailsDto.projectName" name="projectName" #projectName="ngModel">
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                              <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.area" name="area" #area="ngModel" required placeholder="Area">
+                              <label class="form-label required-input-label">Area</label>
+                              <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.area" name="area" #area="ngModel" required >
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
+                              <label class="form-label required-input-label">Unit</label>
                             <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.areaUnit" name="areaUnit" #areaUnit="ngModel">
                               <option>sqm</option>
                               <option>sqft</option>    
                             </select>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                              <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.ownerAssociationNo" name="ownerAssociationNo" placeholder="Onwer Association Number">
+                              <label class="form-label">Owner Association Number</label>
+                              <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.ownerAssociationNo" name="ownerAssociationNo">
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
+                              <label class="form-label">Present Use</label>
                             <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.presentUse" name="presentUse" #presentUse="ngModel">
                               <option>Residential</option>
                               <option>Commercial</option>
@@ -906,37 +962,47 @@
                             </select>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                            <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.communityNo" name="communityNo" #communityNo="ngModel" placeholder="Community Number">
+                              <label class="form-label">Community Number</label>
+                            <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.communityNo" name="communityNo" #communityNo="ngModel">
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                            <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.propertyAge" name="propertyAge" #propertyAge="ngModel" placeholder="Property Aprox. Age">
+                              <label class="form-label">Property Approx. Age</label>
+                            <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.propertyAge" name="propertyAge" #propertyAge="ngModel">
                           </div>
                         </div>  
                         <div class="row">
                           <div class="col-md-12 form-block-heading mb-3">Specs:</div>
                           <div class="col-md-3 mb-4">
-                            <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.noOfBedrooms" name="noOfBedrooms" #noOfBedrooms="ngModel" placeholder="Bedrooms">
+                              <label class="form-label">Bedrooms</label>
+                            <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.noOfBedrooms" name="noOfBedrooms" #noOfBedrooms="ngModel" >
                           </div>
                           <div class="col-md-3 mb-4">
-                            <input type="text" class="form-control form-input"  [(ngModel)]="propertyDetailsDto.noOfBaths" #noOfBaths="ngModel" name="noOfBaths" placeholder="Bathrooms">
+                              <label class="form-label">Bathrooms</label>
+                            <input type="text" class="form-control form-input"  [(ngModel)]="propertyDetailsDto.noOfBaths" #noOfBaths="ngModel" name="noOfBaths" >
                           </div>
                           <div class="col-md-3 mb-4">
-                            <input type="text"class="form-control form-input" [(ngModel)]="propertyDetailsDto.carParks" #carParks="ngModel" name="carParks" placeholder="Car Parks">
+                              <label class="form-label">Car Parks</label>
+                            <input type="text"class="form-control form-input" [(ngModel)]="propertyDetailsDto.carParks" #carParks="ngModel" name="carParks" >
                           </div>
                           <div class="col-md-3 mb-4">
-                            <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.kitchens" name="kitchens" #kitchens="ngModel" placeholder="Kitchens">
+                              <label class="form-label">Kitchens</label>
+                            <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.kitchens" name="kitchens" #kitchens="ngModel">
                           </div>
                           <div class="col-md-3 mb-4">
-                            <input type="text"  class="form-control form-input" [(ngModel)]="propertyDetailsDto.floorNo" name="floorNo" #floorNo="ngModel" placeholder="Floor No.">
+                              <label class="form-label">Floor No.</label>
+                            <input type="text"  class="form-control form-input" [(ngModel)]="propertyDetailsDto.floorNo" name="floorNo" #floorNo="ngModel" >
                           </div>
                           <div class="col-md-3 mb-4">
-                            <input  type="text"  class="form-control form-input" [(ngModel)]="propertyDetailsDto.noUnits" name="noUnits" #noUnits="ngModel" placeholder="Unit No.">
+                              <label class="form-label">Unit No.</label>
+                            <input  type="text"  class="form-control form-input" [(ngModel)]="propertyDetailsDto.noUnits" name="noUnits" #noUnits="ngModel">
                           </div>
                           <div class="col-md-3 mb-4">
-                            <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.noOfFloors" name="noOfFloors" #noOfFloors="ngModel" placeholder="No. of Floors">
+                              <label class="form-label">No. of Floors</label>
+                            <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.noOfFloors" name="noOfFloors" #noOfFloors="ngModel" >
                           </div>
                           <div class="col-md-3 mb-4">
-                            <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.noShops" name="noShops" #noShops="ngModel" placeholder="No. of Shops">
+                              <label class="form-label">No. of Shops</label>
+                            <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.noShops" name="noShops" #noShops="ngModel" >
                             </div>
                         </div>  
                         <div class="section-seprator">
@@ -1411,44 +1477,53 @@
                         <div class="row">
                           <div class="col-md-12 form-block-heading mb-2">Mortgage Details</div>
                           <div class="col-md-6 form-label-group mb-4">
+                            <label class="form-label required-input-label">Mortgage Status</label>
                             <select [(ngModel)]="propertyFinancialDTO.morgageStatus" name="morgageStatus" class="form-control common-select placeholder">
                               <option>Yes</option>
                               <option>No</option>
                             </select>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                            <input  type="text" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.morgageRegNo" name="morgageRegNo" #morgageRegNo="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'" placeholder="Morgage Registration Number" required>
+                              <label class="form-label required-input-label">Mortgage Reg.No.</label>
+                            <input  type="text" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.morgageRegNo" name="morgageRegNo" #morgageRegNo="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'"  required>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                            <input type="text" class="form-control form-input"[(ngModel)]="propertyFinancialDTO.paidAmount" name="paidAmount" #paidAmount="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'" placeholder="Paid Amount">
+                              <label class="form-label">Paid Amount</label>
+                            <input type="text" class="form-control form-input"[(ngModel)]="propertyFinancialDTO.paidAmount" name="paidAmount" #paidAmount="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                            <input type="text" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.balanceAmount" name="balanceAmount" #balanceAmount="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'" placeholder="Balance Amount" >
+                              <label class="form-label required-input-label">Balance Amount</label>
+                            <input type="text" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.balanceAmount" name="balanceAmount" #balanceAmount="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'" >
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                            <input  type="text" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.serviceCharge" name="serviceCharge" #serviceCharge="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'" placeholder="Service Charge" required>
+                              <label class="form-label required-input-label">Service Charge</label>
+                            <input  type="text" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.serviceCharge" name="serviceCharge" #serviceCharge="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'" required>
                           </div>
                         </div>  
                         <div class="row">
                           <div class="col-md-6 form-label-group mb-4">
-                            <select [(ngModel)]="propertyFinancialDTO.bank" ng-disabled="all" name="bank" class="form-control common-select placeholder" [disabled]="propertyFinancialDTO.morgageStatus=='No'" placeholder="Bank">
+                            <select [(ngModel)]="propertyFinancialDTO.bank" ng-disabled="all" name="bank" class="form-control common-select placeholder" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
                               <option>Islamic</option>
                               <option>World Bank</option>
                             </select>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
+                              <label class="form-label">Bank</label>
                             <select [(ngModel)]="propertyFinancialDTO.bank" ng-disabled="all"  name="bank" class="form-control common-select placeholder">
                               <option>Islamic</option>
                               <option>World Bank</option>
                             </select>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                            <input type="text" class="form-control form-input" ng-disabled="No" [(ngModel)]="propertyFinancialDTO.morgageAmount" name ="morgageAmount" #morgageAmount="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'" placeholder="Morgage Amount">
+                              <label class="form-label">Mortgage Amount</label>
+                            <input type="text" class="form-control form-input" ng-disabled="No" [(ngModel)]="propertyFinancialDTO.morgageAmount" name ="morgageAmount" #morgageAmount="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                            <input type="text" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.preClosureCharges" name="preClosureCharges" #preClosureCharges="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'" placeholder="Pre Closure Charges">
+                              <label class="form-label">Pre-Closure Charges</label>
+                            <input type="text" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.preClosureCharges" name="preClosureCharges" #preClosureCharges="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
+                              <label class="form-label">Payment Schedule</label>
                             <select  [(ngModel)]="propertyFinancialDTO.paymentSchedule" name="paymentSchedule" class="form-control common-select placeholder">
                               <option>Quarterly</option>
                               <option>Monthly</option>
@@ -1456,10 +1531,12 @@
                             </select>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                            <input type="text" for="date" class="form-control form-input"  [(ngModel)]="propertyFinancialDTO.date" name="date" #date="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'" placeholder="Date">
+                              <label class="form-label">Date</label>
+                            <input type="text" for="date" class="form-control form-input"  [(ngModel)]="propertyFinancialDTO.date" name="date" #date="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                            <input type="text" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.amount" name="amount" #amount="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'" placeholder="Amount">
+                              <label class="form-label">Amount</label>
+                            <input type="text" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.amount" name="amount" #amount="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
                           </div>
                         </div>  
                         <div class="row mt-3">
@@ -1489,38 +1566,73 @@
                             Rent Details
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
+                              <label class="form-label required-input-label">Property Rented</label>
                             <select  [(ngModel)]="propertyRentalDetailDTO.isRented" name ="isRented" class="form-control common-select placeholder">
                               <option>Yes</option>
                               <option>No</option>
                             </select>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                            <select [(ngModel)]="propertyRentalDetailDTO.isVacant" name="isVacant"  class="form-control common-select placeholder" [disabled]="propertyRentalDetailDTO.isRented=='No'">
+                              <label class="form-label">Is Vacant</label>
+                            <select [(ngModel)]="propertyRentalDetailDTO.isVacant" name="isVacant"  class="form-control common-select ">
                               <option>Yes</option>
                               <option>No</option>
                             </select>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                              <input type="text" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.tenantName" name="tenantName" #tenantName="ngModel" placeholder="Tenant Name">
+                              <label class="form-label">Tenant Name</label>
+                              <input type="text" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.tenantName" name="tenantName" #tenantName="ngModel" >
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                            <select [(ngModel)]="propertyRentalDetailDTO.paymentStructure" name="paymentStructure" class="form-control common-select placeholder" >
-                              <option>Yearly</option>
-                              <option>Monthly</option>
-                              <option>Quarterly</option>
+                              <label class="form-label">Payment Structure</label>
+                              <select [(ngModel)]="propertyRentalDetailDTO.paymentStructure" name="paymentStructure" class="form-control common-select " >
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                              <option>6</option>
+                              <option>7</option>
+                              <option>8</option>
+                              <option>9</option>
+                              <option>10</option>
+                              <option>11</option>
+                              <option>12</option>
+                              <!-- <option>13</option>
+                              <option>14</option>
+                              <option>15</option>
+                              <option>16</option>
+                              <option>17</option>
+                              <option>18</option>
+                              <option>19</option>
+                              <option>20</option>
+                              <option>21</option>
+                              <option>22</option>
+                              <option>23</option>
+                              <option>24</option>
+                              <option>25</option>
+                              <option>26</option>
+                              <option>27</option>
+                              <option>28</option>
+                              <option>29</option>
+                              <option>30</option> -->
                             </select>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                              <input type="text" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.rentalEjariNo" name="rentalEjariNo" #rentalEjariNo="ngModel" placeholder="Ejari Number">
+                              <label class="form-label required-input-label">Ejari Number</label>
+                              <input type="text" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.rentalEjariNo" name="rentalEjariNo" #rentalEjariNo="ngModel" >
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                              <input  type="text" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.rentalAnnualRent" name="rentalAnnualRent" #rentalAnnualRent="ngModel" placeholder="Annual Rent">
+                              <label class="form-label">Annual Rent</label>
+                              <input  type="text" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.rentalAnnualRent" name="rentalAnnualRent" #rentalAnnualRent="ngModel">
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                              <input type="text" for="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseStartDate" name="leaseStartDate"  #leaseStartDate="ngModel" placeholder="Lease Start Date">
+                              <label class="form-label required-input-label">Lease Start Date</label>
+                              <input type="text" for="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseStartDate" name="leaseStartDate"  #leaseStartDate="ngModel">
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                              <input type="text" for="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseExpiryDate" name="leaseExpiryDate"  #leaseExpiryDate="ngModel" placeholder="Lease Expiry Date">
+                              <label class="form-label required-input-label">Lease Expiry Date</label>
+                              <input type="text" for="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseExpiryDate" name="leaseExpiryDate"  #leaseExpiryDate="ngModel">
                           </div>
                         </div>
                         <div class="row mt-3">
