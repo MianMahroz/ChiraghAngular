@@ -43,7 +43,16 @@ export class SellerDashboardComponent implements OnInit {
   selectedIdCopy: FileList;
   passportFile:File;
   idCopyFile:File;
-
+  userIdCopy:string;
+  userPassportCopy:string;
+  ownerIdCopy:string;
+  ownerPassportCopy:string;
+  poaIdCopy:string;
+  poaPassportCopy:string;
+  poaNotorizedCopy:string;
+  pdTitleDeedCopy:string;
+  mortgageNOCCopy:string;
+  rentTenancyContract:string;
 
   images: Image[]=[] ;
 
@@ -178,43 +187,52 @@ selectIdCopy(event) {
   }
   getOwnerDetails(data:any):void{
    console.log(' Owner Clicked!');
+   console.log(data);
    if(data.ownerType=='owner'){
       this.ownerDto=data;
-      this.getOwnerImages();
-   }
+      this.ownerPassportCopy=''+this.token.getImagepath()+'propertyId-'+this.currentProperty.propertyId+'/'+this.ownerDto.passportCopyUpload;
+      this.ownerIdCopy=''+this.token.getImagepath()+'propertyId-'+this.currentProperty.propertyId+'/'+this.ownerDto.scannedIdCopy;
+    }
+    
   }
   getPOADetails(data:any):void{
     console.log(' POA Clicked!');
     if(data.ownerType=='poa'){
-       this.ownerDto=data;
-       this.getPOAImages();
+      this.ownerDto=data;
+      this.poaPassportCopy=''+this.token.getImagepath()+'propertyId-'+this.currentProperty.propertyId+'/'+this.ownerDto.passportCopyUpload;
+      this.poaIdCopy=''+this.token.getImagepath()+'propertyId-'+this.currentProperty.propertyId+'/'+this.ownerDto.scannedIdCopy;
+      this.poaNotorizedCopy=''+this.token.getImagepath()+'propertyId-'+this.currentProperty.propertyId+'/'+this.ownerDto.scannedNotorizedCopy;
     }
-   }
+  }
 
 
    getPropertyDetails(data:any):void{
     console.log(' Property Clicked!');
     this.propertyDetailsDto=data;
-    this.getPropertyDetailsImages();
+    this.pdTitleDeedCopy=''+this.token.getImagepath()+'propertyId-'+this.currentProperty.propertyId+'/'+this.propertyDetailsDto.scannedTitleDeed;
    }
 
 
    getPropertyRentalDetails(data:any):void{
     console.log(' Property Rental Clicked!');
     this.propertyRentalDetailDTO=data;
-    this.getPropertyRentalDetailsImages();
+    this.rentTenancyContract=''+this.token.getImagepath()+'propertyId-'+this.currentProperty.propertyId+'/'+this.propertyRentalDetailDTO.tenancyContractUpload;
    }
 
    getPropertyFinancialDetails(data:any):void{
     console.log(' Property Mortage Clicked!');
     this.propertyFinancialDTO=data;
-    this.getPropertyFinancialDetailsImages();
+    this.mortgageNOCCopy=''+this.token.getImagepath()+'propertyId-'+this.currentProperty.propertyId+'/'+this.propertyFinancialDTO.morgageNoc;
    }
 
    getpersonalinfoDetails(data:any):void{
     console.log(' Personal info Clicked!');
+
     this.personalinfoDTO=data;
-    this.getPersonalInfoImages();
+    console.log(this.personalinfoDTO.scannedIdCopyUpload);
+    this.userPassportCopy=''+this.token.getImagepath()+'ChiraghUser-'+this.personalinfoDTO.userId+'/'+this.personalinfoDTO.scannedPassportCopyUpload;
+    this.userIdCopy=''+this.token.getImagepath()+'ChiraghUser-'+this.personalinfoDTO.userId+'/'+this.personalinfoDTO.scannedIdCopyUpload;
+    // this.getPersonalInfoImages();
    }
 
    cancelinfo():void{

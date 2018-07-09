@@ -14,8 +14,8 @@ export class TokenStorage {
   // serverPath:string='http://localhost:8082';
 
 
-  // imagepath:string='http://demo.chiragh.com/ChiraghDocuments/';
-  imagepath:string='http://localhost:8082/ChiraghDocuments/';
+  imagepath:string='http://demo.chiragh.com/ChiraghDocuments/';
+  // imagepath:string='http://localhost:8082/ChiraghDocuments/';
 
   constructor() { }
 

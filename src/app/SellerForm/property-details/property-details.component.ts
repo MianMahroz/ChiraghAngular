@@ -45,7 +45,7 @@ export class PropertyDetailsComponent implements OnInit {
     console.log(this.action);
     if(this.action=='back'||this.action=='next'){
         console.log('Inside Action');
-          this.getEnteredProperty();
+        this.getEnteredProperty();
       }//end of back if
   }
 

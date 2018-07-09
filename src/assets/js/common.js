@@ -179,6 +179,10 @@ $(document).ready(function(){
     $('.otp-code-div').show('slow');
   });
 
+  $("#contactDetailSave, #contactDetailCancel").click(function(){
+    $(".otp-code-div").hide('slow');
+  });
+
   $('select').change(function() {
     if ($(this).children('option:first-child').is(':selected')) {
       $(this).addClass('placeholder');
@@ -196,6 +200,14 @@ $(document).ready(function(){
     $('li').removeClass('active');
     $(this).addClass('active');
   }); 
+
+  $('.thumbnail').click(function(){
+    $('.modal-body').empty();
+    var title = $(this).parent('a').attr("title");
+    $('.modal-title').html(title);
+    $($(this).parents('div').html()).appendTo('.modal-body');
+    $('#thumbnailViewer').modal({show:true});
+  });
 });
 
 
