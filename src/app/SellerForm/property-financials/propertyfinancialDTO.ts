@@ -1,7 +1,7 @@
 export class PropertyFinancialDTO{
-  userName:string;
+ userName:string;
  propertyId:number;
-   listedPrice:number;
+ listedPrice:number;
  originalPrice:number;
  paidAmount:number;
  serviceCharge:number;
