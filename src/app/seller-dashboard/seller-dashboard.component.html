@@ -68,9 +68,9 @@
                               </li>
                             </ul>
                           </li> -->
-                          <li *ngFor="let propertyArr of userData">
-                            <a class="sub-links" data-toggle="collapse" (click)="setCurrentProperty(propertyArr)" href="#sell-sub-links/{{propertyArr.propertyId}}">Property ID :{{propertyArr.propertyId}}</a>
-                            <ul class="collapse sub-prop-links-wrap" id="sell-sub-links/{{propertyArr.propertyId}}">
+                          <li class="openSchedule" *ngFor="let propertyArr of userData">
+                            <a class="sub-links" data-toggle="collapse" (click)="setCurrentProperty(propertyArr)" href="#sell-sub-links/{{propertyArr.projectName}}">{{propertyArr.projectName}}, {{propertyArr.typeArea}}</a>
+                            <ul class="collapse sub-prop-links-wrap" id="sell-sub-links/{{propertyArr.projectName}}">
                               <li><a data-toggle="tab" (click)="refreshPoaHtml()" href="#owner-detail" class="sub-prop-links">- Owners details</a></li>
                               <li><a data-toggle="tab" (click)="refreshPoaHtml()" href="#POA-detail" class="sub-prop-links">- POA details</a></li>
                               <!-- <li *ngFor="let ownerArr of propertyArr.propertysellerdetailses"><a *ngIf="ownerArr.ownerType=='owner'" data-toggle="tab" href="#owner-detail"  (click)="getOwnerDetails(ownerArr)" class="sub-prop-links">- Owner ID:{{ownerArr.propertySellerId}}</a></li> -->
@@ -746,6 +746,47 @@
                             <p *ngIf="ownerDto.passportCopyUpload"><br>{{ownerDto.passportCopyUpload}}</p> -->
                           </div>
                         </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="propertyTab" class="row sign-in-row d-none">
+                    <div class="tab-heading">Scheduled</div>
+                    <div class="row bid-active-row">
+                      <div class="col-md-12 bid-active-col">
+                        <div class="bid-active-block py-3">
+                          <div class="row">
+                            <div class="col-md-4 bid-active-img">
+                              <div class="prop-thumbnail"></div>
+                            </div>
+                            <div class="col-md-4 bid-active-decript">
+                              <div class="prop-descript-wrap">
+                                <div class="prop-title">Property Title</div>
+                                <div class="prop-id">Property ID</div>
+                                <div class="prop-id">Address</div>
+                              </div>
+                              <div class="prop-amount">
+                                <span class="amount">AED 50,000,00</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="bid-active-block py-3">
+                          <div class="row">
+                            <div class="col-md-4 bid-active-img">
+                              <div class="prop-thumbnail"></div>
+                            </div>
+                            <div class="col-md-4 bid-active-decript">
+                              <div class="prop-descript-wrap">
+                                <div class="prop-title">Property Title</div>
+                                <div class="prop-id">Property ID</div>
+                                <div class="prop-id">Address</div>
+                              </div>
+                              <div class="prop-amount">
+                                <span class="amount">AED 50,000,00</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -1800,7 +1841,7 @@
                       <input type="file" name="file"/>
                     </div>
                     <ul class="nav nav-tabs ud-sidebar-links-wrap">
-                      <li><a class="ud-pers-info" data-toggle="tab" href="#personal-info">Personal Info</a></li>
+                      <!-- <li><a class="ud-pers-info" data-toggle="tab" href="#personal-info">Personal Info</a></li> -->
                       <li>
                         <a class="ud-buyers" data-toggle="collapse" href="#activity-buyers">Buy</a>
                         <ul class="collapse sub-links-wrap" id="activity-buyers">

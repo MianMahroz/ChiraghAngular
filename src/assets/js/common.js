@@ -146,6 +146,9 @@ $(document).ready(function(){
     }
   });
 
+  $('.openSchedule').click(function(){
+    $('#propertyTab').removeClass('d-none');
+  });
 
   $('.btn-view-images').click(function(){
     $('body').addClass('overflow-hidden');
