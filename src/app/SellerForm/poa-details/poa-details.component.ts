@@ -117,7 +117,7 @@ export class PoaDetailsComponent implements AfterViewInit {
 
 
   validation():boolean {
-    console.log(' Validations!');
+    console.log('POA  Validations!');
     //var firstname1=this.ownerDto.firstName;
     //this.requiredfieldsArray['firstNamevalidation',this.ownerDto.lastName,this.ownerDto.nationality,this.ownerDto.passportNo,this.ownerDto.passportExpiryDate,this.ownerDto.mobile,this.ownerDto.email,this.ownerDto.address];
     this.firstnameValid=true;
@@ -459,6 +459,7 @@ editProcessHelper(operation:string):void{
                this.atLeastOnePoa=true;
                console.log(ownerData);
                this.dataSource.data = ownerData;
+               this.ownerDto=ownerData[length-1];
                this.myToast.Success('Status','POA data loaded Successfully');
             }//end of if on ownerdata check
              }//end of ownerData

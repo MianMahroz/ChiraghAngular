@@ -28,6 +28,16 @@ export class PropertyRentalComponent implements OnInit {
     })
   }
 
+  propertyrentedValid=true;
+  ejarinoValid=true;
+  leasestartdateValid=true;
+  leaseexpiryValid=true;
+  tenantnameValid=true;
+  paymentstructureValid=true;
+  annualrentValid=true;
+  scannedTenentContractUploadValid=true;
+  formValid=true;
+
   constructor(private myToast:ToasterServiceService,private route:ActivatedRoute,private sellerService:SellerService,private propertyService:PropertyService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
   propertyRentalDetailDTO=new PropertyRentalDetailDTO();
   selectedscannedTenentContract: FileList;
@@ -53,11 +63,134 @@ export class PropertyRentalComponent implements OnInit {
     event.srcElement.value = null;
   }
 
+  validation():boolean {
+    console.log('Property Finanical Validations!');
+    
+  this.propertyrentedValid=true;
+  if(this.propertyRentalDetailDTO.isRented)
+  {
+  var isrented =this.propertyRentalDetailDTO.isRented.match('[a-zA-Z]*');
+  if(isrented["0"]!==this.propertyRentalDetailDTO.isRented){
+    this.myToast.Error('Invalid Property Rented');
+    this.propertyrentedValid=false;
+  }}
+
+  else{
+    
+    this.myToast.Error('Property Rented Cannot Empty');
+    this.propertyrentedValid=false;
+  }
+
+  this.ejarinoValid=true;
+  if(this.propertyRentalDetailDTO.rentalEjariNo)
+  {
+  var stringejarino=this.propertyRentalDetailDTO.rentalEjariNo.toString();
+  var rentalejari =stringejarino.match('[0-9_]*');
+  if(rentalejari ["0"]!==this.propertyRentalDetailDTO.rentalEjariNo){
+    this.myToast.Error('Invalid Ejari Number');
+    this.ejarinoValid=false;
+  }}
+
+  else{
+    
+    this.myToast.Error('Ejari Number Cannot Empty');
+    this.ejarinoValid=false;
+  }
+
+  this.leasestartdateValid=true;
+  if(this.propertyRentalDetailDTO.leaseStartDate)
+  {
+  var stringleasestartdate=this.propertyRentalDetailDTO.leaseStartDate.toString();
+  var leasestart =stringleasestartdate.match('[0-9_]*');
+  if(leasestart["0"]!==this.propertyRentalDetailDTO.leaseStartDate){
+    this.myToast.Error('Invalid Lease Start Date');
+    this.leasestartdateValid=false;
+  }}
+
+  else{
+    
+    this.myToast.Error('Lease Start Date Cannot Empty');
+    this.leasestartdateValid=false;
+  }
+
+  this.leaseexpiryValid=true;
+  if(this.propertyRentalDetailDTO.leaseExpiryDate)
+  {
+  var stringleaseexpirydate=this.propertyRentalDetailDTO.leaseExpiryDate.toString();
+  var leaseexpiry =stringleaseexpirydate.match('[0-9_]*');
+  if(leaseexpiry["0"]!==this.propertyRentalDetailDTO.leaseExpiryDate){
+    this.myToast.Error('Invalid Lease Expiry Date');
+    this.leaseexpiryValid=false;
+  }}
+
+  else{
+    
+    this.myToast.Error('Lease Expiry Date Cannot Empty');
+    this.leaseexpiryValid=false;
+  }
+
+  this.tenantnameValid=true;
+  if(this.propertyRentalDetailDTO.tenantName)
+  {
+  var stringtenantname=this.propertyRentalDetailDTO.tenantName.toString();
+  var tenantname =stringtenantname.match('[a-zA-Z]*');
+  if(tenantname["0"]!==this.propertyRentalDetailDTO.tenantName){
+    this.myToast.Error('Invalid Tenant Name');
+    this.tenantnameValid=false;
+  }}
+
+  this.paymentstructureValid=true;
+  if(this.propertyRentalDetailDTO.paymentStructure)
+  {
+  var stringpaymentstructure=this.propertyRentalDetailDTO.paymentStructure.toString();
+  var paymentstructure =stringpaymentstructure.match('[a-zA-Z]*');
+  if(paymentstructure["0"]!==this.propertyRentalDetailDTO.paymentStructure){
+    this.myToast.Error('Invalid Payment Structure');
+    this.paymentstructureValid=false;
+  }}
+
+  this.annualrentValid=true;
+  if(this.propertyRentalDetailDTO.rentalAnnualRent)
+  {
+  var stringannualrent=this.propertyRentalDetailDTO.rentalAnnualRent.toString();
+  var annualrent =stringannualrent.match('[0-9]*');
+  if(annualrent["0"]!==this.propertyRentalDetailDTO.rentalAnnualRent){
+    this.myToast.Error('Invalid Annual Rent');
+    this.annualrentValid=false;
+  }}
+
+ this.scannedTenentContractUploadValid=true;
+ if(this.scannedTenantContract==null){
+  this.myToast.Error('Invalid Scanned Tenent Contract');
+  this.scannedTenentContractUploadValid=false;
+ }
+
+  if(this.propertyrentedValid==false||this.ejarinoValid==false||this.leasestartdateValid==false||this.leaseexpiryValid==false
+    ||this.tenantnameValid==false||this.paymentstructureValid==false||this.annualrentValid==false||this.scannedTenentContractUploadValid==false){
+
+      this.formValid=false;
+  }
+
+  else{
+    this.formValid=true;
+  }
+    return this.formValid;
+  }
+
+
   addPropertyRentalDetails(): string {
     if(this.token.getuserName()==null){
       console.log('Invalid Session');
       return "Invalid Session";
     }
+
+    if(this.validation()==true){
+
+    }
+    else {
+      return "Invalid Property Rental Form";
+    }
+
     window.sessionStorage.removeItem('AuthToken');
     this.authService.attemptAuth().subscribe(
       data => {

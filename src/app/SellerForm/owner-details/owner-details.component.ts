@@ -158,11 +158,10 @@ export class OwnerDetailsComponent implements AfterViewInit {
    }
 
 validation():boolean {
-  console.log(' Validations!');
+  console.log('Owner Validations!');
   //var firstname1=this.ownerDto.firstName;
   //this.requiredfieldsArray['firstNamevalidation',this.ownerDto.lastName,this.ownerDto.nationality,this.ownerDto.passportNo,this.ownerDto.passportExpiryDate,this.ownerDto.mobile,this.ownerDto.email,this.ownerDto.address];
   this.firstnameValid=true;
-  console.log(this.ownerDto.firstName);
   if(this.ownerDto.firstName)
   {
   var firstname =this.ownerDto.firstName.match('[a-zA-Z]*');
@@ -236,10 +235,10 @@ this.passportValid=true;
     this.myToast.Error('Passport Number Cannot Empty');
     this.passportValid=false;
   }
-this.passportexpiryValid=true;
+   this.passportexpiryValid=true;
   if(this.ownerDto.passportExpiryDate)
   {
-  var passportExpiryDate =this.ownerDto.passportExpiryDate.match('[0-9-//]*');
+  var passportExpiryDate =this.ownerDto.passportExpiryDate.match('[0-9//]*');
   if(passportExpiryDate["0"]!==this.ownerDto.passportExpiryDate){
     this.myToast.Error('Invaild Passport Expiry Date');
     this.passportexpiryValid=false;
@@ -385,7 +384,7 @@ if(this.ownerDto.address){
 
     }
     else {
-      return "Invalid Form";
+      return "Invalid Owner Form";
     }
     if(this.ownerDto.firstName==null || this.ownerDto.firstName==''&&operation=='next'){
       this.router.navigate(['/sellerPoaDetails/next']);
@@ -449,6 +448,7 @@ if(this.ownerDto.address){
                   ); //end of owner save subscription
                      }//end of data of create property
                   );         //create property subscription
+                 // this.myToast.Success('Status','Owner Add Successfully');
                   return "Owner Add Successfully";
              }//end of pid if
              else{
@@ -522,6 +522,7 @@ editProcessHelper(operation:string):void{
           this.myToast.Success('Status','Owner Add Successfully');
           console.log(ownerData);
             this.dataSource.data = ownerData;
+           // this.ownerDto=ownerData[ownerData.length-1]
           }//end of ownerData
       );//end of subscription of getOwners
   }//end of else if
@@ -541,7 +542,8 @@ editProcessHelper(operation:string):void{
                   this.myToast.Success('Status','Owner Data Loaded Successfully');
                   console.log(ownerData);
                   this.dataSource.data = ownerData;
-              }//end of lenght condition
+                  this.ownerDto=ownerData[ownerData.length-1];
+                }//end of lenght condition
               else{
                 this.dataSource.data = ownerData;
                 this.atLeastOneOwner=false;
