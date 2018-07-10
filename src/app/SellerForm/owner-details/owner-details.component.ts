@@ -11,6 +11,7 @@ import { OwnerDetails } from './ownerdetails.model';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {AfterViewInit, ViewChild} from '@angular/core';
 import {ModalGalleryModule,Image} from 'angular-modal-gallery';
+import { empty } from 'rxjs/Observer';
 @Component({
   selector: 'app-owner-details',
   templateUrl: './owner-details.component.html',
@@ -49,7 +50,23 @@ export class OwnerDetailsComponent implements AfterViewInit {
 
   images: Image[]=[] ;
 
-
+  firstnameValid=true;
+  lastnameValid=true;
+  nationalityValid=true;
+  passportValid=true;
+  passportexpiryValid=true;
+  emailValid=true;
+  moblieValid=true;
+  addressValid=true;
+  middlenameValid=true;
+  idcardValid=true;
+  phonenoValid=true;
+  poboxValid=true;
+  idcardexpiryValid=true;
+  formValid=true;
+  passportuploadValid=true;
+  idcopyuploadValid=true;
+  //requiredfieldsArray:any[];
 
 
   constructor(private myToast:ToasterServiceService,private route:ActivatedRoute,private sellerService:SellerService,private userService:UserService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
@@ -140,13 +157,234 @@ export class OwnerDetailsComponent implements AfterViewInit {
       event.srcElement.value = null;
    }
 
+validation():boolean {
+  console.log('Owner Validations!');
+  //var firstname1=this.ownerDto.firstName;
+  //this.requiredfieldsArray['firstNamevalidation',this.ownerDto.lastName,this.ownerDto.nationality,this.ownerDto.passportNo,this.ownerDto.passportExpiryDate,this.ownerDto.mobile,this.ownerDto.email,this.ownerDto.address];
+  this.firstnameValid=true;
+  if(this.ownerDto.firstName)
+  {
+  var firstname =this.ownerDto.firstName.match('[a-zA-Z]*');
+  if(firstname["0"]!==this.ownerDto.firstName){
+    this.myToast.Error('Invalid First Name');
+    this.firstnameValid=false;
+  }
+ 
+if(this.ownerDto.firstName.length<3){
+  this.myToast.Error('First Name must be at least 3 characters long.');
+  this.firstnameValid=false;
+}
 
+if(this.ownerDto.firstName.length>15){
+  this.myToast.Error('First Name cannot be more than 15 characters long');
+  this.firstnameValid=false;
+}}
+  else{
+    
+    this.myToast.Error('First Name Cannot Empty');
+    this.firstnameValid=false;
+  }
+  this.lastnameValid=true;
+  if(this.ownerDto.lastName){
+  var lastname =this.ownerDto.lastName.match('[a-zA-Z]*');
+  if(lastname["0"]!==this.ownerDto.lastName){
+    this.myToast.Error('Invalid Last Name');
+    this.lastnameValid=false;
+  }
+
+  if(this.ownerDto.lastName.length<3){
+    this.myToast.Error('Last Name must be at least 3 characters long.');
+    this.lastnameValid=false;}
+  if(this.ownerDto.lastName.length>15){
+    this.myToast.Error('Last Name cannot be more than 15 characters long');
+    this.lastnameValid=false;
+  }}
+
+  else{
+    
+    this.myToast.Error('Last Name Cannot Empty');
+    this.lastnameValid=false;
+  }
+this.nationalityValid=true;
+  if(this.ownerDto.nationality)
+  {
+  var nationality =this.ownerDto.nationality.match('[a-zA-Z]*');
+  if(nationality["0"]!==this.ownerDto.nationality){
+    this.myToast.Error('Invaild Nationality');
+    this.nationalityValid=false;
+  }}
+  else{
+    
+    this.myToast.Error('Nationality Cannot Empty');
+    this.nationalityValid=false;
+  }
+this.passportValid=true;
+  if(this.ownerDto.passportNo){
+  var passportNo =this.ownerDto.passportNo.match('[a-zA-Z0-9]*');
+  if(passportNo["0"]!==this.ownerDto.passportNo){
+    this.myToast.Error('Invaild Passport Number');
+    this.passportValid=false;
+  }
+  
+  if(this.ownerDto.passportNo.length>15){
+    this.myToast.Error('Passport Number cannot be more than 15 characters long');
+    this.passportValid=false;
+  }}
+  else{
+    
+    this.myToast.Error('Passport Number Cannot Empty');
+    this.passportValid=false;
+  }
+   this.passportexpiryValid=true;
+  if(this.ownerDto.passportExpiryDate)
+  {
+  var passportExpiryDate =this.ownerDto.passportExpiryDate.match('[0-9//]*');
+  if(passportExpiryDate["0"]!==this.ownerDto.passportExpiryDate){
+    this.myToast.Error('Invaild Passport Expiry Date');
+    this.passportexpiryValid=false;
+  }}
+
+  else{
+    
+    this.myToast.Error('Passport Expiry Date Cannot Empty');
+    this.passportexpiryValid=false;
+  }
+this.moblieValid=true;
+if(this.ownerDto.mobile){
+  var mobile =this.ownerDto.mobile.match('[0-9]*');
+  if(mobile["0"]!==this.ownerDto.mobile){
+    this.myToast.Error('Invaild Mobile Number');
+    this.moblieValid=false;
+  }
+  
+  if(this.ownerDto.mobile.length>16 && this.ownerDto.mobile.length<16){
+    this.myToast.Error('Please enter a 16 digit number');
+    this.moblieValid=false;
+  }}
+
+  else{
+    
+    this.myToast.Error('Mobile Number Cannot Empty');
+    this.moblieValid=false;
+  }
+this.emailValid=true;
+if(this.ownerDto.email){
+  var email =this.ownerDto.email.match('[^ @]*@[^ @]*');
+  if(email["0"]!==this.ownerDto.email){
+    this.myToast.Error('Invaild Email');
+    this.emailValid=false;
+  }}
+  else{
+    
+    this.myToast.Error('Email Cannot Empty');
+    this.emailValid=false;
+  }
+this.addressValid=true;
+if(this.ownerDto.address){
+  var address =this.ownerDto.address.match('[a-zA-Z0-9//_() & % # ~ , . "" ;:[] $ ^ @]*@[^ @]*');
+  if(email["0"]!==this.ownerDto.email){
+    this.myToast.Error('Invaild Address');
+    this.addressValid=false;
+  }}
+  else{
+    
+    this.myToast.Error('Address Cannot Empty');
+    this.addressValid=false;
+  }
+   this.middlenameValid=true;
+  if(this.ownerDto.middleName){
+    var middleName =this.ownerDto.middleName.match('[a-zA-Z]*');
+    if(middleName["0"]!==this.ownerDto.middleName){
+      this.myToast.Error('Invaild Middle Name');
+      this.middlenameValid=false;
+    }
+    if(this.ownerDto.middleName.length<3){
+      this.myToast.Error('Middle Name must be at least 3 characters long.');
+      this.middlenameValid=false;}
+    if(this.ownerDto.middleName.length>15){
+      this.myToast.Error('Middle Name cannot be more than 15 characters long');
+      this.middlenameValid=false;
+    }
+  
+  }
+    this.idcardexpiryValid=true;
+    if(this.ownerDto.idCardExpiration){
+      var idCardExpiration=this.ownerDto.idCardExpiration.match('[0-9//]*');
+      if(idCardExpiration["0"]!==this.ownerDto.idCardExpiration){
+        this.myToast.Error('Invaild Id Card Expiration');
+        this.idcardexpiryValid=false;
+      }}
+
+      this.idcardValid=true;
+    if(this.ownerDto.idCardNo){
+      var idCardNo=this.ownerDto.idCardNo.match('[0-9]*');
+      if(idCardNo["0"]!==this.ownerDto.idCardNo){
+        this.myToast.Error('Invaild Id Card ');
+        this.idcardValid=false;
+      }
+      if(this.ownerDto.idCardNo.length>18){
+      this.myToast.Error('ID Card Number cannot be more than 18 characters long.');
+      this.idcardValid=false;}}
+
+      this.phonenoValid=true;
+      if(this.ownerDto.telephone){
+        var telephone=this.ownerDto.telephone.match('[0-9]*');
+        if(idCardNo["0"]!==this.ownerDto.idCardNo){
+          this.myToast.Error('Invaild Phone Number ');
+          this.phonenoValid=false;
+        }
+        if(this.ownerDto.telephone.length>18){
+        this.myToast.Error('Please enter a 16 digit number.');
+        this.phonenoValid=false;}}
+
+        this.poboxValid=true;
+        if(this.ownerDto.pobox){
+          var pobox=this.ownerDto.pobox.match('[0-9]*');
+          if(pobox["0"]!==this.ownerDto.pobox){
+            this.myToast.Error('Invaild Phone Number ');
+            this.poboxValid=false;
+          }
+          if(this.ownerDto.pobox.length>18){
+          this.myToast.Error('P.O Box cannot be more than 18 characters long.');
+          this.poboxValid=false;}}
+
+          this.passportuploadValid=true;
+        if(this.passportFile==null){
+            this.myToast.Error('Passport Copy Upload required ');
+            this.passportuploadValid=false;
+        }
+        this.idcopyuploadValid=true;
+        if(this.idCopyFile==null){
+          this.myToast.Error('Id Copy Upload required ');
+          this.idcopyuploadValid=false;
+      }
+
+  if(this.firstnameValid==false||this.lastnameValid==false||this.nationalityValid==false||this.passportValid==false
+  ||this.passportexpiryValid==false||this.moblieValid==false||this.emailValid==false||this.addressValid==false
+  ||this.idcardValid==false||this.phonenoValid==false||this.poboxValid==false||this.idcardexpiryValid==false
+  ||this.passportuploadValid==false||this.idcopyuploadValid==false){
+     this.formValid=false;
+  }
+  else
+  {
+    this.formValid=true;
+  }
+
+  return this.formValid;
+  }
   addOwner(operation:string): string {
     if(this.token.getuserName()==null){
       this.myToast.Error('Status','Invalid Session');
       console.log('Invalid Session');
       this.router.navigate(['/login']);
       return "Invalid Session";
+    }
+    
+    if(this.validation()==true){
+
+    }
+    else {
+      return "Invalid Owner Form";
     }
     if(this.ownerDto.firstName==null || this.ownerDto.firstName==''&&operation=='next'){
       this.router.navigate(['/sellerPoaDetails/next']);
@@ -210,6 +448,7 @@ export class OwnerDetailsComponent implements AfterViewInit {
                   ); //end of owner save subscription
                      }//end of data of create property
                   );         //create property subscription
+                 // this.myToast.Success('Status','Owner Add Successfully');
                   return "Owner Add Successfully";
              }//end of pid if
              else{
@@ -283,6 +522,7 @@ editProcessHelper(operation:string):void{
           this.myToast.Success('Status','Owner Add Successfully');
           console.log(ownerData);
             this.dataSource.data = ownerData;
+           // this.ownerDto=ownerData[ownerData.length-1]
           }//end of ownerData
       );//end of subscription of getOwners
   }//end of else if
@@ -302,7 +542,8 @@ editProcessHelper(operation:string):void{
                   this.myToast.Success('Status','Owner Data Loaded Successfully');
                   console.log(ownerData);
                   this.dataSource.data = ownerData;
-              }//end of lenght condition
+                  this.ownerDto=ownerData[ownerData.length-1];
+                }//end of lenght condition
               else{
                 this.dataSource.data = ownerData;
                 this.atLeastOneOwner=false;

@@ -33,6 +33,27 @@ export class PropertyDetailsComponent implements OnInit {
   selectedScannedTitleDeed: FileList;
   scannedTitleDeedFile:File;
 
+  propertystatusValid=true;
+  plotnoValid=true;
+  titledeednoValid=true;
+  addressValid=true;
+  propertynoValid=true;
+  typeofpropertyValid=true;
+  projectnameValid=true;
+  areaValid=true;
+  unitValid=true;
+  typeofareaValid=true;
+  ownerassociationValid=true;
+  presentuseValid=true;
+  communitynoValid=true;
+  propertyapproxageValid=true;
+  descriptionValid=true;
+  bedroomValid=true;
+  bathroomValid=true;
+  scannedtitledeeduploadValid=true;
+  formValid=true;
+
+
   constructor(private myToast:ToasterServiceService,private sellerService:SellerService,private route:ActivatedRoute,private propertyService:PropertyService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
 
   ngOnInit() {
@@ -45,7 +66,7 @@ export class PropertyDetailsComponent implements OnInit {
     console.log(this.action);
     if(this.action=='back'||this.action=='next'){
         console.log('Inside Action');
-          this.getEnteredProperty();
+        this.getEnteredProperty();
       }//end of back if
   }
 
@@ -55,12 +76,238 @@ export class PropertyDetailsComponent implements OnInit {
     event.srcElement.value = null;
   }
 
+  validation():boolean {
+    console.log('Property Details Validations!');
+
+    this.propertystatusValid=true;
+    if(this.propertyDetailsDto.propertyStatus)
+    {
+    var propertystatus =this.propertyDetailsDto.propertyStatus.match('[a-zA-Z]*');
+    if(propertystatus["0"]!==this.propertyDetailsDto.propertyStatus){
+      this.myToast.Error('Invalid PropertyStatus');
+      this.propertystatusValid=false;
+    }}
+    else{
+      
+      this.myToast.Error('Property Status Cannot Empty');
+      this.propertystatusValid=false;
+    }
+
+    this.plotnoValid=true;
+    if(this.propertyDetailsDto.plotNo)
+    {
+    var plotno =this.propertyDetailsDto.plotNo.match('[a-zA-Z0-9]*');
+    if(plotno["0"]!==this.propertyDetailsDto.plotNo){
+      this.myToast.Error('Invalid Plot Number');
+      this.plotnoValid=false;
+    }}
+    else{
+      
+      this.myToast.Error('Plot Number Cannot Empty');
+      this.plotnoValid=false;
+    }
+
+    this.titledeednoValid=true;
+    if(this.propertyDetailsDto.titleDeedNo)
+    {
+      this.titledeednoValid=true;
+    }
+    else{
+      
+      this.myToast.Error('Title Deed Cannot Empty');
+      this.titledeednoValid=false;
+    }
+
+    this.addressValid=true;
+    if(this.propertyDetailsDto.address)
+    {
+   // var address =this.propertyDetailsDto.address.match('[a-zA-Z0-9_//"".,()%#$!`]*');
+      this.addressValid=true;
+    }
+    else{
+      
+      this.myToast.Error('Address Cannot Empty');
+      this.addressValid=false;
+    }
+
+    this.propertynoValid=true;
+    if(this.propertyDetailsDto.propertyNo)
+    {
+    var propertyno =this.propertyDetailsDto.propertyNo.match('[a-zA-Z0-9]*');
+    if(propertyno["0"]!==this.propertyDetailsDto.propertyNo){
+      this.myToast.Error('Invalid Property Number');
+      this.propertynoValid=false;
+    }}
+    else{
+      
+      this.myToast.Error('Property Number Cannot Empty');
+      this.propertynoValid=false;
+    }
+
+    this.typeofpropertyValid=true;
+    if(this.propertyDetailsDto.propertyType)
+    {
+      this.typeofpropertyValid=true;
+    }
+    else{
+      
+      this.myToast.Error('Property Type Cannot Empty');
+      this.typeofpropertyValid=false;
+    }
+
+    this.projectnameValid=true;
+    if(this.propertyDetailsDto.projectName)
+    {
+    var projectName=this.propertyDetailsDto.projectName.match('[a-zA-Z0-9]*');
+    if(projectName["0"]!==this.propertyDetailsDto.projectName){
+      this.myToast.Error('Invalid Project Name');
+      this.projectnameValid=false;
+    }}
+    else{
+      
+      this.myToast.Error('Project Name Cannot Empty');
+      this.projectnameValid=false;
+    }
+
+    this.areaValid=true;
+    if(this.propertyDetailsDto.area)
+    {
+    var area=this.propertyDetailsDto.area.match('[0-9.]*');
+    if(area["0"]!==this.propertyDetailsDto.area){
+      this.myToast.Error('Invalid Area');
+      this.areaValid=false;
+    }}
+    else{
+      
+      this.myToast.Error('Area Cannot Empty');
+      this.areaValid=false;
+    }
+
+    this.unitValid=true;
+    if(this.propertyDetailsDto.areaUnit)
+    {
+    var areaUnit=this.propertyDetailsDto.areaUnit.match('[a-z]*');
+    if(areaUnit["0"]!==this.propertyDetailsDto.areaUnit){
+      this.myToast.Error('Invalid Area Unit');
+      this.unitValid=false;
+    }}
+    else{
+      
+      this.myToast.Error('Area unit Cannot Empty');
+      this.unitValid=false;
+    }
+
+    this.typeofareaValid=true;
+    if(this.propertyDetailsDto.typeArea)
+    {
+      this.typeofareaValid=true;
+    }
+
+    this.ownerassociationValid=true;
+    if(this.propertyDetailsDto.ownerAssociationNo)
+    {
+      this.ownerassociationValid=true;
+    }
+
+    this.presentuseValid=true;
+    if(this.propertyDetailsDto.presentUse)
+    {
+    // var presentUse=this.propertyDetailsDto.presentUse.match('[a-zA-Z]*');
+    // if(presentUse["0"]!==this.propertyDetailsDto.typeArea){
+    //   this.myToast.Error('Invalid Present Use');
+      this.presentuseValid=true;
+    }
+
+    this.communitynoValid=true;
+    if(this.propertyDetailsDto.communityNo)
+    {
+      this.communitynoValid=true;
+    }
+
+    this.propertyapproxageValid=true;
+    if(this.propertyDetailsDto.communityNo)
+    {
+      this.propertyapproxageValid=true;
+    }
+   this.descriptionValid=true;
+   if(this.propertyDetailsDto.description)
+   {
+    if(this.propertyDetailsDto.description.length>200){
+      this.myToast.Error('Description cannot be more than 200 characters long');
+      this.descriptionValid=false;
+    }}
+
+    this.scannedtitledeeduploadValid=true;
+    if(this.scannedTitleDeedFile==null)
+    {
+      this.myToast.Error('Scanned Title Deed Upload Required');
+      this.scannedtitledeeduploadValid=false;
+
+    }
+
+    this.bedroomValid=true;
+    if(this.propertyDetailsDto.noOfBedrooms)
+    {
+    var noOfBedrooms=this.propertyDetailsDto.noOfBedrooms.match('[0-9]*');
+    if(noOfBedrooms["0"]!==this.propertyDetailsDto.noOfBedrooms){
+      this.myToast.Error('Invalid Bedroom Number');
+      this.bedroomValid=false;
+    }}
+
+    else{
+      this.myToast.Error('Bedrooms Cannot Empty');
+      this.bedroomValid=false;
+    }
+   
+    this.bathroomValid=true;
+    if(this.propertyDetailsDto.noOfBaths)
+    {
+    var noOfBaths=this.propertyDetailsDto.noOfBaths.match('[0-9]*');
+    if(noOfBaths["0"]!==this.propertyDetailsDto.noOfBaths){
+      this.myToast.Error('Invalid Bathroom Number');
+      this.bathroomValid=false;
+    }}
+
+    else{
+      this.myToast.Error('BathroomsCannot Empty');
+      this.bathroomValid=false;
+    }
+
+    if(this.propertystatusValid==false||this.plotnoValid==false||this.titledeednoValid==false||this.addressValid==false||
+    this.propertynoValid==false||this.typeofpropertyValid==false||this.projectnameValid==false||this.areaValid==false||
+    this.unitValid==false||this.descriptionValid==false||this.scannedtitledeeduploadValid==false)
+    {
+      this.formValid=false;
+    }
+
+    else{
+      this.formValid=true;
+    }
+
+
+
+    return this.formValid;
+  }
+
+
+  
+
+
   addPropertyDetails(): string {
     if(this.token.getuserName()==null){
       console.log('Invalid Session');
       this.myToast.Error('User Status','Invalid Session');
       return "Invalid Session";
     }
+
+    if(this.validation()==true){
+
+    }
+    else {
+      return "Invalid Property Details Form";
+    }
+
+
     window.sessionStorage.removeItem('AuthToken');
     this.authService.attemptAuth().subscribe(
       data => {

@@ -891,7 +891,11 @@
 .screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-block .upload-doc-div {
   height: 220px;
   width: 100%;
-  background-color: #a0a0a0;
+  border: 1px solid #e3e3e3;
+  padding: .25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
 .screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-block .upload-instuct {
@@ -2633,7 +2637,7 @@ input[type=number] {
   font-size: 18px;
   height: 45px !important;
   border-radius: 2px;
-  color: #7c7c7c;
+  color: #606060;
   -webkit-appearance: none;
   -moz-appearance: none;
   background: url("../../assets/images/dropdown-arrow.png") no-repeat 0 0;
@@ -2651,7 +2655,7 @@ input[type=number] {
   border-color: #e3e3e3;
 }
 .common-select.placeholder {
-  color: #7c7c7c;
+  color: #606060;
 }
 .adnvance-search-select.form-control {
   font-size: 14px;
