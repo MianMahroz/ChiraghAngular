@@ -87,6 +87,10 @@ export class PropertyFinancialsComponent implements OnInit {
     this.mortagestatusValid=false;
   }
   this.mortgageregValid=true;
+  if(this.propertyFinancialDTO.morgageStatus=="No"){
+    this.mortgageregValid=true;
+  }
+   else{
   if(this.propertyFinancialDTO.morgageRegNo)
   {
   var mortgageregNo =this.propertyFinancialDTO.morgageRegNo.match('[a-zA-Z0-9_]*');
@@ -97,10 +101,14 @@ export class PropertyFinancialsComponent implements OnInit {
 
   else{
     
-    this.myToast.Error('Mortgage Rrg.No Cannot Empty');
+    this.myToast.Error('Mortgage Reg.No Cannot Empty');
     this.mortgageregValid= false;
-  }
+  }}
   this.balanceamountValid=true;
+  if(this.propertyFinancialDTO.morgageStatus=="No"){
+    this.balanceamountValid=true;
+  }
+  else{
   if(this.propertyFinancialDTO.balanceAmount)
   {
   var stringbalanceamount = this.propertyFinancialDTO.balanceAmount.toString();
@@ -114,9 +122,13 @@ export class PropertyFinancialsComponent implements OnInit {
     
     this.myToast.Error('Balance Amount Cannot Empty');
     this.balanceamountValid= false;
-  }
-
+  }}
+  
   this.servicechargesValid=true;
+  if(this.propertyFinancialDTO.morgageStatus=="No"){
+    this.servicechargesValid=true;
+  }
+  else{
   if(this.propertyFinancialDTO.serviceCharge)
   {
   var stringservicecharge=this.propertyFinancialDTO.serviceCharge.toString();
@@ -130,9 +142,13 @@ export class PropertyFinancialsComponent implements OnInit {
     
     this.myToast.Error('Service Charges Cannot Empty');
     this.servicechargesValid= false;
-  }
+  }}
   
   this.paidamountValid=true;
+  if(this.propertyFinancialDTO.morgageStatus=="No"){
+    this.paidamountValid=true;
+  }
+else{
   if(this.propertyFinancialDTO.paidAmount)
   {
   var stringpaidamount=this.propertyFinancialDTO.paidAmount.toString();
@@ -140,18 +156,26 @@ export class PropertyFinancialsComponent implements OnInit {
   if(paidamount["0"]!==this.propertyFinancialDTO.paidAmount){
     this.myToast.Error('Invalid Paid Amount');
     this.paidamountValid=false;
-  }}
+  }}}
 
   this.bankValid=true;
+  if(this.propertyFinancialDTO.morgageStatus=="No"){
+    this.bankValid=true;
+  }
+  else{
   if(this.propertyFinancialDTO.bank)
   {
-  var bank =this.propertyFinancialDTO.bank.match('[a-zA-Z]*');
-  if(bank["0"]!==this.propertyFinancialDTO.bank){
-    this.myToast.Error('Invalid Bank');
-    this.bankValid=false;
+  // var bank =this.propertyFinancialDTO.bank.match('[a-zA-Z]*');
+  // if(bank["0"]!==this.propertyFinancialDTO.bank){
+  //   this.myToast.Error('Invalid Bank');
+    this.bankValid=true;
   }}
 
   this.mortgageamountValid=true;
+  if(this.propertyFinancialDTO.morgageStatus=="No"){
+    this.mortgageamountValid=true;
+  }
+  else{
   if(this.propertyFinancialDTO.morgageAmount)
   {
   var stringmorgageamount=this.propertyFinancialDTO.morgageAmount.toString();
@@ -159,9 +183,13 @@ export class PropertyFinancialsComponent implements OnInit {
   if(morgageamount["0"]!==this.propertyFinancialDTO.morgageAmount){
     this.myToast.Error('Invalid Morgage Amount');
     this.mortgageamountValid=false;
-  }}
+  }}}
 
   this.preclosureValid=true;
+  if(this.propertyFinancialDTO.morgageStatus=="No"){
+    this.preclosureValid=true;
+  }
+  else{
   if(this.propertyFinancialDTO.preClosureCharges)
   {
   var stringpreclosurecharges=this.propertyFinancialDTO.preClosureCharges.toString();
@@ -169,18 +197,26 @@ export class PropertyFinancialsComponent implements OnInit {
   if(preclosurecharges["0"]!==this.propertyFinancialDTO.preClosureCharges){
     this.myToast.Error('Invalid Pre Closure Charges');
     this.preclosureValid=false;
-  }}
+  }}}
 
   this.paymentscheduleValid=true;
+  if(this.propertyFinancialDTO.morgageStatus=="No"){
+    this.paymentscheduleValid=true;
+  }
+  else{
   if(this.propertyFinancialDTO.paymentSchedule)
   {
-  var paymentschedule = this.propertyFinancialDTO.paymentSchedule.match('[0-9_]*');
-  if(paymentschedule["0"]!==this.propertyFinancialDTO.paymentSchedule){
-    this.myToast.Error('Invalid Payment Schedule');
-    this.paymentscheduleValid=false;
+  // var paymentschedule = this.propertyFinancialDTO.paymentSchedule.match('[a-zA-Z]*');
+  // if(paymentschedule["0"]!==this.propertyFinancialDTO.paymentSchedule){
+  //   this.myToast.Error('Invalid Payment Schedule');
+    this.paymentscheduleValid=true;
   }}
 
   this.dateValid=true;
+  if(this.propertyFinancialDTO.morgageStatus=="No"){
+    this.dateValid=true;
+  }
+  else{
   if(this.propertyFinancialDTO.date)
   {
   var stringdate=this.propertyFinancialDTO.date.toString();
@@ -188,8 +224,13 @@ export class PropertyFinancialsComponent implements OnInit {
   if(date["0"]!==this.propertyFinancialDTO.date){
     this.myToast.Error('Invalid Date');
     this.dateValid=false;
-  }}
+  }}}
+  
   this.amountValid=true;
+  if(this.propertyFinancialDTO.morgageStatus=="No"){
+    this.amountValid=true;
+  }
+  else{
   if(this.propertyFinancialDTO.amount)
   {
   var stringamount=this.propertyFinancialDTO.amount.toString();
@@ -197,18 +238,22 @@ export class PropertyFinancialsComponent implements OnInit {
   if(amount["0"]!==this.propertyFinancialDTO.amount){
     this.myToast.Error('Invalid Amount');
     this.amountValid=false;
-  }}
+  }}}
 
   this.scannedTitleDeedValid=true;
+  if(this.propertyFinancialDTO.morgageStatus=="No"){
+    this.scannedTitleDeedValid=true;
+  }
+  else{
   if(this.morgageNocFile==null)
   {
     this.myToast.Error('Scanned Title Deed Required!');
     this.scannedTitleDeedValid=false;
-  }
+  }}
 
   if(this.mortagestatusValid==false||this.mortgageregValid==false||this.balanceamountValid==false
-  ||this.servicechargesValid==false||this.paidamountValid==false||this.bankValid==false||this.mortgageamountValid==false
-  ||this.preclosureValid==false||this.paymentscheduleValid==false||this.dateValid==false||this.amountValid==false||this.scannedTitleDeedValid==false){
+  ||this.servicechargesValid==false||this.paidamountValid==false||this.mortgageamountValid==false
+  ||this.preclosureValid==false||this.dateValid==false||this.amountValid==false||this.scannedTitleDeedValid==false){
 
     this.formValid=false;
   }

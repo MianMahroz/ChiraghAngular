@@ -57,6 +57,7 @@ export class PoaDetailsComponent implements AfterViewInit {
   formValid=true;
   passportuploadValid=true;
   idcopyuploadValid=true;
+  scannedPoaFileUploadValid=true;
 
 
   constructor(private myToast:ToasterServiceService,private route:ActivatedRoute,private sellerService:SellerService,private userService:UserService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
@@ -318,11 +319,17 @@ export class PoaDetailsComponent implements AfterViewInit {
             this.myToast.Error('Id Copy Upload required ');
             this.idcopyuploadValid=false;
         }
+
+           this.scannedPoaFileUploadValid=true;
+          if(this.scannedNotorizedPoaFile==null){
+            this.myToast.Error('Scanned Notorized Poa Upload required');
+            this.scannedPoaFileUploadValid=false;
+        }
   
     if(this.firstnameValid==false||this.lastnameValid==false||this.nationalityValid==false||this.passportValid==false
     ||this.passportexpiryValid==false||this.moblieValid==false||this.emailValid==false||this.addressValid==false
     ||this.idcardValid==false||this.phonenoValid==false||this.poboxValid==false||this.idcardexpiryValid==false
-    ||this.passportuploadValid==false||this.idcopyuploadValid==false){
+    ||this.passportuploadValid==false||this.idcopyuploadValid==false||this.scannedPoaFileUploadValid==false){
        this.formValid=false;
     }
     else

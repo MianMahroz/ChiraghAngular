@@ -82,6 +82,10 @@ export class PropertyRentalComponent implements OnInit {
   }
 
   this.ejarinoValid=true;
+  if(this.propertyRentalDetailDTO.isRented=='No'){
+    this.ejarinoValid=true;
+  }
+  else{
   if(this.propertyRentalDetailDTO.rentalEjariNo)
   {
   var stringejarino=this.propertyRentalDetailDTO.rentalEjariNo.toString();
@@ -95,13 +99,17 @@ export class PropertyRentalComponent implements OnInit {
     
     this.myToast.Error('Ejari Number Cannot Empty');
     this.ejarinoValid=false;
-  }
+  }}
 
   this.leasestartdateValid=true;
+  if(this.propertyRentalDetailDTO.isRented=='No'){
+    this.leasestartdateValid=true;
+  }
+  else{
   if(this.propertyRentalDetailDTO.leaseStartDate)
   {
   var stringleasestartdate=this.propertyRentalDetailDTO.leaseStartDate.toString();
-  var leasestart =stringleasestartdate.match('[0-9_]*');
+  var leasestart =stringleasestartdate.match('[0-9//]*');
   if(leasestart["0"]!==this.propertyRentalDetailDTO.leaseStartDate){
     this.myToast.Error('Invalid Lease Start Date');
     this.leasestartdateValid=false;
@@ -111,13 +119,17 @@ export class PropertyRentalComponent implements OnInit {
     
     this.myToast.Error('Lease Start Date Cannot Empty');
     this.leasestartdateValid=false;
-  }
+  }}
 
   this.leaseexpiryValid=true;
+  if(this.propertyRentalDetailDTO.isRented=='No'){
+    this.leaseexpiryValid=true;
+  }
+  else{
   if(this.propertyRentalDetailDTO.leaseExpiryDate)
   {
   var stringleaseexpirydate=this.propertyRentalDetailDTO.leaseExpiryDate.toString();
-  var leaseexpiry =stringleaseexpirydate.match('[0-9_]*');
+  var leaseexpiry =stringleaseexpirydate.match('[0-9//]*');
   if(leaseexpiry["0"]!==this.propertyRentalDetailDTO.leaseExpiryDate){
     this.myToast.Error('Invalid Lease Expiry Date');
     this.leaseexpiryValid=false;
@@ -127,9 +139,13 @@ export class PropertyRentalComponent implements OnInit {
     
     this.myToast.Error('Lease Expiry Date Cannot Empty');
     this.leaseexpiryValid=false;
-  }
+  }}
 
   this.tenantnameValid=true;
+  if(this.propertyRentalDetailDTO.isRented=='No'){
+    this.tenantnameValid=true;
+  }
+  else{
   if(this.propertyRentalDetailDTO.tenantName)
   {
   var stringtenantname=this.propertyRentalDetailDTO.tenantName.toString();
@@ -137,19 +153,27 @@ export class PropertyRentalComponent implements OnInit {
   if(tenantname["0"]!==this.propertyRentalDetailDTO.tenantName){
     this.myToast.Error('Invalid Tenant Name');
     this.tenantnameValid=false;
-  }}
+  }}}
 
   this.paymentstructureValid=true;
+  if(this.propertyRentalDetailDTO.isRented=='No'){
+    this.paymentstructureValid=true;
+  }
+  else{
   if(this.propertyRentalDetailDTO.paymentStructure)
   {
   var stringpaymentstructure=this.propertyRentalDetailDTO.paymentStructure.toString();
-  var paymentstructure =stringpaymentstructure.match('[a-zA-Z]*');
+  var paymentstructure =stringpaymentstructure.match('[0-9]*');
   if(paymentstructure["0"]!==this.propertyRentalDetailDTO.paymentStructure){
     this.myToast.Error('Invalid Payment Structure');
     this.paymentstructureValid=false;
-  }}
+  }}}
 
   this.annualrentValid=true;
+  if(this.propertyRentalDetailDTO.isRented=='No'){
+    this.annualrentValid=true;
+  }
+  else{
   if(this.propertyRentalDetailDTO.rentalAnnualRent)
   {
   var stringannualrent=this.propertyRentalDetailDTO.rentalAnnualRent.toString();
@@ -157,13 +181,17 @@ export class PropertyRentalComponent implements OnInit {
   if(annualrent["0"]!==this.propertyRentalDetailDTO.rentalAnnualRent){
     this.myToast.Error('Invalid Annual Rent');
     this.annualrentValid=false;
-  }}
+  }}}
 
  this.scannedTenentContractUploadValid=true;
- if(this.scannedTenantContract==null){
+ if(this.propertyRentalDetailDTO.isRented=='No'){
+  this.scannedTenentContractUploadValid=true;
+}
+else{
+ if(this.scannedTenentContractFile==null){
   this.myToast.Error('Invalid Scanned Tenent Contract');
   this.scannedTenentContractUploadValid=false;
- }
+ }}
 
   if(this.propertyrentedValid==false||this.ejarinoValid==false||this.leasestartdateValid==false||this.leaseexpiryValid==false
     ||this.tenantnameValid==false||this.paymentstructureValid==false||this.annualrentValid==false||this.scannedTenentContractUploadValid==false){

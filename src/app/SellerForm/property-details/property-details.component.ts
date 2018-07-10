@@ -147,11 +147,8 @@ export class PropertyDetailsComponent implements OnInit {
     this.typeofpropertyValid=true;
     if(this.propertyDetailsDto.propertyType)
     {
-    var propertytype =this.propertyDetailsDto.propertyType.match('[a-zA-Z]*');
-    if(propertytype["0"]!==this.propertyDetailsDto.propertyType){
-      this.myToast.Error('Invalid Property Type');
-      this.typeofpropertyValid=false;
-    }}
+      this.typeofpropertyValid=true;
+    }
     else{
       
       this.myToast.Error('Property Type Cannot Empty');
@@ -203,11 +200,8 @@ export class PropertyDetailsComponent implements OnInit {
     this.typeofareaValid=true;
     if(this.propertyDetailsDto.typeArea)
     {
-    var typeArea=this.propertyDetailsDto.typeArea.match('[a-zA-Z-]*');
-    if(typeArea["0"]!==this.propertyDetailsDto.typeArea){
-      this.myToast.Error('Invalid Type Of Area');
-      this.typeofareaValid=false;
-    }}
+      this.typeofareaValid=true;
+    }
 
     this.ownerassociationValid=true;
     if(this.propertyDetailsDto.ownerAssociationNo)
@@ -218,11 +212,11 @@ export class PropertyDetailsComponent implements OnInit {
     this.presentuseValid=true;
     if(this.propertyDetailsDto.presentUse)
     {
-    var presentUse=this.propertyDetailsDto.presentUse.match('[a-zA-Z-]*');
-    if(presentUse["0"]!==this.propertyDetailsDto.typeArea){
-      this.myToast.Error('Invalid Present Use');
-      this.presentuseValid=false;
-    }}
+    // var presentUse=this.propertyDetailsDto.presentUse.match('[a-zA-Z]*');
+    // if(presentUse["0"]!==this.propertyDetailsDto.typeArea){
+    //   this.myToast.Error('Invalid Present Use');
+      this.presentuseValid=true;
+    }
 
     this.communitynoValid=true;
     if(this.propertyDetailsDto.communityNo)
@@ -259,6 +253,11 @@ export class PropertyDetailsComponent implements OnInit {
       this.myToast.Error('Invalid Bedroom Number');
       this.bedroomValid=false;
     }}
+
+    else{
+      this.myToast.Error('Bedrooms Cannot Empty');
+      this.bedroomValid=false;
+    }
    
     this.bathroomValid=true;
     if(this.propertyDetailsDto.noOfBaths)
@@ -269,9 +268,14 @@ export class PropertyDetailsComponent implements OnInit {
       this.bathroomValid=false;
     }}
 
+    else{
+      this.myToast.Error('BathroomsCannot Empty');
+      this.bathroomValid=false;
+    }
+
     if(this.propertystatusValid==false||this.plotnoValid==false||this.titledeednoValid==false||this.addressValid==false||
     this.propertynoValid==false||this.typeofpropertyValid==false||this.projectnameValid==false||this.areaValid==false||
-    this.unitValid==false||this.typeofareaValid==false||this.presentuseValid==false||this.descriptionValid==false||this.scannedtitledeeduploadValid==false)
+    this.unitValid==false||this.descriptionValid==false||this.scannedtitledeeduploadValid==false)
     {
       this.formValid=false;
     }
