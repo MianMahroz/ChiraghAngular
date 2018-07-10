@@ -74,6 +74,7 @@ export class PropertyRentalComponent implements OnInit {
 
                           this.propertyRentalDetailDTO.tenancyContractUpload=data2.partialText;
                           this.propertyRentalDetailDTO.userName=this.token.getuserName();
+
                           this.propertyService.updatePropertyRental(this.propertyRentalDetailDTO).subscribe(
                             propertyRentalData=>{
                                     console.log(propertyRentalData);
@@ -88,7 +89,7 @@ export class PropertyRentalComponent implements OnInit {
                         else if(data2=='Data'){
                           this.myToast.Success('Property Status','Property Rental Details Added Successfully');
                           this. router.navigate(['/propertySuccess']);
-              
+
 
                         }//end of else of Data
             }//end of data2

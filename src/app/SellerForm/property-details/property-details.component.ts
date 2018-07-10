@@ -69,10 +69,10 @@ export class PropertyDetailsComponent implements OnInit {
         if(this.token.getToken()!=null){
             this.propertyDetailsDto.propertyId=this.token.getPropertyId();
             this.propertyDetailsDto.userName=this.token.getuserName();
+            this.propertyDetailsDto.isPropertyDetailsVerified='false';
             this.sellerService.saveDocument('/propertyId-'+this.token.getPropertyId()+'/','S-titleDeedCopy'+this.token.getPropertyId(),this.token.getuserName(),this.scannedTitleDeedFile).subscribe(
              fileNameData=>{
                console.log(fileNameData);
-
                if(fileNameData.type==3){
                     this.propertyDetailsDto.scannedTitleDeed=fileNameData.partialText;
                     this.propertyService.updateProperty(this.propertyDetailsDto).subscribe(
