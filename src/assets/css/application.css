@@ -699,6 +699,59 @@
   margin-top: -1.5rem;
   margin-bottom: 1rem;
 }
+.screen-wrapper .ud-body-row .tab-content .tab-pane .sub-prop-mutliple .dsahboard-tbl {
+  height: 400px;
+  overflow-y: auto;
+}
+.screen-wrapper .ud-body-row .tab-content .tab-pane .sub-prop-mutliple .dsahboard-tbl .scroll thead,
+.screen-wrapper .ud-body-row .tab-content .tab-pane .sub-prop-mutliple .dsahboard-tbl .scroll tbody {
+  display: block;
+  width: 100%;
+}
+.screen-wrapper .ud-body-row .tab-content .tab-pane .sub-prop-mutliple .dsahboard-tbl .scroll tr {
+  width: 100%;
+  display: flex;
+}
+.screen-wrapper .ud-body-row .tab-content .tab-pane .sub-prop-mutliple .dsahboard-tbl .scroll tr th {
+  white-space: nowrap;
+  border-bottom: none;
+}
+.screen-wrapper .ud-body-row .tab-content .tab-pane .sub-prop-mutliple .dsahboard-tbl .scroll tr td {
+  white-space: nowrap;
+}
+.screen-wrapper .ud-body-row .tab-content .tab-pane .sub-prop-mutliple .dsahboard-tbl .scroll tr td a {
+  cursor: pointer;
+}
+.screen-wrapper .ud-body-row .tab-content .tab-pane .sub-prop-mutliple .property-tabs .sub-links-wrap {
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+}
+.screen-wrapper .ud-body-row .tab-content .tab-pane .sub-prop-mutliple .property-tabs .sub-links-wrap li .sub-links {
+  margin-right: 1.5rem;
+  font-size: 1.375em;
+  color: #606060;
+}
+.screen-wrapper .ud-body-row .tab-content .tab-pane .sub-prop-mutliple .property-tabs .sub-links-wrap li .sub-links .active {
+  color: #212121;
+}
+.screen-wrapper .ud-body-row .tab-content .tab-pane .sub-prop-mutliple .property-sell-tabs-wrap {
+  border: none;
+}
+.screen-wrapper .ud-body-row .tab-content .tab-pane .sub-prop-mutliple .property-sell-tabs-wrap li {
+  margin-bottom: 1rem;
+  margin-left: -1px;
+  min-width: 150px;
+  text-align: center;
+}
+.screen-wrapper .ud-body-row .tab-content .tab-pane .sub-prop-mutliple .property-sell-tabs-wrap li .sub-prop-links {
+  border: 1px solid #e3e3e3;
+  padding: 10px 20px;
+  display: block;
+}
+.screen-wrapper .ud-body-row .tab-content .tab-pane .sub-prop-mutliple .property-sell-tabs-wrap li .sub-prop-links.active {
+  background-color: #f8f8f8;
+}
 .screen-wrapper .ud-body-row .tab-content .tab-pane .sub-prop-mutliple .sub-prop-tabs {
   border: 0px;
 }

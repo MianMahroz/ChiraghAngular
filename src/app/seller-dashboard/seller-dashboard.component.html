@@ -55,8 +55,8 @@
                         </ul>
                       </li>
                       <li>
-                        <a class="ud-seller" data-toggle="collapse" href="#sell-links">Sell</a>
-                        <ul class="collapse sub-links-wrap" id="sell-links">
+                        <a id="propertyLink" class="ud-seller" data-toggle="tab" href="#sell-links">Sell</a>
+                        <ul class="collapse open-prop-details sub-links-wrap">
                           <!-- <li *ngFor="let propertyArr of userData">
                             <a class="sub-links" data-toggle="collapse" href="#/sell-sub-links/{{propertyArr.propertyId}}">Property ID :{{propertyArr.propertyId}} </a>
                             <ul id="/sell-sub-links/{{propertyArr.property_Id}}" class="collapse">
@@ -68,7 +68,7 @@
                               </li>
                             </ul>
                           </li> -->
-                          <li class="openSchedule" *ngFor="let propertyArr of userData">
+                          <li *ngFor="let propertyArr of userData">
                             <a class="sub-links" data-toggle="collapse" (click)="setCurrentProperty(propertyArr)" href="#sell-sub-links/{{propertyArr.projectName}}">{{propertyArr.projectName}}, {{propertyArr.typeArea}}</a>
                             <ul class="collapse sub-prop-links-wrap" id="sell-sub-links/{{propertyArr.projectName}}">
                               <li><a data-toggle="tab" (click)="refreshPoaHtml()" href="#owner-detail" class="sub-prop-links">- Owners details</a></li>
@@ -631,6 +631,29 @@
                     </div>
                   </div>
                   <!-- Seller property details -->
+                  <div id="sell-links" class="row tab-pane fade sign-in-row">
+                    <div class="offset-md-1 col-md-10 sub-prop-mutliple">
+                      <div class="tab-heading">Properties</div>
+                      <div *ngFor="let propertyArr of userData" class="row bid-active-row">
+                        <div id="sell-sub-links/{{propertyArr.projectName}}" (click)="setCurrentProperty(propertyArr)" class="col-md-12 bid-active-col">
+                          <div class="bid-active-block py-3">
+                            <div class="row">
+                              <div class="col-md-4 bid-active-img">
+                                <div class="prop-thumbnail"></div>
+                              </div>
+                              <div class="col-md-4 bid-active-decript">
+                                <div class="prop-descript-wrap">
+                                  <div class="prop-title">{{propertyArr.projectName}}</div>
+                                  <div class="prop-id">{{propertyArr.propertyId}}</div>
+                                  <div class="prop-id">{{propertyArr.address}}</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>      
                   <div id="owner-detail" class="row tab-pane fade sign-in-row">
                     <div class="offset-md-1 col-md-10 sub-prop-mutliple">
                       <ul *ngIf="currentProperty" class="nav nav-tabs sub-prop-tabs">
@@ -746,47 +769,6 @@
                             <p *ngIf="ownerDto.passportCopyUpload"><br>{{ownerDto.passportCopyUpload}}</p> -->
                           </div>
                         </form>
-                      </div>
-                    </div>
-                  </div>
-                  <div id="propertyTab" class="row sign-in-row d-none">
-                    <div class="tab-heading">Scheduled</div>
-                    <div class="row bid-active-row">
-                      <div class="col-md-12 bid-active-col">
-                        <div class="bid-active-block py-3">
-                          <div class="row">
-                            <div class="col-md-4 bid-active-img">
-                              <div class="prop-thumbnail"></div>
-                            </div>
-                            <div class="col-md-4 bid-active-decript">
-                              <div class="prop-descript-wrap">
-                                <div class="prop-title">Property Title</div>
-                                <div class="prop-id">Property ID</div>
-                                <div class="prop-id">Address</div>
-                              </div>
-                              <div class="prop-amount">
-                                <span class="amount">AED 50,000,00</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="bid-active-block py-3">
-                          <div class="row">
-                            <div class="col-md-4 bid-active-img">
-                              <div class="prop-thumbnail"></div>
-                            </div>
-                            <div class="col-md-4 bid-active-decript">
-                              <div class="prop-descript-wrap">
-                                <div class="prop-title">Property Title</div>
-                                <div class="prop-id">Property ID</div>
-                                <div class="prop-id">Address</div>
-                              </div>
-                              <div class="prop-amount">
-                                <span class="amount">AED 50,000,00</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
                       </div>
                     </div>
                   </div>
