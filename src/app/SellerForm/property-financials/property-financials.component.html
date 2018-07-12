@@ -69,10 +69,10 @@
                   </div>
                   <div class="row">
                     <div class="col-md-6 form-label-group mb-4">
-                      <label class="form-label">Bank</label>
+                      <label class="form-label">Financing</label>
                       <select [(ngModel)]="propertyFinancialDTO.bank" ng-disabled="all" name="bank" class="form-control common-select placeholder" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
-                        <option>Islamic</option>
-                        <option>World Bank</option>
+                        <option *ngFor="let obj of bankList">{{obj}}</option>
+                        <!-- <option>World Bank</option> -->
                       </select>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
@@ -94,9 +94,7 @@
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label">Payment Schedule</label>
                       <select  [(ngModel)]="propertyFinancialDTO.paymentSchedule" name="paymentSchedule" class="form-control common-select placeholder" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
-                        <option>Quarterly</option>
-                        <option>Monthly</option>
-                        <option>Yearly</option>
+                        <option *ngFor="let obj of paymentScheduleList">{{obj}}</option>
                       </select>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">

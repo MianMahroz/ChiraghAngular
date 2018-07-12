@@ -119,6 +119,8 @@ export class PoaDetailsComponent implements AfterViewInit {
 
   validation():boolean {
     console.log('POA  Validations!');
+    this.ownerDto.passportExpiryDate='2018-01-01';
+  this.ownerDto.idCardExpiration='2018-02-01';
     //var firstname1=this.ownerDto.firstName;
     //this.requiredfieldsArray['firstNamevalidation',this.ownerDto.lastName,this.ownerDto.nationality,this.ownerDto.passportNo,this.ownerDto.passportExpiryDate,this.ownerDto.mobile,this.ownerDto.email,this.ownerDto.address];
     this.firstnameValid=true;
@@ -130,18 +132,18 @@ export class PoaDetailsComponent implements AfterViewInit {
       this.myToast.Error('Invalid First Name');
       this.firstnameValid=false;
     }
-   
+
   if(this.ownerDto.firstName.length<3){
     this.myToast.Error('First Name must be at least 3 characters long.');
     this.firstnameValid=false;
   }
-  
+
   if(this.ownerDto.firstName.length>15){
     this.myToast.Error('First Name cannot be more than 15 characters long');
     this.firstnameValid=false;
   }}
     else{
-      
+
       this.myToast.Error('First Name Cannot Empty');
       this.firstnameValid=false;
     }
@@ -152,7 +154,7 @@ export class PoaDetailsComponent implements AfterViewInit {
       this.myToast.Error('Invalid Last Name');
       this.lastnameValid=false;
     }
-  
+
     if(this.ownerDto.lastName.length<3){
       this.myToast.Error('Last Name must be at least 3 characters long.');
       this.lastnameValid=false;}
@@ -160,9 +162,9 @@ export class PoaDetailsComponent implements AfterViewInit {
       this.myToast.Error('Last Name cannot be more than 15 characters long');
       this.lastnameValid=false;
     }}
-  
+
     else{
-      
+
       this.myToast.Error('Last Name Cannot Empty');
       this.lastnameValid=false;
     }
@@ -175,7 +177,7 @@ export class PoaDetailsComponent implements AfterViewInit {
       this.nationalityValid=false;
     }}
     else{
-      
+
       this.myToast.Error('Nationality Cannot Empty');
       this.nationalityValid=false;
     }
@@ -186,30 +188,30 @@ export class PoaDetailsComponent implements AfterViewInit {
       this.myToast.Error('Invaild Passport Number');
       this.passportValid=false;
     }
-    
+
     if(this.ownerDto.passportNo.length>15){
       this.myToast.Error('Passport Number cannot be more than 15 characters long');
       this.passportValid=false;
     }}
     else{
-      
+
       this.myToast.Error('Passport Number Cannot Empty');
       this.passportValid=false;
     }
   this.passportexpiryValid=true;
-    if(this.ownerDto.passportExpiryDate)
-    {
-    var passportExpiryDate =this.ownerDto.passportExpiryDate.match('[0-9-//]*');
-    if(passportExpiryDate["0"]!==this.ownerDto.passportExpiryDate){
-      this.myToast.Error('Invaild Passport Expiry Date');
-      this.passportexpiryValid=false;
-    }}
-  
-    else{
-      
-      this.myToast.Error('Passport Expiry Date Cannot Empty');
-      this.passportexpiryValid=false;
-    }
+    // if(this.ownerDto.passportExpiryDate)
+    // {
+    // var passportExpiryDate =this.ownerDto.passportExpiryDate.match('[0-9-//]*');
+    // if(passportExpiryDate["0"]!==this.ownerDto.passportExpiryDate){
+    //   this.myToast.Error('Invaild Passport Expiry Date');
+    //   this.passportexpiryValid=false;
+    // }}
+
+    // else{
+
+    //   this.myToast.Error('Passport Expiry Date Cannot Empty');
+    //   this.passportexpiryValid=false;
+    // }
   this.moblieValid=true;
   if(this.ownerDto.mobile){
     var mobile =this.ownerDto.mobile.match('[0-9]*');
@@ -217,14 +219,14 @@ export class PoaDetailsComponent implements AfterViewInit {
       this.myToast.Error('Invaild Mobile Number');
       this.moblieValid=false;
     }
-    
+
     if(this.ownerDto.mobile.length>16 && this.ownerDto.mobile.length<16){
       this.myToast.Error('Please enter a 16 digit number');
       this.moblieValid=false;
     }}
-  
+
     else{
-      
+
       this.myToast.Error('Mobile Number Cannot Empty');
       this.moblieValid=false;
     }
@@ -236,7 +238,7 @@ export class PoaDetailsComponent implements AfterViewInit {
       this.emailValid=false;
     }}
     else{
-      
+
       this.myToast.Error('Email Cannot Empty');
       this.emailValid=false;
     }
@@ -248,7 +250,7 @@ export class PoaDetailsComponent implements AfterViewInit {
       this.addressValid=false;
     }}
     else{
-      
+
       this.myToast.Error('Address Cannot Empty');
       this.addressValid=false;
     }
@@ -266,16 +268,16 @@ export class PoaDetailsComponent implements AfterViewInit {
         this.myToast.Error('Middle Name cannot be more than 15 characters long');
         this.middlenameValid=false;
       }
-    
+
     }
       this.idcardexpiryValid=true;
-      if(this.ownerDto.idCardExpiration){
-        var idCardExpiration=this.ownerDto.idCardExpiration.match('[0-9//]*');
-        if(idCardExpiration["0"]!==this.ownerDto.idCardExpiration){
-          this.myToast.Error('Invaild Id Card Expiration');
-          this.idcardexpiryValid=false;
-        }}
-  
+      // if(this.ownerDto.idCardExpiration){
+      //   var idCardExpiration=this.ownerDto.idCardExpiration.match('[0-9//]*');
+      //   if(idCardExpiration["0"]!==this.ownerDto.idCardExpiration){
+      //     this.myToast.Error('Invaild Id Card Expiration');
+      //     this.idcardexpiryValid=false;
+      //   }}
+
         this.idcardValid=true;
       if(this.ownerDto.idCardNo){
         var idCardNo=this.ownerDto.idCardNo.match('[0-9]*');
@@ -286,7 +288,7 @@ export class PoaDetailsComponent implements AfterViewInit {
         if(this.ownerDto.idCardNo.length>18){
         this.myToast.Error('ID Card Number cannot be more than 18 characters long.');
         this.idcardValid=false;}}
-  
+
         this.phonenoValid=true;
         if(this.ownerDto.telephone){
           var telephone=this.ownerDto.telephone.match('[0-9]*');
@@ -297,7 +299,7 @@ export class PoaDetailsComponent implements AfterViewInit {
           if(this.ownerDto.telephone.length>18){
           this.myToast.Error('Please enter a 16 digit number.');
           this.phonenoValid=false;}}
-  
+
           this.poboxValid=true;
           if(this.ownerDto.pobox){
             var pobox=this.ownerDto.pobox.match('[0-9]*');
@@ -308,7 +310,7 @@ export class PoaDetailsComponent implements AfterViewInit {
             if(this.ownerDto.pobox.length>18){
             this.myToast.Error('P.O Box cannot be more than 18 characters long.');
             this.poboxValid=false;}}
-  
+
             this.passportuploadValid=true;
           if(this.passportFile==null){
               this.myToast.Error('Passport Copy Upload required ');
@@ -325,10 +327,10 @@ export class PoaDetailsComponent implements AfterViewInit {
             this.myToast.Error('Scanned Notorized Poa Upload required');
             this.scannedPoaFileUploadValid=false;
         }
-  
+
     if(this.firstnameValid==false||this.lastnameValid==false||this.nationalityValid==false||this.passportValid==false
-    ||this.passportexpiryValid==false||this.moblieValid==false||this.emailValid==false||this.addressValid==false
-    ||this.idcardValid==false||this.phonenoValid==false||this.poboxValid==false||this.idcardexpiryValid==false
+    ||this.moblieValid==false||this.emailValid==false||this.addressValid==false
+    ||this.idcardValid==false||this.phonenoValid==false||this.poboxValid==false
     ||this.passportuploadValid==false||this.idcopyuploadValid==false||this.scannedPoaFileUploadValid==false){
        this.formValid=false;
     }
@@ -336,7 +338,7 @@ export class PoaDetailsComponent implements AfterViewInit {
     {
       this.formValid=true;
     }
-  
+
     return this.formValid;
     }
 
@@ -346,7 +348,7 @@ export class PoaDetailsComponent implements AfterViewInit {
       console.log('Invalid Session');
       return "Invalid Session";
     }
-    
+
     if(this.validation()==true){
 
     }
@@ -396,6 +398,7 @@ export class PoaDetailsComponent implements AfterViewInit {
                                               //  console.log(data4.partialText);
                                                this.ownerDto.scannedNotorizedCopy= data4.partialText;
                                                this.ownerDto.userName=this.token.getuserName();
+                                               this.ownerDto.isPersonalDetailsVerified='false';
                           this.sellerService.updateOwner(this.ownerDto).subscribe(
                                                 data5=>{
                                                   console.log('Update owner');

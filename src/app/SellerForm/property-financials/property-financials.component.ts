@@ -15,6 +15,11 @@ import { SellerService } from '../../shared/seller.service';
 })
 export class PropertyFinancialsComponent implements OnInit {
 
+
+  bankList:any[];
+  paymentScheduleList:any[];
+
+
   async ngAfterViewInit() {
 		await this.loadScript('./assets/js/common.js');
 	}
@@ -60,6 +65,95 @@ export class PropertyFinancialsComponent implements OnInit {
         console.log('Inside Action');
           this.getPropertyFinancialDetails();
       }//end of back if
+
+      this.bankList=[
+       'Abu Dhabi Commercial Bank',
+       'Abu Dhabi Islamic Bank',
+       'Ajman Bank',
+       'Al Ahli Bank of Kuwait',
+       'Al Hilal Bank',
+       'Al Khaliji (France) S. A.',
+       'Al Masraf',
+       'Arab African International Bank',
+       'Arab Bank PLC',
+       'Arab Emirates Investment Bank',
+       'Bank Meli Iran',
+       'Bank of Baroda',
+       'Bank of Sharjah',
+       'Bank Saderat Iran',
+       'Barclays',
+       'Blom Bank France',
+       'BNP Paribas',
+       'Citibank',
+       'Commercial Bank International',
+       'Commercial Bank of Dubai',
+       'Credit Agricole - Corporate and Investment Bank',
+       'Doha Bank',
+       'Dubai Bank',
+       'Dubai Islamic Bank',
+       'El Nilein Bank',
+       'Emirates Bank International / meBank',
+       'Emirates Islamic Bank',
+       'Emirates NBD Bank',
+       'First Gulf Bank',
+       'Habib Bank Ltd.',
+       'HSBC Bank Middle East',
+       'Invest Bank',
+       'Janata Bank',
+       'Lloyds TSB Bank',
+       'Mashreq Bank',
+       'National Bank of Abu Dhabi',
+       'National Bank of Bahrain',
+       'National Bank of Fujairah',
+       'National Bank of Kuwait.',
+       'National Bank of Oman',
+       'National Bank of Ras Al Khaimah (RAKBank)',
+       'National Bank of Sharjah',
+       'National Bank of Umm Al Quwain',
+       'Noor Islamic Bank',
+       'Rafidain Bank',
+       'RAKBANK',
+       'Royal Bank of Scotland (RBS) (formerly ABN Amro)',
+       'SAMBA',
+       'Sharjah Islamic Bank',
+       'Standard Chartered Bank',
+       'The Royal Bank of Scotland N.V.',
+       'Union National Bank',
+       'United Arab Bank',
+       'United Bank Limited'
+      ];
+      this.paymentScheduleList=[
+        '1',
+        '2',
+        '3',
+        '4',
+        '5',
+        '6',
+        '7',
+        '8',
+        '9',
+        '10',
+        '11',
+        '12',
+        '13',
+        '14',
+        '15',
+        '16',
+        '17',
+        '18',
+        '19',
+        '20',
+        '21',
+        '22',
+        '23',
+        '24',
+        '25',
+        '26',
+        '27',
+        '28',
+        '29',
+        '30'
+       ];
   }
 
 
@@ -82,7 +176,7 @@ export class PropertyFinancialsComponent implements OnInit {
   }}
 
   else{
-    
+
     this.myToast.Error('Mortgage Status Cannot Empty');
     this.mortagestatusValid=false;
   }
@@ -100,7 +194,7 @@ export class PropertyFinancialsComponent implements OnInit {
   }}
 
   else{
-    
+
     this.myToast.Error('Mortgage Reg.No Cannot Empty');
     this.mortgageregValid= false;
   }}
@@ -119,11 +213,11 @@ export class PropertyFinancialsComponent implements OnInit {
   }}
 
   else{
-    
+
     this.myToast.Error('Balance Amount Cannot Empty');
     this.balanceamountValid= false;
   }}
-  
+
   this.servicechargesValid=true;
   if(this.propertyFinancialDTO.morgageStatus=="No"){
     this.servicechargesValid=true;
@@ -139,11 +233,11 @@ export class PropertyFinancialsComponent implements OnInit {
   }}
 
   else{
-    
+
     this.myToast.Error('Service Charges Cannot Empty');
     this.servicechargesValid= false;
   }}
-  
+
   this.paidamountValid=true;
   if(this.propertyFinancialDTO.morgageStatus=="No"){
     this.paidamountValid=true;
@@ -225,7 +319,7 @@ else{
     this.myToast.Error('Invalid Date');
     this.dateValid=false;
   }}}
-  
+
   this.amountValid=true;
   if(this.propertyFinancialDTO.morgageStatus=="No"){
     this.amountValid=true;

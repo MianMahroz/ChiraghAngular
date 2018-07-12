@@ -158,6 +158,8 @@ export class OwnerDetailsComponent implements AfterViewInit {
    }
 
 validation():boolean {
+  this.ownerDto.passportExpiryDate='2018-01-01';
+  this.ownerDto.idCardExpiration='2018-02-01';
   console.log('Owner Validations!');
   //var firstname1=this.ownerDto.firstName;
   //this.requiredfieldsArray['firstNamevalidation',this.ownerDto.lastName,this.ownerDto.nationality,this.ownerDto.passportNo,this.ownerDto.passportExpiryDate,this.ownerDto.mobile,this.ownerDto.email,this.ownerDto.address];
@@ -169,7 +171,7 @@ validation():boolean {
     this.myToast.Error('Invalid First Name');
     this.firstnameValid=false;
   }
- 
+
 if(this.ownerDto.firstName.length<3){
   this.myToast.Error('First Name must be at least 3 characters long.');
   this.firstnameValid=false;
@@ -180,7 +182,7 @@ if(this.ownerDto.firstName.length>15){
   this.firstnameValid=false;
 }}
   else{
-    
+
     this.myToast.Error('First Name Cannot Empty');
     this.firstnameValid=false;
   }
@@ -201,7 +203,7 @@ if(this.ownerDto.firstName.length>15){
   }}
 
   else{
-    
+
     this.myToast.Error('Last Name Cannot Empty');
     this.lastnameValid=false;
   }
@@ -214,7 +216,7 @@ this.nationalityValid=true;
     this.nationalityValid=false;
   }}
   else{
-    
+
     this.myToast.Error('Nationality Cannot Empty');
     this.nationalityValid=false;
   }
@@ -225,30 +227,27 @@ this.passportValid=true;
     this.myToast.Error('Invaild Passport Number');
     this.passportValid=false;
   }
-  
+
   if(this.ownerDto.passportNo.length>15){
     this.myToast.Error('Passport Number cannot be more than 15 characters long');
     this.passportValid=false;
   }}
   else{
-    
+
     this.myToast.Error('Passport Number Cannot Empty');
     this.passportValid=false;
   }
    this.passportexpiryValid=true;
-  if(this.ownerDto.passportExpiryDate)
-  {
-  var passportExpiryDate =this.ownerDto.passportExpiryDate.match('[0-9//]*');
-  if(passportExpiryDate["0"]!==this.ownerDto.passportExpiryDate){
-    this.myToast.Error('Invaild Passport Expiry Date');
-    this.passportexpiryValid=false;
-  }}
-
-  else{
-    
-    this.myToast.Error('Passport Expiry Date Cannot Empty');
-    this.passportexpiryValid=false;
-  }
+   console.log(this.ownerDto.passportExpiryDate);
+  // if(this.ownerDto.passportExpiryDate)
+  // {
+  //   this.passportexpiryValid=true;
+  //   // this.myToast.Success('Invaild Passport Expiry Date');
+  // }
+  // else{
+  //   this.myToast.Error('Passport Expiry Date Cannot Empty');
+  //   this.passportexpiryValid=false;
+  // }
 this.moblieValid=true;
 if(this.ownerDto.mobile){
   var mobile =this.ownerDto.mobile.match('[0-9]*');
@@ -256,14 +255,14 @@ if(this.ownerDto.mobile){
     this.myToast.Error('Invaild Mobile Number');
     this.moblieValid=false;
   }
-  
+
   if(this.ownerDto.mobile.length>16 && this.ownerDto.mobile.length<16){
     this.myToast.Error('Please enter a 16 digit number');
     this.moblieValid=false;
   }}
 
   else{
-    
+
     this.myToast.Error('Mobile Number Cannot Empty');
     this.moblieValid=false;
   }
@@ -275,7 +274,7 @@ if(this.ownerDto.email){
     this.emailValid=false;
   }}
   else{
-    
+
     this.myToast.Error('Email Cannot Empty');
     this.emailValid=false;
   }
@@ -287,7 +286,7 @@ if(this.ownerDto.address){
     this.addressValid=false;
   }}
   else{
-    
+
     this.myToast.Error('Address Cannot Empty');
     this.addressValid=false;
   }
@@ -305,15 +304,18 @@ if(this.ownerDto.address){
       this.myToast.Error('Middle Name cannot be more than 15 characters long');
       this.middlenameValid=false;
     }
-  
+
   }
+  console.log(this.ownerDto.idCardExpiration);
     this.idcardexpiryValid=true;
-    if(this.ownerDto.idCardExpiration){
-      var idCardExpiration=this.ownerDto.idCardExpiration.match('[0-9//]*');
-      if(idCardExpiration["0"]!==this.ownerDto.idCardExpiration){
-        this.myToast.Error('Invaild Id Card Expiration');
-        this.idcardexpiryValid=false;
-      }}
+    // if(this.ownerDto.idCardExpiration){
+    //   this.idcardexpiryValid=true;
+    // }
+    // else{
+    //   this.myToast.Error('Invaild Id Card Expiration');
+    //   this.idcardexpiryValid=false;
+
+    // }
 
       this.idcardValid=true;
     if(this.ownerDto.idCardNo){
@@ -360,11 +362,12 @@ if(this.ownerDto.address){
       }
 
   if(this.firstnameValid==false||this.lastnameValid==false||this.nationalityValid==false||this.passportValid==false
-  ||this.passportexpiryValid==false||this.moblieValid==false||this.emailValid==false||this.addressValid==false
-  ||this.idcardValid==false||this.phonenoValid==false||this.poboxValid==false||this.idcardexpiryValid==false
+  ||this.moblieValid==false||this.emailValid==false||this.addressValid==false
+  ||this.idcardValid==false||this.phonenoValid==false||this.poboxValid==false
   ||this.passportuploadValid==false||this.idcopyuploadValid==false){
      this.formValid=false;
   }
+
   else
   {
     this.formValid=true;
@@ -379,7 +382,7 @@ if(this.ownerDto.address){
       this.router.navigate(['/login']);
       return "Invalid Session";
     }
-    
+
     if(this.validation()==true){
 
     }

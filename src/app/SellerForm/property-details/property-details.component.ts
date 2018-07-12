@@ -52,7 +52,7 @@ export class PropertyDetailsComponent implements OnInit {
   bathroomValid=true;
   scannedtitledeeduploadValid=true;
   formValid=true;
-
+  paymentScheduleList:any[];
 
   constructor(private myToast:ToasterServiceService,private sellerService:SellerService,private route:ActivatedRoute,private propertyService:PropertyService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
 
@@ -68,6 +68,21 @@ export class PropertyDetailsComponent implements OnInit {
         console.log('Inside Action');
         this.getEnteredProperty();
       }//end of back if
+      this.paymentScheduleList=[
+        '1',
+        '2',
+        '3',
+        '4',
+        '5',
+        '6',
+        '7',
+        '8',
+        '9',
+        '10',
+        '11',
+        '12',
+        '13'
+       ];
   }
 
   selectScannedTitleDeed(event) {
@@ -88,7 +103,7 @@ export class PropertyDetailsComponent implements OnInit {
       this.propertystatusValid=false;
     }}
     else{
-      
+
       this.myToast.Error('Property Status Cannot Empty');
       this.propertystatusValid=false;
     }
@@ -102,7 +117,7 @@ export class PropertyDetailsComponent implements OnInit {
       this.plotnoValid=false;
     }}
     else{
-      
+
       this.myToast.Error('Plot Number Cannot Empty');
       this.plotnoValid=false;
     }
@@ -113,7 +128,7 @@ export class PropertyDetailsComponent implements OnInit {
       this.titledeednoValid=true;
     }
     else{
-      
+
       this.myToast.Error('Title Deed Cannot Empty');
       this.titledeednoValid=false;
     }
@@ -125,7 +140,7 @@ export class PropertyDetailsComponent implements OnInit {
       this.addressValid=true;
     }
     else{
-      
+
       this.myToast.Error('Address Cannot Empty');
       this.addressValid=false;
     }
@@ -139,7 +154,7 @@ export class PropertyDetailsComponent implements OnInit {
       this.propertynoValid=false;
     }}
     else{
-      
+
       this.myToast.Error('Property Number Cannot Empty');
       this.propertynoValid=false;
     }
@@ -150,7 +165,7 @@ export class PropertyDetailsComponent implements OnInit {
       this.typeofpropertyValid=true;
     }
     else{
-      
+
       this.myToast.Error('Property Type Cannot Empty');
       this.typeofpropertyValid=false;
     }
@@ -164,7 +179,7 @@ export class PropertyDetailsComponent implements OnInit {
       this.projectnameValid=false;
     }}
     else{
-      
+
       this.myToast.Error('Project Name Cannot Empty');
       this.projectnameValid=false;
     }
@@ -178,7 +193,7 @@ export class PropertyDetailsComponent implements OnInit {
       this.areaValid=false;
     }}
     else{
-      
+
       this.myToast.Error('Area Cannot Empty');
       this.areaValid=false;
     }
@@ -192,7 +207,7 @@ export class PropertyDetailsComponent implements OnInit {
       this.unitValid=false;
     }}
     else{
-      
+
       this.myToast.Error('Area unit Cannot Empty');
       this.unitValid=false;
     }
@@ -258,7 +273,7 @@ export class PropertyDetailsComponent implements OnInit {
       this.myToast.Error('Bedrooms Cannot Empty');
       this.bedroomValid=false;
     }
-   
+
     this.bathroomValid=true;
     if(this.propertyDetailsDto.noOfBaths)
     {
@@ -290,7 +305,7 @@ export class PropertyDetailsComponent implements OnInit {
   }
 
 
-  
+
 
 
   addPropertyDetails(): string {

@@ -65,7 +65,7 @@ export class PropertyRentalComponent implements OnInit {
 
   validation():boolean {
     console.log('Property Finanical Validations!');
-    
+
   this.propertyrentedValid=true;
   if(this.propertyRentalDetailDTO.isRented)
   {
@@ -76,7 +76,7 @@ export class PropertyRentalComponent implements OnInit {
   }}
 
   else{
-    
+
     this.myToast.Error('Property Rented Cannot Empty');
     this.propertyrentedValid=false;
   }
@@ -96,7 +96,7 @@ export class PropertyRentalComponent implements OnInit {
   }}
 
   else{
-    
+
     this.myToast.Error('Ejari Number Cannot Empty');
     this.ejarinoValid=false;
   }}
@@ -116,7 +116,7 @@ export class PropertyRentalComponent implements OnInit {
   }}
 
   else{
-    
+
     this.myToast.Error('Lease Start Date Cannot Empty');
     this.leasestartdateValid=false;
   }}
@@ -136,7 +136,7 @@ export class PropertyRentalComponent implements OnInit {
   }}
 
   else{
-    
+
     this.myToast.Error('Lease Expiry Date Cannot Empty');
     this.leaseexpiryValid=false;
   }}
@@ -235,7 +235,8 @@ else{
 
                           this.propertyRentalDetailDTO.tenancyContractUpload=data2.partialText;
                           this.propertyRentalDetailDTO.userName=this.token.getuserName();
-
+                          this.propertyRentalDetailDTO.sellerUserName=this.token.getuserName();
+                          this.propertyRentalDetailDTO.status='inprocess';
                           this.propertyService.updatePropertyRental(this.propertyRentalDetailDTO).subscribe(
                             propertyRentalData=>{
                                     console.log(propertyRentalData);

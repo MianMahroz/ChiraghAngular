@@ -1,6 +1,6 @@
 $(document).ready(function(){
   $(window).scrollTop(0);
-  
+
   $('#ucSlider .carousel-item').each(function(){
     var next = $(this).next();
     if (!next.length) {
@@ -49,11 +49,13 @@ $(document).ready(function(){
       next.children(':first-child').clone().appendTo($(this));
     }
   });
-  
-  var date_input=$('input[for="date"]'); 
+
+
+
+  var date_input=$('input[for="date"]');
   var container=$('.bootstrap-iso').length>0 ? $('.bootstrap-iso').parent() : "body";
   var options={
-    format: 'yyyy/mm/dd',
+    format: 'dd/mm/yyyy',
     container: container,
     orientation: "top right",
     todayHighlight: true,
@@ -156,7 +158,7 @@ $(document).ready(function(){
   $('.close').click(function(){
     $('body').removeClass('overflow-hidden');
   });
-  
+
   $("#personalInfoEdit").click(function(){
     $("#personalInfoForm").removeClass('disabled');
     $(this).hide();
@@ -193,16 +195,16 @@ $(document).ready(function(){
      $(this).removeClass('placeholder');
     }
   });
-  
+
   $('.ud-sidebar > ul > li').click(function(){
     $('a').removeClass('active show');
     $(this).addClass('active show');
-  }); 
+  });
 
   $('.ud-nav-item').on('click', function(){
     $('li').removeClass('active');
     $(this).addClass('active');
-  }); 
+  });
 
   $('.thumbnail').click(function(){
     $('.modal-body').empty();
