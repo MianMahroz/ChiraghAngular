@@ -709,6 +709,64 @@
         .sub-prop-mutliple {
           margin-top: -1.5rem;
           margin-bottom: 1rem;
+          .dsahboard-tbl {
+            height: 400px;
+            overflow-y: auto; 
+            .scroll {
+              thead, tbody {
+                display: block;
+                width: 100%;
+              }
+              tr {
+                width: 100%;
+                display: flex;
+                th {
+                  white-space: nowrap;
+                  border-bottom: none;
+                }
+                td {
+                  white-space: nowrap;
+                  a {
+                    cursor: pointer;
+                  }
+                }
+              }
+            }
+          }
+          .property-tabs {
+            .sub-links-wrap {
+              padding-left: 0;
+              list-style: none;
+              display: flex;
+              li {
+                .sub-links {
+                  margin-right: 1.5rem;
+                  font-size: 1.375em;
+                  color: @secondary-color;
+                  .active {
+                    color: @primary-color;
+                  }
+                }
+              }
+            }
+          }
+          .property-sell-tabs-wrap {
+            border: none;
+            li {
+              margin-bottom: 1rem;
+              margin-left: -1px;
+              min-width: 150px;
+              text-align: center; 
+              .sub-prop-links {
+                border: 1px solid @seprator-color;
+                padding: 10px 20px;
+                display: block;
+                &.active {
+                  background-color: @light-mono-color;
+                }
+              }  
+            }
+          }
           .sub-prop-tabs {
             border: 0px;
             li {

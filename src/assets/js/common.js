@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
   $(window).scrollTop(0);
 
   $('#ucSlider .carousel-item').each(function(){
@@ -148,9 +149,6 @@ $(document).ready(function(){
     }
   });
 
-  $('.openSchedule').click(function(){
-    $('#propertyTab').removeClass('d-none');
-  });
 
   $('.btn-view-images').click(function(){
     $('body').addClass('overflow-hidden');
@@ -200,6 +198,11 @@ $(document).ready(function(){
     $('a').removeClass('active show');
     $(this).addClass('active show');
   });
+
+  $('#propertyLink').click(function() {
+    $('.open-prop-details').removeClass('collapse');
+  });
+  
 
   $('.ud-nav-item').on('click', function(){
     $('li').removeClass('active');
