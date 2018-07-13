@@ -149,15 +149,24 @@ export class OwnerDetailsComponent implements AfterViewInit {
       this.passportFile=this.selectedPassport.item(0);
       event.srcElement.value = null;
       // console.log(this.passportFile);
+      this.ownerDto.passportCopyUpload=this.passportFile.name;
     }
     selectIdCopy(event) {
       this.selectedIdCopy = event.target.files;
       this.idCopyFile=this.selectedIdCopy.item(0);
       // console.log(this.idCopyFile);
       event.srcElement.value = null;
+      this.ownerDto.scannedIdCopy=this.idCopyFile.name;
    }
 
 validation():boolean {
+
+//   if(this.idCopyFile==null && this.passportFile==null)
+//   {
+//     this.myToast.Warning('Enter Different Details For Another Owner');
+//      return false;
+//   }
+// else{
   console.log('Owner Validations!');
   //var firstname1=this.ownerDto.firstName;
   //this.requiredfieldsArray['firstNamevalidation',this.ownerDto.lastName,this.ownerDto.nationality,this.ownerDto.passportNo,this.ownerDto.passportExpiryDate,this.ownerDto.mobile,this.ownerDto.email,this.ownerDto.address];
@@ -236,9 +245,12 @@ this.passportValid=true;
     this.passportValid=false;
   }
    this.passportexpiryValid=true;
+   console.log(this.ownerDto.passportExpiryDate);
+   console.log(this.ownerDto.idCardExpiration);
   if(this.ownerDto.passportExpiryDate)
   {
-  var passportExpiryDate =this.ownerDto.passportExpiryDate.match('[0-9//]*');
+  var stringdate=this.ownerDto.passportExpiryDate.toString();
+  var passportExpiryDate =stringdate.match('[0-9-]*');
   if(passportExpiryDate["0"]!==this.ownerDto.passportExpiryDate){
     this.myToast.Error('Invaild Passport Expiry Date');
     this.passportexpiryValid=false;
@@ -309,7 +321,8 @@ if(this.ownerDto.address){
   }
     this.idcardexpiryValid=true;
     if(this.ownerDto.idCardExpiration){
-      var idCardExpiration=this.ownerDto.idCardExpiration.match('[0-9//]*');
+      var datestring=this.ownerDto.idCardExpiration.toString();
+      var idCardExpiration=datestring.match('[0-9-]*');
       if(idCardExpiration["0"]!==this.ownerDto.idCardExpiration){
         this.myToast.Error('Invaild Id Card Expiration');
         this.idcardexpiryValid=false;
@@ -349,12 +362,12 @@ if(this.ownerDto.address){
           this.poboxValid=false;}}
 
           this.passportuploadValid=true;
-        if(this.passportFile==null){
+        if(this.ownerDto.passportCopyUpload==null||this.ownerDto.passportCopyUpload==undefined){
             this.myToast.Error('Passport Copy Upload required ');
             this.passportuploadValid=false;
         }
         this.idcopyuploadValid=true;
-        if(this.idCopyFile==null){
+        if(this.ownerDto.scannedIdCopy==null||this.ownerDto.scannedIdCopy==undefined){
           this.myToast.Error('Id Copy Upload required ');
           this.idcopyuploadValid=false;
       }
@@ -372,6 +385,7 @@ if(this.ownerDto.address){
 
   return this.formValid;
   }
+
   addOwner(operation:string): string {
     if(this.token.getuserName()==null){
       this.myToast.Error('Status','Invalid Session');
@@ -380,15 +394,18 @@ if(this.ownerDto.address){
       return "Invalid Session";
     }
     
+   
     if(this.validation()==true){
 
     }
     else {
       return "Invalid Owner Form";
     }
+
     if(this.ownerDto.firstName==null || this.ownerDto.firstName==''&&operation=='next'){
       this.router.navigate(['/sellerPoaDetails/next']);
     }
+
     window.sessionStorage.removeItem('AuthToken');
     this.authService.attemptAuth().subscribe(
       data => {
@@ -426,7 +443,8 @@ if(this.ownerDto.address){
                                         //  console.log(data3.partialText);
 
                                         this.ownerDto.scannedIdCopy= data3.partialText;
-                  this.sellerService.updateOwner(this.ownerDto).subscribe(
+                
+                                        this.sellerService.updateOwner(this.ownerDto).subscribe(
                                           data5=>{
                                             console.log('Update owner');
                                             console.log(data5);
@@ -460,7 +478,7 @@ if(this.ownerDto.address){
                 console.log(' owner');
                 console.log(data1);
 
-                this.ownerDto.propertySellerId=data1;
+            this.ownerDto.propertySellerId=data1;
             this.sellerService.saveDocument('/propertyId-'+this.token.getPropertyId()+'/',data1+',Sowner-passport'+this.token.getPropertyId(),this.token.getuserName(),this.passportFile).subscribe(
                  data2=>{
                    console.log(data2);
@@ -497,7 +515,8 @@ if(this.ownerDto.address){
 
         }//end of if
      }//end of outer data predicate
-    );//end of oauth service subscription
+    );
+  //end of oauth service subscription
     return "";
   }//end of loginChiraghUser
 
@@ -519,10 +538,10 @@ editProcessHelper(operation:string):void{
       this.sellerService.getOwners(this.token.getPropertyId(),this.token.getuserName()).subscribe(
          ownerData=>{
           this.atLeastOneOwner=true;
-          this.myToast.Success('Status','Owner Add Successfully');
+          this.myToast.Success('Status','Add Another Owner Details');
           console.log(ownerData);
             this.dataSource.data = ownerData;
-           // this.ownerDto=ownerData[ownerData.length-1]
+            //this.ownerDto=ownerData[ownerData.length-1]
           }//end of ownerData
       );//end of subscription of getOwners
   }//end of else if
@@ -585,3 +604,4 @@ ownerVerified(): void {
 
 
 }//end of class
+

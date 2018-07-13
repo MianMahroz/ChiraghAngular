@@ -199,7 +199,8 @@ export class PoaDetailsComponent implements AfterViewInit {
   this.passportexpiryValid=true;
     if(this.ownerDto.passportExpiryDate)
     {
-    var passportExpiryDate =this.ownerDto.passportExpiryDate.match('[0-9-//]*');
+    var stringdate=this.ownerDto.passportExpiryDate.toString();
+    var passportExpiryDate =stringdate.match('[0-9-]*');
     if(passportExpiryDate["0"]!==this.ownerDto.passportExpiryDate){
       this.myToast.Error('Invaild Passport Expiry Date');
       this.passportexpiryValid=false;
@@ -270,7 +271,8 @@ export class PoaDetailsComponent implements AfterViewInit {
     }
       this.idcardexpiryValid=true;
       if(this.ownerDto.idCardExpiration){
-        var idCardExpiration=this.ownerDto.idCardExpiration.match('[0-9//]*');
+        var datestring=this.ownerDto.idCardExpiration.toString();
+        var idCardExpiration=datestring.match('[0-9-]*');
         if(idCardExpiration["0"]!==this.ownerDto.idCardExpiration){
           this.myToast.Error('Invaild Id Card Expiration');
           this.idcardexpiryValid=false;
@@ -466,7 +468,7 @@ editProcessHelper(operation:string):void{
                this.atLeastOnePoa=true;
                console.log(ownerData);
                this.dataSource.data = ownerData;
-               this.ownerDto=ownerData[length-1];
+               this.ownerDto=ownerData[ownerData.length-1];
                this.myToast.Success('Status','POA data loaded Successfully');
             }//end of if on ownerdata check
              }//end of ownerData
