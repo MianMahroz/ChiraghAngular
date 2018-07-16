@@ -14,4 +14,5 @@ export class PropertyRentalDetailDTO{
     sellerUserName:string;
     dateReceived:Date;
     isPropertyRentalDetailsVerified:string;
+    status:string;
   }
