@@ -24,6 +24,7 @@
                         </div>
                         <div [hidden]="!userFirstName.errors.minlength">
                           First Name must be at least 3 characters long.
+                          <!-- {{showValidationToast('First Name is required!')}} -->
                         </div>
                         <div [hidden]="!userFirstName.errors.maxlength">
                           First Name cannot be more than 15 characters long.

@@ -402,7 +402,6 @@ export class PoaDetailsComponent implements AfterViewInit {
                           this.sellerService.updateOwner(this.ownerDto).subscribe(
                                                 data5=>{
                                                   console.log('Update owner');
-
                                                   console.log(data5);
                                                  this.editProcessHelper(operation);
                                                 }//end of update owner data

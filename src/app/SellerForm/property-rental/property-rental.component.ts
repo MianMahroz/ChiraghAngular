@@ -45,7 +45,7 @@ export class PropertyRentalComponent implements OnInit {
   action:string;
 
   ngOnInit() {
-    // this.token.savePropertyId('111');
+    // this.token.savePropertyId('182');
     // this.token.saveUserName('BesterCapital2');
     this.action='';
     this.action=this.route.snapshot.params['action'];
@@ -102,44 +102,44 @@ export class PropertyRentalComponent implements OnInit {
   }}
 
   this.leasestartdateValid=true;
-  if(this.propertyRentalDetailDTO.isRented=='No'){
-    this.leasestartdateValid=true;
-  }
-  else{
-  if(this.propertyRentalDetailDTO.leaseStartDate)
-  {
-  var stringleasestartdate=this.propertyRentalDetailDTO.leaseStartDate.toString();
-  var leasestart =stringleasestartdate.match('[0-9//]*');
-  if(leasestart["0"]!==this.propertyRentalDetailDTO.leaseStartDate){
-    this.myToast.Error('Invalid Lease Start Date');
-    this.leasestartdateValid=false;
-  }}
+  // if(this.propertyRentalDetailDTO.isRented=='No'){
+  //   this.leasestartdateValid=true;
+  // }
+  // else{
+  // if(this.propertyRentalDetailDTO.leaseStartDate)
+  // {
+  // var stringleasestartdate=this.propertyRentalDetailDTO.leaseStartDate.toString();
+  // var leasestart =stringleasestartdate.match('[0-9//]*');
+  // if(leasestart["0"]!==this.propertyRentalDetailDTO.leaseStartDate){
+  //   this.myToast.Error('Invalid Lease Start Date');
+  //   this.leasestartdateValid=true;
+  // }}
 
-  else{
+  // else{
 
-    this.myToast.Error('Lease Start Date Cannot Empty');
-    this.leasestartdateValid=false;
-  }}
+  //   this.myToast.Error('Lease Start Date Cannot Empty');
+  //   this.leasestartdateValid=false;
+  // }}
 
   this.leaseexpiryValid=true;
-  if(this.propertyRentalDetailDTO.isRented=='No'){
-    this.leaseexpiryValid=true;
-  }
-  else{
-  if(this.propertyRentalDetailDTO.leaseExpiryDate)
-  {
-  var stringleaseexpirydate=this.propertyRentalDetailDTO.leaseExpiryDate.toString();
-  var leaseexpiry =stringleaseexpirydate.match('[0-9//]*');
-  if(leaseexpiry["0"]!==this.propertyRentalDetailDTO.leaseExpiryDate){
-    this.myToast.Error('Invalid Lease Expiry Date');
-    this.leaseexpiryValid=false;
-  }}
+  // if(this.propertyRentalDetailDTO.isRented=='No'){
+  //   this.leaseexpiryValid=true;
+  // }
+  // else{
+  // if(this.propertyRentalDetailDTO.leaseExpiryDate)
+  // {
+  // var stringleaseexpirydate=this.propertyRentalDetailDTO.leaseExpiryDate.toString();
+  // var leaseexpiry =stringleaseexpirydate.match('[0-9//]*');
+  // if(leaseexpiry["0"]!==this.propertyRentalDetailDTO.leaseExpiryDate){
+  //   this.myToast.Error('Invalid Lease Expiry Date');
+  //   this.leaseexpiryValid=true;
+  // }}
 
-  else{
+  // else{
 
-    this.myToast.Error('Lease Expiry Date Cannot Empty');
-    this.leaseexpiryValid=false;
-  }}
+  //   this.myToast.Error('Lease Expiry Date Cannot Empty');
+  //   this.leaseexpiryValid=false;
+  // }}
 
   this.tenantnameValid=true;
   if(this.propertyRentalDetailDTO.isRented=='No'){
@@ -193,7 +193,7 @@ else{
   this.scannedTenentContractUploadValid=false;
  }}
 
-  if(this.propertyrentedValid==false||this.ejarinoValid==false||this.leasestartdateValid==false||this.leaseexpiryValid==false
+  if(this.propertyrentedValid==false||this.ejarinoValid==false
     ||this.tenantnameValid==false||this.paymentstructureValid==false||this.annualrentValid==false||this.scannedTenentContractUploadValid==false){
 
       this.formValid=false;
@@ -249,6 +249,23 @@ else{
                         );//end of subscription of property financial Details
                         }//end of if of type==3 check
                         else if(data2=='Data'){
+
+
+                          this.propertyRentalDetailDTO.tenancyContractUpload=data2.partialText;
+                          this.propertyRentalDetailDTO.userName=this.token.getuserName();
+                          this.propertyRentalDetailDTO.sellerUserName=this.token.getuserName();
+                          this.propertyRentalDetailDTO.status='inprocess';
+                          this.propertyService.updatePropertyRental(this.propertyRentalDetailDTO).subscribe(
+                            propertyRentalData=>{
+                                    console.log(propertyRentalData);
+                                    if(propertyRentalData.msg=='Property Rental Info Updated Successfully'){
+                                      this.myToast.Success('Property Status','Property Rental Details Added Successfully');
+                                      this. router.navigate(['/propertySuccess']);
+                                    }
+
+                                  }//end of propertyFinancialData
+                        );//end of subscription of property financial Details
+
                           this.myToast.Success('Property Status','Property Rental Details Added Successfully');
                           this. router.navigate(['/propertySuccess']);
 

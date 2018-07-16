@@ -155,8 +155,16 @@ export class OwnerDetailsComponent implements AfterViewInit {
       this.idCopyFile=this.selectedIdCopy.item(0);
       // console.log(this.idCopyFile);
       event.srcElement.value = null;
+      
    }
 
+   showValidationToast(msg:string):void{
+    this.myToast.Warning('',msg);
+   }
+
+   applyValidation():void{
+
+   }
 validation():boolean {
   this.ownerDto.passportExpiryDate='2018-01-01';
   this.ownerDto.idCardExpiration='2018-02-01';

@@ -57,7 +57,7 @@ export class RegisterComponent  {
           this.userService.register(this.registerdto).subscribe(
             data1=>{
               console.log(data1);
-              
+
 
                   if(data1.msg=="User Name Already Exist!! Try Another User Name"){
                     this.myToast.Error('Status',data1.msg);
@@ -93,9 +93,9 @@ export class RegisterComponent  {
 
                                if(data2.msg='Email Sent'){
                                 this.myToast.Info('Status',data2.msg);
-                                
-                                                     
-                                
+                                this.router.navigate(['confirmEmail']);
+
+
                                }
                       }//end of email data
                     );//end of email subscription
