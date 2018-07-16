@@ -11,8 +11,8 @@ export class OwnerDetails{
 	address:string;
 	nationality:string;
 	idCardNo:string;
-	idCardExpiration:string;
-	passportExpiryDate:string;
+	idCardExpiration:Date;
+	passportExpiryDate:Date;
 	email:string;
 	pobox:string;
 	passportCopyUpload:string;

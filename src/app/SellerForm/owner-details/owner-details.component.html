@@ -96,7 +96,7 @@
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label">ID Card Expiry Date</label>
-                      <input type="text" for="date" class="form-control  form-input" [(ngModel)]="ownerDto.idCardExpiration" name="idCardExpiration">
+                      <input type="date"  class="form-control  form-input" [(ngModel)]="ownerDto.idCardExpiration" name="idCardExpiration">
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label required-input-label">Passport Number</label>
@@ -115,11 +115,7 @@
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label required-input-label">Passport Expiry Date</label>
-                      <input type="text" for="date" class="form-control  form-input" [(ngModel)]="ownerDto.passportExpiryDate" name="passportExpiryDate" required>
-                      <!-- <input type="date" [(ngModel)]="ownerDto.passportExpiryDate"   name="passportExpiryDate" required class="form-control"> -->
-                      <div class="input-group-addon">
-                          <span class="glyphicon glyphicon-th"></span>
-                      </div>
+                      <input type="date" class="form-control  form-input" [(ngModel)]="ownerDto.passportExpiryDate" name="passportExpiryDate" required>
                     </div>
 
                   </div>
