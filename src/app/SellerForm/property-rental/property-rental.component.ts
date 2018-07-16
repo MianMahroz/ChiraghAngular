@@ -60,6 +60,7 @@ export class PropertyRentalComponent implements OnInit {
   scannedTenantContract(event) {
     this.selectedscannedTenentContract = event.target.files;
     this.scannedTenentContractFile=this.selectedscannedTenentContract.item(0);
+    this.propertyRentalDetailDTO.tenancyContractUpload=this.scannedTenentContractFile.name;
     event.srcElement.value = null;
   }
 

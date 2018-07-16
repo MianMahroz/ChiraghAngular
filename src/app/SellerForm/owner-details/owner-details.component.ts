@@ -150,6 +150,7 @@ export class OwnerDetailsComponent implements AfterViewInit {
       event.srcElement.value = null;
       // console.log(this.passportFile);
       this.ownerDto.passportCopyUpload=this.passportFile.name;
+    
     }
     selectIdCopy(event) {
       this.selectedIdCopy = event.target.files;

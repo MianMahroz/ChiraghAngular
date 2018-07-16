@@ -65,11 +65,14 @@ import { AdminsignoutComponent } from './admin/adminsignout/adminsignout.compone
 import { AdminSellerDetailsComponent } from './admin/admin-seller-details/admin-seller-details.component';
 import 'hammerjs';
 import 'mousetrap';
-
+import { ImageViewerModule } from 'ng2-image-viewer';
 import {ModalGalleryModule} from 'angular-modal-gallery';
 // enableProdMode();
+
+
 @NgModule({
   declarations: [
+  
     AppComponent,
     UserComponent,
     LoginComponent,
@@ -117,6 +120,7 @@ import {ModalGalleryModule} from 'angular-modal-gallery';
   ],
   imports: [
 
+    ImageViewerModule,
     ModalGalleryModule.forRoot(),
     ToastModule.forRoot(),
     CommonModule,
@@ -141,4 +145,5 @@ import {ModalGalleryModule} from 'angular-modal-gallery';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+   }

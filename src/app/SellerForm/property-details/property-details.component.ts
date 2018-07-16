@@ -73,6 +73,7 @@ export class PropertyDetailsComponent implements OnInit {
   selectScannedTitleDeed(event) {
     this.selectedScannedTitleDeed = event.target.files;
     this.scannedTitleDeedFile=this.selectedScannedTitleDeed.item(0);
+    this.propertyDetailsDto.scannedTitleDeed=this.scannedTitleDeedFile.name;
     event.srcElement.value = null;
   }
 

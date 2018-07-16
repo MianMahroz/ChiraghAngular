@@ -66,6 +66,7 @@ export class PropertyFinancialsComponent implements OnInit {
   selectMorgageNoc(event) {
     this.selectedMorgageNoc = event.target.files;
     this.morgageNocFile=this.selectedMorgageNoc.item(0);
+    this.propertyFinancialDTO.morgageNoc=this.morgageNocFile.name;
     event.srcElement.value = null;
   }
 

@@ -55,10 +55,12 @@ export class SellerDashboardComponent implements OnInit {
   rentTenancyContract:string;
 
   images: Image[]=[] ;
-
+  userName:string;
   ngOnInit() {
     this.getUserDashboardData();
     this.getDashboardPersonalInfo();
+    if(this.token.getuserName()!=null)
+    this.userName=this.token.getuserName();
     
   }
 
@@ -167,13 +169,17 @@ getPersonalInfoImages():void{
 selectPassport(event) {
   this.selectedPassport = event.target.files;
   this.passportFile=this.selectedPassport.item(0);
+  this.personalinfoDTO.scannedPassportCopyUpload=this.passportFile.name;
+  this.UpdatePersonalInfo();
   event.srcElement.value = null;
+
   // console.log(this.passportFile);
 }
 selectIdCopy(event) {
   this.selectedIdCopy = event.target.files;
   this.idCopyFile=this.selectedIdCopy.item(0);
-  // console.log(this.idCopyFile);
+  this.personalinfoDTO.scannedIdCopyUpload=this.idCopyFile.name;
+  this.UpdatePersonalInfo();
   event.srcElement.value = null;
 }
  
@@ -232,6 +238,8 @@ selectIdCopy(event) {
     console.log(this.personalinfoDTO.scannedIdCopyUpload);
     this.userPassportCopy=''+this.token.getImagepath()+'ChiraghUser-'+this.personalinfoDTO.userId+'/'+this.personalinfoDTO.scannedPassportCopyUpload;
     this.userIdCopy=''+this.token.getImagepath()+'ChiraghUser-'+this.personalinfoDTO.userId+'/'+this.personalinfoDTO.scannedIdCopyUpload;
+   // this.personalinfoDTO.scannedIdCopyUpload=this.userPassportCopy;
+    //this.personalinfoDTO.scannedIdCopyUpload=this.userIdCopy;
     // this.getPersonalInfoImages();
    }
 

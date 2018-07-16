@@ -102,16 +102,20 @@ export class PoaDetailsComponent implements AfterViewInit {
   selectPassport(event) {
     this.selectedPassport = event.target.files;
     this.passportFile=this.selectedPassport.item(0);
+    this.ownerDto.passportCopyUpload=this.passportFile.name;
     event.srcElement.value = null;
+    
   }
   selectIdCopy(event) {
     this.selectedIdCopy = event.target.files;
     this.idCopyFile=this.selectedIdCopy.item(0);
+    this.ownerDto.scannedIdCopy=this.idCopyFile.name;
     event.srcElement.value = null;
   }
   selectScannedPoa(event) {
     this.selectedScannedPoa = event.target.files;
     this.scannedNotorizedPoaFile=this.selectedScannedPoa.item(0);
+    this.ownerDto.scannedNotorizedCopy=this.scannedNotorizedPoaFile.name;
     event.srcElement.value = null;
   }
 
