@@ -32,6 +32,7 @@ export class PropertyDetailsComponent implements OnInit {
   action:string;
   selectedScannedTitleDeed: FileList;
   scannedTitleDeedFile:File;
+  scannedtitledeeduploadPath:string;
 
   propertystatusValid=true;
   plotnoValid=true;
@@ -54,12 +55,12 @@ export class PropertyDetailsComponent implements OnInit {
   formValid=true;
   paymentScheduleList:any[];
 
+
   constructor(private myToast:ToasterServiceService,private sellerService:SellerService,private route:ActivatedRoute,private propertyService:PropertyService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
 
   ngOnInit() {
-    //for testing purpose
-    // this.token.saveUserName('BesterCapital2');
-    // this.token.savePropertyId('111');
+    
+    this.scannedtitledeeduploadPath='../ChiraghDocuments/propertyId-'+this.propertyDetailsDto.propertyId+'/'+this.propertyDetailsDto.scannedTitleDeed;
 
     this.action='';
     this.action=this.route.snapshot.params['action'];
@@ -84,13 +85,14 @@ export class PropertyDetailsComponent implements OnInit {
         '13'
        ];
   }
-
+  
   selectScannedTitleDeed(event) {
     this.selectedScannedTitleDeed = event.target.files;
     this.scannedTitleDeedFile=this.selectedScannedTitleDeed.item(0);
+    this.propertyDetailsDto.scannedTitleDeed=this.scannedTitleDeedFile.name;
     event.srcElement.value = null;
   }
-
+  
   validation():boolean {
     console.log('Property Details Validations!');
 
@@ -253,7 +255,7 @@ export class PropertyDetailsComponent implements OnInit {
     }}
 
     this.scannedtitledeeduploadValid=true;
-    if(this.scannedTitleDeedFile==null)
+    if(this.propertyDetailsDto.scannedTitleDeed||this.propertyDetailsDto.scannedTitleDeed==undefined)
     {
       this.myToast.Error('Scanned Title Deed Upload Required');
       this.scannedtitledeeduploadValid=false;
@@ -303,10 +305,6 @@ export class PropertyDetailsComponent implements OnInit {
 
     return this.formValid;
   }
-
-
-
-
 
   addPropertyDetails(): string {
     if(this.token.getuserName()==null){

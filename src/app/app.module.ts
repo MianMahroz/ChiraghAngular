@@ -65,10 +65,12 @@ import { AdminsignoutComponent } from './admin/adminsignout/adminsignout.compone
 import { AdminSellerDetailsComponent } from './admin/admin-seller-details/admin-seller-details.component';
 import 'hammerjs';
 import 'mousetrap';
-
-
 import {ModalGalleryModule} from 'angular-modal-gallery';
+import { Ng2FileSizeModule } from 'ng2-file-size';
+
 // enableProdMode();
+
+
 @NgModule({
   declarations: [
 
@@ -119,6 +121,7 @@ import {ModalGalleryModule} from 'angular-modal-gallery';
   ],
   imports: [
 
+    //ImageViewerModule,
     ModalGalleryModule.forRoot(),
     ToastModule.forRoot(),
     CommonModule,
@@ -132,6 +135,7 @@ import {ModalGalleryModule} from 'angular-modal-gallery';
     PasswordStrengthBarModule,
     CustomFormsModule,
     MaterialModule,
+    Ng2FileSizeModule,
 
 
 
@@ -144,4 +148,5 @@ import {ModalGalleryModule} from 'angular-modal-gallery';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+   }

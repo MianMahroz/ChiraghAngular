@@ -102,16 +102,20 @@ export class PoaDetailsComponent implements AfterViewInit {
   selectPassport(event) {
     this.selectedPassport = event.target.files;
     this.passportFile=this.selectedPassport.item(0);
+    this.ownerDto.passportCopyUpload=this.passportFile.name;
     event.srcElement.value = null;
+    
   }
   selectIdCopy(event) {
     this.selectedIdCopy = event.target.files;
     this.idCopyFile=this.selectedIdCopy.item(0);
+    this.ownerDto.scannedIdCopy=this.idCopyFile.name;
     event.srcElement.value = null;
   }
   selectScannedPoa(event) {
     this.selectedScannedPoa = event.target.files;
     this.scannedNotorizedPoaFile=this.selectedScannedPoa.item(0);
+    this.ownerDto.scannedNotorizedCopy=this.scannedNotorizedPoaFile.name;
     event.srcElement.value = null;
   }
 
@@ -314,18 +318,18 @@ export class PoaDetailsComponent implements AfterViewInit {
             this.poboxValid=false;}}
 
             this.passportuploadValid=true;
-          if(this.passportFile==null){
+          if(this.ownerDto.passportCopyUpload==null||this.ownerDto.passportCopyUpload==undefined){
               this.myToast.Error('Passport Copy Upload required ');
               this.passportuploadValid=false;
           }
           this.idcopyuploadValid=true;
-          if(this.idCopyFile==null){
+          if(this.ownerDto.scannedIdCopy==null||this.ownerDto.scannedIdCopy==undefined){
             this.myToast.Error('Id Copy Upload required ');
             this.idcopyuploadValid=false;
         }
 
            this.scannedPoaFileUploadValid=true;
-          if(this.scannedNotorizedPoaFile==null){
+          if(this.ownerDto.scannedNotorizedCopy==null||this.ownerDto.scannedNotorizedCopy==undefined){
             this.myToast.Error('Scanned Notorized Poa Upload required');
             this.scannedPoaFileUploadValid=false;
         }

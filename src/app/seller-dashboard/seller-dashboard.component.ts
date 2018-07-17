@@ -11,6 +11,8 @@ import {PropertyRentalDetailDTO  } from './../SellerForm/property-rental/propert
 import { PropertyFinancialDTO } from './../SellerForm/property-financials/propertyfinancialDTO';
 import { personalInfoDTO } from './../register/personalInfoDTO';
 import {ModalGalleryModule,Image} from 'angular-modal-gallery';
+import { Ng2FileSizeModule } from 'ng2-file-size';
+
 @Component({
   selector: 'app-seller-dashboard',
   templateUrl: './seller-dashboard.component.html',
@@ -29,8 +31,8 @@ export class SellerDashboardComponent implements OnInit {
       document.body.appendChild(scriptElement);
     })
   }
-  constructor(private propertyService:PropertyService,private myToast:ToasterServiceService,private userService:UserService,private router: Router,  private authService: AuthService, private token: TokenStorage) { }
-
+  constructor(public ng2FileSize :Ng2FileSizeModule,private propertyService:PropertyService,private myToast:ToasterServiceService,private userService:UserService,private router: Router,  private authService: AuthService, private token: TokenStorage) { }
+ 
   currentProperty:any;
   userData:any;
   personalinfo:any;
@@ -55,10 +57,12 @@ export class SellerDashboardComponent implements OnInit {
   rentTenancyContract:string;
 
   images: Image[]=[] ;
-
+  userName:string;
   ngOnInit() {
     this.getUserDashboardData();
     this.getDashboardPersonalInfo();
+    if(this.token.getuserName()!=null)
+    this.userName=this.token.getuserName();
     
   }
 
@@ -165,19 +169,29 @@ getPersonalInfoImages():void{
 
 
 selectPassport(event) {
+
+  // if (event.target.files && event.target.files[0]) {
+  //   var FileSize = event.target.files[0].size / 1024 / 1024; // in MB
+  //       if (FileSize > 2) {
+  //           this.myToast.Error('File size exceeds 2 MB');
+  //           return 'File size excced !'
+  //          // $(file).val(''); //for clearing with Jquery
+  //       }}
+  
   this.selectedPassport = event.target.files;
   this.passportFile=this.selectedPassport.item(0);
   this.personalinfoDTO.scannedPassportCopyUpload=this.passportFile.name;
-  event.srcElement.value = null;
-
   // console.log(this.passportFile);
+  this.UpdatePersonalInfo();
+  event.srcElement.value = null;
 }
+
+
 selectIdCopy(event) {
   this.selectedIdCopy = event.target.files;
   this.idCopyFile=this.selectedIdCopy.item(0);
-  this.personalinfoDTO.scannedPassportCopyUpload=this.idCopyFile.name;
-  
-  // console.log(this.idCopyFile);
+  this.personalinfoDTO.scannedIdCopyUpload=this.idCopyFile.name;
+  this.UpdatePersonalInfo();
   event.srcElement.value = null;
 }
  

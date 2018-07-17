@@ -108,7 +108,7 @@ export class OwnerDetailsComponent implements AfterViewInit {
     this.myToast.Success('Status','Owner Data Loaded Successfully');
     this.ownerDto=row;
     console.log(this.token.getImagepath());
-     this.getOwnerImages();
+    this.getOwnerImages();
     this.pid=92;
     this.fileName=this.ownerDto.idCardNo;
     this.idCardFileUploadPath='../ChiraghDocuments/propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.scannedIdCopy;
@@ -150,6 +150,7 @@ export class OwnerDetailsComponent implements AfterViewInit {
       event.srcElement.value = null;
       // console.log(this.passportFile);
       this.ownerDto.passportCopyUpload=this.passportFile.name;
+    
     }
     selectIdCopy(event) {
       this.selectedIdCopy = event.target.files;

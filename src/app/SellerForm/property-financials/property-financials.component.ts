@@ -55,9 +55,13 @@ export class PropertyFinancialsComponent implements OnInit {
   selectedMorgageNoc: FileList
   morgageNocFile:File;
   action:string;
+  scannedMorgageNocuploadPath:string;
+
+
   ngOnInit() {
     // this.token.savePropertyId('111');
     // this.token.saveUserName('BesterCapital2');
+    this.scannedMorgageNocuploadPath='../ChiraghDocuments/propertyId-'+this.propertyFinancialDTO.propertyId+'/'+this.propertyFinancialDTO.morgageNoc;
     this.action='';
     this.action=this.route.snapshot.params['action'];
     console.log(this.action);
@@ -160,6 +164,7 @@ export class PropertyFinancialsComponent implements OnInit {
   selectMorgageNoc(event) {
     this.selectedMorgageNoc = event.target.files;
     this.morgageNocFile=this.selectedMorgageNoc.item(0);
+    this.propertyFinancialDTO.morgageNoc=this.morgageNocFile.name;
     event.srcElement.value = null;
   }
 
@@ -339,7 +344,7 @@ else{
     this.scannedTitleDeedValid=true;
   }
   else{
-  if(this.morgageNocFile==null)
+  if(this.propertyFinancialDTO.morgageNoc==null||this.propertyFinancialDTO.morgageNoc==undefined)
   {
     this.myToast.Error('Scanned Title Deed Required!');
     this.scannedTitleDeedValid=false;
