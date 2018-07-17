@@ -370,6 +370,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  position: relative;
 }
 .screen-wrapper .form-wrapper-row .sign-in-row .sign-in-col .common-form .upload-doc-block .upload-instuct {
   font-size: 1.125em;
@@ -1497,6 +1498,10 @@ a:hover {
 }
 .loader-div .fa-spin {
   font-size: 24px;
+}
+.input-disabled {
+  pointer-events: none;
+  opacity: 0.6;
 }
 .full-parent-height {
   height: 100%;

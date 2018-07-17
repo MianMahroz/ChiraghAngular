@@ -301,7 +301,7 @@
                           </div>
                         </div>
                         <div class="row">
-                          <div class="col-md-4 form-label-group mb-4 mt-5 m-xs-0">
+                          <div class="col-md-4 form-label-group mb-5 m-xs-0">
                             <button routerLink="/changepassword"  class="btn form-btn">Change Password</button>
                           </div>
                         </div>
@@ -326,7 +326,7 @@
                           <div class="col-md-4 upload-doc-block">
                             <div class="upload-doc-div">  
                               <img id="passportCopy" class="w-100 thumbnail" src="{{userPassportCopy}}">
-                              <div class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
+                              <div id="passportCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
                             </div>
                             <div class="upload-instuct mt-2">Scanned passport copy</div>
                             <div class="upload-btn-div mt-4">
@@ -339,6 +339,7 @@
                           <div class="offset-md-2 col-md-4 upload-doc-block">
                             <div class="upload-doc-div">
                                 <img id="idCopy" class="w-100 thumbnail" src="{{userIdCopy}}">
+                                <div id="idCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
                               </div>
                             <div  class="upload-instuct mt-2">Scanned ID copy
                               <div class="upload-sub-instruct">(UAE or country of origin)</div>

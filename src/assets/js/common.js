@@ -150,6 +150,12 @@ $(document).ready(function(){
   });
 
 
+  $(".prop-stat-select").change(function(){
+    if($.trim($(this).val()) === "other"){
+      $('.other-input-form').removeClass('input-disabled');
+    }
+  });
+
   $('.btn-view-images').click(function(){
     $('body').addClass('overflow-hidden');
   });
@@ -218,12 +224,12 @@ $(document).ready(function(){
   });
 
 });
-$('.doc-upload').on('click', function() {
-  $('.loader-div').removeClass('display-none');
-  setTimeout(function () { 
-    $('.loader-div').hide('slow');
-  }, 8000);
-});
+// $('.doc-upload').on('click', function() {
+//   $('.loader-div').removeClass('display-none');
+//   setTimeout(function () { 
+//     $('.loader-div').hide();
+//   }, 5000);
+// }); 
 
 $('.advance-search-link').click(function() {
   $('.slider-search-btn-top').toggle();
@@ -277,6 +283,10 @@ function readURL(input) {
            // alert('File size exceeds 2 MB');
             
               // make it not dissappear
+              $('#passportCopyDiv').removeClass('display-none');
+                setTimeout(function () { 
+                  $('#passportCopyDiv').addClass('display-none');
+                }, 3000);
               toastr.error("File size exceeds from 2 MB!!", "File Uploading Error", {
                   // "timeOut": "0",
                   // "extendedTImeout": "0"
@@ -291,6 +301,10 @@ function readURL(input) {
         $('#passportCopy')
           .attr('src', e.target.result)
       };
+      $('#passportCopyDiv').removeClass('display-none');
+        setTimeout(function () { 
+          $('#passportCopyDiv').addClass('display-none');
+        }, 3000);
       reader.readAsDataURL(input.files[0]);
       toastr.success("File Uploaded Sucessfully ");
   }
@@ -303,6 +317,10 @@ function readURLIdCopy(input) {
        // alert('File size exceeds 2 MB');
         
           // make it not dissappear
+          $('#idCopyDiv').removeClass('display-none');
+            setTimeout(function () { 
+              $('#idCopyDiv').addClass('display-none');
+            }, 3000);
           toastr.error("File size exceeds from 2 MB!!", "File Uploading Error", {
               // "timeOut": "0",
               // "extendedTImeout": "0"
@@ -317,6 +335,10 @@ function readURLIdCopy(input) {
           $('#idCopy')
             .attr('src', e.target.result)
         };
+        $('#idCopyDiv').removeClass('display-none');
+          setTimeout(function () { 
+            $('#idCopyDiv').addClass('display-none');
+          }, 3000);
         reader.readAsDataURL(input.files[0]);
         toastr.success("File Uploaded Sucessfully");
   }
@@ -330,6 +352,10 @@ function readURLNotorizedCopy(input) {
        // alert('File size exceeds 2 MB');
         
           // make it not dissappear
+          $('#notorizedCopyDiv').removeClass('display-none');
+            setTimeout(function () { 
+              $('#notorizedCopyDiv').addClass('display-none');
+            }, 3000);
           toastr.error("File size exceeds from 2 MB!!", "File Uploading Error", {
               // "timeOut": "0",
               // "extendedTImeout": "0"
@@ -344,6 +370,10 @@ function readURLNotorizedCopy(input) {
           $('#notorizedCopy')
             .attr('src', e.target.result)
         };
+        $('#notorizedCopyDiv').removeClass('display-none');
+          setTimeout(function () { 
+            $('#notorizedCopyDiv').addClass('display-none');
+          }, 3000);
         reader.readAsDataURL(input.files[0]);
         toastr.success("File Uploaded Sucessfully");
   }

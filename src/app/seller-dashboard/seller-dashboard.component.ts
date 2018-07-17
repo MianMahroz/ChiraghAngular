@@ -11,7 +11,6 @@ import {PropertyRentalDetailDTO  } from './../SellerForm/property-rental/propert
 import { PropertyFinancialDTO } from './../SellerForm/property-financials/propertyfinancialDTO';
 import { personalInfoDTO } from './../register/personalInfoDTO';
 import {ModalGalleryModule,Image} from 'angular-modal-gallery';
-import { Ng2FileSizeModule } from 'ng2-file-size';
 
 @Component({
   selector: 'app-seller-dashboard',
@@ -31,7 +30,7 @@ export class SellerDashboardComponent implements OnInit {
       document.body.appendChild(scriptElement);
     })
   }
-  constructor(public ng2FileSize :Ng2FileSizeModule,private propertyService:PropertyService,private myToast:ToasterServiceService,private userService:UserService,private router: Router,  private authService: AuthService, private token: TokenStorage) { }
+  constructor(private propertyService:PropertyService,private myToast:ToasterServiceService,private userService:UserService,private router: Router,  private authService: AuthService, private token: TokenStorage) { }
  
   currentProperty:any;
   userData:any;

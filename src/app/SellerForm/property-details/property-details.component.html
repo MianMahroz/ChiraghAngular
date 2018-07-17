@@ -11,14 +11,18 @@
                   <div class="mb-5 page-primary-title-34">Property Details</div>
                   <div class="row">
                     <div class="col-md-12 form-block-heading mb-3">Area Details:</div>
-                    <div class="col-md-6 form-label-group mb-4">
+                    <div class="col-md-3 pr-0 form-label-group mb-4">
                       <label class="form-label required-input-label">Property Status</label>
                       <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.propertyStatus" name="propertyStatus">
                         <option>Off-Plan</option>
                         <option>Off-Plot</option>
                         <option>Completed</option>
-                        <option>other</option>
+                        <option>Other</option>
                       </select>
+                    </div>
+                    <div class="col-md-3 form-label-group mb-4">
+                      <label class="form-label">Other</label>
+                      <input type="text" pattern="[a-zA-Z0-9]" class="form-control form-input">
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label required-input-label">Plot Number</label>
@@ -35,6 +39,14 @@
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label required-input-label">Title Deed Number</label>
                       <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.titleDeedNo" name="titlDeedNo" #titlDeedNo="ngModel" required>
+                    </div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <label class="form-label required-input-label">Building Name</label>
+                      <input type="text" class="form-control form-input" required>
+                    </div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <label class="form-label required-input-label">Building Number</label>
+                      <input type="text" class="form-control form-input" required>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label required-input-label">Address</label>
@@ -674,6 +686,7 @@
                     <div class="col-md-4 upload-doc-block mt-3">
                       <div class="upload-doc-div">
                         <img id="notorizedCopy" class="w-100 thumbnail" src="{{scannedtitledeeduploadPath}}">
+                        <div id="notorizedCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
                       </div>
                       <div class="upload-instuct mt-2">Scanned Title Deed</div>
                       <div class="upload-btn-div mt-4">
