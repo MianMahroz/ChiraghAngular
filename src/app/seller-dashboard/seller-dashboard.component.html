@@ -325,27 +325,27 @@
                           </div>
                           <div class="col-md-4 upload-doc-block">
                             <div class="upload-doc-div">
-                              <img class="w-100 thumbnail" src="{{userPassportCopy}}">
+                              <img id="passportCopy" class="w-100 thumbnail" src="{{userPassportCopy}}">
                             </div>
                             <div class="upload-instuct mt-2">Scanned passport copy</div>
                             <div class="upload-btn-div mt-4">
                               <div class="file doc-upload">
-                                <input id="ownerPassCopy" #passFile type="file" name="file" (change)="selectPassport($event)" class="doc-upload" />
+                                <input id="ownerPassCopy" #passFile type="file" name="file" onchange="readURL(this);" (change)="selectPassport($event)" class="doc-upload"accept=".jpg,.png,.gif,.jpeg"/>
                               </div>
                               <span class="upload-instuct ml-4">Upload Again</span>
                             </div>
                           </div>
                           <div class="offset-md-2 col-md-4 upload-doc-block">
-                              <div class="upload-doc-div">
-                                  <img class="w-100 thumbnail" src="{{userIdCopy}}">
-                                </div>
+                            <div class="upload-doc-div">
+                                <img id="idCopy" class="w-100 thumbnail" src="{{userIdCopy}}">
+                              </div>
                             <div  class="upload-instuct mt-2">Scanned ID copy
                               <!-- <i class="fas fa-circle-notch fa-spin ml-2"></i> -->
                               <div class="upload-sub-instruct">(UAE or country of origin)</div>
                             </div>  
                             <div  class="upload-btn-div mt-3">
                               <div class="file doc-upload">
-                                <input id="owneIdCopy" #idFile type="file" (change)="selectIdCopy($event)" name="file" class="doc-upload" />
+                                <input id="owneIdCopy" #idFile type="file" onchange="readURLIdCopy(this);" (change)="selectIdCopy($event)" name="file" class="doc-upload" accept=".jpg,.png,.gif,.jpeg" />
                               </div>  
                               <span class="upload-instuct ml-4">Upload Again</span>
                             </div> 

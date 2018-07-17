@@ -633,13 +633,13 @@
                       </div>
                     </div>
                   </div>
-                  <div class="row mt-3">
+                  <!-- <div class="row mt-3">
                     <div class="col-md-12 document-upload">
                       Upload Title Deed
                       <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>
                     </div>
                     <div class="col-md-12 upload-doc-block">
-                      <!-- <div class="upload-btn-div mt-4">
+                      <div class="upload-btn-div mt-4">
                         <div class="file">
                           <input type="file" name="file"  (change)="selectScannedTitleDeed($event)" class="doc-upload" required />
                         </div>
@@ -647,7 +647,7 @@
                       </div>
                       <p *ngIf="scannedTitleDeedFile"><br>Scanned Title Deed FileName:{{scannedTitleDeedFile.name}}</p>
                       <p *ngIf="propertyDetailsDto.scannedTitleDeed&&action=='next'||action=='back'"><br> Title Deed FileName:{{propertyDetailsDto.scannedTitleDeed}}</p>
-                    start of my code -->
+                    start of my code
                     <div class="upload-btn-div mt-4">
                       <div class="file">
                         <input id="scanPoa" type="file" name="file" (change)="selectScannedTitleDeed($event)" class="doc-upload" required/>
@@ -661,10 +661,30 @@
                     </div>
 
 
-                    </div>
-
-
                   </div>
+
+
+                  </div> -->
+                  
+                  <div class="row mt-3">
+                    <div class="col-md-12 document-upload form-block-heading mb-4">
+                      Upload Documents
+                      <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>    
+                    </div>
+                    <div class="col-md-4 upload-doc-block mt-3">
+                      <div class="upload-doc-div">
+                        <img id="notorizedCopy" class="w-100 thumbnail" src="{{scannedtitledeeduploadPath}}">
+                      </div>
+                      <div class="upload-instuct mt-2">Scanned Title Deed</div>
+                      <div class="upload-btn-div mt-4">
+                        <div class="doc-upload">
+                          <input id="ownerPassCopy" #passFile type="file" name="file" onchange="readURLNotorizedCopy(this);" (change)="selectScannedTitleDeed($event)" class="doc-upload"accept=".jpg,.png,.gif,.jpeg,.pdf"/>
+                        </div>
+                        <span class="upload-instuct ml-3">Upload Again</span>
+                      </div>
+                    </div>
+                  </div>
+
                   <div class="note-block py-3 px-2 mt-5">
                     <div class="col-1 common-checkbox">
                       <label>

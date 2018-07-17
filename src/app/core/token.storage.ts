@@ -9,14 +9,9 @@ const TOKEN_EXPIRES_IN = 'expires_in';
 @Injectable()
 export class TokenStorage {
 
-
-<<<<<<< HEAD
-  //serverPath:string='http://18.218.221.103/ChiraghServer';
-   serverPath:string='http://localhost:8082';
-=======
   // serverPath:string='http://18.218.221.103/ChiraghServer';
-  serverPath:string='http://localhost:8082';
->>>>>>> 38250f991c8ec5647dd8f437e182239b86dd791d
+   //serverPath:string='http://localhost:8082';
+   serverPath:string='http://18.219.3.150/ChiraghServer';
 
 
   imagepath:string='http://demo.chiragh.com/ChiraghDocuments/';

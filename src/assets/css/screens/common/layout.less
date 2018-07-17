@@ -328,6 +328,48 @@
               }
             }
           }
+          .upload-doc-block {
+            .upload-doc-div{
+              height: 220px;
+              width: 100%;
+              border: 1px solid @seprator-color;
+              padding: .25rem;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              overflow: hidden;
+            }
+            .upload-instuct {
+              font-size: 1.125em;
+              color: @field-placeholder-color;
+              .upload-sub-instruct {
+                font-size: 14px;
+              }
+            }
+            .upload-btn-div {
+              display: flex;
+              .doc-upload {
+                position: relative;
+                overflow: hidden;
+                width: 32px;
+                height: 42px;
+                background: url("../../assets/images/sprite-image.png") no-repeat -573px -218px;
+                input {
+                  opacity: 0;
+                  position: absolute;
+                  left: 0;
+                  right: 0;
+                  top: 0;
+                  bottom: 0;
+                  width: 30px;
+                }
+              }
+              p {
+                color: @field-placeholder-color !important;
+                margin-left: 50px;
+              }
+            }
+          }
           .document-upload {
             font-size: 1.25em;
             color: @secondary-color;

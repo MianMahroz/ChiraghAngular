@@ -264,5 +264,84 @@ $("#ni-shows-round").click(function(){
     $(this).text($(this).text() == "Show all" ? "Show less" : "Show all");
 });
 
+function readURL(input) {
+   if (input.files && input.files[0]) {
+    var FileSize = input.files[0].size / 1024 / 1024; // in MB
+        if (FileSize > 2) {
+           // alert('File size exceeds 2 MB');
+            
+              // make it not dissappear
+              toastr.error("File size exceeds from 2 MB!!", "File Uploading Error", {
+                  // "timeOut": "0",
+                  // "extendedTImeout": "0"
+              });
+          
+           // $(file).val(''); //for clearing with Jquery
+        } else {
+
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $('#passportCopy')
+          .attr('src', e.target.result)
+      };
+      reader.readAsDataURL(input.files[0]);
+      toastr.success("File Uploaded Sucessfully ");
+  }
+}}
+
+function readURLIdCopy(input) {
+  if (input.files && input.files[0]) {
+    var FileSize = input.files[0].size / 1024 / 1024; // in MB
+    if (FileSize > 2) {
+       // alert('File size exceeds 2 MB');
+        
+          // make it not dissappear
+          toastr.error("File size exceeds from 2 MB!!", "File Uploading Error", {
+              // "timeOut": "0",
+              // "extendedTImeout": "0"
+          });
+      
+       // $(file).val(''); //for clearing with Jquery
+    } else
+    {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('#idCopy')
+            .attr('src', e.target.result)
+        };
+        reader.readAsDataURL(input.files[0]);
+        toastr.success("File Uploaded Sucessfully");
+  }
+ }
+}
+
+function readURLNotorizedCopy(input) {
+  if (input.files && input.files[0]) {
+    var FileSize = input.files[0].size / 1024 / 1024; // in MB
+    if (FileSize > 2) {
+       // alert('File size exceeds 2 MB');
+        
+          // make it not dissappear
+          toastr.error("File size exceeds from 2 MB!!", "File Uploading Error", {
+              // "timeOut": "0",
+              // "extendedTImeout": "0"
+          });
+      
+       // $(file).val(''); //for clearing with Jquery
+    } else
+    {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('#notorizedCopy')
+            .attr('src', e.target.result)
+        };
+        reader.readAsDataURL(input.files[0]);
+        toastr.success("File Uploaded Sucessfully");
+  }
+ }
+}
 
 
