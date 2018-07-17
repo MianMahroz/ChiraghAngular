@@ -216,8 +216,14 @@ $(document).ready(function(){
     $($(this).parents('div').html()).appendTo('.modal-body');
     $('#thumbnailViewer').modal({show:true});
   });
-});
 
+});
+$('.doc-upload').on('click', function() {
+  $('.loader-div').removeClass('display-none');
+  setTimeout(function () { 
+    $('.loader-div').hide('slow');
+  }, 8000);
+});
 
 $('.advance-search-link').click(function() {
   $('.slider-search-btn-top').toggle();

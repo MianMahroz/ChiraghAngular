@@ -950,6 +950,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  position: relative;
 }
 .screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-block .upload-instuct {
   font-size: 1.125em;
@@ -1442,6 +1443,20 @@ a:hover {
   font-size: 34px;
   font-weight: 700;
   line-height: 1.1em;
+}
+.loader-div {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.loader-div .fa-spin {
+  font-size: 24px;
 }
 .full-parent-height {
   height: 100%;

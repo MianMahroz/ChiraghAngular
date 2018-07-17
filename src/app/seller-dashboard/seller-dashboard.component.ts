@@ -167,12 +167,16 @@ getPersonalInfoImages():void{
 selectPassport(event) {
   this.selectedPassport = event.target.files;
   this.passportFile=this.selectedPassport.item(0);
+  this.personalinfoDTO.scannedPassportCopyUpload=this.passportFile.name;
   event.srcElement.value = null;
+
   // console.log(this.passportFile);
 }
 selectIdCopy(event) {
   this.selectedIdCopy = event.target.files;
   this.idCopyFile=this.selectedIdCopy.item(0);
+  this.personalinfoDTO.scannedPassportCopyUpload=this.idCopyFile.name;
+  
   // console.log(this.idCopyFile);
   event.srcElement.value = null;
 }
@@ -232,6 +236,8 @@ selectIdCopy(event) {
     console.log(this.personalinfoDTO.scannedIdCopyUpload);
     this.userPassportCopy=''+this.token.getImagepath()+'ChiraghUser-'+this.personalinfoDTO.userId+'/'+this.personalinfoDTO.scannedPassportCopyUpload;
     this.userIdCopy=''+this.token.getImagepath()+'ChiraghUser-'+this.personalinfoDTO.userId+'/'+this.personalinfoDTO.scannedIdCopyUpload;
+   // this.personalinfoDTO.scannedIdCopyUpload=this.userPassportCopy;
+    //this.personalinfoDTO.scannedIdCopyUpload=this.userIdCopy;
     // this.getPersonalInfoImages();
    }
 
