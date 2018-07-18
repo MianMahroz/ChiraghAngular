@@ -124,7 +124,8 @@ export class PropertyFinancialsComponent implements OnInit {
        'The Royal Bank of Scotland N.V.',
        'Union National Bank',
        'United Arab Bank',
-       'United Bank Limited'
+       'United Bank Limited',
+       'Other'
       ];
       this.paymentScheduleList=[
         '1',

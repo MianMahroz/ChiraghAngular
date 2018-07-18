@@ -76,6 +76,10 @@
                       </select>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
+                      <label class="form-label">Other</label>
+                      <input pattern="[0-9_]*" type="text" class="form-control form-input">
+                    </div>
+                    <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label">Mortgage Amount</label>
                       <input pattern="[0-9_]*" type="text" class="form-control form-input" ng-disabled="No" [(ngModel)]="propertyFinancialDTO.morgageAmount" name ="morgageAmount" #morgageAmount="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
                       <div *ngIf="morgageAmount.errors && (morgageAmount.dirty ||morgageAmount.touched)" class="alert alert-danger">

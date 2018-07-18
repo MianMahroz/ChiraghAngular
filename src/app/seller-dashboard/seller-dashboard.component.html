@@ -56,7 +56,7 @@
                       </li>
                       <li>
                         <a id="propertyLink" class="ud-seller" data-toggle="tab" href="#sell-links">Sell</a>
-                        <ul class="collapse open-prop-details sub-links-wrap">
+                        <ul id="openPropDetails" class="collapse sub-links-wrap">
                           <!-- <li *ngFor="let propertyArr of userData">
                             <a class="sub-links" data-toggle="collapse" href="#/sell-sub-links/{{propertyArr.propertyId}}">Property ID :{{propertyArr.propertyId}} </a>
                             <ul id="/sell-sub-links/{{propertyArr.property_Id}}" class="collapse">
@@ -69,8 +69,8 @@
                             </ul>
                           </li> -->
                           <li *ngFor="let propertyArr of userData">
-                            <a class="sub-links" data-toggle="collapse" (click)="setCurrentProperty(propertyArr)" href="#sell-sub-links/{{propertyArr.projectName}}">{{propertyArr.projectName}}, {{propertyArr.typeArea}}</a>
-                            <ul class="collapse sub-prop-links-wrap" id="sell-sub-links/{{propertyArr.projectName}}">
+                            <a class="sub-links" data-toggle="collapse" (click)="setCurrentProperty(propertyArr)" href="#sell-sub-links/{{propertyArr.propertyId}}">{{propertyArr.projectName}}, {{propertyArr.typeArea}}</a>
+                            <ul class="collapse sub-prop-links-wrap" id="sell-sub-links/{{propertyArr.propertyId}}">
                               <li><a data-toggle="tab" (click)="refreshPoaHtml()" href="#owner-detail" class="sub-prop-links">- Owners details</a></li>
                               <li><a data-toggle="tab" (click)="refreshPoaHtml()" href="#POA-detail" class="sub-prop-links">- POA details</a></li>
                               <!-- <li *ngFor="let ownerArr of propertyArr.propertysellerdetailses"><a *ngIf="ownerArr.ownerType=='owner'" data-toggle="tab" href="#owner-detail"  (click)="getOwnerDetails(ownerArr)" class="sub-prop-links">- Owner ID:{{ownerArr.propertySellerId}}</a></li> -->
@@ -636,7 +636,7 @@
                     <div class="offset-md-1 col-md-10 sub-prop-mutliple">
                       <div class="tab-heading">Properties</div>
                       <div *ngFor="let propertyArr of userData" class="row bid-active-row">
-                        <div id="sell-sub-links/{{propertyArr.projectName}}" (click)="setCurrentProperty(propertyArr)" class="col-md-12 bid-active-col">
+                        <div id="sell-sub-links/{{propertyArr.propertyId}}" (click)="setCurrentProperty(propertyArr)" class="col-md-12 bid-active-col collapse show">
                           <div class="bid-active-block py-3">
                             <div class="row">
                               <div class="col-md-4 bid-active-img">
@@ -1834,7 +1834,7 @@
                         </ul>
                       </li>
                       <li>
-                        <a class="ud-seller" data-toggle="collapse" href="#activity-seller">Sell</a>
+                        <a class="ud-seller" data-toggle="tab" href="#activity-seller">Sell</a>
                         <ul class="collapse sub-links-wrap collapse show" id="activity-seller">
                           <li><a data-toggle="tab" href="#scheduled-link" class="sub-links active">Scheduled</a></li>
                           <li><a data-toggle="tab" href="#seller-active" class="sub-links">Active</a></li>

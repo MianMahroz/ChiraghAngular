@@ -170,10 +170,16 @@ $(document).ready(function(){
     $("#personalInfoCancel").show('slow');
   });
 
-  $(".save-form-link, .cancel-form-link").click(function(){
-    $("#personalInfoForm, #contactDetailForm").addClass('disabled');
-    $(".save-form-link, .cancel-form-link").hide('slow');
-    $(".edit-form-link").show('slow');
+  $("#personalInfoSave, #personalInfoCancel").click(function(){
+    $("#personalInfoForm").addClass('disabled');
+    $("#personalInfoSave, #personalInfoCancel").hide('slow');
+    $("#personalInfoEdit").show('slow');
+  });
+
+  $("#contactDetailSave, #contactDetailCancel").click(function(){
+    $("#contactDetailForm").addClass('disabled');
+    $("#contactDetailSave, #contactDetailCancel").hide('slow');
+    $("#contactDetailEdit").show('slow');
   });
 
 
@@ -183,6 +189,7 @@ $(document).ready(function(){
     $("#contactDetailCancel").show('slow');
     $("#contactDetailSave").show('slow');
   });
+
 
   $("#mobileNumber input").focus(function() {
     $('.otp-code-div').show('slow');
@@ -206,7 +213,7 @@ $(document).ready(function(){
   });
 
   $('#propertyLink').click(function() {
-    $('.open-prop-details').removeClass('collapse');
+    $('#openPropDetails').removeClass('collapse');
   });
   
 

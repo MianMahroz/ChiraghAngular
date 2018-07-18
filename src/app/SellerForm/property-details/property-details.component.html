@@ -91,12 +91,20 @@
                       </div>
                     </div>
                     <div class="col-md-2 form-label-group mb-4">
-                        <label class="form-label required-input-label">Unit</label>
-                        <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.areaUnit" name="areaUnit" #areaUnit="ngModel">
-                          <option>sqm</option>
-                          <option>sqft</option>
-                        </select>
-                      </div>
+                      <label class="form-label required-input-label">Unit</label>
+                      <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.areaUnit" name="areaUnit" #areaUnit="ngModel">
+                        <option>sqm</option>
+                        <option>sqft</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <label class="form-label">Gross Area</label>
+                      <input type="text" pattern="[0-9.]*" class="form-control form-input">
+                    </div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <label class="form-label">Net Area</label>
+                      <input type="text" pattern="[0-9.]*" class="form-control form-input">
+                    </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label">Owner Association Number</label>
                       <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.ownerAssociationNo" name="ownerAssociationNo">
@@ -695,6 +703,19 @@
                         </div>
                         <span class="upload-instuct ml-3">Upload Again</span>
                       </div>
+                    </div>
+                    <div class="offset-md-2 col-md-4 upload-doc-block mt-3">
+                      <div class="upload-doc-div">
+                          <img id="idCopy" class="w-100 thumbnail" src="{{idCardFileUploadPath}}">
+                          <div id="idCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
+                        </div>
+                      <div  class="upload-instuct mt-2">Floor Plan</div>  
+                      <div  class="upload-btn-div mt-3">
+                        <div class="doc-upload">
+                          <input id="owneIdCopy" #idFile type="file" onchange="readURLIdCopy(this);" (change)="selectIdCopy($event)" name="file" class="doc-upload" accept=".jpg,.png,.gif,.jpeg" />
+                        </div>  
+                        <span class="upload-instuct ml-3">Upload Again</span>
+                      </div> 
                     </div>
                   </div>
 
