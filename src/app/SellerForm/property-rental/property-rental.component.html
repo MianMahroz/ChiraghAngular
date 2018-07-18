@@ -116,15 +116,15 @@
                     </div>
                     <div class="col-md-4 upload-doc-block mt-3">
                       <div class="upload-doc-div">
-                        <img id="notorizedCopy" class="w-100 thumbnail" src="{{userPassportCopy}}">
+                        <img id="notorizedCopy" class="w-100 thumbnail" src="{{scannedTenantContractUploadPath}}">
                         <div id="notorizedCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
                       </div>
                       <div class="upload-instuct mt-2">Scanned Tenancy Contract</div>
                       <div class="upload-btn-div mt-4">
                         <div class="doc-upload">
-                          <input id="ownerPassCopy" #passFile type="file" name="file" onchange="readURLNotorizedCopy(this);" (change)="selectPassport($event)" class="doc-upload"accept=".jpg,.png,.gif,.jpeg,.pdf"/>
+                          <input id="ownerPassCopy" #passFile type="file" name="file" (change)="scannedTenantContract($event)" class="doc-upload"accept=".jpg,.png,.gif,.jpeg,.pdf"/>
                         </div>
-                        <span class="upload-instuct ml-3">Upload Again</span>
+                        <span class="upload-instuct ml-3">Upload </span>
                       </div>
                     </div>
                   </div>

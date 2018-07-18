@@ -53,6 +53,13 @@ export class PropertyDetailsComponent implements OnInit {
   bathroomValid=true;
   scannedtitledeeduploadValid=true;
   formValid=true;
+  bulidingnumberValid=true;
+  bulidingnameValid=true;
+  propertystatusotherValid=true;
+  typepropertyotherValid=true;
+  titledeeduploadPath:string;
+  floorplanPath:string;
+
   paymentScheduleList:any[];
 
 
@@ -60,8 +67,8 @@ export class PropertyDetailsComponent implements OnInit {
 
   ngOnInit() {
     
-    this.scannedtitledeeduploadPath='../ChiraghDocuments/propertyId-'+this.propertyDetailsDto.propertyId+'/'+this.propertyDetailsDto.scannedTitleDeed;
-
+    this.titledeeduploadPath=''+this.token.getImagepath()+'propertyId-'+this.propertyDetailsDto.propertyId+'/'+this.propertyDetailsDto.scannedTitleDeed;
+    this.floorplanPath=''+this.token.getImagepath()+'propertyId-'+this.propertyDetailsDto.propertyId+'/'+this.propertyDetailsDto.floorplanupload;
     this.action='';
     this.action=this.route.snapshot.params['action'];
     console.log(this.action);
@@ -86,13 +93,58 @@ export class PropertyDetailsComponent implements OnInit {
        ];
   }
   
-  selectScannedTitleDeed(event) {
+  selectScannedTitleDeed(event):string {
+
+    if (event.target.files && event.target.files[0]) {
+      var FileSize = event.target.files[0].size / 1024 / 1024; // in MB
+       if (FileSize > 2) {
+           this.myToast.Error('File size exceeds 2 MB');
+           this.myToast.Warning('Accepted file size less than 2Mb');
+           return 'File size excced !'
+       }}
+
+       if (event.target.files && event.target.files[0]) {
+        var reader = new FileReader();
+        reader.onload = (event: ProgressEvent) => {
+          this.titledeeduploadPath = (<FileReader>event.target).result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+      }
     this.selectedScannedTitleDeed = event.target.files;
     this.scannedTitleDeedFile=this.selectedScannedTitleDeed.item(0);
     this.propertyDetailsDto.scannedTitleDeed=this.scannedTitleDeedFile.name;
+    this.titledeeduploadPath=''+this.token.getImagepath()+'propertyId-'+this.propertyDetailsDto.propertyId+'/'+this.propertyDetailsDto.scannedTitleDeed;
+    //this.floorplanPath=''+this.token.getImagepath()+'propertyId-'+this.propertyDetailsDto.propertyId+'/'+this.propertyDetailsDto.floorplanupload;
     event.srcElement.value = null;
   }
+ 
+  selectFloorPlan(event):string {
+
+    if (event.target.files && event.target.files[0]) {
+      var FileSize = event.target.files[0].size / 1024 / 1024; // in MB
+       if (FileSize > 2) {
+           this.myToast.Error('File size exceeds 2 MB');
+           this.myToast.Warning('Accepted file size less than 2Mb');
+           return 'File size excced !'
+       }}
+
+       if (event.target.files && event.target.files[0]) {
+        var reader = new FileReader();
+        reader.onload = (event: ProgressEvent) => {
+          this.floorplanPath= (<FileReader>event.target).result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+      }
+        this.selectedScannedTitleDeed = event.target.files;
+        this.scannedTitleDeedFile=this.selectedScannedTitleDeed.item(0);
+        this.propertyDetailsDto.scannedTitleDeed=this.scannedTitleDeedFile.name;
+      // this.titledeeduploadPath=''+this.token.getImagepath()+'propertyId-'+this.propertyDetailsDto.propertyId+'/'+this.propertyDetailsDto.scannedTitleDeed;
+        this.floorplanPath=''+this.token.getImagepath()+'propertyId-'+this.propertyDetailsDto.propertyId+'/'+this.propertyDetailsDto.floorplanupload;
+        event.srcElement.value = null;
+  }
   
+
+
   validation():boolean {
     console.log('Property Details Validations!');
 
@@ -289,6 +341,61 @@ export class PropertyDetailsComponent implements OnInit {
       this.myToast.Error('BathroomsCannot Empty');
       this.bathroomValid=false;
     }
+
+
+    this.propertystatusotherValid=true;
+    if(this.propertyDetailsDto.propertyStatusOther)
+    {
+   
+      this.propertystatusotherValid=true;
+    }
+    else{
+
+      this.myToast.Error('Property Status Other Field Cannot Empty');
+      this.propertystatusotherValid=false;
+    }
+
+    this.typepropertyotherValid=true;
+    if(this.propertyDetailsDto.typePropertyOther)
+    {
+   // var propertystatus =this.propertyDetailsDto.propertyStatus.match('[a-zA-Z]*');
+    //if(propertystatus["0"]!==this.propertyDetailsDto.propertyStatus){
+      //this.myToast.Error('Invalid PropertyStatus');
+      this.typepropertyotherValid=true;
+    }
+    else{
+
+      this.myToast.Error('Type Property Other Field Cannot Empty');
+      this.typepropertyotherValid=false;
+    }
+   
+    this.bulidingnameValid=true;
+    if(this.propertyDetailsDto.bulidingName)
+    {
+    
+      this.bulidingnameValid=true;
+    }
+    else{
+
+      this.myToast.Error('Buliding Name Cannot Empty');
+      this.bulidingnameValid=false;
+    }
+
+    this.bulidingnumberValid=true;
+    if(this.propertyDetailsDto.bulidingNumber)
+    {
+    
+      this.bulidingnumberValid=true;
+    }
+    else{
+
+      this.myToast.Error('Buliding Number Cannot Empty');
+      this.bulidingnumberValid=false;
+    }
+
+
+
+
 
     if(this.propertystatusValid==false||this.plotnoValid==false||this.titledeednoValid==false||this.addressValid==false||
     this.propertynoValid==false||this.typeofpropertyValid==false||this.projectnameValid==false||this.areaValid==false||

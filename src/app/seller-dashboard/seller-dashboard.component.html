@@ -217,6 +217,7 @@
                               <div [hidden]="!phoneNumber.errors.maxlength">
                                 Please enter a 16 digit number.
                               </div>
+
                               <div [hidden]="!phoneNumber.errors.pattern">
                                 Space and special character not Allowed!
                               </div>
@@ -331,7 +332,7 @@
                             <div class="upload-instuct mt-2">Scanned passport copy</div>
                             <div class="upload-btn-div mt-4">
                               <div class="file doc-upload">
-                                <input id="ownerPassCopy" #passFile type="file" name="file" onchange="readURL(this);" (change)="selectPassport($event)" class="doc-upload"accept=".jpg,.png,.gif,.jpeg"/>
+                                <input id="ownerPassCopy" #passFile type="file" name="file"  (change)="selectPassport($event)" class="doc-upload"accept=".jpg,.png,.gif,.jpeg"/>
                               </div>
                               <span class="upload-instuct ml-4">Upload Again</span>
                             </div>
@@ -346,7 +347,7 @@
                             </div>  
                             <div  class="upload-btn-div mt-3">
                               <div class="file doc-upload">
-                                <input id="owneIdCopy" #idFile type="file" onchange="readURLIdCopy(this);" (change)="selectIdCopy($event)" name="file" class="doc-upload" accept=".jpg,.png,.gif,.jpeg" />
+                                <input id="owneIdCopy" #idFile type="file"  (change)="selectIdCopy($event)" name="file" class="doc-upload" accept=".jpg,.png,.gif,.jpeg" />
                               </div>  
                               <span class="upload-instuct ml-4">Upload Again</span>
                             </div> 

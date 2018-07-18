@@ -30,17 +30,16 @@ export class SellerDashboardComponent implements OnInit {
       document.body.appendChild(scriptElement);
     })
   }
-<<<<<<< HEAD
 
 
   personalInfoForm:any;
   contactInfoForm:any;
   filevalidationForm:any;
+  userIdCopy:string;
+  userPassportCopy:string;
 
-  constructor(public ng2FileSize :Ng2FileSizeModule,private propertyService:PropertyService,private myToast:ToasterServiceService,private userService:UserService,private router: Router,  private authService: AuthService, private token: TokenStorage) { }
-=======
   constructor(private propertyService:PropertyService,private myToast:ToasterServiceService,private userService:UserService,private router: Router,  private authService: AuthService, private token: TokenStorage) { }
->>>>>>> 0c41ec1798d7bb09a795ce6f4c81f07a24e3a300
+
  
   currentProperty:any;
   userData:any;
@@ -54,8 +53,6 @@ export class SellerDashboardComponent implements OnInit {
   selectedIdCopy: FileList;
   passportFile:File;
   idCopyFile:File;
-  userIdCopy:string;
-  userPassportCopy:string;
   ownerIdCopy:string;
   ownerPassportCopy:string;
   poaIdCopy:string;
@@ -203,31 +200,52 @@ getPersonalInfoImages():void{
 
 selectPassport(event) {
 
-  // if (event.target.files && event.target.files[0]) {
-  //   var FileSize = event.target.files[0].size / 1024 / 1024; // in MB
-  //       if (FileSize > 2) {
-  //           this.myToast.Error('File size exceeds 2 MB');
-  //           return 'File size excced !'
-  //          // $(file).val(''); //for clearing with Jquery
-  //       }}
+  if (event.target.files && event.target.files[0]) {
+    var FileSize = event.target.files[0].size / 1024 / 1024; // in MB
+     if (FileSize > 2) {
+         this.myToast.Error('File size exceeds 2 MB');
+         this.myToast.Warning('Accepted file size less than 2Mb');
+         return 'File size excced !'
+     }}
+     if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      reader.onload = (event: ProgressEvent) => {
+      this.userPassportCopy = (<FileReader>event.target).result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
   
-  this.selectedPassport = event.target.files;
-  this.passportFile=this.selectedPassport.item(0);
-  this.personalinfoDTO.scannedPassportCopyUpload=this.passportFile.name;
-<<<<<<< HEAD
-  this.UpdatePersonalInfo(this.filevalidationForm);
-=======
-  // console.log(this.passportFile);
-  this.UpdatePersonalInfo();
->>>>>>> 0c41ec1798d7bb09a795ce6f4c81f07a24e3a300
-  event.srcElement.value = null;
+      this.selectedPassport = event.target.files;
+      this.passportFile=this.selectedPassport.item(0);
+      this.personalinfoDTO.scannedPassportCopyUpload=this.passportFile.name;
+      this.userPassportCopy=''+this.token.getImagepath()+'ChiraghUser-'+this.personalinfoDTO.userId+'/'+this.personalinfoDTO.scannedPassportCopyUpload;
+      this.UpdatePersonalInfo(this.filevalidationForm);
+      // console.log(this.passportFile);
+    // this.UpdatePersonalInfo();
+      event.srcElement.value = null;
 }
 
 
 selectIdCopy(event) {
+
+  if (event.target.files && event.target.files[0]) {
+    var FileSize = event.target.files[0].size / 1024 / 1024; // in MB
+     if (FileSize > 2) {
+         this.myToast.Error('File size exceeds 2 MB');
+         this.myToast.Warning('Accepted file size less than 2Mb');
+         return 'File size excced !'
+     }}
+     if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      reader.onload = (event: ProgressEvent) => {
+        this.userIdCopy = (<FileReader>event.target).result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
   this.selectedIdCopy = event.target.files;
   this.idCopyFile=this.selectedIdCopy.item(0);
   this.personalinfoDTO.scannedIdCopyUpload=this.idCopyFile.name;
+  this.userIdCopy=''+this.token.getImagepath()+'ChiraghUser-'+this.personalinfoDTO.userId+'/'+this.personalinfoDTO.scannedIdCopyUpload;
   this.UpdatePersonalInfo(this.filevalidationForm);
   event.srcElement.value = null;
 }
@@ -671,7 +689,7 @@ selectIdCopy(event) {
     
     }
    }
-   if(data===this.contactInfoForm){
+    else if(data===this.contactInfoForm){
 
 
     if(this.contactInfovalidation()==true){
@@ -682,7 +700,7 @@ selectIdCopy(event) {
     
     }
    }
-   if(data===this.filevalidationForm){
+   else if(data===this.filevalidationForm){
     if(this.fileInfovalidation()==true){
 
     }

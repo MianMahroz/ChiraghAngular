@@ -47,6 +47,7 @@ export class PropertyFinancialsComponent implements OnInit {
   amountValid=true;
   scannedTitleDeedValid=true;
   formValid=true;
+  scannednocuploadPath:string;
 
 
   constructor(private myToast:ToasterServiceService,private route:ActivatedRoute,private sellerService:SellerService,private propertyService:PropertyService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
@@ -55,13 +56,13 @@ export class PropertyFinancialsComponent implements OnInit {
   selectedMorgageNoc: FileList
   morgageNocFile:File;
   action:string;
-  scannedMorgageNocuploadPath:string;
+
 
 
   ngOnInit() {
     // this.token.savePropertyId('111');
     // this.token.saveUserName('BesterCapital2');
-    this.scannedMorgageNocuploadPath='../ChiraghDocuments/propertyId-'+this.propertyFinancialDTO.propertyId+'/'+this.propertyFinancialDTO.morgageNoc;
+    this.scannednocuploadPath=''+this.token.getImagepath()+'propertyId-'+this.propertyFinancialDTO.propertyId+'/'+this.propertyFinancialDTO.morgageNoc;
     this.action='';
     this.action=this.route.snapshot.params['action'];
     console.log(this.action);
@@ -162,10 +163,27 @@ export class PropertyFinancialsComponent implements OnInit {
 
 
   selectMorgageNoc(event) {
-    this.selectedMorgageNoc = event.target.files;
-    this.morgageNocFile=this.selectedMorgageNoc.item(0);
-    this.propertyFinancialDTO.morgageNoc=this.morgageNocFile.name;
-    event.srcElement.value = null;
+
+    if (event.target.files && event.target.files[0]) {
+      var FileSize = event.target.files[0].size / 1024 / 1024; // in MB
+       if (FileSize > 2) {
+           this.myToast.Error('File size exceeds 2 MB');
+           this.myToast.Warning('Accepted file size less than 2Mb');
+           return 'File size excced !'
+       }}
+
+       if (event.target.files && event.target.files[0]) {
+        var reader = new FileReader();
+        reader.onload = (event: ProgressEvent) => {
+          this.scannednocuploadPath = (<FileReader>event.target).result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+      }
+        this.selectedMorgageNoc = event.target.files;
+        this.morgageNocFile=this.selectedMorgageNoc.item(0);
+        this.propertyFinancialDTO.morgageNoc=this.morgageNocFile.name;
+        this.scannednocuploadPath=''+this.token.getImagepath()+'propertyId-'+this.propertyFinancialDTO.propertyId+'/'+this.propertyFinancialDTO.morgageNoc;
+        event.srcElement.value = null;
   }
 
   validation():boolean {

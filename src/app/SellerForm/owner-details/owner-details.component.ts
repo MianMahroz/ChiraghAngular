@@ -68,6 +68,9 @@ export class OwnerDetailsComponent implements AfterViewInit {
   idcopyuploadValid=true;
   //requiredfieldsArray:any[];
 
+  passportcopyuploadPath:string;
+  idcopyuploadPath:string;
+
 
   constructor(private myToast:ToasterServiceService,private route:ActivatedRoute,private sellerService:SellerService,private userService:UserService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
 
@@ -116,6 +119,9 @@ export class OwnerDetailsComponent implements AfterViewInit {
   }
 
     ngOnInit() {
+
+      this.passportcopyuploadPath=''+this.token.getImagepath()+'propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.passportCopyUpload;
+      this.idcopyuploadPath=''+this.token.getImagepath()+'propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.scannedIdCopy;
       this.role=this.token.getUserRole();
       this.adminPropertyId=this.token.getAdminPropertyId();
       console.log(this.role);
@@ -144,20 +150,57 @@ export class OwnerDetailsComponent implements AfterViewInit {
       this.router.navigate(['/login']);
     }
   }//end of nginit
-    selectPassport(event) {
+    selectPassport(event):string {
+      console.log('event');
+      console.log(event);
+
+      if (event.target.files && event.target.files[0]) {
+       var FileSize = event.target.files[0].size / 1024 / 1024; // in MB
+        if (FileSize > 2) {
+            this.myToast.Error('File size exceeds 2 MB');
+            this.myToast.Warning('Accepted file size less than 2Mb');
+            return 'File size excced !'
+        }}
+
+      if (event.target.files && event.target.files[0]) {
+        var reader = new FileReader();
+        reader.onload = (event: ProgressEvent) => {
+        this.passportcopyuploadPath = (<FileReader>event.target).result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+      }
       this.selectedPassport = event.target.files;
       this.passportFile=this.selectedPassport.item(0);
-      event.srcElement.value = null;
-      // console.log(this.passportFile);
       this.ownerDto.passportCopyUpload=this.passportFile.name;
-    
+      this.passportcopyuploadPath=''+this.token.getImagepath()+'propertyId-'+this.token.getPropertyId()+'/'+this.ownerDto.passportCopyUpload;
+      event.srcElement.value = null;
+      
     }
-    selectIdCopy(event) {
+    selectIdCopy(event):string {
+
+      if (event.target.files && event.target.files[0]) {
+        var FileSize = event.target.files[0].size / 1024 / 1024; // in MB
+         if (FileSize > 2) {
+             this.myToast.Error('File size exceeds 2 MB');
+             this.myToast.Warning('Accepted file size less than 2Mb');
+             return 'File size excced !'
+         }}
+
+       if (event.target.files && event.target.files[0]) {
+        var reader = new FileReader();
+        reader.onload = (event: ProgressEvent) => {
+          this.idcopyuploadPath = (<FileReader>event.target).result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+      }
       this.selectedIdCopy = event.target.files;
       this.idCopyFile=this.selectedIdCopy.item(0);
-      // console.log(this.idCopyFile);
-      event.srcElement.value = null;
       this.ownerDto.scannedIdCopy=this.idCopyFile.name;
+      // console.log(this.idCopyFile);
+      this.idcopyuploadPath=''+this.token.getImagepath()+'propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.scannedIdCopy;
+       event.srcElement.value = null;
+     
+      return "";
    }
 
    showValidationToast(msg:string):void{
@@ -301,11 +344,11 @@ if(this.ownerDto.email){
   }
 this.addressValid=true;
 if(this.ownerDto.address){
-  var address =this.ownerDto.address.match('[a-zA-Z0-9//_() & % # ~ , . "" ;:[] $ ^ @]*@[^ @]*');
-  if(address["0"]!==this.ownerDto.email){
-    this.myToast.Error('Invaild Address');
-    this.addressValid=false;
-  }}
+  //var address =this.ownerDto.address.match('[a-zA-Z0-9//_() & % # ~ , . "" ;:[] $ ^ @]*@[^ @]*');
+  //if(address["0"]!==this.ownerDto.email){
+   // this.myToast.Error('Invaild Address');
+    this.addressValid=true;
+  }
   else{
 
     this.myToast.Error('Address Cannot Empty');
@@ -355,7 +398,7 @@ if(this.ownerDto.address){
           this.myToast.Error('Invaild Phone Number ');
           this.phonenoValid=false;
         }
-        if(this.ownerDto.telephone.length>18){
+        if(this.ownerDto.telephone.length>16){
         this.myToast.Error('Please enter a 16 digit number.');
         this.phonenoValid=false;}}
 

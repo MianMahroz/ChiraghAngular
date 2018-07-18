@@ -128,4 +128,9 @@ export class PropertyDetailsDto {
  description:string;
  areaUnit:string;
  isPropertyDetailsVerified:string;
+ bulidingNumber:string;
+ bulidingName:string;
+ typePropertyOther:string;
+ propertyStatusOther:string;
+ floorplanupload:string;
 }

@@ -58,7 +58,10 @@ export class PoaDetailsComponent implements AfterViewInit {
   passportuploadValid=true;
   idcopyuploadValid=true;
   scannedPoaFileUploadValid=true;
-
+  idcopypoaPath:string;
+  passportcopypoaPath:string;
+  notorizedcopyPath:string;
+  
 
   constructor(private myToast:ToasterServiceService,private route:ActivatedRoute,private sellerService:SellerService,private userService:UserService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -99,24 +102,74 @@ export class PoaDetailsComponent implements AfterViewInit {
       }//end of back if
   }
 
-  selectPassport(event) {
-    this.selectedPassport = event.target.files;
-    this.passportFile=this.selectedPassport.item(0);
-    this.ownerDto.passportCopyUpload=this.passportFile.name;
-    event.srcElement.value = null;
+  selectPassport(event):string{
+    if (event.target.files && event.target.files[0]) {
+      var FileSize = event.target.files[0].size / 1024 / 1024; // in MB
+       if (FileSize > 2) {
+           this.myToast.Error('File size exceeds 2 MB');
+           this.myToast.Warning('Accepted file size less than 2Mb');
+           return 'File size excced !'
+       }}
+
+       if (event.target.files && event.target.files[0]) {
+        var reader = new FileReader();
+        reader.onload = (event: ProgressEvent) => {
+        this.passportcopypoaPath = (<FileReader>event.target).result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+      }
+        this.selectedPassport = event.target.files;
+        this.passportFile=this.selectedPassport.item(0);
+        this.ownerDto.passportCopyUpload=this.passportFile.name;
+        this.passportcopypoaPath =''+this.token.getImagepath()+'propertyId-'+this.token.getPropertyId()+'/'+this.ownerDto.passportCopyUpload;
+        event.srcElement.value = null;
     
   }
   selectIdCopy(event) {
-    this.selectedIdCopy = event.target.files;
-    this.idCopyFile=this.selectedIdCopy.item(0);
-    this.ownerDto.scannedIdCopy=this.idCopyFile.name;
-    event.srcElement.value = null;
+
+    if (event.target.files && event.target.files[0]) {
+      var FileSize = event.target.files[0].size / 1024 / 1024; // in MB
+       if (FileSize > 2) {
+           this.myToast.Error('File size exceeds 2 MB');
+           this.myToast.Warning('Accepted file size less than 2Mb');
+           return 'File size excced !'
+       }}
+
+       if (event.target.files && event.target.files[0]) {
+        var reader = new FileReader();
+        reader.onload = (event: ProgressEvent) => {
+          this.idcopypoaPath = (<FileReader>event.target).result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+      }
+        this.selectedIdCopy = event.target.files;
+        this.idCopyFile=this.selectedIdCopy.item(0);
+        this.ownerDto.scannedIdCopy=this.idCopyFile.name;
+        this.idcopypoaPath=''+this.token.getImagepath()+'propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.scannedIdCopy;
+        event.srcElement.value = null;
   }
   selectScannedPoa(event) {
-    this.selectedScannedPoa = event.target.files;
-    this.scannedNotorizedPoaFile=this.selectedScannedPoa.item(0);
-    this.ownerDto.scannedNotorizedCopy=this.scannedNotorizedPoaFile.name;
-    event.srcElement.value = null;
+
+    if (event.target.files && event.target.files[0]) {
+      var FileSize = event.target.files[0].size / 1024 / 1024; // in MB
+       if (FileSize > 2) {
+           this.myToast.Error('File size exceeds 2 MB');
+           this.myToast.Warning('Accepted file size less than 2Mb');
+           return 'File size excced !'
+       }}
+
+       if (event.target.files && event.target.files[0]) {
+        var reader = new FileReader();
+        reader.onload = (event: ProgressEvent) => {
+          this.notorizedcopyPath = (<FileReader>event.target).result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+      }
+        this.selectedScannedPoa = event.target.files;
+        this.scannedNotorizedPoaFile=this.selectedScannedPoa.item(0);
+        this.ownerDto.scannedNotorizedCopy=this.scannedNotorizedPoaFile.name;
+        this.notorizedcopyPath=''+this.token.getImagepath()+'propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.scannedIdCopy;
+        event.srcElement.value = null;
   }
 
 

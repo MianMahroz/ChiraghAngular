@@ -48,7 +48,7 @@ export class PropertyRentalComponent implements OnInit {
   ngOnInit() {
     // this.token.savePropertyId('182');
     // this.token.saveUserName('BesterCapital2');
-    this.scannedTenantContractUploadPath='../ChiraghDocuments/propertyId-'+this.propertyRentalDetailDTO.propertyId+'/'+this.propertyRentalDetailDTO.tenancyContractUpload;
+    this.scannedTenantContractUploadPath=''+this.token.getImagepath()+'propertyId-'+this.propertyRentalDetailDTO.propertyId+'/'+this.propertyRentalDetailDTO.tenancyContractUpload;
   
     this.action='';
     this.action=this.route.snapshot.params['action'];
@@ -60,11 +60,28 @@ export class PropertyRentalComponent implements OnInit {
   }
 
 
-  scannedTenantContract(event) {
-    this.selectedscannedTenentContract = event.target.files;
-    this.scannedTenentContractFile=this.selectedscannedTenentContract.item(0);
-    this.propertyRentalDetailDTO.tenancyContractUpload=this.scannedTenentContractFile.name;
-    event.srcElement.value = null;
+  scannedTenantContract(event):string {
+
+    if (event.target.files && event.target.files[0]) {
+      var FileSize = event.target.files[0].size / 1024 / 1024; // in MB
+       if (FileSize > 2) {
+           this.myToast.Error('File size exceeds 2 MB');
+           this.myToast.Warning('Accepted file size less than 2Mb');
+           return 'File size excced !'
+       }}
+
+       if (event.target.files && event.target.files[0]) {
+        var reader = new FileReader();
+        reader.onload = (event: ProgressEvent) => {
+          this.scannedTenantContractUploadPath = (<FileReader>event.target).result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+      }
+        this.selectedscannedTenentContract = event.target.files;
+        this.scannedTenentContractFile=this.selectedscannedTenentContract.item(0);
+        this.propertyRentalDetailDTO.tenancyContractUpload=this.scannedTenentContractFile.name;
+        this.scannedTenantContractUploadPath=''+this.token.getImagepath()+'propertyId-'+this.propertyRentalDetailDTO.propertyId+'/'+this.propertyRentalDetailDTO.tenancyContractUpload;
+        event.srcElement.value = null;
   }
 
   validation():boolean {
