@@ -16,8 +16,6 @@ export class TokenStorage {
   //serverPath:string='http://localhost:8082';
   imagepath:string='http://52.14.137.61/ChiraghDocuments/';
   // imagepath:string='http://demo.chiragh.com:8084/dev-ChiraghServer/';
-  // imagepath:string='http://localhost:8082/ChiraghDocuments/';
-
   constructor() { }
 
   signOut() {

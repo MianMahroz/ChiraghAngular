@@ -2755,6 +2755,7 @@ input[type=number] {
   -moz-appearance: none;
   background: url("../../assets/images/dropdown-arrow.png") no-repeat 0 0;
   background-position: calc(100% - 12px) center;
+  border: 1px solid #e3e3e3;
 }
 .common-select.form-control:disabled {
   background-color: #e9ecef;
