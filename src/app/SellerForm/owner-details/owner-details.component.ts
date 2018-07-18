@@ -302,7 +302,7 @@ if(this.ownerDto.email){
 this.addressValid=true;
 if(this.ownerDto.address){
   var address =this.ownerDto.address.match('[a-zA-Z0-9//_() & % # ~ , . "" ;:[] $ ^ @]*@[^ @]*');
-  if(email["0"]!==this.ownerDto.email){
+  if(address["0"]!==this.ownerDto.email){
     this.myToast.Error('Invaild Address');
     this.addressValid=false;
   }}
@@ -351,7 +351,7 @@ if(this.ownerDto.address){
       this.phonenoValid=true;
       if(this.ownerDto.telephone){
         var telephone=this.ownerDto.telephone.match('[0-9]*');
-        if(idCardNo["0"]!==this.ownerDto.idCardNo){
+        if(telephone["0"]!==this.ownerDto.idCardNo){
           this.myToast.Error('Invaild Phone Number ');
           this.phonenoValid=false;
         }

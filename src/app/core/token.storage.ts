@@ -11,7 +11,7 @@ export class TokenStorage {
 
   // serverPath:string='http://18.218.221.103/ChiraghServer';
    //serverPath:string='http://localhost:8082';
-   serverPath:string='http://18.219.3.150/ChiraghServer';
+   serverPath:string='http://52.14.137.61/ChiraghServer';
 
 
   imagepath:string='http://demo.chiragh.com/ChiraghDocuments/';
