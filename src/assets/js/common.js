@@ -212,10 +212,6 @@ $(document).ready(function(){
     $(this).addClass('active show');
   });
 
-  $('#propertyLink').click(function() {
-    $('#openPropDetails').removeClass('collapse');
-  });
-  
 
   $('.ud-nav-item').on('click', function(){
     $('li').removeClass('active');
@@ -237,6 +233,10 @@ $(document).ready(function(){
 //     $('.loader-div').hide();
 //   }, 5000);
 // }); 
+
+$('#propertyLink').click(function() {
+  $('#openPropDetails').toggleClass('collapse');
+});
 
 $('.advance-search-link').click(function() {
   $('.slider-search-btn-top').toggle();
