@@ -71,6 +71,26 @@ a {
 	line-height: 1.1em;
 }
 
+.loader-div {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  .fa-spin {
+    font-size: 24px;
+  }
+}
+
+.input-disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
 .full-parent-height {
 	height: 100%;
 }

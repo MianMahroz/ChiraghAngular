@@ -66,7 +66,6 @@ import { AdminSellerDetailsComponent } from './admin/admin-seller-details/admin-
 import 'hammerjs';
 import 'mousetrap';
 import {ModalGalleryModule} from 'angular-modal-gallery';
-import { Ng2FileSizeModule } from 'ng2-file-size';
 
 // enableProdMode();
 
@@ -135,7 +134,6 @@ import { Ng2FileSizeModule } from 'ng2-file-size';
     PasswordStrengthBarModule,
     CustomFormsModule,
     MaterialModule,
-    Ng2FileSizeModule,
 
 
 
