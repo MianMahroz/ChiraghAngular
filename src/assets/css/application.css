@@ -1638,6 +1638,10 @@ a:hover {
   font-weight: 700;
   line-height: 1.1em;
 }
+.instruction-title-24 {
+  color: #606060;
+  font-size: 24px;
+}
 .loader-div {
   position: absolute;
   right: 0;
