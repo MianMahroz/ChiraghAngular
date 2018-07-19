@@ -22,7 +22,7 @@
                     </div>
                     <div class="col-md-3 form-label-group mb-4">
                       <label class="form-label">Other</label>
-                      <input type="text" pattern="[a-zA-Z0-9]" class="form-control form-input" [(ngModel)]="propertyDetailsDto.propertyStatusOther" name="propertyStatusOther" #propertyStatusOther="ngModel" [disabled]="propertyDetailsDto.propertyStatus=='Off-Plan'" [disabled]="propertyDetailsDto.propertyStatus=='Off-Plot'" [disabled]="propertyDetailsDto.propertyStatus=='Completed'" required>
+                      <input type="text" pattern="[a-zA-Z0-9]" class="form-control form-input" [(ngModel)]="propertyDetailsDto.propertyStatusOther" name="propertyStatusOther" #propertyStatusOther="ngModel" [disabled]="propertyDetailsDto.propertyStatus!=='Other'" required>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label required-input-label">Plot Number</label>
@@ -42,11 +42,11 @@
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label required-input-label">Building Name</label>
-                      <input type="text" class="form-control form-input" required>
+                      <input type="text"  class="form-control form-input" [(ngModel)]="propertyDetailsDto.bulidingName" name="bulidingName" #bulidingName="ngModel" required>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label required-input-label">Building Number</label>
-                      <input type="text" class="form-control form-input" required>
+                      <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.bulidingNumber" name="bulidingNumber" #bulidingNumber="ngModel" required>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label required-input-label">Address</label>
@@ -60,7 +60,7 @@
                       <label class="form-label required-input-label">Property Number</label>
                       <input type="text" pattern="[a-zA-Z0-9]" class="form-control form-input" [(ngModel)]="propertyDetailsDto.propertyNo" name="propertyNo" #propertyNo="ngModel" required>
                     </div>
-                    <div class="col-md-6 form-label-group mb-4">
+                    <div class="col-md-3 form-label-group pr-0 mb-4">
                       <label class="form-label required-input-label">Type of Property</label>
                       <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.propertyType" name="propertyType" #propertyType="ngModel">
                         <option>Land</option>
@@ -76,6 +76,10 @@
                         <option>Town House</option>
                         <option>Other</option>
                       </select>
+                    </div>
+                    <div class="col-md-3 form-label-group mb-4">
+                      <label class="form-label required-input-label">Other</label>
+                      <input type="text" pattern="[a-zA-Z0-9]" class="form-control form-input"[disabled]="propertyDetailsDto.propertyType!=='Other'">
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label required-input-label">Project Name</label>
@@ -99,11 +103,21 @@
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label">Gross Area</label>
-                      <input type="text" pattern="[0-9.]*" class="form-control form-input">
+                      <input type="text" pattern="[0-9.]*" class="form-control form-input" [(ngModel)]="propertyDetailsDto.grossArea" name="grossArea" #grossArea="ngModel" [disabled]="propertyDetailsDto.propertyStatus!=='Off-Plan'">
+                      <div *ngIf="grossArea.errors && (grossArea.dirty || grossArea.touched)" class="alert alert-danger">
+                        <div [hidden]="!grossArea.errors.pattern">
+                          Space,Alaphabets and Special Character not Allowed!
+                        </div>
+                      </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label">Net Area</label>
-                      <input type="text" pattern="[0-9.]*" class="form-control form-input">
+                      <input type="text" pattern="[0-9.]*" class="form-control form-input" [(ngModel)]="propertyDetailsDto.netArea" name="netArea" #netArea="ngModel" [disabled]="propertyDetailsDto.propertyStatus=='Off-Plan'"  >
+                      <div *ngIf="netArea.errors && (netArea.dirty || netArea.touched)" class="alert alert-danger">
+                        <div [hidden]="!netArea.errors.pattern">
+                          Space,Alaphabets and Special Character not Allowed!
+                        </div>
+                      </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label">Owner Association Number</label>
@@ -699,22 +713,22 @@
                       <div class="upload-instuct mt-2">Scanned Title Deed</div>
                       <div class="upload-btn-div mt-4">
                         <div class="doc-upload">
-                          <input id="ownerPassCopy" #passFile type="file" name="file" onchange="readURLNotorizedCopy(this);" (change)="selectScannedTitleDeed($event)" class="doc-upload"accept=".jpg,.png,.gif,.jpeg,.pdf"/>
+                          <input id="ownerPassCopy" #passFile type="file" name="file"  (change)="selectScannedTitleDeed($event)" class="doc-upload"accept=".jpg,.png,.gif,.jpeg,.pdf"/>
                         </div>
                         <span class="upload-instuct ml-3">Upload </span>
                       </div>
                     </div>
                     <div class="offset-md-2 col-md-4 upload-doc-block mt-3">
                       <div class="upload-doc-div">
-                          <img id="idCopy" class="w-100 thumbnail" src="{{idCardFileUploadPath}}">
+                          <img id="idCopy" class="w-100 thumbnail" src="{{floorplanPath}}">
                           <div id="idCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
                         </div>
                       <div  class="upload-instuct mt-2">Floor Plan</div>  
                       <div  class="upload-btn-div mt-3">
                         <div class="doc-upload">
-                          <input id="owneIdCopy" #idFile type="file" onchange="readURLIdCopy(this);" (change)="selectIdCopy($event)" name="file" class="doc-upload" accept=".jpg,.png,.gif,.jpeg" />
+                          <input id="owneIdCopy" #idFile type="file"  (change)="selectFloorPlan($event)" name="file" class="doc-upload" accept=".jpg,.png,.gif,.jpeg" />
                         </div>  
-                        <span class="upload-instuct ml-3">Upload Again</span>
+                        <span class="upload-instuct ml-3">Upload </span>
                       </div> 
                     </div>
                   </div>

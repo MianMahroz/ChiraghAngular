@@ -133,4 +133,6 @@ export class PropertyDetailsDto {
  typePropertyOther:string;
  propertyStatusOther:string;
  floorplanupload:string;
+ grossArea:string;
+ netArea:string;
 }

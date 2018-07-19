@@ -394,7 +394,7 @@ if(this.ownerDto.address){
       this.phonenoValid=true;
       if(this.ownerDto.telephone){
         var telephone=this.ownerDto.telephone.match('[0-9]*');
-        if(telephone["0"]!==this.ownerDto.idCardNo){
+        if(telephone["0"]!==this.ownerDto.telephone){
           this.myToast.Error('Invaild Phone Number ');
           this.phonenoValid=false;
         }

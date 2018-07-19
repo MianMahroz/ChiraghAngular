@@ -31,10 +31,6 @@ export class SellerDashboardComponent implements OnInit {
     })
   }
 
-
-  personalInfoForm:any;
-  contactInfoForm:any;
-  filevalidationForm:any;
   userIdCopy:string;
   userPassportCopy:string;
 
@@ -219,7 +215,7 @@ selectPassport(event) {
       this.passportFile=this.selectedPassport.item(0);
       this.personalinfoDTO.scannedPassportCopyUpload=this.passportFile.name;
       this.userPassportCopy=''+this.token.getImagepath()+'ChiraghUser-'+this.personalinfoDTO.userId+'/'+this.personalinfoDTO.scannedPassportCopyUpload;
-      this.UpdatePersonalInfo(this.filevalidationForm);
+      this.UpdatePersonalInfo('filevalidationForm');
       // console.log(this.passportFile);
     // this.UpdatePersonalInfo();
       event.srcElement.value = null;
@@ -246,7 +242,7 @@ selectIdCopy(event) {
   this.idCopyFile=this.selectedIdCopy.item(0);
   this.personalinfoDTO.scannedIdCopyUpload=this.idCopyFile.name;
   this.userIdCopy=''+this.token.getImagepath()+'ChiraghUser-'+this.personalinfoDTO.userId+'/'+this.personalinfoDTO.scannedIdCopyUpload;
-  this.UpdatePersonalInfo(this.filevalidationForm);
+  this.UpdatePersonalInfo('filevalidationForm');
   event.srcElement.value = null;
 }
  
@@ -409,6 +405,7 @@ selectIdCopy(event) {
     
       return this.personalinfoValid;
       }
+    
 
 
       contactInfovalidation():boolean {
@@ -426,7 +423,7 @@ selectIdCopy(event) {
         if(this.personalinfoDTO.mobileOtpCode.length>4){
           this.myToast.Error(' OTP code should be 4 digit number');
           this.optcodeValid=false;
-        }
+        }}
       
         else{
       
@@ -486,7 +483,8 @@ selectIdCopy(event) {
               }
               if(this.personalinfoDTO.phoneNumber.length>18){
               this.myToast.Error('Please enter a 16 digit number.');
-              this.phonenoValid=false;}}
+              this.phonenoValid=false;
+            }}
 
               this.cityValid=true;
               if(this.personalinfoDTO.userCity){
@@ -523,7 +521,7 @@ selectIdCopy(event) {
       
         return this.contactinfoValid;
         }
-      }
+      
 
       fileInfovalidation():boolean {
 
@@ -676,40 +674,31 @@ selectIdCopy(event) {
 
   }//end 
 
-  UpdatePersonalInfo(data:any): string{
-
-
-   if(data===this.personalInfoForm)
-   {
-    if(this.persoanlInfovalidation()==true){
-
-    }
-    else {
-      return "Invalid Personal Info Form";
+  UpdatePersonalInfo(data:string): string{
     
-    }
-   }
-    else if(data===this.contactInfoForm){
-
-
-    if(this.contactInfovalidation()==true){
-
-    }
-    else {
-      return "Invalid Contact Info Form";
+    console.log(data);
+    if(data=='contactinfoForm'){
+     // data=null;
+      console.log(data);
+      if(this.contactInfovalidation()==true){}
+      else {
+        return "Invalid Contact Info Form";}}
     
-    }
-   }
-   else if(data===this.filevalidationForm){
-    if(this.fileInfovalidation()==true){
-
-    }
-    else {
-      return "Invalid file Info Form";
-    
-    }
-   }
-
+      if(data=='personalInfoForm'){
+        data=null;
+        //this.contactinfoValid=false;
+       // this.fileinfoValid=false;
+      if(this.persoanlInfovalidation()==true){}
+     else{
+      return "Invalid Personal Info Form";}}
+  
+      if(data=='filevalidationForm'){
+        data=null;
+       // this.personalinfoValid=false;
+       // this.contactinfoValid=false;
+      if(this.fileInfovalidation()==true){}
+      else {
+        return "Invalid file Info Form";}}
 
     window.sessionStorage.removeItem('AuthToken');
     this.authService.attemptAuth().subscribe(

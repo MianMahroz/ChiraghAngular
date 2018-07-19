@@ -59,6 +59,8 @@ export class PropertyDetailsComponent implements OnInit {
   typepropertyotherValid=true;
   titledeeduploadPath:string;
   floorplanPath:string;
+  grossAreaValid=true;
+  netAreaValid=true;
 
   paymentScheduleList:any[];
 
@@ -358,9 +360,7 @@ export class PropertyDetailsComponent implements OnInit {
     this.typepropertyotherValid=true;
     if(this.propertyDetailsDto.typePropertyOther)
     {
-   // var propertystatus =this.propertyDetailsDto.propertyStatus.match('[a-zA-Z]*');
-    //if(propertystatus["0"]!==this.propertyDetailsDto.propertyStatus){
-      //this.myToast.Error('Invalid PropertyStatus');
+   
       this.typepropertyotherValid=true;
     }
     else{
@@ -394,12 +394,29 @@ export class PropertyDetailsComponent implements OnInit {
     }
 
 
+    this.grossAreaValid=true;
+    if(this.propertyDetailsDto.grossArea)
+    {
+     var grossarea=this.propertyDetailsDto.grossArea.match('[0-9]*');
+     if(grossarea["0"]!==this.propertyDetailsDto.grossArea){
+      this.myToast.Error('Invalid Gross Area');
+      this.grossAreaValid=false;
+    }}
 
+    this.netAreaValid=true;
+    if(this.propertyDetailsDto.netArea)
+    {
+     var netarea=this.propertyDetailsDto.netArea.match('[0-9]*');
+     if(netarea["0"]!==this.propertyDetailsDto.netArea){
+      this.myToast.Error('Invalid Net Area');
+      this.netAreaValid=false;
+    }}
 
 
     if(this.propertystatusValid==false||this.plotnoValid==false||this.titledeednoValid==false||this.addressValid==false||
     this.propertynoValid==false||this.typeofpropertyValid==false||this.projectnameValid==false||this.areaValid==false||
-    this.unitValid==false||this.descriptionValid==false||this.scannedtitledeeduploadValid==false)
+    this.unitValid==false||this.descriptionValid==false||this.scannedtitledeeduploadValid==false||this.propertystatusotherValid==false||this.typepropertyotherValid==false
+    ||this.bulidingnameValid==false||this.bulidingnumberValid==false||this.grossAreaValid==false||this.netAreaValid==false)
     {
       this.formValid=false;
     }
@@ -407,7 +424,6 @@ export class PropertyDetailsComponent implements OnInit {
     else{
       this.formValid=true;
     }
-
 
 
     return this.formValid;
