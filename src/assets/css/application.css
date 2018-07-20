@@ -3048,6 +3048,9 @@ input[type="file"] {
   -webkit-transform: scale(0);
   transform: scale(0);
 }
+input[type="file"]:disabled {
+  cursor: no-drop;
+}
 .info-header-row {
   background-color: #f8f8f8;
   border-bottom: 1px solid #e3e3e3;
