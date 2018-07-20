@@ -29,8 +29,8 @@ export class OwnerDetails{
 	poaPropertyAuthority:string;
 	titleDeedUpload:string;
   	scannedNotorizedCopy:string;
-  	isPoaAccepted:string;
-  	specificproperty:string;
+  	isPoaAccepted=false;
+  	specificProperty:string;
   	isPersonalDetailsVerified:string;
 
 

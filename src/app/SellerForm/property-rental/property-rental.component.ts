@@ -48,7 +48,13 @@ export class PropertyRentalComponent implements OnInit {
   ngOnInit() {
     // this.token.savePropertyId('182');
     // this.token.saveUserName('BesterCapital2');
-    this.scannedTenantContractUploadPath=''+this.token.getImagepath()+'propertyId-'+this.propertyRentalDetailDTO.propertyId+'/'+this.propertyRentalDetailDTO.tenancyContractUpload;
+    if(this.propertyRentalDetailDTO.tenancyContractUpload==null)
+    {
+      this.scannedTenantContractUploadPath=null;
+    }
+    else
+    {
+    this.scannedTenantContractUploadPath=''+this.token.getImagepath()+'propertyId-'+this.propertyRentalDetailDTO.propertyId+'/'+this.propertyRentalDetailDTO.tenancyContractUpload;}
   
     this.action='';
     this.action=this.route.snapshot.params['action'];

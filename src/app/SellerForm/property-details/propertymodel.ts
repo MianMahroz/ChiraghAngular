@@ -16,8 +16,8 @@ export class PropertyDetailsDto {
  propertyNo:string;
  propertyReferenceNo:string;
  pricePerSqft:number;
- noOfBedrooms:string;
- noOfBaths:string;
+ noOfBedrooms:number;
+ noOfBaths:number;
  noOfFloors:number;
  scannedTitleDeed:string;
  agreeVatCommission:number;

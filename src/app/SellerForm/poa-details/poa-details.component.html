@@ -90,7 +90,7 @@
                   </div>
                   <div class="col-md-6 form-label-group mb-4">
                     <label class="form-label">ID Card Expiry Date</label>
-                    <input type="date"  class="form-control form-input"  [(ngModel)]="ownerDto.idCardExpiration" name="idCardExpiration">
+                    <input type="date" class="form-control form-input"  [(ngModel)]="ownerDto.idCardExpiration" name="idCardExpiration">
                   </div>
                   <div class="col-md-6 form-label-group mb-4">
                     <label class="form-label required-input-label">Passport Number</label>
@@ -109,7 +109,7 @@
                   </div>
                   <div class="col-md-6 form-label-group mb-4">
                     <label class="form-label required-input-label">Passport Expiry Date</label>
-                    <input type="date" for="date" class="form-control  form-input" [(ngModel)]="ownerDto.passportExpiryDate" name="passportExpiryDate" required>
+                    <input type="date" class="form-control  form-input" [(ngModel)]="ownerDto.passportExpiryDate" name="passportExpiryDate" required>
                   </div>
                 </div>
                 <div class="row mt-3">
@@ -156,21 +156,7 @@
                       </div>
                     </div>
                   </div>
-                  <!-- <div class="col-md-6 form-label-group mb-4">
-                    <label class="form-label">Fax</label>
-                    <input type="text" pattern="[0-9]*" class="form-control form-input" [(ngModel)]="ownerDto.fax" name="fax" #fax="ngModel"  minlength="6" maxlength="18">
-                    <div *ngIf="fax.errors && (fax.dirty || fax.touched)" class="alert alert-danger">
-                      <div [hidden]="!fax.errors.required">
-                        Fax is required!
-                      </div>
-                      <div [hidden]="!fax.errors.maxlength">
-                        Fax Number cannot be more than 18 characters long.
-                      </div>
-                      <div [hidden]="!fax.errors.pattern">
-                        Space and special character not Allowed!
-                      </div>
-                    </div>
-                  </div> -->
+                  
                   <div class="col-md-6 form-label-group mb-4">
                     <label class="form-label required-input-label">Address</label>
                     <input pattern="[a-zA-Z0-9]*" type="text" minlength="8" name="userAddress" #userAddress="ngModel" maxlength="60" class="form-control  form-input" [(ngModel)]="ownerDto.address" required>
@@ -200,63 +186,28 @@
                   <div class="col-md-12 form-block-heading mb-3">Power Of Attorney Details</div>
                   <div class="col-md-6 form-label-group mb-4">
                     <label class="form-label required-input-label">POA Number</label>
-                    <input type="number" class="form-control form-input" [(ngModel)]="ownerDto.poaNumber" name="poaNumber" required>
+                    <input type="text" pattern="[0-9]*" class="form-control form-input" [(ngModel)]="ownerDto.poaNumber" name="poaNumber" #poaNumber="ngModel" required>
+                    <div *ngIf="poaNumber.errors && (poaNumber.dirty || poaNumber.touched)" class="alert alert-danger">
+                       <div [hidden]="!poaNumber.errors.required">
+                        POA Number Required!
+                      </div> 
+                      <div [hidden]="!poaNumber.errors.pattern">
+                        Space and special character not Allowed!
+                      </div>
+                    </div>
                   </div>
                   <div class="col-md-6 form-label-group mb-4">
                     <label class="form-label required-input-label">POA Expiry Date</label>
-                    <input type="text" for="date" class="form-control form-input" [(ngModel)]="ownerDto.poaAgreementExpiry" name="poaAgreementExpiry" required>
+                    <input type="date" class="form-control form-input" [(ngModel)]="ownerDto.poaAgreementExpiry" name="poaAgreementExpiry" required>
                   </div>
                   <div class="col-md-6 form-label-group mb-4">
                     <label class="form-label required-input-label">Specific Property</label>
-                    <select class="form-control common-select" [(ngModel)]="ownerDto.specificproperty" name="specificproperty">
+                    <select class="form-control common-select" [(ngModel)]="ownerDto.specificProperty" name="specificproperty" #specificproperty="ngModel">
                       <option>Individual Property</option>
                       <option>Multiple Properties</option>
                     </select>
                   </div>
                 </div>
-                <!-- <div class="row mt-3">
-                  <div class="col-md-12 document-upload">
-                    Upload Documents
-                    <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>
-                  </div>
-                  <div class="col-md-12 upload-doc-block">
-                    <div class="upload-btn-div mt-4">
-                      <div class="file">
-                        <input id="scanPassCopy" type="file" (change)="selectPassport($event)" name="file" class="doc-upload" />
-                      </div>
-                      <div class="upload-instuct mt-2">Scanned passport copy <i class="fas fa-circle-notch fa-spin ml-2"></i></div>
-                      <p *ngIf="passportFile" class="margin-bottom-20-neg"><br>{{passportFile.name}}</p>
-                      <p *ngIf="!passportFile&&ownerDto.passportCopyUpload && action=='next'||action=='back'" class="margin-bottom-20-neg"><br>{{ownerDto.passportCopyUpload}}</p>
-                    </div>
-                    <div class="upload-btn-div mt-5">
-                      <div class="file">
-                        <input id="scanIdCopy" type="file" name="file" (change)="selectIdCopy($event)" class="doc-upload" />
-                      </div>
-                      <div class="upload-instuct mt-2">
-                        Scanned ID copy <i class="fas fa-circle-notch fa-spin ml-2"></i>
-                        <div class="upload-sub-instruct">(UAE or country of origin)</div>
-                      </div>
-                      <p *ngIf="idCopyFile"><br>{{idCopyFile.name}}</p>
-                      <p *ngIf="!idCopyFile&&ownerDto.scannedIdCopy&&action=='next'||action=='back'"><br>{{ownerDto.scannedIdCopy}}</p>
-                    </div>
-                    <div class="upload-btn-div mt-4">
-                      <div class="file">
-                        <input id="scanPoa" type="file" name="file" (change)="selectScannedPoa($event)" class="doc-upload" />
-                      </div>
-                      <div class="upload-instuct mt-2">Scanned NOTORIZED POA <i class="fas fa-circle-notch fa-spin ml-2"></i>
-                        <div class="upload-sub-instruct">(International POA should have the stamp of external affairs and UAE embassy)</div>
-                      </div>
-                      <p *ngIf="scannedNotorizedPoaFile"><br>{{scannedNotorizedPoaFile.name}}</p>
-                      <p *ngIf="!scannedNotorizedPoaFile&&ownerDto.scannedNotorizedCopy&&action=='next'||action=='back'"><br>{{ownerDto.scannedNotorizedCopy}}</p>
-
-                    </div>
-                    <div class="common-checkbox mt-5">
-                      <label>
-                        <input type="checkbox" name="isPoaAccepted" [(ngModel)]="isPoaAccepted" required><span class="checkbox-material"><span class="check mr-2"></span></span> General POA not accepted
-                      </label>
-                    </div>
-                  </div>
-                </div> -->
                 <div class="row mt-3">
                   <div class="col-md-12 document-upload form-block-heading mb-4">
                     Upload Documents
@@ -272,7 +223,7 @@
                       <div class="doc-upload">
                         <input id="ownerPassCopy" #passFile type="file" name="file" (change)="selectPassport($event)" class="doc-upload"accept=".jpg,.png,.gif,.jpeg"/>
                       </div>
-                      <span class="upload-instuct ml-3">Upload Again</span>
+                      <span class="upload-instuct ml-3">Upload</span>
                     </div>
                   </div>
                   <div class="offset-md-2 col-md-4 upload-doc-block">
@@ -287,7 +238,7 @@
                       <div class="doc-upload">
                         <input id="owneIdCopy" #idFile type="file"  (change)="selectIdCopy($event)" name="file" class="doc-upload" accept=".jpg,.png,.gif,.jpeg" />
                       </div>  
-                      <span class="upload-instuct ml-3">Upload Again</span>
+                      <span class="upload-instuct ml-3">Upload</span>
                     </div> 
                   </div>
                   <div class="col-md-4 upload-doc-block mt-3">
@@ -302,9 +253,14 @@
                       <div class="doc-upload">
                         <input id="ownerPassCopy" #passFile type="file" name="file" (change)="selectScannedPoa($event)" class="doc-upload"accept=".jpg,.png,.gif,.jpeg,.pdf"/>
                       </div>
-                      <span class="upload-instuct ml-3">Upload Again</span>
+                      <span class="upload-instuct ml-3">Upload </span>
                     </div>
                   </div>
+                </div>
+                <div class="common-checkbox mt-5">
+                  <label>
+                    <input type="checkbox" name="isPoaAccepted" [(ngModel)]="isPoaAccepted" required><span class="checkbox-material"><span class="check mr-2"></span></span> General POA not accepted
+                  </label>
                 </div>
                 <div class="row mt-5 submit-btn-row">
                   <div class="col-md-3 mb-xs-4">

@@ -48,6 +48,7 @@ export class PropertyFinancialsComponent implements OnInit {
   scannedTitleDeedValid=true;
   formValid=true;
   scannednocuploadPath:string;
+  bankOtherValid:string;
 
 
   constructor(private myToast:ToasterServiceService,private route:ActivatedRoute,private sellerService:SellerService,private propertyService:PropertyService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
@@ -62,7 +63,15 @@ export class PropertyFinancialsComponent implements OnInit {
   ngOnInit() {
     // this.token.savePropertyId('111');
     // this.token.saveUserName('BesterCapital2');
-    this.scannednocuploadPath=''+this.token.getImagepath()+'propertyId-'+this.propertyFinancialDTO.propertyId+'/'+this.propertyFinancialDTO.morgageNoc;
+    if(this.propertyFinancialDTO.morgageNoc==null)
+    {
+      this.scannednocuploadPath=null;
+    }
+    else
+    {
+      this.scannednocuploadPath=''+this.token.getImagepath()+'propertyId-'+this.propertyFinancialDTO.propertyId+'/'+this.propertyFinancialDTO.morgageNoc;
+    }
+   
     this.action='';
     this.action=this.route.snapshot.params['action'];
     console.log(this.action);
@@ -222,6 +231,8 @@ export class PropertyFinancialsComponent implements OnInit {
     this.myToast.Error('Mortgage Reg.No Cannot Empty');
     this.mortgageregValid= false;
   }}
+
+
   this.balanceamountValid=true;
   if(this.propertyFinancialDTO.morgageStatus=="No"){
     this.balanceamountValid=true;
@@ -357,6 +368,22 @@ else{
     this.myToast.Error('Invalid Amount');
     this.amountValid=false;
   }}}
+   
+  this.bankValid=true;
+  if(this.propertyFinancialDTO.bank=='Other'){
+  if(this.propertyFinancialDTO.bankOther)
+  {
+  // var mortgageregNo =this.propertyFinancialDTO.morgageRegNo.match('[a-zA-Z0-9_]*');
+  // if(mortgageregNo["0"]!==this.propertyFinancialDTO.morgageRegNo){
+  //   this.myToast.Error('Invalid Mortgage Reg.No');
+      this.bankValid=true;
+  }
+
+  else{
+
+    this.myToast.Error('Financing Other Cannot Empty');
+    this.bankValid=false;
+  }}
 
   this.scannedTitleDeedValid=true;
   if(this.propertyFinancialDTO.morgageStatus=="No"){

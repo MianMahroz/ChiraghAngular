@@ -66,6 +66,7 @@ export class OwnerDetailsComponent implements AfterViewInit {
   formValid=true;
   passportuploadValid=true;
   idcopyuploadValid=true;
+  
   //requiredfieldsArray:any[];
 
   passportcopyuploadPath:string;
@@ -114,14 +115,20 @@ export class OwnerDetailsComponent implements AfterViewInit {
     this.getOwnerImages();
     this.pid=92;
     this.fileName=this.ownerDto.idCardNo;
-    this.idCardFileUploadPath='../ChiraghDocuments/propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.scannedIdCopy;
-    this.passportFileUploadPath='../ChiraghDocuments/propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.passportCopyUpload;
+    this.passportcopyuploadPath=''+this.token.getImagepath()+'propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.passportCopyUpload;
+      this.idcopyuploadPath=''+this.token.getImagepath()+'propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.scannedIdCopy;
   }
 
     ngOnInit() {
 
+     if(this.ownerDto.passportCopyUpload==null && this.ownerDto.scannedIdCopy==null)
+     {
+      this.passportcopyuploadPath=null;
+      this.idcopyuploadPath=null;
+     }
+     else{
       this.passportcopyuploadPath=''+this.token.getImagepath()+'propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.passportCopyUpload;
-      this.idcopyuploadPath=''+this.token.getImagepath()+'propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.scannedIdCopy;
+      this.idcopyuploadPath=''+this.token.getImagepath()+'propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.scannedIdCopy;}
       this.role=this.token.getUserRole();
       this.adminPropertyId=this.token.getAdminPropertyId();
       console.log(this.role);
@@ -344,9 +351,6 @@ if(this.ownerDto.email){
   }
 this.addressValid=true;
 if(this.ownerDto.address){
-  //var address =this.ownerDto.address.match('[a-zA-Z0-9//_() & % # ~ , . "" ;:[] $ ^ @]*@[^ @]*');
-  //if(address["0"]!==this.ownerDto.email){
-   // this.myToast.Error('Invaild Address');
     this.addressValid=true;
   }
   else{
@@ -587,7 +591,8 @@ editProcessHelper(operation:string):void{
       this.passportFile=null;
       this.selectedIdCopy=null;
       this.selectedPassport=null;
-
+      this.passportcopyuploadPath=null;
+      this.idcopyuploadPath=null;
       this.sellerService.getOwners(this.token.getPropertyId(),this.token.getuserName()).subscribe(
          ownerData=>{
           this.atLeastOneOwner=true;

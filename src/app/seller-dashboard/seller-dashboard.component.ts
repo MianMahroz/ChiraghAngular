@@ -529,7 +529,7 @@ selectIdCopy(event) {
       
         
               this.classifyourselfValid=true;
-              if(this.personalinfoDTO.classifyYourself){
+              if(this.personalinfoDTO.classifyYourself==true){
                   
                 this.classifyourselfValid=true;
               }  
@@ -614,7 +614,7 @@ selectIdCopy(event) {
     if(data.scannedIdCopyUpload==null||data.scannedIdCopyUpload==undefined){
       this.myToast.Error('Id Copy Upload Required!')
     }
-     if(data.classifyYourself){
+     if(data.classifyYourself==true){
 
      }
      else{
@@ -623,9 +623,6 @@ selectIdCopy(event) {
 
     this.userPassportCopy=''+this.token.getImagepath()+'ChiraghUser-'+this.personalinfoDTO.userId+'/'+this.personalinfoDTO.scannedPassportCopyUpload;
     this.userIdCopy=''+this.token.getImagepath()+'ChiraghUser-'+this.personalinfoDTO.userId+'/'+this.personalinfoDTO.scannedIdCopyUpload;
-   // this.personalinfoDTO.scannedIdCopyUpload=this.userPassportCopy;
-    //this.personalinfoDTO.scannedIdCopyUpload=this.userIdCopy;
-    // this.getPersonalInfoImages();
    }
 
    cancelinfo():void{

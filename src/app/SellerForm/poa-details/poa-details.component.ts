@@ -58,9 +58,14 @@ export class PoaDetailsComponent implements AfterViewInit {
   passportuploadValid=true;
   idcopyuploadValid=true;
   scannedPoaFileUploadValid=true;
+  isPoaAcceptedValid=true;
   idcopypoaPath:string;
   passportcopypoaPath:string;
   notorizedcopyPath:string;
+  poanumberValid=true;
+  poaexpiryValid=true;
+  specificpropertyValid=true;
+  
   
 
   constructor(private myToast:ToasterServiceService,private route:ActivatedRoute,private sellerService:SellerService,private userService:UserService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
@@ -82,13 +87,25 @@ export class PoaDetailsComponent implements AfterViewInit {
     console.log(row);
     this.myToast.Info('Status','POA Data Loaded Successfully');
     this.ownerDto=row;
-    this.idCardFileUploadPath='../ChiraghDocuments/propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.scannedIdCopy;
-    this.passportFileUploadPath='../ChiraghDocuments/propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.passportCopyUpload;
-    this.scannedPoaFileUploadPath='../ChiraghDocuments/propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.scannedNotorizedCopy;
+    this.passportcopypoaPath =''+this.token.getImagepath()+'propertyId-'+this.token.getPropertyId()+'/'+this.ownerDto.passportCopyUpload;
+    this.idcopypoaPath=''+this.token.getImagepath()+'propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.scannedIdCopy;
+    this.notorizedcopyPath=''+this.token.getImagepath()+'propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.scannedIdCopy;
 
   }
   ngOnInit() {
 
+
+    if(this.ownerDto.passportCopyUpload==null && this.ownerDto.scannedIdCopy==null && this.ownerDto.scannedIdCopy==null)
+    {
+      this.passportcopypoaPath =null;
+      this.idcopypoaPath=null;
+      this.notorizedcopyPath=null;
+    }
+
+    else{
+    this.passportcopypoaPath =''+this.token.getImagepath()+'propertyId-'+this.token.getPropertyId()+'/'+this.ownerDto.passportCopyUpload;
+    this.idcopypoaPath=''+this.token.getImagepath()+'propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.scannedIdCopy;
+    this.notorizedcopyPath=''+this.token.getImagepath()+'propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.scannedIdCopy;}
     // //for testing purpose
     // this.token.saveUserName('BesterCapital2');
     // this.token.savePropertyId('111');
@@ -351,11 +368,11 @@ export class PoaDetailsComponent implements AfterViewInit {
         this.phonenoValid=true;
         if(this.ownerDto.telephone){
           var telephone=this.ownerDto.telephone.match('[0-9]*');
-          if(idCardNo["0"]!==this.ownerDto.idCardNo){
+          if(telephone["0"]!==this.ownerDto.telephone){
             this.myToast.Error('Invaild Phone Number ');
             this.phonenoValid=false;
           }
-          if(this.ownerDto.telephone.length>18){
+          if(this.ownerDto.telephone.length>16){
           this.myToast.Error('Please enter a 16 digit number.');
           this.phonenoValid=false;}}
 
@@ -381,16 +398,72 @@ export class PoaDetailsComponent implements AfterViewInit {
             this.idcopyuploadValid=false;
         }
 
+        this.isPoaAcceptedValid=true;
+       // var poaaccepted=this.ownerDto.isPoaAccepted;
+        if(this.ownerDto.isPoaAccepted=true){
+           // this.myToast.Error('Passport Copy Upload required ');
+           this.isPoaAcceptedValid=true;
+           console.log(this.ownerDto.isPoaAccepted);
+           console.log("Poa Check Box");
+        }
+        else
+        {
+          console.log("Poa Check Box");
+          console.log(this.ownerDto.isPoaAccepted);
+          this.myToast.Error('IsPoa Accepted CheckBox required!');
+          this.isPoaAcceptedValid=false;
+        }
+
            this.scannedPoaFileUploadValid=true;
           if(this.ownerDto.scannedNotorizedCopy==null||this.ownerDto.scannedNotorizedCopy==undefined){
             this.myToast.Error('Scanned Notorized Poa Upload required');
             this.scannedPoaFileUploadValid=false;
         }
 
+        this.poaexpiryValid=true;
+        if(this.ownerDto.poaAgreementExpiry)
+        {
+         this.poaexpiryValid=true;
+        }
+        else{
+
+          this.myToast.Error('Poa Agreement Expiry Date Cannot Empty');
+          this.poaexpiryValid=false;
+        }
+
+        this.poanumberValid=true;
+        if(this.ownerDto.poaNumber)
+        {
+        
+           var poanumber =this.ownerDto.poaNumber.match('[0-9-]*');
+           if(poanumber["0"]!==this.ownerDto.poaNumber){
+           this.myToast.Error('Invaild POA Number');
+           this.poanumberValid=false;
+        }}
+        else{
+
+          this.myToast.Error('Poa Number Cannot Empty');
+          this.poanumberValid=false;
+        }
+
+
+        this.specificpropertyValid=true;
+        if(this.ownerDto.specificProperty)
+        {
+          console.log(this.ownerDto.specificProperty);
+          this.specificpropertyValid=true;
+        }
+        else{
+          console.log(this.ownerDto.specificProperty);
+          this.myToast.Error('Specific Property Cannot Empty');
+          this.specificpropertyValid=false;
+        }
+
     if(this.firstnameValid==false||this.lastnameValid==false||this.nationalityValid==false||this.passportValid==false
     ||this.moblieValid==false||this.emailValid==false||this.addressValid==false
     ||this.idcardValid==false||this.phonenoValid==false||this.poboxValid==false
-    ||this.passportuploadValid==false||this.idcopyuploadValid==false||this.scannedPoaFileUploadValid==false){
+    ||this.passportuploadValid==false||this.idcopyuploadValid==false||this.scannedPoaFileUploadValid==false||this.isPoaAcceptedValid==false
+    ||this.poanumberValid==false||this.specificpropertyValid==false||this.poaexpiryValid==false){
        this.formValid=false;
     }
     else
@@ -501,7 +574,10 @@ editProcessHelper(operation:string):void{
       this.selectedIdCopy=null;
       this.selectedPassport=null;
       this.selectedScannedPoa=null;
-
+      this.passportcopypoaPath =null;
+      this.idcopypoaPath=null;
+      this.notorizedcopyPath=null;
+      
       this.sellerService.getPoas(this.token.getPropertyId(),this.token.getuserName()).subscribe(
          ownerData=>{
           this.atLeastOnePoa=true;
@@ -527,6 +603,7 @@ editProcessHelper(operation:string):void{
                this.atLeastOnePoa=true;
                console.log(ownerData);
                this.dataSource.data = ownerData;
+               //console.log(ownerData);
                this.ownerDto=ownerData[ownerData.length-1];
                this.myToast.Success('Status','POA data loaded Successfully');
             }//end of if on ownerdata check

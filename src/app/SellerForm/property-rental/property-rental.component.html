@@ -71,43 +71,18 @@
                       <label class="form-label">Annual Rent</label>
                       <input  pattern="[0-9_]*" type="text" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.rentalAnnualRent" name="rentalAnnualRent" #rentalAnnualRent="ngModel" [disabled]="propertyRentalDetailDTO.isRented=='No'">
                       <div *ngIf="rentalAnnualRent.errors && (rentalAnnualRent.dirty ||rentalAnnualRent.touched)" class="alert alert-danger">
-                          <!-- <div [hidden]="!rentalAnnualRent.errors.required">Rental Annual Aent is required!</div> -->
                           <div [hidden]="!rentalAnnualRent.errors.pattern"> Must be a valid Rental Annual Rent !</div>
                       </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label required-input-label">Lease Start Date</label>
                       <input type="text" for="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseStartDate" name="leaseStartDate" #leaseStartDate="ngModel" [disabled]="propertyRentalDetailDTO.isRented=='No'"  required>
-                      <!-- <div *ngIf="leaseStartDate.errors" class="alert alert-danger">
-                        <div [hidden]="!leaseStartDate.errors.required">Date is required! </div>
-                      </div> -->
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label required-input-label">Lease Expiry Date</label>
                       <input type="text" for="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseExpiryDate" name="leaseExpiryDate"  #leaseExpiryDate="ngModel" [disabled]="propertyRentalDetailDTO.isRented=='No'"  required>
-                      <!-- <div *ngIf="leaseExpiryDate.errors" class="alert alert-danger">
-                        <div [hidden]="!leaseExpiryDate.errors.required">Date is required! </div>
-                      </div> -->
-
-
                     </div>
                   </div>
-                  <!-- <div class="row mt-3">
-                    <div class="col-md-12 document-upload">
-                      Upload Documents
-                      <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>
-                    </div>
-                    <div class="col-md-12 upload-doc-block">
-                      <div class="upload-btn-div mt-4">
-                        <div class="file">
-                          <input (change)="scannedTenantContract($event)" type="file" name="file" class="doc-upload" [disabled]="propertyRentalDetailDTO.isRented=='No'">
-                        </div>
-                        <div class="upload-instuct mt-2">Scanned Tenancy Contract</div>
-                        <p *ngIf="scannedTenentContractFile" style="color:blue"><br>Tanent Contract FileName:{{scannedTenentContractFile.name}}</p>
-                        <p *ngIf="propertyRentalDetailDTO.tenancyContractUpload&&action=='next'||action=='back'" style="color:blue"><br>Tanent Contract FileName:{{propertyRentalDetailDTO.tenancyContractUpload}}</p>
-                      </div>
-                    </div>
-                  </div> -->
                   
                   <div class="row mt-3">
                     <div class="col-md-12 document-upload form-block-heading mb-4">
@@ -122,7 +97,7 @@
                       <div class="upload-instuct mt-2">Scanned Tenancy Contract</div>
                       <div class="upload-btn-div mt-4">
                         <div class="doc-upload">
-                          <input id="ownerPassCopy" #passFile type="file" name="file" (change)="scannedTenantContract($event)" class="doc-upload"accept=".jpg,.png,.gif,.jpeg,.pdf"/>
+                          <input id="ownerPassCopy" #passFile type="file" name="file" (change)="scannedTenantContract($event)" class="doc-upload"accept=".jpg,.png,.gif,.jpeg,.pdf"  [disabled]="propertyRentalDetailDTO.isRented=='No'">
                         </div>
                         <span class="upload-instuct ml-3">Upload </span>
                       </div>

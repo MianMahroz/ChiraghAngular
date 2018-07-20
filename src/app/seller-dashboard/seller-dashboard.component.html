@@ -57,17 +57,6 @@
                       <li>
                         <a id="propertyLink" class="ud-seller" data-toggle="tab" href="#sell-links">Sell</a>
                         <ul id="openPropDetails" class="collapse sub-links-wrap">
-                          <!-- <li *ngFor="let propertyArr of userData">
-                            <a class="sub-links" data-toggle="collapse" href="#/sell-sub-links/{{propertyArr.propertyId}}">Property ID :{{propertyArr.propertyId}} </a>
-                            <ul id="/sell-sub-links/{{propertyArr.property_Id}}" class="collapse">
-                              <li *ngFor="let ownerArr of userData.propertysellerdetailses">
-                                <a class="sub-links" data-toggle="collapse"  href="#/sell-sub-links/{{ownerArr.propertySellerId}}">Owner ID:{{ownerArr.propertySellerId}}</a>
-                              </li>
-                              <li *ngFor="let obj2 of poalist">
-                                <a class="sub-links" data-toggle="collapse"  href="#/sell-sub-links/{{obj2.propertySellerId}}">POA ID:{{obj2.propertySellerId}} </a>
-                              </li>
-                            </ul>
-                          </li> -->
                           <li *ngFor="let propertyArr of userData">
                             <a class="sub-links" data-toggle="collapse" (click)="setCurrentProperty(propertyArr)" href="#sell-sub-links/{{propertyArr.propertyId}}">{{propertyArr.projectName}}, {{propertyArr.typeArea}}</a>
                             <ul class="collapse sub-prop-links-wrap" id="sell-sub-links/{{propertyArr.propertyId}}">
@@ -143,7 +132,7 @@
                                 Last Name is required!
                               </div>
                               <div [hidden]="!lastName.errors.minlength">
-                                Last Middle Name must be at least 3 characters long.
+                                Last Name must be at least 3 characters long.
                               </div>
                               <div [hidden]="!lastName.errors.maxlength">
                                 Last Name cannot be more than 15 characters long.
@@ -195,7 +184,7 @@
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
                               <label class="form-label required-input-label">Passport Expiry Date</label>
-                            <input type="text" for="date" class="form-control form-input" [(ngModel)]="personalinfoDTO.passportExpiryDate" name="passportExpiryDate" #passportExpiryDate="ngModel">
+                            <input type="text" class="form-control form-input" [(ngModel)]="personalinfoDTO.passportExpiryDate" name="passportExpiryDate" #passportExpiryDate="ngModel">
                           </div>
                         </div>
                         <div class="row">
@@ -874,7 +863,7 @@
                               </div>
                               <div class="col-md-6 form-label-group mb-4">
                                   <label class="form-label required-input-label">Specific Property</label>
-                                <select class="form-control common-select" [(ngModel)]="ownerDto.specificproperty" name="specificproperty">
+                                <select class="form-control common-select" [(ngModel)]="ownerDto.specificProperty" name="specificproperty">
                                   <option>Individual Property</option>
                                   <option>Multiple Properties</option>
                                 </select>
