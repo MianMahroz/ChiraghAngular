@@ -90,7 +90,7 @@
                   </div>
                   <div class="col-md-6 form-label-group mb-4">
                     <label class="form-label">ID Card Expiry Date</label>
-                    <input type="date"  class="form-control form-input"  [(ngModel)]="ownerDto.idCardExpiration" name="idCardExpiration">
+                    <input type="date" class="form-control form-input"  [(ngModel)]="ownerDto.idCardExpiration" name="idCardExpiration">
                   </div>
                   <div class="col-md-6 form-label-group mb-4">
                     <label class="form-label required-input-label">Passport Number</label>
@@ -109,7 +109,7 @@
                   </div>
                   <div class="col-md-6 form-label-group mb-4">
                     <label class="form-label required-input-label">Passport Expiry Date</label>
-                    <input type="date" for="date" class="form-control  form-input" [(ngModel)]="ownerDto.passportExpiryDate" name="passportExpiryDate" required>
+                    <input type="date" class="form-control  form-input" [(ngModel)]="ownerDto.passportExpiryDate" name="passportExpiryDate" required>
                   </div>
                 </div>
                 <div class="row mt-3">
@@ -156,21 +156,7 @@
                       </div>
                     </div>
                   </div>
-                  <!-- <div class="col-md-6 form-label-group mb-4">
-                    <label class="form-label">Fax</label>
-                    <input type="text" pattern="[0-9]*" class="form-control form-input" [(ngModel)]="ownerDto.fax" name="fax" #fax="ngModel"  minlength="6" maxlength="18">
-                    <div *ngIf="fax.errors && (fax.dirty || fax.touched)" class="alert alert-danger">
-                      <div [hidden]="!fax.errors.required">
-                        Fax is required!
-                      </div>
-                      <div [hidden]="!fax.errors.maxlength">
-                        Fax Number cannot be more than 18 characters long.
-                      </div>
-                      <div [hidden]="!fax.errors.pattern">
-                        Space and special character not Allowed!
-                      </div>
-                    </div>
-                  </div> -->
+                  
                   <div class="col-md-6 form-label-group mb-4">
                     <label class="form-label required-input-label">Address</label>
                     <input pattern="[a-zA-Z0-9]*" type="text" minlength="8" name="userAddress" #userAddress="ngModel" maxlength="60" class="form-control  form-input" [(ngModel)]="ownerDto.address" required>
@@ -200,66 +186,85 @@
                   <div class="col-md-12 form-block-heading mb-3">Power Of Attorney Details</div>
                   <div class="col-md-6 form-label-group mb-4">
                     <label class="form-label required-input-label">POA Number</label>
-                    <input type="number" class="form-control form-input" [(ngModel)]="ownerDto.poaNumber" name="poaNumber" required>
+                    <input type="text" pattern="[0-9]*" class="form-control form-input" [(ngModel)]="ownerDto.poaNumber" name="poaNumber" #poaNumber="ngModel" required>
+                    <div *ngIf="poaNumber.errors && (poaNumber.dirty || poaNumber.touched)" class="alert alert-danger">
+                       <div [hidden]="!poaNumber.errors.required">
+                        POA Number Required!
+                      </div> 
+                      <div [hidden]="!poaNumber.errors.pattern">
+                        Space and special character not Allowed!
+                      </div>
+                    </div>
                   </div>
                   <div class="col-md-6 form-label-group mb-4">
                     <label class="form-label required-input-label">POA Expiry Date</label>
-                    <input type="text" for="date" class="form-control form-input" [(ngModel)]="ownerDto.poaAgreementExpiry" name="poaAgreementExpiry" required>
+                    <input type="date" class="form-control form-input" [(ngModel)]="ownerDto.poaAgreementExpiry" name="poaAgreementExpiry" required>
                   </div>
                   <div class="col-md-6 form-label-group mb-4">
                     <label class="form-label required-input-label">Specific Property</label>
-                    <select class="form-control common-select" [(ngModel)]="ownerDto.specificproperty" name="specificproperty">
+                    <select class="form-control common-select" [(ngModel)]="ownerDto.specificProperty" name="specificproperty" #specificproperty="ngModel">
                       <option>Individual Property</option>
                       <option>Multiple Properties</option>
                     </select>
                   </div>
                 </div>
                 <div class="row mt-3">
-                  <div class="col-md-12 document-upload">
+                  <div class="col-md-12 document-upload form-block-heading mb-4">
                     Upload Documents
-                    <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>
+                    <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>    
                   </div>
-                  <div class="col-md-12 upload-doc-block">
+                  <div class="col-md-4 upload-doc-block">
+                    <div class="upload-doc-div">
+                      <img id="passportCopy" class="w-100 thumbnail" src="{{passportcopypoaPath}}">
+                      <div id="passportCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
+                    </div>
+                    <div class="upload-instuct mt-2">Scanned passport copy</div>
                     <div class="upload-btn-div mt-4">
-                      <div class="file">
-                        <input id="scanPassCopy" type="file" (change)="selectPassport($event)" name="file" class="doc-upload" />
+                      <div class="doc-upload">
+                        <input id="ownerPassCopy" #passFile type="file" name="file" (change)="selectPassport($event)" class="doc-upload"accept=".jpg,.png,.gif,.jpeg"/>
                       </div>
-                      <div class="upload-instuct mt-2">Scanned passport copy <i class="fas fa-circle-notch fa-spin ml-2"></i></div>
-                      <p *ngIf="passportFile" class="margin-bottom-20-neg"><br>{{passportFile.name}}</p>
-                      <p *ngIf="!passportFile&&ownerDto.passportCopyUpload && action=='next'||action=='back'" class="margin-bottom-20-neg"><br>{{ownerDto.passportCopyUpload}}</p>
+                      <span class="upload-instuct ml-3">Upload</span>
                     </div>
-                    <div class="upload-btn-div mt-5">
-                      <div class="file">
-                        <input id="scanIdCopy" type="file" name="file" (change)="selectIdCopy($event)" class="doc-upload" />
+                  </div>
+                  <div class="offset-md-2 col-md-4 upload-doc-block">
+                    <div class="upload-doc-div">
+                        <img id="idCopy" class="w-100 thumbnail" src="{{idcopypoaPath}}">
+                        <div id="idCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
                       </div>
-                      <div class="upload-instuct mt-2">
-                        Scanned ID copy <i class="fas fa-circle-notch fa-spin ml-2"></i>
-                        <div class="upload-sub-instruct">(UAE or country of origin)</div>
-                      </div>
-                      <p *ngIf="idCopyFile"><br>{{idCopyFile.name}}</p>
-                      <p *ngIf="!idCopyFile&&ownerDto.scannedIdCopy&&action=='next'||action=='back'"><br>{{ownerDto.scannedIdCopy}}</p>
+                    <div  class="upload-instuct mt-2">Scanned ID copy
+                      <div class="upload-sub-instruct">(UAE or country of origin)</div>
+                    </div>  
+                    <div  class="upload-btn-div mt-3">
+                      <div class="doc-upload">
+                        <input id="owneIdCopy" #idFile type="file"  (change)="selectIdCopy($event)" name="file" class="doc-upload" accept=".jpg,.png,.gif,.jpeg" />
+                      </div>  
+                      <span class="upload-instuct ml-3">Upload</span>
+                    </div> 
+                  </div>
+                  <div class="col-md-4 upload-doc-block mt-3">
+                    <div class="upload-doc-div">
+                      <img id="notorizedCopy" class="w-100 thumbnail" src="{{notorizedcopyPath}}">
+                      <div id="notorizedCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
+                    </div>
+                    <div class="upload-instuct mt-2">Scanned NOTORIZED POA
+                      <div class="upload-sub-instruct">(International POA should have the stamp of external affairs and UAE embassy)</div>
                     </div>
                     <div class="upload-btn-div mt-4">
-                      <div class="file">
-                        <input id="scanPoa" type="file" name="file" (change)="selectScannedPoa($event)" class="doc-upload" />
+                      <div class="doc-upload">
+                        <input id="ownerPassCopy" #passFile type="file" name="file" (change)="selectScannedPoa($event)" class="doc-upload"accept=".jpg,.png,.gif,.jpeg,.pdf"/>
                       </div>
-                      <div class="upload-instuct mt-2">Scanned NOTORIZED POA <i class="fas fa-circle-notch fa-spin ml-2"></i>
-                        <div class="upload-sub-instruct">(International POA should have the stamp of external affairs and UAE embassy)</div>
-                      </div>
-                      <p *ngIf="scannedNotorizedPoaFile"><br>{{scannedNotorizedPoaFile.name}}</p>
-                      <p *ngIf="!scannedNotorizedPoaFile&&ownerDto.scannedNotorizedCopy&&action=='next'||action=='back'"><br>{{ownerDto.scannedNotorizedCopy}}</p>
-
-                    </div>
-                    <div class="common-checkbox mt-5">
-                      <label>
-                        <input type="checkbox" name="isPoaAccepted" [(ngModel)]="isPoaAccepted" required><span class="checkbox-material"><span class="check mr-2"></span></span> General POA not accepted
-                      </label>
+                      <span class="upload-instuct ml-3">Upload </span>
                     </div>
                   </div>
                 </div>
+                <div class="common-checkbox mt-5">
+                  <label>
+                    <input type="checkbox" name="isPoaAccepted" [(ngModel)]="isPoaAccepted" required><span class="checkbox-material"><span class="check mr-2"></span></span> General POA not accepted
+                  </label>
+                </div>
                 <div class="row mt-5 submit-btn-row">
                   <div class="col-md-3 mb-xs-4">
-                    <button id="addPOABtn" [disabled]="!isPoaAccepted" (click)="addPOA('add')" style=color:white class="btn common-btn btn-light-black">Add POA</button>
+                    <button id="addPOABtn" [disabled]="!isPoaAccepted" (click)="addPOA('add')" data-toggle="modal" data-target="#confirmationModalPOA" style=color:white class="btn common-btn btn-light-black">Add POA</button>
                   </div>
                   <div class="offset-md-3 col-md-3 mb-xs-4">
                     <a  routerLink="/sellerOwnerDetails/back" class="btn common-btn btn-light-black">Back</a>
@@ -363,6 +368,28 @@
         </mat-paginator> -->
       </div>
 
+    </div>
+  </div>
+  <div class="modal fade" id="confirmationModalPOA">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content container-fluid py-4 px-4">
+        <div class="row">
+          <div class="col-md-12">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center my-4 instruction-title-24">Do you want to add another POA!</div>
+          <div class="col-md-6">
+            <button class="btn common-btn w-100 bg-secondary">NO</button>
+          </div>
+          <div class="col-md-6">
+            <button class="btn common-btn w-100">YES</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <app-footer></app-footer>

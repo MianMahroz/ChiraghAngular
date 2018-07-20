@@ -71,43 +71,39 @@
                       <label class="form-label">Annual Rent</label>
                       <input  pattern="[0-9_]*" type="text" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.rentalAnnualRent" name="rentalAnnualRent" #rentalAnnualRent="ngModel" [disabled]="propertyRentalDetailDTO.isRented=='No'">
                       <div *ngIf="rentalAnnualRent.errors && (rentalAnnualRent.dirty ||rentalAnnualRent.touched)" class="alert alert-danger">
-                          <!-- <div [hidden]="!rentalAnnualRent.errors.required">Rental Annual Aent is required!</div> -->
                           <div [hidden]="!rentalAnnualRent.errors.pattern"> Must be a valid Rental Annual Rent !</div>
                       </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label required-input-label">Lease Start Date</label>
                       <input type="text" for="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseStartDate" name="leaseStartDate" #leaseStartDate="ngModel" [disabled]="propertyRentalDetailDTO.isRented=='No'"  required>
-                      <!-- <div *ngIf="leaseStartDate.errors" class="alert alert-danger">
-                        <div [hidden]="!leaseStartDate.errors.required">Date is required! </div>
-                      </div> -->
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label required-input-label">Lease Expiry Date</label>
                       <input type="text" for="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseExpiryDate" name="leaseExpiryDate"  #leaseExpiryDate="ngModel" [disabled]="propertyRentalDetailDTO.isRented=='No'"  required>
-                      <!-- <div *ngIf="leaseExpiryDate.errors" class="alert alert-danger">
-                        <div [hidden]="!leaseExpiryDate.errors.required">Date is required! </div>
-                      </div> -->
-
-
                     </div>
                   </div>
+                  
                   <div class="row mt-3">
-                    <div class="col-md-12 document-upload">
+                    <div class="col-md-12 document-upload form-block-heading mb-4">
                       Upload Documents
-                      <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>
+                      <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>    
                     </div>
-                    <div class="col-md-12 upload-doc-block">
+                    <div class="col-md-4 upload-doc-block mt-3">
+                      <div class="upload-doc-div">
+                        <img id="notorizedCopy" class="w-100 thumbnail" src="{{scannedTenantContractUploadPath}}">
+                        <div id="notorizedCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
+                      </div>
+                      <div class="upload-instuct mt-2">Scanned Tenancy Contract</div>
                       <div class="upload-btn-div mt-4">
-                        <div class="file">
-                          <input (change)="scannedTenantContract($event)" type="file" name="file" class="doc-upload" [disabled]="propertyRentalDetailDTO.isRented=='No'">
+                        <div class="doc-upload">
+                          <input id="ownerPassCopy" #passFile type="file" name="file" (change)="scannedTenantContract($event)" class="doc-upload"accept=".jpg,.png,.gif,.jpeg,.pdf"  [disabled]="propertyRentalDetailDTO.isRented=='No'">
                         </div>
-                        <div class="upload-instuct mt-2">Scanned Tenancy Contract</div>
-                        <p *ngIf="scannedTenentContractFile" style="color:blue"><br>Tanent Contract FileName:{{scannedTenentContractFile.name}}</p>
-                        <p *ngIf="propertyRentalDetailDTO.tenancyContractUpload&&action=='next'||action=='back'" style="color:blue"><br>Tanent Contract FileName:{{propertyRentalDetailDTO.tenancyContractUpload}}</p>
+                        <span class="upload-instuct ml-3">Upload </span>
                       </div>
                     </div>
                   </div>
+                  
                   <div class="row mt-5 submit-btn-row">
                     <div class="offset-md-6 col-md-3 mb-xs-4">
                       <a  routerLink="/propertyFinancialDetails/back" class="btn common-btn btn-light-black">Back</a>

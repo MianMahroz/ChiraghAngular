@@ -25,23 +25,6 @@
                         <div [hidden]="!morgageRegNo.errors.pattern">Must be a valid Morgage Registeration Number!</div>
                       </div>
                     </div>
-                    <!-- <div class="col-md-6 form-label-group mb-4">
-                      <label class="form-label">Listed Price</label>
-                      <input pattern="[0-9_]*" type="text" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.listedPrice" name="listedPrice" #listedPrice="ngModel" autofocus>
-                      <div *ngIf="listedPrice.errors && (listedPrice.dirty || listedPrice.touched)" class="alert alert-danger">
-                        <div [hidden]="!listedPrice.errors.pattern">
-                          Must be a valid Listed Price!
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6 form-label-group mb-4">
-                      <label class="form-label">Original Price</label>
-                      <input pattern="[0-9_]*" type="text" class="form-control form-input" [(ngModel)]="propertyFinancialDTO.originalPrice" name="originalPrice" #originalPrice="ngModel">
-                      <div *ngIf="originalPrice.errors && (originalPrice.dirty ||originalPrice.touched)" class="alert alert-danger">
-                        <div [hidden]="!originalPrice.errors.required">Original Amount is required!</div>
-                        <div [hidden]="!originalPrice.errors.pattern">Must be a valid Original Amount!</div>
-                      </div>
-                    </div> -->
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label">Paid Amount</label>
                       <input pattern="[0-9_]*" type="text" class="form-control form-input"[(ngModel)]="propertyFinancialDTO.paidAmount" name="paidAmount" #paidAmount="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
@@ -74,6 +57,10 @@
                         <option *ngFor="let obj of bankList">{{obj}}</option>
                         <!-- <option>World Bank</option> -->
                       </select>
+                    </div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <label class="form-label">Other</label>
+                      <input pattern="[0-9_]*" type="text" class="form-control form-input"  [(ngModel)]="propertyFinancialDTO.bankOther" name="bankOther" #bankOther="ngModel" [disabled]="propertyFinancialDTO.bank!=='Other'" >
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label">Mortgage Amount</label>
@@ -111,27 +98,31 @@
                     </div>
                   </div>
                   <div class="row mt-3">
-                    <div class="col-md-12 document-upload">
+                    <div class="col-md-12 document-upload form-block-heading mb-4">
                       Upload Documents
-                      <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>
+                      <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>    
                     </div>
-                    <div class="col-md-12 upload-doc-block">
+                    <div class="col-md-4 upload-doc-block mt-3">
+                      <div class="upload-doc-div">
+                        <img id="notorizedCopy" class="w-100 thumbnail" src="{{scannednocuploadPath}}">
+                        <div id="notorizedCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
+                      </div>
+                      <div class="upload-instuct mt-2">Scanned NOC from<br>Mortgage Company</div>
                       <div class="upload-btn-div mt-4">
-                        <div class="file">
-                          <input type="file" (change)="selectMorgageNoc($event)" name="file" class="doc-upload" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
+                        <div class="doc-upload">
+                          <input id="ownerPassCopy" #passFile type="file" name="file" (change)="selectMorgageNoc($event)" class="doc-upload"accept=".jpg,.png,.gif,.jpeg,.pdf" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
                         </div>
-                        <div class="upload-instuct mt-2">Scanned NOC from<br>Mortgage Company</div>
-                        <p *ngIf="morgageNocFile" style="color:blue"><br>Morgage Noc FileName:{{morgageNocFile.name}}</p>
-                        <p *ngIf="propertyFinancialDTO.morgageNoc&&action=='next'||action=='back'" style="color:blue"><br>Morgage Noc FileName:{{propertyFinancialDTO.morgageNoc}}</p>
+                        <span class="upload-instuct ml-3">Upload</span>
                       </div>
                     </div>
                   </div>
+
                   <div class="row mt-5 submit-btn-row">
                     <div class="offset-md-6 col-md-3 mb-xs-4">
                       <a  routerLink="/propertyDetails/back" class="btn common-btn btn-light-black">Back</a>
                     </div>
                     <div class="col-md-3">
-                      <button [disabled]="!finanicalForm.form.valid"  (click)="addPropertyFinancialDetails()" style=color:white class="btn common-btn" type="submit">Next</button>
+                      <button (click)="addPropertyFinancialDetails()" style=color:white class="btn common-btn" type="submit">Next</button>
                     </div>
                   </div>
                 </form>

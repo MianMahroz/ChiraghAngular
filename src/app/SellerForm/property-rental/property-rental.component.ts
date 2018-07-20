@@ -37,6 +37,7 @@ export class PropertyRentalComponent implements OnInit {
   annualrentValid=true;
   scannedTenentContractUploadValid=true;
   formValid=true;
+  scannedTenantContractUploadPath:string;
 
   constructor(private myToast:ToasterServiceService,private route:ActivatedRoute,private sellerService:SellerService,private propertyService:PropertyService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
   propertyRentalDetailDTO=new PropertyRentalDetailDTO();
@@ -47,6 +48,14 @@ export class PropertyRentalComponent implements OnInit {
   ngOnInit() {
     // this.token.savePropertyId('182');
     // this.token.saveUserName('BesterCapital2');
+    if(this.propertyRentalDetailDTO.tenancyContractUpload==null)
+    {
+      this.scannedTenantContractUploadPath=null;
+    }
+    else
+    {
+    this.scannedTenantContractUploadPath=''+this.token.getImagepath()+'propertyId-'+this.propertyRentalDetailDTO.propertyId+'/'+this.propertyRentalDetailDTO.tenancyContractUpload;}
+  
     this.action='';
     this.action=this.route.snapshot.params['action'];
     console.log(this.action);
@@ -57,11 +66,28 @@ export class PropertyRentalComponent implements OnInit {
   }
 
 
-  scannedTenantContract(event) {
-    this.selectedscannedTenentContract = event.target.files;
-    this.scannedTenentContractFile=this.selectedscannedTenentContract.item(0);
-    this.propertyRentalDetailDTO.tenancyContractUpload=this.scannedTenentContractFile.name;
-    event.srcElement.value = null;
+  scannedTenantContract(event):string {
+
+    if (event.target.files && event.target.files[0]) {
+      var FileSize = event.target.files[0].size / 1024 / 1024; // in MB
+       if (FileSize > 2) {
+           this.myToast.Error('File size exceeds 2 MB');
+           this.myToast.Warning('Accepted file size less than 2Mb');
+           return 'File size excced !'
+       }}
+
+       if (event.target.files && event.target.files[0]) {
+        var reader = new FileReader();
+        reader.onload = (event: ProgressEvent) => {
+          this.scannedTenantContractUploadPath = (<FileReader>event.target).result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+      }
+        this.selectedscannedTenentContract = event.target.files;
+        this.scannedTenentContractFile=this.selectedscannedTenentContract.item(0);
+        this.propertyRentalDetailDTO.tenancyContractUpload=this.scannedTenentContractFile.name;
+        this.scannedTenantContractUploadPath=''+this.token.getImagepath()+'propertyId-'+this.propertyRentalDetailDTO.propertyId+'/'+this.propertyRentalDetailDTO.tenancyContractUpload;
+        event.srcElement.value = null;
   }
 
   validation():boolean {
@@ -189,7 +215,7 @@ export class PropertyRentalComponent implements OnInit {
   this.scannedTenentContractUploadValid=true;
 }
 else{
- if(this.scannedTenentContractFile==null){
+ if(this.propertyRentalDetailDTO.tenancyContractUpload==null||this.propertyRentalDetailDTO.tenancyContractUpload==undefined){
   this.myToast.Error('Invalid Scanned Tenent Contract');
   this.scannedTenentContractUploadValid=false;
  }}

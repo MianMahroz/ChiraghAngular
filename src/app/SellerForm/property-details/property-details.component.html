@@ -11,18 +11,30 @@
                   <div class="mb-5 page-primary-title-34">Property Details</div>
                   <div class="row">
                     <div class="col-md-12 form-block-heading mb-3">Area Details:</div>
-                    <div class="col-md-6 form-label-group mb-4">
+                    <div class="col-md-3 pr-0 form-label-group mb-4">
                       <label class="form-label required-input-label">Property Status</label>
                       <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.propertyStatus" name="propertyStatus">
                         <option>Off-Plan</option>
                         <option>Off-Plot</option>
                         <option>Completed</option>
-                        <option>other</option>
+                        <option>Other</option>
                       </select>
+                    </div>
+                    <div  class="col-md-3 form-label-group mb-4">
+                      <label class="form-label">Other</label>
+                      <input type="text" pattern="[a-zA-Z0-9]" class="form-control form-input" [(ngModel)]="propertyDetailsDto.propertyStatusOther" name="propertyStatusOther" #propertyStatusOther="ngModel" [disabled]="propertyDetailsDto.propertyStatus!=='Other'" required>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label required-input-label">Plot Number</label>
-                      <input type="text" pattern="[a-zA-Z0-9]" class="form-control form-input" [(ngModel)]="propertyDetailsDto.plotNo" name="plotNo" required>
+                      <input type="text" pattern="[a-zA-Z0-9]*" class="form-control form-input" [(ngModel)]="propertyDetailsDto.plotNo" name="plotNo" #plotNo="ngModel" required>
+                      <div *ngIf="plotNo.errors && (plotNo.dirty || plotNo.touched)" class="alert alert-danger">
+                        <div [hidden]="!plotNo.errors.required">
+                          Plot Number is required!
+                        </div>
+                        <div [hidden]="!plotNo.errors.pattern">
+                          Space and special character not Allowed!
+                        </div>
+                      </div>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label">Type of Area</label>
@@ -37,6 +49,14 @@
                       <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.titleDeedNo" name="titlDeedNo" #titlDeedNo="ngModel" required>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
+                      <label class="form-label required-input-label">Building Name</label>
+                      <input type="text"  class="form-control form-input" [(ngModel)]="propertyDetailsDto.bulidingName" name="bulidingName" #bulidingName="ngModel" required>
+                    </div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <label class="form-label required-input-label">Building Number</label>
+                      <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.bulidingNumber" name="bulidingNumber" #bulidingNumber="ngModel" required>
+                    </div>
+                    <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label required-input-label">Address</label>
                       <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.address" name="address" #address="ngModel" required>
                     </div>
@@ -46,9 +66,17 @@
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label required-input-label">Property Number</label>
-                      <input type="text" pattern="[a-zA-Z0-9]" class="form-control form-input" [(ngModel)]="propertyDetailsDto.propertyNo" name="propertyNo" #propertyNo="ngModel" required>
+                      <input type="text" pattern="[a-zA-Z0-9]*" class="form-control form-input" [(ngModel)]="propertyDetailsDto.propertyNo" name="propertyNo" #propertyNo="ngModel" required>
+                      <div *ngIf="propertyNo.errors && (propertyNo.dirty || propertyNo.touched)" class="alert alert-danger">
+                        <div [hidden]="!propertyNo.errors.required">
+                          Plot Number is required!
+                        </div>
+                        <div [hidden]="!propertyNo.errors.pattern">
+                          Space and special character not Allowed!
+                        </div>
+                      </div>
                     </div>
-                    <div class="col-md-6 form-label-group mb-4">
+                    <div class="col-md-3 form-label-group pr-0 mb-4">
                       <label class="form-label required-input-label">Type of Property</label>
                       <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.propertyType" name="propertyType" #propertyType="ngModel">
                         <option>Land</option>
@@ -65,6 +93,10 @@
                         <option>Other</option>
                       </select>
                     </div>
+                    <div class="col-md-3 form-label-group mb-4">
+                      <label class="form-label required-input-label">Other</label>
+                      <input type="text"  class="form-control form-input" [(ngModel)]="propertyDetailsDto.typePropertyOther" name="typePropertyOther" #typePropertyOther="ngModel" [disabled]="propertyDetailsDto.propertyType!=='Other'">
+                    </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label required-input-label">Project Name</label>
                       <input type="text" pattern="[a-zA-Z0-9]" class="form-control form-input" [(ngModel)]="propertyDetailsDto.projectName" name="projectName" #projectName="ngModel">
@@ -79,12 +111,30 @@
                       </div>
                     </div>
                     <div class="col-md-2 form-label-group mb-4">
-                        <label class="form-label required-input-label">Unit</label>
-                        <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.areaUnit" name="areaUnit" #areaUnit="ngModel">
-                          <option>sqm</option>
-                          <option>sqft</option>
-                        </select>
+                      <label class="form-label required-input-label">Unit</label>
+                      <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.areaUnit" name="areaUnit" #areaUnit="ngModel" required>
+                        <option>sqm</option>
+                        <option>sqft</option>
+                      </select>
+                    </div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <label class="form-label">Gross Area</label>
+                      <input type="text" pattern="[0-9.]*" class="form-control form-input" [(ngModel)]="propertyDetailsDto.grossArea" name="grossArea" #grossArea="ngModel" [disabled]="propertyDetailsDto.propertyStatus!=='Off-Plan'">
+                      <div *ngIf="grossArea.errors && (grossArea.dirty || grossArea.touched)" class="alert alert-danger">
+                        <div [hidden]="!grossArea.errors.pattern">
+                          Space,Alaphabets and Special Character not Allowed!
+                        </div>
                       </div>
+                    </div>
+                    <div class="col-md-6 form-label-group mb-4">
+                      <label class="form-label">Net Area</label>
+                      <input type="text" pattern="[0-9.]*" class="form-control form-input" [(ngModel)]="propertyDetailsDto.netArea" name="netArea" #netArea="ngModel" [disabled]="propertyDetailsDto.propertyStatus=='Off-Plan'"  >
+                      <div *ngIf="netArea.errors && (netArea.dirty || netArea.touched)" class="alert alert-danger">
+                        <div [hidden]="!netArea.errors.pattern">
+                          Space,Alaphabets and Special Character not Allowed!
+                        </div>
+                      </div>
+                    </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label">Owner Association Number</label>
                       <input type="text" class="form-control form-input" [(ngModel)]="propertyDetailsDto.ownerAssociationNo" name="ownerAssociationNo">
@@ -109,8 +159,8 @@
                   <div class="row">
                     <div class="col-md-12 form-block-heading mb-3">Specs:</div>
                     <div class="col-md-3 mb-4">
-                      <label class="form-label">Bedrooms</label>
-                      <input type="text"  pattern="[0-9]*" class="form-control form-input" [(ngModel)]="propertyDetailsDto.noOfBedrooms" name="noOfBedrooms" #noOfBedrooms="ngModel">
+                      <label class="form-label required-input-label">Bedrooms</label>
+                      <input type="text" pattern="[0-9]*" class="form-control form-input" [(ngModel)]="propertyDetailsDto.noOfBedrooms" name="noOfBedrooms" #noOfBedrooms="ngModel">
                       <div *ngIf="noOfBedrooms.errors && (noOfBedrooms.dirty || noOfBedrooms.touched)" class="alert alert-danger">
                         <div [hidden]="!noOfBedrooms.errors.pattern">
                           Space,Alaphabets and Special Character not Allowed!
@@ -118,7 +168,7 @@
                       </div>
                     </div>
                     <div class="col-md-3 mb-4">
-                      <label class="form-label">Bathrooms</label>
+                      <label class="form-label required-input-label">Bathrooms</label>
                       <input type="text" pattern="[0-9]*" class="form-control form-input"  [(ngModel)]="propertyDetailsDto.noOfBaths" #noOfBaths="ngModel" name="noOfBaths">
                       <div *ngIf="noOfBaths.errors && (noOfBaths.dirty || noOfBaths.touched)" class="alert alert-danger">
                         <div [hidden]="!noOfBaths.errors.pattern">
@@ -634,37 +684,38 @@
                     </div>
                   </div>
                   <div class="row mt-3">
-                    <div class="col-md-12 document-upload">
-                      Upload Title Deed
-                      <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>
+                    <div class="col-md-12 document-upload form-block-heading mb-4">
+                      Upload Documents
+                      <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>    
                     </div>
-                    <div class="col-md-12 upload-doc-block">
-                      <!-- <div class="upload-btn-div mt-4">
-                        <div class="file">
-                          <input type="file" name="file"  (change)="selectScannedTitleDeed($event)" class="doc-upload" required />
+                    <div class="col-md-4 upload-doc-block mt-3">
+                      <div class="upload-doc-div">
+                        <img id="notorizedCopy" class="w-100 thumbnail" src="{{titledeeduploadPath}}">
+                        <div id="notorizedCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
+                      </div>
+                      <div class="upload-instuct mt-2">Scanned Title Deed</div>
+                      <div class="upload-btn-div mt-4">
+                        <div class="doc-upload">
+                          <input id="ownerPassCopy" #passFile type="file" name="file"  (change)="selectScannedTitleDeed($event)" class="doc-upload"accept=".jpg,.png,.gif,.jpeg,.pdf"/>
                         </div>
-                        <div class="upload-instuct mt-2">Scanned Title Deed</div>
+                        <span class="upload-instuct ml-3">Upload </span>
                       </div>
-                      <p *ngIf="scannedTitleDeedFile"><br>Scanned Title Deed FileName:{{scannedTitleDeedFile.name}}</p>
-                      <p *ngIf="propertyDetailsDto.scannedTitleDeed&&action=='next'||action=='back'"><br> Title Deed FileName:{{propertyDetailsDto.scannedTitleDeed}}</p>
-                    start of my code -->
-                    <div class="upload-btn-div mt-4">
-                      <div class="file">
-                        <input id="scanPoa" type="file" name="file" (change)="selectScannedTitleDeed($event)" class="doc-upload" required/>
-                      </div>
-                      <div class="upload-instuct mt-2">Scanned Title Deed <i class="fas fa-circle-notch fa-spin ml-2"></i>
-
-                      </div>
-                      <p *ngIf="scannedTitleDeedFile"><br>{{scannedTitleDeedFile.name}}</p>
-                      <p *ngIf="!scannedTitleDeedFile&&propertyDetailsDto.scannedTitleDeed&&action=='next'||action=='back'"><br>{{propertyDetailsDto.scannedTitleDeed}}</p>
-
                     </div>
-
-
+                    <div class="offset-md-2 col-md-4 upload-doc-block mt-3">
+                      <div class="upload-doc-div">
+                          <img id="idCopy" class="w-100 thumbnail" src="{{floorplanPath}}">
+                          <div id="idCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
+                        </div>
+                      <div  class="upload-instuct mt-2">Floor Plan</div>  
+                      <div  class="upload-btn-div mt-3">
+                        <div class="doc-upload">
+                          <input id="owneIdCopy" #idFile type="file"  (change)="selectFloorPlan($event)" name="file" class="doc-upload" accept=".jpg,.png,.gif,.jpeg" />
+                        </div>  
+                        <span class="upload-instuct ml-3">Upload </span>
+                      </div> 
                     </div>
-
-
                   </div>
+
                   <div class="note-block py-3 px-2 mt-5">
                     <div class="col-1 common-checkbox">
                       <label>

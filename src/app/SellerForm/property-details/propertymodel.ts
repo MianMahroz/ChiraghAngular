@@ -16,8 +16,8 @@ export class PropertyDetailsDto {
  propertyNo:string;
  propertyReferenceNo:string;
  pricePerSqft:number;
- noOfBedrooms:string;
- noOfBaths:string;
+ noOfBedrooms:number;
+ noOfBaths:number;
  noOfFloors:number;
  scannedTitleDeed:string;
  agreeVatCommission:number;
@@ -128,4 +128,11 @@ export class PropertyDetailsDto {
  description:string;
  areaUnit:string;
  isPropertyDetailsVerified:string;
+ bulidingNumber:string;
+ bulidingName:string;
+ typePropertyOther:string;
+ propertyStatusOther:string;
+ floorplanupload:string;
+ grossArea:string;
+ netArea:string;
 }

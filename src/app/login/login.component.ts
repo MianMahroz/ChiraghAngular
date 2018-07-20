@@ -46,7 +46,7 @@ export class LoginComponent {
   // userPassword: string;
    logindto=new loginDTO();
 
-  loginChiraghUser(): void {
+  loginChiraghUser() :string {
     window.sessionStorage.removeItem('AuthToken');
     this.authService.attemptAuth().subscribe(
       data => {
@@ -57,20 +57,38 @@ export class LoginComponent {
           this.userService.login(this.logindto.userName,this.logindto.userPassword).subscribe(
             data1=>{
               console.log(data1);
-              this.mytoastr.Success('Login',data1.msg);
+              if(data1.msg=="User Not Found!")
+              {
+                this.mytoastr.Error('User Not Found!');
+                return 'User Not Found!!'
+              }
+              if(data1.msg=="Invalid Password!")
+              {
+                this.mytoastr.Error('Invalid Password!');
+                return 'Invalid Password!'
+              }
+
+              if(data1.msg=="Invalid User Name And Password!")
+              {
+                this.mytoastr.Error('Invalid User Name And Password!');
+                return 'Invalid User Name And Password!'
+              }
+              if(data1.msg=="Login Successfully"){
+              this.mytoastr.Success(data1.msg);
                    if(data1.msg=="Login Successfully"&&data1.role=='chiraghuser'){
                     // this.mytoastr.Success('Login',data1.msg);
                     this.token.saveUserRole(data1.role);
                      this.token.saveUserName(this.logindto.userName);
                        this.router.navigate(['home']);
                    }//end of if
+                  }
                 }//end of inner data predicate
           );//end of inner subscription
         }//end of if
 
      }//end of outer data predicate
     );//end of outer subscription
-
+   return 'In login function'
   }//end of loginChiraghUser
 
 

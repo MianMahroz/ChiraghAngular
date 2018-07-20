@@ -7,6 +7,159 @@
 .screen-wrapper .body-section .contact-us-google-map {
   margin: 0 -15px;
 }
+.screen-wrapper .body-section .upcoming-ac-row .tab-heading {
+  font-size: 1.625em;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #606060;
+}
+.screen-wrapper .body-section .upcoming-ac-row .bid-active-row .bid-active-col .bid-active-block .bid-active-img .prop-thumbnail {
+  height: 180px;
+}
+.screen-wrapper .body-section .upcoming-ac-row .bid-active-row .bid-active-col .bid-active-block .bid-active-img .prop-thumbnail img {
+  object-fit: cover;
+  height: 100%;
+  border-radius: 4px;
+}
+.screen-wrapper .body-section .upcoming-ac-row .bid-active-row .bid-active-col .bid-active-block .ca-blocks-col .prop-id-block-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e3e3e3;
+  padding-bottom: 0.3rem;
+}
+.screen-wrapper .body-section .upcoming-ac-row .bid-active-row .bid-active-col .bid-active-block .ca-blocks-col .prop-id-block-wrap .prop-id {
+  font-size: 0.875em;
+  color: #606060;
+  text-transform: uppercase;
+}
+.screen-wrapper .body-section .upcoming-ac-row .bid-active-row .bid-active-col .bid-active-block .ca-blocks-col .prop-id-block-wrap .prop-actions-wrap .location-link {
+  background: url("../../assets/images/sprite-image.png") no-repeat;
+  background-position: -218px -288px;
+  padding: 2px 10px;
+  opacity: 0.5;
+  transition: .5s;
+}
+.screen-wrapper .body-section .upcoming-ac-row .bid-active-row .bid-active-col .bid-active-block .ca-blocks-col .prop-id-block-wrap .prop-actions-wrap .location-link:hover {
+  opacity: 1;
+}
+.screen-wrapper .body-section .upcoming-ac-row .bid-active-row .bid-active-col .bid-active-block .ca-blocks-col .prop-id-block-wrap .prop-actions-wrap .street-view-link {
+  background: url("../../assets/images/sprite-image.png") no-repeat;
+  background-position: -218px -288px;
+  padding: 2px 10px;
+  opacity: 0.5;
+  transition: .5s;
+  background-position: -258px -288px;
+}
+.screen-wrapper .body-section .upcoming-ac-row .bid-active-row .bid-active-col .bid-active-block .ca-blocks-col .prop-id-block-wrap .prop-actions-wrap .street-view-link:hover {
+  opacity: 1;
+}
+.screen-wrapper .body-section .upcoming-ac-row .bid-active-row .bid-active-col .bid-active-block .ca-blocks-col .prop-id-block-wrap .prop-actions-wrap .directions-link {
+  background: url("../../assets/images/sprite-image.png") no-repeat;
+  background-position: -218px -288px;
+  padding: 2px 10px;
+  opacity: 0.5;
+  transition: .5s;
+  background-position: -296px -288px;
+}
+.screen-wrapper .body-section .upcoming-ac-row .bid-active-row .bid-active-col .bid-active-block .ca-blocks-col .prop-id-block-wrap .prop-actions-wrap .directions-link:hover {
+  opacity: 1;
+}
+.screen-wrapper .body-section .upcoming-ac-row .bid-active-row .bid-active-col .bid-active-block .ca-blocks-col .prop-id-block-wrap .prop-actions-wrap .watch-list-link {
+  background: url("../../assets/images/sprite-image.png") no-repeat;
+  background-position: -218px -288px;
+  padding: 2px 10px;
+  opacity: 0.5;
+  transition: .5s;
+  background-position: -360px -288px;
+}
+.screen-wrapper .body-section .upcoming-ac-row .bid-active-row .bid-active-col .bid-active-block .ca-blocks-col .prop-id-block-wrap .prop-actions-wrap .watch-list-link:hover {
+  opacity: 1;
+}
+.screen-wrapper .body-section .upcoming-ac-row .bid-active-row .bid-active-col .bid-active-block .ca-blocks-col .ca-block-heading {
+  font-size: 1.25em;
+  font-weight: bold;
+  color: #606060;
+  line-height: 22px;
+}
+.screen-wrapper .body-section .upcoming-ac-row .bid-active-row .bid-active-col .bid-active-block .ca-blocks-col .ca-block-heading .ca-sub-block-heading {
+  font-size: 0.7em;
+  text-transform: uppercase;
+  font-weight: normal;
+  margin-top: 0.3rem;
+}
+.screen-wrapper .body-section .upcoming-ac-row .bid-active-row .bid-active-col .bid-active-block .ca-blocks-col .block-seprate {
+  width: 80%;
+  height: 1px;
+  background-color: #e3e3e3;
+}
+.screen-wrapper .body-section .upcoming-ac-row .bid-active-row .bid-active-col .bid-active-block .ca-blocks-col .ca-entity {
+  font-size: 0.875em;
+  color: #7e7e7e;
+  display: flex;
+  flex-direction: column;
+}
+.screen-wrapper .body-section .upcoming-ac-row .bid-active-row .bid-active-col .bid-active-block .ca-blocks-col .ca-entity .count {
+  display: flex;
+  align-items: center;
+  min-width: 20px;
+  min-height: 20px;
+  font-size: 16px;
+}
+.screen-wrapper .body-section .upcoming-ac-row .bid-active-row .bid-active-col .bid-active-block .ca-blocks-col .ca-entity .count.bed-icon::before {
+  content: "";
+  width: 28px;
+  height: 25px;
+  background: url("../../assets/images/sprite-image.png") no-repeat;
+  background-position: -292px -225px;
+  margin-right: 0.5rem;
+}
+.screen-wrapper .body-section .upcoming-ac-row .bid-active-row .bid-active-col .bid-active-block .ca-blocks-col .ca-entity .count.bath-icon::before {
+  content: "";
+  width: 28px;
+  height: 25px;
+  background: url("../../assets/images/sprite-image.png") no-repeat;
+  background-position: -292px -225px;
+  margin-right: 0.5rem;
+}
+.screen-wrapper .body-section .upcoming-ac-row .bid-active-row .bid-active-col .bid-active-block .ca-blocks-col .ca-entity .count.bath-icon::before {
+  background-position: -328px -225px;
+}
+.screen-wrapper .body-section .upcoming-ac-row .bid-active-row .bid-active-col .bid-active-block .ca-blocks-col .ca-entity .count.square-icon::before {
+  content: "";
+  width: 28px;
+  height: 25px;
+  background: url("../../assets/images/sprite-image.png") no-repeat;
+  background-position: -292px -225px;
+  margin-right: 0.5rem;
+}
+.screen-wrapper .body-section .upcoming-ac-row .bid-active-row .bid-active-col .bid-active-block .ca-blocks-col .ca-entity .count.square-icon::before {
+  background-position: -261px -225px;
+  width: 24px;
+  height: 24px;
+}
+.screen-wrapper .body-section .upcoming-ac-row .bid-active-row .bid-active-col .bid-active-block .ca-blocks-col .ca-entity .bid-info {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  color: #606060;
+  line-height: 22px;
+}
+.screen-wrapper .body-section .upcoming-ac-row .bid-active-row .bid-active-col .bid-active-block .ca-blocks-col .ca-entity .bid-info .bid-time-price {
+  text-transform: uppercase;
+}
+.screen-wrapper .body-section .upcoming-ac-row .bid-active-row .bid-active-col .bid-active-block .ca-blocks-col .ca-entity .bid-info .bid-placed {
+  font-weight: 600;
+}
+.screen-wrapper .body-section .upcoming-ac-row .bid-active-row .bid-active-col .bid-active-block .ca-blocks-col .see-details-wrap {
+  text-align: center;
+}
+.screen-wrapper .body-section .upcoming-ac-row .bid-active-row .bid-active-col .bid-active-block .ca-blocks-col .see-details-wrap .learn-more-link {
+  text-transform: uppercase;
+}
+.screen-wrapper .body-section .upcoming-ac-row .bid-active-row .bid-active-col .bid-active-block .ca-blocks-col .see-detail-div .learn-more-link {
+  padding: 7px 1.5em;
+}
 .screen-wrapper .body-section .listing-detail-wrap .listing-detail-seprator {
   border-bottom: 1px solid #e3e3e3;
 }
@@ -360,6 +513,47 @@
 }
 .screen-wrapper .form-wrapper-row .sign-in-row .sign-in-col .common-form .sign-in-remeber-div span.font-size-14 {
   margin-left: 5px;
+}
+.screen-wrapper .form-wrapper-row .sign-in-row .sign-in-col .common-form .upload-doc-block .upload-doc-div {
+  height: 220px;
+  width: 100%;
+  border: 1px solid #e3e3e3;
+  padding: .25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+.screen-wrapper .form-wrapper-row .sign-in-row .sign-in-col .common-form .upload-doc-block .upload-instuct {
+  font-size: 1.125em;
+  color: #7c7c7c;
+}
+.screen-wrapper .form-wrapper-row .sign-in-row .sign-in-col .common-form .upload-doc-block .upload-instuct .upload-sub-instruct {
+  font-size: 14px;
+}
+.screen-wrapper .form-wrapper-row .sign-in-row .sign-in-col .common-form .upload-doc-block .upload-btn-div {
+  display: flex;
+}
+.screen-wrapper .form-wrapper-row .sign-in-row .sign-in-col .common-form .upload-doc-block .upload-btn-div .doc-upload {
+  position: relative;
+  overflow: hidden;
+  width: 32px;
+  height: 42px;
+  background: url("../../assets/images/sprite-image.png") no-repeat -573px -218px;
+}
+.screen-wrapper .form-wrapper-row .sign-in-row .sign-in-col .common-form .upload-doc-block .upload-btn-div .doc-upload input {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 30px;
+}
+.screen-wrapper .form-wrapper-row .sign-in-row .sign-in-col .common-form .upload-doc-block .upload-btn-div p {
+  color: #7c7c7c !important;
+  margin-left: 50px;
 }
 .screen-wrapper .form-wrapper-row .sign-in-row .sign-in-col .common-form .document-upload {
   font-size: 1.25em;
@@ -950,6 +1144,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  position: relative;
 }
 .screen-wrapper .ud-body-row .tab-content .sign-in-row .sign-in-col .common-form .upload-doc-block .upload-instuct {
   font-size: 1.125em;
@@ -1442,6 +1637,28 @@ a:hover {
   font-size: 34px;
   font-weight: 700;
   line-height: 1.1em;
+}
+.instruction-title-24 {
+  color: #606060;
+  font-size: 24px;
+}
+.loader-div {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.loader-div .fa-spin {
+  font-size: 24px;
+}
+.input-disabled {
+  pointer-events: none;
+  opacity: 0.6;
 }
 .full-parent-height {
   height: 100%;
@@ -2695,6 +2912,7 @@ input[type=number] {
   -moz-appearance: none;
   background: url("../../assets/images/dropdown-arrow.png") no-repeat 0 0;
   background-position: calc(100% - 12px) center;
+  border: 1px solid #e3e3e3;
 }
 .common-select.form-control:disabled {
   background-color: #e9ecef;

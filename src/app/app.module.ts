@@ -66,6 +66,7 @@ import { AdminSellerDetailsComponent } from './admin/admin-seller-details/admin-
 import 'hammerjs';
 import 'mousetrap';
 import {ModalGalleryModule} from 'angular-modal-gallery';
+
 // enableProdMode();
 
 

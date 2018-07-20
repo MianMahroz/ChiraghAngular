@@ -21,7 +21,7 @@ export class personalInfoDTO {
     streetAddress:string;
     scannedPassportCopyUpload:string;
     scannedIdCopyUpload:string;
-    classifyYourself:string;
+    classifyYourself=false;
 
     constructor(){
 

@@ -150,6 +150,12 @@ $(document).ready(function(){
   });
 
 
+  $(".prop-stat-select").change(function(){
+    if($.trim($(this).val()) === "other"){
+      $('.other-input-form').removeClass('input-disabled');
+    }
+  });
+
   $('.btn-view-images').click(function(){
     $('body').addClass('overflow-hidden');
   });
@@ -164,10 +170,16 @@ $(document).ready(function(){
     $("#personalInfoCancel").show('slow');
   });
 
-  $(".save-form-link, .cancel-form-link").click(function(){
-    $("#personalInfoForm, #contactDetailForm").addClass('disabled');
-    $(".save-form-link, .cancel-form-link").hide('slow');
-    $(".edit-form-link").show('slow');
+  $("#personalInfoSave, #personalInfoCancel").click(function(){
+    $("#personalInfoForm").addClass('disabled');
+    $("#personalInfoSave, #personalInfoCancel").hide('slow');
+    $("#personalInfoEdit").show('slow');
+  });
+
+  $("#contactDetailSave, #contactDetailCancel").click(function(){
+    $("#contactDetailForm").addClass('disabled');
+    $("#contactDetailSave, #contactDetailCancel").hide('slow');
+    $("#contactDetailEdit").show('slow');
   });
 
 
@@ -177,6 +189,7 @@ $(document).ready(function(){
     $("#contactDetailCancel").show('slow');
     $("#contactDetailSave").show('slow');
   });
+
 
   $("#mobileNumber input").focus(function() {
     $('.otp-code-div').show('slow');
@@ -199,10 +212,6 @@ $(document).ready(function(){
     $(this).addClass('active show');
   });
 
-  $('#propertyLink').click(function() {
-    $('.open-prop-details').removeClass('collapse');
-  });
-  
 
   $('.ud-nav-item').on('click', function(){
     $('li').removeClass('active');
@@ -216,8 +225,18 @@ $(document).ready(function(){
     $($(this).parents('div').html()).appendTo('.modal-body');
     $('#thumbnailViewer').modal({show:true});
   });
-});
 
+});
+// $('.doc-upload').on('click', function() {
+//   $('.loader-div').removeClass('display-none');
+//   setTimeout(function () { 
+//     $('.loader-div').hide();
+//   }, 5000);
+// }); 
+
+$('#propertyLink').click(function() {
+  $('#openPropDetails').toggleClass('collapse');
+});
 
 $('.advance-search-link').click(function() {
   $('.slider-search-btn-top').toggle();
@@ -264,5 +283,106 @@ $("#ni-shows-round").click(function(){
     $(this).text($(this).text() == "Show all" ? "Show less" : "Show all");
 });
 
+function readURL(input) {
+   if (input.files && input.files[0]) {
+    var FileSize = input.files[0].size / 1024 / 1024; // in MB
+        if (FileSize > 2) {
+           // alert('File size exceeds 2 MB');
+            
+              // make it not dissappear
+              $('#passportCopyDiv').removeClass('display-none');
+                setTimeout(function () { 
+                  $('#passportCopyDiv').addClass('display-none');
+                }, 3000);
+              toastr.error("File size exceeds from 2 MB!!", "File Uploading Error", {
+                  // "timeOut": "0",
+                  // "extendedTImeout": "0"
+              });
+          
+           // $(file).val(''); //for clearing with Jquery
+        } else {
 
+      var reader = new FileReader();
 
+      reader.onload = function (e) {
+        $('#passportCopy')
+          .attr('src', e.target.result)
+      };
+      $('#passportCopyDiv').removeClass('display-none');
+        setTimeout(function () { 
+          $('#passportCopyDiv').addClass('display-none');
+        }, 3000);
+      reader.readAsDataURL(input.files[0]);
+      toastr.success("File Uploaded Sucessfully ");
+  }
+}}
+
+function readURLIdCopy(input) {
+  if (input.files && input.files[0]) {
+    var FileSize = input.files[0].size / 1024 / 1024; // in MB
+    if (FileSize > 2) {
+       // alert('File size exceeds 2 MB');
+        
+          // make it not dissappear
+          $('#idCopyDiv').removeClass('display-none');
+            setTimeout(function () { 
+              $('#idCopyDiv').addClass('display-none');
+            }, 3000);
+          toastr.error("File size exceeds from 2 MB!!", "File Uploading Error", {
+              // "timeOut": "0",
+              // "extendedTImeout": "0"
+          });
+      
+       // $(file).val(''); //for clearing with Jquery
+    } else
+    {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('#idCopy')
+            .attr('src', e.target.result)
+        };
+        $('#idCopyDiv').removeClass('display-none');
+          setTimeout(function () { 
+            $('#idCopyDiv').addClass('display-none');
+          }, 3000);
+        reader.readAsDataURL(input.files[0]);
+        toastr.success("File Uploaded Sucessfully");
+  }
+ }
+}
+
+function readURLNotorizedCopy(input) {
+  if (input.files && input.files[0]) {
+    var FileSize = input.files[0].size / 1024 / 1024; // in MB
+    if (FileSize > 2) {
+       // alert('File size exceeds 2 MB');
+        
+          // make it not dissappear
+          $('#notorizedCopyDiv').removeClass('display-none');
+            setTimeout(function () { 
+              $('#notorizedCopyDiv').addClass('display-none');
+            }, 3000);
+          toastr.error("File size exceeds from 2 MB!!", "File Uploading Error", {
+              // "timeOut": "0",
+              // "extendedTImeout": "0"
+          });
+      
+       // $(file).val(''); //for clearing with Jquery
+    } else
+    {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('#notorizedCopy')
+            .attr('src', e.target.result)
+        };
+        $('#notorizedCopyDiv').removeClass('display-none');
+          setTimeout(function () { 
+            $('#notorizedCopyDiv').addClass('display-none');
+          }, 3000);
+        reader.readAsDataURL(input.files[0]);
+        toastr.success("File Uploaded Sucessfully");
+  }
+ }
+}

@@ -32,6 +32,11 @@ export class PropertyDetailsComponent implements OnInit {
   action:string;
   selectedScannedTitleDeed: FileList;
   scannedTitleDeedFile:File;
+  scannedFloorPlanFile:File;
+  selectedFloorPlan:FileList;
+  scannedtitledeeduploadPath:string;
+  titledeeduploadPath:string;
+  floorplanPath:string;
 
   propertystatusValid=true;
   plotnoValid=true;
@@ -52,15 +57,29 @@ export class PropertyDetailsComponent implements OnInit {
   bathroomValid=true;
   scannedtitledeeduploadValid=true;
   formValid=true;
+  bulidingnumberValid=true;
+  bulidingnameValid=true;
+  propertystatusotherValid=true;
+  typepropertyotherValid=true;
+  grossAreaValid=true;
+  netAreaValid=true;
+  
+
   paymentScheduleList:any[];
+
 
   constructor(private myToast:ToasterServiceService,private sellerService:SellerService,private route:ActivatedRoute,private propertyService:PropertyService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
 
   ngOnInit() {
-    //for testing purpose
-    // this.token.saveUserName('BesterCapital2');
-    // this.token.savePropertyId('111');
 
+    if(this.propertyDetailsDto.scannedTitleDeed==null && this.propertyDetailsDto.floorplanupload==null)
+    {
+      this.titledeeduploadPath=null;
+      this.floorplanPath=null;
+    }
+    else{
+    this.titledeeduploadPath=''+this.token.getImagepath()+'propertyId-'+this.propertyDetailsDto.propertyId+'/'+this.propertyDetailsDto.scannedTitleDeed;
+    this.floorplanPath=''+this.token.getImagepath()+'propertyId-'+this.propertyDetailsDto.propertyId+'/'+this.propertyDetailsDto.floorplanupload;}
     this.action='';
     this.action=this.route.snapshot.params['action'];
     console.log(this.action);
@@ -84,13 +103,58 @@ export class PropertyDetailsComponent implements OnInit {
         '13'
        ];
   }
+  
+  selectScannedTitleDeed(event):string {
 
-  selectScannedTitleDeed(event) {
+    if (event.target.files && event.target.files[0]) {
+      var FileSize = event.target.files[0].size / 1024 / 1024; // in MB
+       if (FileSize > 2) {
+           this.myToast.Error('File size exceeds 2 MB');
+           this.myToast.Warning('Accepted file size less than 2Mb');
+           return 'File size excced !'
+       }}
+
+       if (event.target.files && event.target.files[0]) {
+        var reader = new FileReader();
+        reader.onload = (event: ProgressEvent) => {
+          this.titledeeduploadPath = (<FileReader>event.target).result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+      }
     this.selectedScannedTitleDeed = event.target.files;
     this.scannedTitleDeedFile=this.selectedScannedTitleDeed.item(0);
     this.propertyDetailsDto.scannedTitleDeed=this.scannedTitleDeedFile.name;
+    this.titledeeduploadPath=''+this.token.getImagepath()+'propertyId-'+this.propertyDetailsDto.propertyId+'/'+this.propertyDetailsDto.scannedTitleDeed;
+    //this.floorplanPath=''+this.token.getImagepath()+'propertyId-'+this.propertyDetailsDto.propertyId+'/'+this.propertyDetailsDto.floorplanupload;
     event.srcElement.value = null;
   }
+ 
+  selectFloorPlan(event):string {
+
+    if (event.target.files && event.target.files[0]) {
+      var FileSize = event.target.files[0].size / 1024 / 1024; // in MB
+       if (FileSize > 2) {
+           this.myToast.Error('File size exceeds 2 MB');
+           this.myToast.Warning('Accepted file size less than 2Mb');
+           return 'File size excced !'
+       }}
+
+       if (event.target.files && event.target.files[0]) {
+        var reader = new FileReader();
+        reader.onload = (event: ProgressEvent) => {
+          this.floorplanPath= (<FileReader>event.target).result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+      }
+        this.selectedFloorPlan = event.target.files;
+        this.scannedFloorPlanFile=this.selectedFloorPlan.item(0);
+        this.propertyDetailsDto.floorplanupload=this.scannedFloorPlanFile.name;
+      // this.titledeeduploadPath=''+this.token.getImagepath()+'propertyId-'+this.propertyDetailsDto.propertyId+'/'+this.propertyDetailsDto.scannedTitleDeed;
+        this.floorplanPath=''+this.token.getImagepath()+'propertyId-'+this.propertyDetailsDto.propertyId+'/'+this.propertyDetailsDto.floorplanupload;
+        event.srcElement.value = null;
+  }
+  
+
 
   validation():boolean {
     console.log('Property Details Validations!');
@@ -98,11 +162,10 @@ export class PropertyDetailsComponent implements OnInit {
     this.propertystatusValid=true;
     if(this.propertyDetailsDto.propertyStatus)
     {
-    var propertystatus =this.propertyDetailsDto.propertyStatus.match('[a-zA-Z]*');
-    if(propertystatus["0"]!==this.propertyDetailsDto.propertyStatus){
-      this.myToast.Error('Invalid PropertyStatus');
-      this.propertystatusValid=false;
-    }}
+     // var propertystatus =this.propertyDetailsDto.propertyStatus.match('[a-zA-Z]*');
+    //if(propertystatus["0"]!==this.propertyDetailsDto.propertyStatus){
+      this.propertystatusValid=true;
+    }
     else{
 
       this.myToast.Error('Property Status Cannot Empty');
@@ -114,7 +177,7 @@ export class PropertyDetailsComponent implements OnInit {
     {
     var plotno =this.propertyDetailsDto.plotNo.match('[a-zA-Z0-9]*');
     if(plotno["0"]!==this.propertyDetailsDto.plotNo){
-      this.myToast.Error('Invalid Plot Number');
+      this.myToast.Error('Plot Number Must Be Alpha Numeric');
       this.plotnoValid=false;
     }}
     else{
@@ -202,13 +265,14 @@ export class PropertyDetailsComponent implements OnInit {
     this.unitValid=true;
     if(this.propertyDetailsDto.areaUnit)
     {
-    var areaUnit=this.propertyDetailsDto.areaUnit.match('[a-z]*');
-    if(areaUnit["0"]!==this.propertyDetailsDto.areaUnit){
-      this.myToast.Error('Invalid Area Unit');
-      this.unitValid=false;
-    }}
+      console.log(this.propertyDetailsDto.areaUnit);
+    // var areaUnit=this.propertyDetailsDto.areaUnit.match('[a-z]*');
+    // if(areaUnit["0"]!==this.propertyDetailsDto.areaUnit){
+    //   this.myToast.Error('Invalid Area Unit');
+      this.unitValid=true;
+    }
     else{
-
+      console.log(this.propertyDetailsDto.areaUnit);
       this.myToast.Error('Area unit Cannot Empty');
       this.unitValid=false;
     }
@@ -254,7 +318,7 @@ export class PropertyDetailsComponent implements OnInit {
     }}
 
     this.scannedtitledeeduploadValid=true;
-    if(this.scannedTitleDeedFile==null)
+    if(this.propertyDetailsDto.scannedTitleDeed==null||this.propertyDetailsDto.scannedTitleDeed==undefined)
     {
       this.myToast.Error('Scanned Title Deed Upload Required');
       this.scannedtitledeeduploadValid=false;
@@ -264,8 +328,9 @@ export class PropertyDetailsComponent implements OnInit {
     this.bedroomValid=true;
     if(this.propertyDetailsDto.noOfBedrooms)
     {
-    var noOfBedrooms=this.propertyDetailsDto.noOfBedrooms.match('[0-9]*');
-    if(noOfBedrooms["0"]!==this.propertyDetailsDto.noOfBedrooms){
+    var tostringbed=this.propertyDetailsDto.noOfBedrooms.toString();
+    var noBedrooms=tostringbed.match('[0-9]*');
+    if(noBedrooms["0"]!==tostringbed){
       this.myToast.Error('Invalid Bedroom Number');
       this.bedroomValid=false;
     }}
@@ -278,8 +343,9 @@ export class PropertyDetailsComponent implements OnInit {
     this.bathroomValid=true;
     if(this.propertyDetailsDto.noOfBaths)
     {
-    var noOfBaths=this.propertyDetailsDto.noOfBaths.match('[0-9]*');
-    if(noOfBaths["0"]!==this.propertyDetailsDto.noOfBaths){
+    var tostringbath=this.propertyDetailsDto.noOfBaths.toString();
+    var noOfBaths=tostringbath.match('[0-9]*');
+    if(noOfBaths["0"]!==tostringbath){
       this.myToast.Error('Invalid Bathroom Number');
       this.bathroomValid=false;
     }}
@@ -289,9 +355,93 @@ export class PropertyDetailsComponent implements OnInit {
       this.bathroomValid=false;
     }
 
+
+    this.propertystatusotherValid=true;
+    if(this.propertyDetailsDto.propertyStatus=='Other')
+    {
+    if(this.propertyDetailsDto.propertyStatusOther)
+    {
+   
+      this.propertystatusotherValid=true;
+    }
+    else{
+
+      this.myToast.Error('Property Status Other Field Cannot Empty');
+      this.propertystatusotherValid=false;
+    }}
+
+    this.typepropertyotherValid=true;
+    if(this.propertyDetailsDto.propertyType=='Other'){
+    if(this.propertyDetailsDto.typePropertyOther)
+    {
+      this.typepropertyotherValid=true;
+    }
+    else{
+
+      this.myToast.Error('Type Property Other Field Cannot Empty');
+      this.typepropertyotherValid=false;
+    }}
+   
+    this.bulidingnameValid=true;
+    if(this.propertyDetailsDto.bulidingName)
+    {
+    
+      this.bulidingnameValid=true;
+    }
+    else{
+
+      this.myToast.Error('Buliding Name Cannot Empty');
+      this.bulidingnameValid=false;
+    }
+
+    this.bulidingnumberValid=true;
+    if(this.propertyDetailsDto.bulidingNumber)
+    {
+    
+      this.bulidingnumberValid=true;
+    }
+    else{
+
+      this.myToast.Error('Buliding Number Cannot Empty');
+      this.bulidingnumberValid=false;
+    }
+
+
+    this.grossAreaValid=true;
+    if(this.propertyDetailsDto.propertyStatus=='Off-Plan'){
+    if(this.propertyDetailsDto.grossArea)
+    {
+     var grossarea=this.propertyDetailsDto.grossArea.match('[0-9]*');
+     if(grossarea["0"]!==this.propertyDetailsDto.grossArea){
+      this.myToast.Error('Invalid Gross Area');
+      this.grossAreaValid=false;
+    }}
+    else{
+      this.myToast.Error('Gross Area Required');
+      this.grossAreaValid=false;
+     }}
+
+    
+
+    this.netAreaValid=true;
+    if(this.propertyDetailsDto.propertyStatus !=='Off-Plan'){
+    if(this.propertyDetailsDto.netArea)
+    {
+     var netarea=this.propertyDetailsDto.netArea.match('[0-9]*');
+     if(netarea["0"]!==this.propertyDetailsDto.netArea){
+      this.myToast.Error('Invalid Net Area');
+      this.netAreaValid=false;
+    }}
+    else{
+      this.myToast.Error('Net Area Required');
+      this.netAreaValid=false;
+     }}
+
+
     if(this.propertystatusValid==false||this.plotnoValid==false||this.titledeednoValid==false||this.addressValid==false||
     this.propertynoValid==false||this.typeofpropertyValid==false||this.projectnameValid==false||this.areaValid==false||
-    this.unitValid==false||this.descriptionValid==false||this.scannedtitledeeduploadValid==false)
+    this.unitValid==false||this.descriptionValid==false||this.scannedtitledeeduploadValid==false||this.propertystatusotherValid==false||this.typepropertyotherValid==false
+    ||this.bulidingnameValid==false||this.bulidingnumberValid==false||this.grossAreaValid==false||this.netAreaValid==false||this.bedroomValid==false||this.bathroomValid==false)
     {
       this.formValid=false;
     }
@@ -301,13 +451,8 @@ export class PropertyDetailsComponent implements OnInit {
     }
 
 
-
     return this.formValid;
   }
-
-
-
-
 
   addPropertyDetails(): string {
     if(this.token.getuserName()==null){
