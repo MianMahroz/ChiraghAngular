@@ -21,7 +21,7 @@ export class OwnerDetailsComponent implements AfterViewInit {
 
  adminPropertyId:number;
  role:string;
-
+ 
   private loadScript(scriptUrl: string) {
     return new Promise((resolve, reject) => {
       const scriptElement = document.createElement('script');
@@ -219,12 +219,6 @@ export class OwnerDetailsComponent implements AfterViewInit {
    }
 validation():boolean {
 
-//   if(this.idCopyFile==null && this.passportFile==null)
-//   {
-//     this.myToast.Warning('Enter Different Details For Another Owner');
-//      return false;
-//   }
-// else{
   console.log('Owner Validations!');
   //var firstname1=this.ownerDto.firstName;
   //this.requiredfieldsArray['firstNamevalidation',this.ownerDto.lastName,this.ownerDto.nationality,this.ownerDto.passportNo,this.ownerDto.passportExpiryDate,this.ownerDto.mobile,this.ownerDto.email,this.ownerDto.address];
@@ -443,6 +437,12 @@ if(this.ownerDto.address){
   return this.formValid;
   }
 
+  moveOnAddOwnerNo():string{
+    console.log("moving next");
+    this.router.navigate(['/sellerPoaDetails/next']);
+    return "Moving to Poa Form";
+  }
+
   addOwner(operation:string): string {
     if(this.token.getuserName()==null){
       this.myToast.Error('Status','Invalid Session');
@@ -659,6 +659,10 @@ ownerVerified(): void {
 
 }//end of loginChiraghUser
 
+
+// isaddOwner(isadded:string):void{
+//   this.addOwner("true");
+// }
 
 
 }//end of class
