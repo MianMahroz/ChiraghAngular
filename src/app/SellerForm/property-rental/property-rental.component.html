@@ -76,11 +76,11 @@
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label required-input-label">Lease Start Date</label>
-                      <input type="text" for="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseStartDate" name="leaseStartDate" #leaseStartDate="ngModel" [disabled]="propertyRentalDetailDTO.isRented=='No'"  required>
+                      <input type="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseStartDate" name="leaseStartDate" #leaseStartDate="ngModel" [disabled]="propertyRentalDetailDTO.isRented=='No'"  required>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label required-input-label">Lease Expiry Date</label>
-                      <input type="text" for="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseExpiryDate" name="leaseExpiryDate"  #leaseExpiryDate="ngModel" [disabled]="propertyRentalDetailDTO.isRented=='No'"  required>
+                      <input type="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseExpiryDate" name="leaseExpiryDate"  #leaseExpiryDate="ngModel" [disabled]="propertyRentalDetailDTO.isRented=='No'"  required>
                     </div>
                   </div>
                   

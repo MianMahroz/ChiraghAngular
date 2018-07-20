@@ -110,8 +110,8 @@
                             </div>
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
-                              <label class="form-label">Middle Name</label>
-                            <input pattern="[a-zA-Z]*"  minlength="3" maxlength="15" type="text" class="form-control form-input" [(ngModel)]="personalinfoDTO.middleName" name="middleName" #middleName="ngModel">
+                            <label class="form-label">Middle Name</label> 
+                            <input type="text" pattern="[a-zA-Z]*" minlength="3" maxlength="15" class="form-control form-input" [(ngModel)]="personalinfoDTO.middleName" name="middleName" #middleName="ngModel">
                             <div *ngIf="middleName.errors && (middleName.dirty || middleName.touched)" class="alert alert-danger">
                               <div [hidden]="!middleName.errors.minlength">
                                 Middle Name must be at least 3 characters long.
@@ -165,7 +165,7 @@
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
                               <label class="form-label">ID Card Expiry Date</label>
-                            <input type="text" for="date" class="form-control form-input" [(ngModel)]="personalinfoDTO.idCardExpiryDate" name="idCardExpiryDate" #idCardExpiryDate="ngModel">
+                            <input type="date" class="form-control form-input" [(ngModel)]="personalinfoDTO.idCardExpiryDate" name="idCardExpiryDate" #idCardExpiryDate="ngModel">
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
                               <label class="form-label required-input-label">Passport Number</label>
@@ -184,7 +184,7 @@
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
                               <label class="form-label required-input-label">Passport Expiry Date</label>
-                            <input type="text" class="form-control form-input" [(ngModel)]="personalinfoDTO.passportExpiryDate" name="passportExpiryDate" #passportExpiryDate="ngModel">
+                            <input type="date" class="form-control form-input" [(ngModel)]="personalinfoDTO.passportExpiryDate" name="passportExpiryDate" #passportExpiryDate="ngModel">
                           </div>
                         </div>
                         <div class="row">
@@ -859,7 +859,7 @@
                               </div>
                               <div class="col-md-6 form-label-group mb-4">
                                   <label class="form-label required-input-label">POA Expiry Date</label>                         
-                                  <input type="text" for="date" class="form-control form-input" [(ngModel)]="ownerDto.poaAgreementExpiry" name="poaAgreementExpiry" required>
+                                  <input type="date" class="form-control form-input" [(ngModel)]="ownerDto.poaAgreementExpiry" name="poaAgreementExpiry" required>
                               </div>
                               <div class="col-md-6 form-label-group mb-4">
                                   <label class="form-label required-input-label">Specific Property</label>
@@ -1570,7 +1570,7 @@
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
                                 <label class="form-label">Date</label>
-                              <input type="text" for="date" class="form-control form-input"  [(ngModel)]="propertyFinancialDTO.date" name="date" #date="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
+                              <input type="date" class="form-control form-input"  [(ngModel)]="propertyFinancialDTO.date" name="date" #date="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
                                 <label class="form-label">Amount</label>
@@ -1670,11 +1670,11 @@
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
                                 <label class="form-label required-input-label">Lease Start Date</label>
-                                <input type="text" for="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseStartDate" name="leaseStartDate"  #leaseStartDate="ngModel">
+                                <input type="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseStartDate" name="leaseStartDate"  #leaseStartDate="ngModel">
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
                                 <label class="form-label required-input-label">Lease Expiry Date</label>
-                                <input type="text" for="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseExpiryDate" name="leaseExpiryDate"  #leaseExpiryDate="ngModel">
+                                <input type="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseExpiryDate" name="leaseExpiryDate"  #leaseExpiryDate="ngModel">
                             </div>
                           </div>
                         </div>
