@@ -189,7 +189,11 @@ export class PoaDetailsComponent implements AfterViewInit {
         event.srcElement.value = null;
   }
 
-
+  moveOnAddPoaNo():string{
+    console.log("moving next");
+    this.router.navigate(['/propertyDetails/next']);
+    return "Moving to Property Detail Form";
+  }
 
   validation():boolean {
     console.log('POA  Validations!');
