@@ -1,5 +1,4 @@
 import { ToasterServiceService } from './../toaster-service.service';
-
 import { Component, OnInit } from '@angular/core';
 import { registerDTO} from './registerDTO';
 import {Router} from '@angular/router';
@@ -46,6 +45,7 @@ export class RegisterComponent  {
     this.bar1=false;
     this.bar2=true;
    }
+
   onRegister(){
     window.sessionStorage.removeItem('AuthToken');
     this.authService.attemptAuth().subscribe(
@@ -57,32 +57,7 @@ export class RegisterComponent  {
           this.userService.register(this.registerdto).subscribe(
             data1=>{
               console.log(data1);
-
-
-                  if(data1.msg=="User Name Already Exist!! Try Another User Name"){
-                    this.myToast.Error('Status',data1.msg);
-                    this.myToast.Error('Registeration Fail');
-                  }
-
-                  else if(data1.msg=="Email Already Registered!! Try Another Email"){
-                    this.myToast.Error('Status',data1.msg);
-                    this.myToast.Error('Registeration Fail');
-                  }
-
-                  else if(data1.msg=="Password doesn't match! Entered Again"){
-                    this.myToast.Error('Status',data1.msg);
-                    this.myToast.Error('Registeration Fail');
-                  }
-
-                  else if(data1.msg=="User Name & Password Cannot Be Same!"){
-                    this.myToast.Error('Status',data1.msg);
-                    this.myToast.Error('Registeration Fail');
-                  }
-
-                  else if(data1.msg=="Used Strong Password"){
-                    this.myToast.Warning('Status',data1.msg);
-                  }
-                   else if(data1.msg=="Used Registered Sucessfully"){
+                   if(data1.msg=="User Registered Sucessfully"){
                     //  this.token.saveUserName(this.registerdto.userName);//saving user to session
                     this.myToast.Success('Status',data1.msg);
                      this.token.saveTempUser(this.registerdto.userName);
@@ -90,16 +65,16 @@ export class RegisterComponent  {
                       data2=>{
                         this.registerdto=new registerDTO();
                                console.log(data2);
-
                                if(data2.msg='Email Sent'){
                                 this.myToast.Info('Status',data2.msg);
                                 this.router.navigate(['confirmEmail']);
-
-
                                }
                       }//end of email data
                     );//end of email subscription
                    }//end of if
+                   else{
+                    this.myToast.Error('Status',data1.msg);
+                   }
                 }//end of inner data predicate
           );//end of inner subscription
         }//end of if
