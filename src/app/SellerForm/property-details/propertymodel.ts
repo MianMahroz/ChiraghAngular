@@ -132,7 +132,7 @@ export class PropertyDetailsDto {
  bulidingName:string;
  typePropertyOther:string;
  propertyStatusOther:string;
- floorplanupload:string;
+ floorPlanUpload:string;
  grossArea:string;
  netArea:string;
 }

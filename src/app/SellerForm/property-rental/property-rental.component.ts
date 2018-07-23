@@ -48,13 +48,13 @@ export class PropertyRentalComponent implements OnInit {
   ngOnInit() {
     // this.token.savePropertyId('182');
     // this.token.saveUserName('BesterCapital2');
-    if(this.propertyRentalDetailDTO.tenancyContractUpload==null)
-    {
-      this.scannedTenantContractUploadPath=null;
-    }
-    else
-    {
-    this.scannedTenantContractUploadPath=''+this.token.getImagepath()+'propertyId-'+this.propertyRentalDetailDTO.propertyId+'/'+this.propertyRentalDetailDTO.tenancyContractUpload;}
+    // if(this.propertyRentalDetailDTO.tenancyContractUpload==null)
+    // {
+    //   this.scannedTenantContractUploadPath=null;
+    // }
+    // else
+    // {
+    // this.scannedTenantContractUploadPath=''+this.token.getImagepath()+'propertyId-'+this.propertyRentalDetailDTO.propertyId+'/'+this.propertyRentalDetailDTO.tenancyContractUpload;}
 
     this.action='';
     this.action=this.route.snapshot.params['action'];
@@ -86,7 +86,7 @@ export class PropertyRentalComponent implements OnInit {
         this.selectedscannedTenentContract = event.target.files;
         this.scannedTenentContractFile=this.selectedscannedTenentContract.item(0);
         this.propertyRentalDetailDTO.tenancyContractUpload=this.scannedTenentContractFile.name;
-        this.scannedTenantContractUploadPath=''+this.token.getImagepath()+'propertyId-'+this.propertyRentalDetailDTO.propertyId+'/'+this.propertyRentalDetailDTO.tenancyContractUpload;
+        this.scannedTenantContractUploadPath=''+this.token.getImagepath()+'propertyId-'+this.token.getPropertyId()+'/'+this.propertyRentalDetailDTO.tenancyContractUpload;
         event.srcElement.value = null;
   }
 
@@ -320,6 +320,7 @@ else{
             rentalData=>{
               console.log(rentalData);
               this.propertyRentalDetailDTO=rentalData;
+              this.scannedTenantContractUploadPath=''+this.token.getImagepath()+'propertyId-'+this.token.getPropertyId()+'/'+this.propertyRentalDetailDTO.tenancyContractUpload;
               this.myToast.Info('Property Status','Property Rental Details data Loaded Successfully');
             }
           );
