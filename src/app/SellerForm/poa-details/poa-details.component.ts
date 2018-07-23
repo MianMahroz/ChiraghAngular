@@ -65,8 +65,8 @@ export class PoaDetailsComponent implements AfterViewInit {
   poanumberValid=true;
   poaexpiryValid=true;
   specificpropertyValid=true;
-  
-  
+
+
 
   constructor(private myToast:ToasterServiceService,private route:ActivatedRoute,private sellerService:SellerService,private userService:UserService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -93,22 +93,6 @@ export class PoaDetailsComponent implements AfterViewInit {
 
   }
   ngOnInit() {
-
-
-    if(this.ownerDto.passportCopyUpload==null && this.ownerDto.scannedIdCopy==null && this.ownerDto.scannedIdCopy==null)
-    {
-      this.passportcopypoaPath =null;
-      this.idcopypoaPath=null;
-      this.notorizedcopyPath=null;
-    }
-
-    else{
-    this.passportcopypoaPath =''+this.token.getImagepath()+'propertyId-'+this.token.getPropertyId()+'/'+this.ownerDto.passportCopyUpload;
-    this.idcopypoaPath=''+this.token.getImagepath()+'propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.scannedIdCopy;
-    this.notorizedcopyPath=''+this.token.getImagepath()+'propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.scannedIdCopy;}
-    // //for testing purpose
-    // this.token.saveUserName('BesterCapital2');
-    // this.token.savePropertyId('111');
     this.atLeastOnePoa=false;
     this.action='';
     this.action=this.route.snapshot.params['action'];
@@ -140,7 +124,7 @@ export class PoaDetailsComponent implements AfterViewInit {
         this.ownerDto.passportCopyUpload=this.passportFile.name;
         this.passportcopypoaPath =''+this.token.getImagepath()+'propertyId-'+this.token.getPropertyId()+'/'+this.ownerDto.passportCopyUpload;
         event.srcElement.value = null;
-    
+
   }
   selectIdCopy(event) {
 
@@ -162,7 +146,7 @@ export class PoaDetailsComponent implements AfterViewInit {
         this.selectedIdCopy = event.target.files;
         this.idCopyFile=this.selectedIdCopy.item(0);
         this.ownerDto.scannedIdCopy=this.idCopyFile.name;
-        this.idcopypoaPath=''+this.token.getImagepath()+'propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.scannedIdCopy;
+        this.idcopypoaPath=''+this.token.getImagepath()+'propertyId-'+this.token.getPropertyId()+'/'+this.ownerDto.scannedIdCopy;
         event.srcElement.value = null;
   }
   selectScannedPoa(event) {
@@ -185,7 +169,7 @@ export class PoaDetailsComponent implements AfterViewInit {
         this.selectedScannedPoa = event.target.files;
         this.scannedNotorizedPoaFile=this.selectedScannedPoa.item(0);
         this.ownerDto.scannedNotorizedCopy=this.scannedNotorizedPoaFile.name;
-        this.notorizedcopyPath=''+this.token.getImagepath()+'propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.scannedIdCopy;
+        this.notorizedcopyPath=''+this.token.getImagepath()+'propertyId-'+this.token.getPropertyId()+'/'+this.ownerDto.scannedIdCopy;
         event.srcElement.value = null;
   }
 
@@ -404,7 +388,7 @@ export class PoaDetailsComponent implements AfterViewInit {
 
         this.isPoaAcceptedValid=true;
        // var poaaccepted=this.ownerDto.isPoaAccepted;
-        if(this.ownerDto.isPoaAccepted=true){
+        if(this.ownerDto.isPoaAccepted="true"){
            // this.myToast.Error('Passport Copy Upload required ');
            this.isPoaAcceptedValid=true;
            console.log(this.ownerDto.isPoaAccepted);
@@ -438,7 +422,7 @@ export class PoaDetailsComponent implements AfterViewInit {
         this.poanumberValid=true;
         if(this.ownerDto.poaNumber)
         {
-        
+
            var poanumber =this.ownerDto.poaNumber.match('[0-9-]*');
            if(poanumber["0"]!==this.ownerDto.poaNumber){
            this.myToast.Error('Invaild POA Number');
@@ -484,7 +468,9 @@ export class PoaDetailsComponent implements AfterViewInit {
       console.log('Invalid Session');
       return "Invalid Session";
     }
-
+    // if(this.ownerDto.firstName!=null || this.ownerDto.firstName!='' && operation=='next'){
+    //   this.router.navigate(['/propertyDetails/next']);
+    // }
     if(this.validation()==true){
 
     }
@@ -492,9 +478,7 @@ export class PoaDetailsComponent implements AfterViewInit {
       return "Invalid Form";
     }
 
-    if(this.ownerDto.firstName==null || this.ownerDto.firstName==''&&operation=='next'){
-      this.router.navigate(['/propertyDetails/next']);
-    }
+
     window.sessionStorage.removeItem('AuthToken');
     this.authService.attemptAuth().subscribe(
       data => {
@@ -514,7 +498,7 @@ export class PoaDetailsComponent implements AfterViewInit {
               this.ownerDto.userName=this.token.getuserName();
               this.sellerService.addOwner(this.ownerDto).subscribe(
                 data1=>{
-                  this.ownerDto.propertySellerId=data1;
+                  this.ownerDto.sellerId=data1;
                  this.sellerService.saveDocument('/propertyId-'+this.token.getPropertyId()+'/',data1+'-Spoa-passport'+this.token.getPropertyId(),this.token.getuserName(),this.passportFile).subscribe(
                   data2=>{
                     console.log(data2);
@@ -581,13 +565,14 @@ editProcessHelper(operation:string):void{
       this.passportcopypoaPath =null;
       this.idcopypoaPath=null;
       this.notorizedcopyPath=null;
-      
+
+
       this.sellerService.getPoas(this.token.getPropertyId(),this.token.getuserName()).subscribe(
          ownerData=>{
           this.atLeastOnePoa=true;
           this.dataSource.data = ownerData;
             console.log(ownerData);
-            // this.myToast.Success('Status','POA data loaded Successfully');
+           // this.myToast.Success('Status','POA data loaded Successfully');
          }//end of ownerData
       );//end of subscription of getOwners
   }//end of else if
@@ -609,7 +594,10 @@ editProcessHelper(operation:string):void{
                this.dataSource.data = ownerData;
                //console.log(ownerData);
                this.ownerDto=ownerData[ownerData.length-1];
-               this.myToast.Success('Status','POA data loaded Successfully');
+               this.passportcopypoaPath =''+this.token.getImagepath()+'propertyId-'+this.token.getPropertyId()+'/'+this.ownerDto.passportCopyUpload;
+               this.idcopypoaPath=''+this.token.getImagepath()+'propertyId-'+this.token.getPropertyId()+'/'+this.ownerDto.scannedIdCopy;
+               this.notorizedcopyPath=''+this.token.getImagepath()+'propertyId-'+this.token.getPropertyId()+'/'+this.ownerDto.scannedIdCopy;
+               this.myToast.Info('Status','POA data loaded Successfully');
             }//end of if on ownerdata check
              }//end of ownerData
          );//end of subscription of getOwners

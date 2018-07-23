@@ -11,99 +11,39 @@
                   <div class="row">
                     <div class="col-md-12 form-block-heading mb-3">Rent Details</div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <label class="form-label required-input-label">Property Rented</label>
-                      <select  [(ngModel)]="propertyRentalDetailDTO.isRented" name ="isRented" class="form-control common-select placeholder">
-                        <option>Yes</option>
-                        <option>No</option>
-                      </select>
+                      <label class="form-label form-label-bold required-input-label">Property Rented</label>
+                      <label class="form-label form-label-value required-input-label">{{propertyRentalDetailDTO.isRented}}</label>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <label class="form-label">Tenant Name</label>
-                      <input  pattern="[a-zA-Z]*" type="text" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.tenantName" name="tenantName" #tenantName="ngModel" [disabled]="propertyRentalDetailDTO.isRented=='No'">
-                      <div *ngIf="tenantName.errors && (tenantName.dirty ||tenantName.touched)" class="alert alert-danger">
-                        <div [hidden]="!tenantName.errors.pattern">Must be a valid Tenant Name!</div>
-                      </div>
+                      <label class="form-label form-label-bold">Tenant Name</label>
+                      <label class="form-label form-label-value">{{propertyRentalDetailDTO.tenantName}}</label>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <label class="form-label">Payment Structure</label>
-                      <select [(ngModel)]="propertyRentalDetailDTO.paymentStructure" name="paymentStructure" class="form-control common-select placeholder" [disabled]="propertyRentalDetailDTO.isRented=='No'" >
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
-                        <option>11</option>
-                        <option>12</option>
-                        <!-- <option>13</option>
-                        <option>14</option>
-                        <option>15</option>
-                        <option>16</option>
-                        <option>17</option>
-                        <option>18</option>
-                        <option>19</option>
-                        <option>20</option>
-                        <option>21</option>
-                        <option>22</option>
-                        <option>23</option>
-                        <option>24</option>
-                        <option>25</option>
-                        <option>26</option>
-                        <option>27</option>
-                        <option>28</option>
-                        <option>29</option>
-                        <option>30</option> -->
-                      </select>
+                      <label class="form-label form-label-bold">Payment Structure</label>
+                      <label class="form-label form-label-value">{{propertyRentalDetailDTO.paymentStructure}}</label>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <label class="form-label required-input-label">Ejari Number</label>
-                      <input  pattern="[0-9_]*" type="text" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.rentalEjariNo" name="rentalEjariNo" #rentalEjariNo="ngModel" [disabled]="propertyRentalDetailDTO.isRented=='No'"  required>
-                      <div *ngIf="rentalEjariNo.errors && (rentalEjariNo.dirty ||rentalEjariNo.touched)" class="alert alert-danger">
-                          <div [hidden]="!rentalEjariNo.errors.required">Rental Ejari Number is required!</div>
-                          <div [hidden]="!rentalEjariNo.errors.pattern"> Must be a valid Rental Ejari Number!</div>
-                      </div>
+                      <label class="form-label form-label-bold required-input-label">Ejari Number</label>
+                      <label class="form-label form-label-value required-input-label">{{propertyRentalDetailDTO.rentalEjariNo}}</label>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <label class="form-label">Annual Rent</label>
-                      <input  pattern="[0-9_]*" type="text" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.rentalAnnualRent" name="rentalAnnualRent" #rentalAnnualRent="ngModel" [disabled]="propertyRentalDetailDTO.isRented=='No'">
-                      <div *ngIf="rentalAnnualRent.errors && (rentalAnnualRent.dirty ||rentalAnnualRent.touched)" class="alert alert-danger">
-                          <div [hidden]="!rentalAnnualRent.errors.pattern"> Must be a valid Rental Annual Rent !</div>
-                      </div>
+                      <label class="form-label form-label-bold">Annual Rent</label>
+                      <label class="form-label form-label-value">{{propertyRentalDetailDTO.rentalAnnualRent}}</label>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <label class="form-label required-input-label">Lease Start Date</label>
-                      <input type="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseStartDate" name="leaseStartDate" #leaseStartDate="ngModel" [disabled]="propertyRentalDetailDTO.isRented=='No'"  required>
+                      <label class="form-label form-label-bold required-input-label">Lease Start Date</label>
+                      <label class="form-label form-label-value required-input-label">{{propertyRentalDetailDTO.leaseStartDate}}</label>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
-                      <label class="form-label required-input-label">Lease Expiry Date</label>
-                      <input type="date" class="form-control form-input" [(ngModel)]="propertyRentalDetailDTO.leaseExpiryDate" name="leaseExpiryDate"  #leaseExpiryDate="ngModel" [disabled]="propertyRentalDetailDTO.isRented=='No'"  required>
+                      <label class="form-label form-label-bold required-input-label">Lease Expiry Date</label>
+                      <label class="form-label form-label-value required-input-label">{{propertyRentalDetailDTO.leaseExpiryDate}}</label>
                     </div>
                   </div>
-                  
                   <div class="row mt-3">
-                    <div class="col-md-12 document-upload form-block-heading mb-4">
+                    <div class="col-md-12 document-upload">
                       Upload Documents
-                      <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>    
-                    </div>
-                    <div class="col-md-4 upload-doc-block mt-3">
-                      <div class="upload-doc-div">
-                        <img id="notorizedCopy" class="w-100 thumbnail" src="{{scannedTenantContractUploadPath}}">
-                        <div id="notorizedCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
-                      </div>
-                      <div class="upload-instuct mt-2">Scanned Tenancy Contract</div>
-                      <div class="upload-btn-div mt-4">
-                        <div class="doc-upload">
-                          <input id="ownerPassCopy" #passFile type="file" name="file" (change)="scannedTenantContract($event)" class="doc-upload"accept=".jpg,.png,.gif,.jpeg,.pdf"  [disabled]="propertyRentalDetailDTO.isRented=='No'">
-                        </div>
-                        <span class="upload-instuct ml-3">Upload </span>
-                      </div>
                     </div>
                   </div>
-                  
                   <div class="row mt-5 submit-btn-row">
                     <div class="offset-md-6 col-md-3 mb-xs-4">
                       <a  routerLink="/propertyFinancialDetails/back" class="btn common-btn btn-light-black">Back</a>
@@ -113,7 +53,7 @@
                     </div>
                   </div>
                 </form>
-              </div>  
+              </div>
               <div class="col-md-2 page-locator-wrap">
                 <div class="page-locator">
                   <div class="process-heading">Process Steps</div>

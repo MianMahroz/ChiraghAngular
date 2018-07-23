@@ -686,33 +686,33 @@
                   <div class="row mt-3">
                     <div class="col-md-12 document-upload form-block-heading mb-4">
                       Upload Documents
-                      <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>    
+                      <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>
                     </div>
                     <div class="col-md-4 upload-doc-block mt-3">
                       <div class="upload-doc-div">
-                        <img id="notorizedCopy" class="w-100 thumbnail" src="{{titledeeduploadPath}}">
-                        <div id="notorizedCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
+                        <img id="titledeedCopy" class="w-100 thumbnail" src="{{titledeeduploadPath}}">
+                        <div id="titledeedCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
                       </div>
                       <div class="upload-instuct mt-2">Scanned Title Deed</div>
                       <div class="upload-btn-div mt-4">
                         <div class="doc-upload">
-                          <input id="ownerPassCopy" #passFile type="file" name="file"  (change)="selectScannedTitleDeed($event)" class="doc-upload"accept=".jpg,.png,.gif,.jpeg,.pdf"/>
+                          <input id="titledeedCopy" #passFile type="file" name="file"  (change)="selectScannedTitleDeed($event)" class="doc-upload"accept=".jpg,.png,.gif,.jpeg,.pdf"/>
                         </div>
                         <span class="upload-instuct ml-3">Upload </span>
                       </div>
                     </div>
                     <div class="offset-md-2 col-md-4 upload-doc-block mt-3">
                       <div class="upload-doc-div">
-                          <img id="idCopy" class="w-100 thumbnail" src="{{floorplanPath}}">
-                          <div id="idCopyDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
+                          <img id="floorPlanCopy" class="w-100 thumbnail" src="{{floorplanPath}}">
+                          <div id="floorPlanDiv" class="loader-div display-none"><i class="fas fa-circle-notch fa-spin ml-2"></i></div>
                         </div>
-                      <div  class="upload-instuct mt-2">Floor Plan</div>  
+                      <div  class="upload-instuct mt-2">Floor Plan</div>
                       <div  class="upload-btn-div mt-3">
                         <div class="doc-upload">
-                          <input id="owneIdCopy" #idFile type="file"  (change)="selectFloorPlan($event)" name="file" class="doc-upload" accept=".jpg,.png,.gif,.jpeg" />
-                        </div>  
+                          <input id="floorPlanCopy" #idFile type="file"  (change)="selectFloorPlan($event)" name="file" class="doc-upload" accept=".jpg,.png,.gif,.jpeg,.pdf" />
+                        </div>
                         <span class="upload-instuct ml-3">Upload </span>
-                      </div> 
+                      </div>
                     </div>
                   </div>
 

@@ -122,14 +122,6 @@ export class OwnerDetailsComponent implements AfterViewInit {
 
     ngOnInit() {
 
-     if(this.ownerDto.passportCopyUpload==null && this.ownerDto.scannedIdCopy==null)
-     {
-      this.passportcopyuploadPath=null;
-      this.idcopyuploadPath=null;
-     }
-     else{
-      this.passportcopyuploadPath=''+this.token.getImagepath()+'propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.passportCopyUpload;
-      this.idcopyuploadPath=''+this.token.getImagepath()+'propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.scannedIdCopy;}
       this.role=this.token.getUserRole();
       this.adminPropertyId=this.token.getAdminPropertyId();
       console.log(this.role);
@@ -205,7 +197,7 @@ export class OwnerDetailsComponent implements AfterViewInit {
       this.idCopyFile=this.selectedIdCopy.item(0);
       this.ownerDto.scannedIdCopy=this.idCopyFile.name;
       // console.log(this.idCopyFile);
-      this.idcopyuploadPath=''+this.token.getImagepath()+'propertyId-'+this.ownerDto.propertyId+'/'+this.ownerDto.scannedIdCopy;
+      this.idcopyuploadPath=''+this.token.getImagepath()+'propertyId-'+this.token.getPropertyId()+'/'+this.ownerDto.scannedIdCopy;
        event.srcElement.value = null;
      
       return "";
@@ -451,7 +443,9 @@ if(this.ownerDto.address){
       this.router.navigate(['/login']);
       return "Invalid Session";
     }
-
+    // if(this.ownerDto.firstName!=null || this.ownerDto.firstName!=''&&operation=='next'){
+    //   this.router.navigate(['/sellerPoaDetails/next']);
+    // }
 
     if(this.validation()==true){
 
@@ -460,9 +454,6 @@ if(this.ownerDto.address){
       return "Invalid Owner Form";
     }
 
-    if(this.ownerDto.firstName==null || this.ownerDto.firstName==''&&operation=='next'){
-      this.router.navigate(['/sellerPoaDetails/next']);
-    }
 
     window.sessionStorage.removeItem('AuthToken');
     this.authService.attemptAuth().subscribe(
@@ -487,7 +478,7 @@ if(this.ownerDto.address){
                     data1=>{
                       console.log('Owner');
                       console.log(data1);
-                      this.ownerDto.propertySellerId=data1;
+                      this.ownerDto.sellerId=data1;
                   this.sellerService.saveDocument('/propertyId-'+this.token.getPropertyId()+'/',data1+',Sowner-passport,'+this.token.getPropertyId(),this.token.getuserName(),this.passportFile).subscribe(
                       data2=>{
                         console.log(data2);
@@ -501,7 +492,8 @@ if(this.ownerDto.address){
                                         //  console.log(data3.partialText);
 
                                         this.ownerDto.scannedIdCopy= data3.partialText;
-
+console.log('Inside Error Code');
+console.log(this.ownerDto.sellerId);
                                         this.sellerService.updateOwner(this.ownerDto).subscribe(
                                           data5=>{
                                             console.log('Update owner');
@@ -509,12 +501,14 @@ if(this.ownerDto.address){
                                             this.editProcessHelper(operation);
                                           }//end of update owner data
                                         );//end of update owner subscription
+                                        // this.editProcessHelper(operation);
                                         }//end of if checking type==3 of data3
                                     } //end of IdCopy Data
                               );//end of IdCopy subscription
                             }//end of if  checking type ==3 of data 2
                             else if(data2=='Data'){
-                               this.editProcessHelper(operation);
+                            console.log('Inside Image fail error code')
+                              this.editProcessHelper(operation);
                             }//end of else if of Edit Image Functionality
                           }//end of data2
                     );//end of Passport subscription
@@ -536,7 +530,7 @@ if(this.ownerDto.address){
                 console.log(' owner');
                 console.log(data1);
 
-            this.ownerDto.propertySellerId=data1;
+            this.ownerDto.sellerId=data1;
             this.sellerService.saveDocument('/propertyId-'+this.token.getPropertyId()+'/',data1+',Sowner-passport'+this.token.getPropertyId(),this.token.getuserName(),this.passportFile).subscribe(
                  data2=>{
                    console.log(data2);
@@ -561,7 +555,7 @@ if(this.ownerDto.address){
                          );//end of IdCopy subscription
                        }//end of if checking type==3 of data2
                        else if(data2=='Data'){
-                        this.editProcessHelper(operation);
+                       this.editProcessHelper(operation);
                       }//end of else if of Edit Image Functionality
                      }
                );//end of Passport subscription
@@ -597,7 +591,7 @@ editProcessHelper(operation:string):void{
       this.sellerService.getOwners(this.token.getPropertyId(),this.token.getuserName()).subscribe(
          ownerData=>{
           this.atLeastOneOwner=true;
-          this.myToast.Success('Status','Add Another Owner Details');
+        // this.myToast.Success('Owner Details Added');
           console.log(ownerData);
             this.dataSource.data = ownerData;
             //this.ownerDto=ownerData[ownerData.length-1]
@@ -617,10 +611,12 @@ editProcessHelper(operation:string):void{
             ownerData=>{
               if(ownerData.length!=0){
                   this.atLeastOneOwner=true;
-                  this.myToast.Success('Status','Owner Data Loaded Successfully');
+                  this.myToast.Info('Status','Owner Data Loaded Successfully');
                   console.log(ownerData);
                   this.dataSource.data = ownerData;
                   this.ownerDto=ownerData[ownerData.length-1];
+                  this.passportcopyuploadPath=''+this.token.getImagepath()+'propertyId-'+this.token.getPropertyId()+'/'+this.ownerDto.passportCopyUpload;
+                  this.idcopyuploadPath=''+this.token.getImagepath()+'propertyId-'+this.token.getPropertyId()+'/'+this.ownerDto.scannedIdCopy;
                 }//end of lenght condition
               else{
                 this.dataSource.data = ownerData;
