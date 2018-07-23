@@ -72,14 +72,6 @@ export class PropertyDetailsComponent implements OnInit {
 
   ngOnInit() {
 
-    if(this.propertyDetailsDto.scannedTitleDeed==null && this.propertyDetailsDto.floorplanupload==null)
-    {
-      this.titledeeduploadPath=null;
-      this.floorplanPath=null;
-    }
-    else{
-    this.titledeeduploadPath=''+this.token.getImagepath()+'propertyId-'+this.propertyDetailsDto.propertyId+'/'+this.propertyDetailsDto.scannedTitleDeed;
-    this.floorplanPath=''+this.token.getImagepath()+'propertyId-'+this.propertyDetailsDto.propertyId+'/'+this.propertyDetailsDto.floorplanupload;}
     this.action='';
     this.action=this.route.snapshot.params['action'];
     console.log(this.action);
@@ -124,8 +116,7 @@ export class PropertyDetailsComponent implements OnInit {
     this.selectedScannedTitleDeed = event.target.files;
     this.scannedTitleDeedFile=this.selectedScannedTitleDeed.item(0);
     this.propertyDetailsDto.scannedTitleDeed=this.scannedTitleDeedFile.name;
-    this.titledeeduploadPath=''+this.token.getImagepath()+'propertyId-'+this.propertyDetailsDto.propertyId+'/'+this.propertyDetailsDto.scannedTitleDeed;
-    //this.floorplanPath=''+this.token.getImagepath()+'propertyId-'+this.propertyDetailsDto.propertyId+'/'+this.propertyDetailsDto.floorplanupload;
+    this.titledeeduploadPath=''+this.token.getImagepath()+'propertyId-'+this.token.getPropertyId()+'/'+this.propertyDetailsDto.scannedTitleDeed;
     event.srcElement.value = null;
   }
  
@@ -148,9 +139,8 @@ export class PropertyDetailsComponent implements OnInit {
       }
         this.selectedFloorPlan = event.target.files;
         this.scannedFloorPlanFile=this.selectedFloorPlan.item(0);
-        this.propertyDetailsDto.floorplanupload=this.scannedFloorPlanFile.name;
-      // this.titledeeduploadPath=''+this.token.getImagepath()+'propertyId-'+this.propertyDetailsDto.propertyId+'/'+this.propertyDetailsDto.scannedTitleDeed;
-        this.floorplanPath=''+this.token.getImagepath()+'propertyId-'+this.propertyDetailsDto.propertyId+'/'+this.propertyDetailsDto.floorplanupload;
+        this.propertyDetailsDto.floorPlanUpload=this.scannedFloorPlanFile.name;
+        this.floorplanPath=''+this.token.getImagepath()+'propertyId-'+this.token.getPropertyId()+'/'+this.propertyDetailsDto.floorPlanUpload;
         event.srcElement.value = null;
   }
   
@@ -482,20 +472,26 @@ export class PropertyDetailsComponent implements OnInit {
              fileNameData=>{
                console.log(fileNameData);
                if(fileNameData.type==3){
-                    this.propertyDetailsDto.scannedTitleDeed=fileNameData.partialText;
+         
+                this.sellerService.saveDocument('/propertyId-'+this.token.getPropertyId()+'/','S-floorPlanCopy'+this.token.getPropertyId(),this.token.getuserName(),this.scannedFloorPlanFile).subscribe(
+                  floorPlanImage=>{
+         
+                    this.propertyDetailsDto.floorPlanUpload=floorPlanImage.partialText;
                     this.propertyService.updateProperty(this.propertyDetailsDto).subscribe(
                     propertydata=>{
                         console.log(propertydata);
-                        this.myToast.Info('Status','Property Details Added Successfully')
+                       // this.myToast.Success('Property Details Added Successfully')
                         this.router.navigate(['/propertyFinancialDetails']);
                     }//end of propertydata
                   );//end of propertySubscription
+
+                  });//end of floor plan image 
                }//end of type check
                else if(fileNameData=='Data'){
                 this.propertyService.updateProperty(this.propertyDetailsDto).subscribe(
                   propertydata=>{
                       console.log(propertydata);
-                      this.myToast.Info('Status','Property Details Added Successfully');
+                     // this.myToast.Success('Property Details Added Successfully');
                       this.router.navigate(['/propertyFinancialDetails/next']);
                   }//end of propertydata
                 );//end of propertySubscription
@@ -521,6 +517,8 @@ export class PropertyDetailsComponent implements OnInit {
                 if(propertyDetailsData.plotNo!=null){
                     console.log(propertyDetailsData);
                     this.propertyDetailsDto=propertyDetailsData;
+                    this.titledeeduploadPath=''+this.token.getImagepath()+'propertyId-'+this.token.getPropertyId()+'/'+this.propertyDetailsDto.scannedTitleDeed;
+                    this.floorplanPath=''+this.token.getImagepath()+'propertyId-'+this.token.getPropertyId()+'/'+this.propertyDetailsDto.floorPlanUpload;
                     this.myToast.Info('Status','Property data loaded Successfully');
                 }//end of if of propertyDetailsData
              }//end of ownerData

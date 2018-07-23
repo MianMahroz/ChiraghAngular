@@ -1,7 +1,7 @@
 export class OwnerDetails{
 	userName:string;
 	propertyId:number;
-	propertySellerId :number;
+	sellerId :number;
 	firstName:string;
 	middleName:string;
 	lastName:string;
@@ -29,7 +29,7 @@ export class OwnerDetails{
 	poaPropertyAuthority:string;
 	titleDeedUpload:string;
   	scannedNotorizedCopy:string;
-  	isPoaAccepted=false;
+  	isPoaAccepted:string;
   	specificProperty:string;
   	isPersonalDetailsVerified:string;
 

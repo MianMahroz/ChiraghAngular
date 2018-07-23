@@ -61,17 +61,6 @@ export class PropertyFinancialsComponent implements OnInit {
 
 
   ngOnInit() {
-    // this.token.savePropertyId('111');
-    // this.token.saveUserName('BesterCapital2');
-    if(this.propertyFinancialDTO.morgageNoc==null)
-    {
-      this.scannednocuploadPath=null;
-    }
-    else
-    {
-      this.scannednocuploadPath=''+this.token.getImagepath()+'propertyId-'+this.propertyFinancialDTO.propertyId+'/'+this.propertyFinancialDTO.morgageNoc;
-    }
-   
     this.action='';
     this.action=this.route.snapshot.params['action'];
     console.log(this.action);
@@ -192,7 +181,7 @@ export class PropertyFinancialsComponent implements OnInit {
         this.selectedMorgageNoc = event.target.files;
         this.morgageNocFile=this.selectedMorgageNoc.item(0);
         this.propertyFinancialDTO.morgageNoc=this.morgageNocFile.name;
-        this.scannednocuploadPath=''+this.token.getImagepath()+'propertyId-'+this.propertyFinancialDTO.propertyId+'/'+this.propertyFinancialDTO.morgageNoc;
+        this.scannednocuploadPath=''+this.token.getImagepath()+'propertyId-'+this.token.getPropertyId()+'/'+this.propertyFinancialDTO.morgageNoc;
         event.srcElement.value = null;
   }
 
@@ -480,6 +469,7 @@ else{
             financialData=>{
               console.log(financialData);
               this.propertyFinancialDTO=financialData;
+              this.scannednocuploadPath=''+this.token.getImagepath()+'propertyId-'+this.token.getPropertyId()+'/'+this.propertyFinancialDTO.morgageNoc;
               this.myToast.Info('Property Status','Property Financial Details Data Loaded Successfully');
             }
           );
