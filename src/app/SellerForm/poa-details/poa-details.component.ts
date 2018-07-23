@@ -65,8 +65,8 @@ export class PoaDetailsComponent implements AfterViewInit {
   poanumberValid=true;
   poaexpiryValid=true;
   specificpropertyValid=true;
-  
-  
+
+
 
   constructor(private myToast:ToasterServiceService,private route:ActivatedRoute,private sellerService:SellerService,private userService:UserService,private http: HttpClient,private router: Router, private authService: AuthService, private token: TokenStorage) { }
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -140,7 +140,7 @@ export class PoaDetailsComponent implements AfterViewInit {
         this.ownerDto.passportCopyUpload=this.passportFile.name;
         this.passportcopypoaPath =''+this.token.getImagepath()+'propertyId-'+this.token.getPropertyId()+'/'+this.ownerDto.passportCopyUpload;
         event.srcElement.value = null;
-    
+
   }
   selectIdCopy(event) {
 
@@ -438,7 +438,7 @@ export class PoaDetailsComponent implements AfterViewInit {
         this.poanumberValid=true;
         if(this.ownerDto.poaNumber)
         {
-        
+
            var poanumber =this.ownerDto.poaNumber.match('[0-9-]*');
            if(poanumber["0"]!==this.ownerDto.poaNumber){
            this.myToast.Error('Invaild POA Number');
@@ -581,7 +581,7 @@ editProcessHelper(operation:string):void{
       this.passportcopypoaPath =null;
       this.idcopypoaPath=null;
       this.notorizedcopyPath=null;
-      
+
       this.sellerService.getPoas(this.token.getPropertyId(),this.token.getuserName()).subscribe(
          ownerData=>{
           this.atLeastOnePoa=true;

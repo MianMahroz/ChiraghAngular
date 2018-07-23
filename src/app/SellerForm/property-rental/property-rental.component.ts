@@ -55,7 +55,7 @@ export class PropertyRentalComponent implements OnInit {
     else
     {
     this.scannedTenantContractUploadPath=''+this.token.getImagepath()+'propertyId-'+this.propertyRentalDetailDTO.propertyId+'/'+this.propertyRentalDetailDTO.tenancyContractUpload;}
-  
+
     this.action='';
     this.action=this.route.snapshot.params['action'];
     console.log(this.action);
