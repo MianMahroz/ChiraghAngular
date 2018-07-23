@@ -63,9 +63,12 @@ import { AdminHeaderComponent } from './admin/admin-header/admin-header.componen
 import { VerificationHomeComponent } from './admin/verification-home/verification-home.component';
 import { AdminsignoutComponent } from './admin/adminsignout/adminsignout.component';
 import { AdminSellerDetailsComponent } from './admin/admin-seller-details/admin-seller-details.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
 import 'hammerjs';
 import 'mousetrap';
 import {ModalGalleryModule} from 'angular-modal-gallery';
+import { MatNativeDateModule } from '../../node_modules/@angular/material';
 
 // enableProdMode();
 
@@ -134,7 +137,8 @@ import {ModalGalleryModule} from 'angular-modal-gallery';
     PasswordStrengthBarModule,
     CustomFormsModule,
     MaterialModule,
-
+    MatDatepickerModule,
+    MatNativeDateModule
 
 
   ],

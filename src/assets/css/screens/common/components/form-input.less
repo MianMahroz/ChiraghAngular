@@ -464,25 +464,31 @@ input:-webkit-autofill {
 }
 
 
-input[type="date"]::before {
-	color: @field-placeholder-color;
-	content: attr(placeholder);
-  width: 100%;
-}
-input[type="date"]:focus,
-input[type="date"]:valid {
-	color: @secondary-color;
-}
-input[type="date"]:focus::before,
-input[type="date"]:valid::before {
-  content: "" !important;
-  position: absolute;
-}
+// input[type="date"]::before {
+// 	color: @field-placeholder-color;
+// 	content: attr(placeholder);
+//   width: 100%;
+// }
+// input[type="date"]:focus,
+// input[type="date"]:valid {
+//   color: @secondary-color;
+// }
 
-input[type="file"] {
-  cursor: pointer;
-  font-size: 0;
-}
+// input[type="date"] {
+//   -webkit-appearance: none;
+//   -moz-appearance: none;
+// }
+
+// input[type="date"]:focus::before,
+// input[type="date"]:valid::before {
+//   content: "" !important;
+//   position: absolute;
+// }
+
+// input[type="file"] {
+//   cursor: pointer;
+//   font-size: 0;
+// }
 
 
 .radio-btn-wrap {
@@ -575,4 +581,58 @@ input[type="file"] {
 
 input[type="file"]:disabled {
   cursor: no-drop;
+}
+
+.datepicker-input {
+  .mat-input-wrapper {
+    padding-bottom: 0;
+    height: 100%;
+    .mat-input-flex {
+      height: 100%;
+      .mat-input-infix {
+        margin-top: 0;  
+        padding: 0;
+        height: 100%;
+        border-top: none;
+        .mat-input-element {
+          height: 100%;
+          padding-left: 12px;
+          font-size: 18px;
+          color: @secondary-color;
+        }
+        .mat-form-field-label-wrapper {
+          padding-top: 0;
+          top: 0;
+        }
+      }
+      .mat-input-suffix {
+        height: 100%;
+        .mat-datepicker-toggle {
+          .mat-icon-button {
+            vertical-align: bottom;
+            height: 100%;
+            margin-right: 10px;
+            &:focus {
+              background-color: transparent;
+              outline: none;
+            }
+            .mat-button-wrapper {
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+    .mat-form-field-subscript-wrapper {
+      margin-top: 0;
+    }
+    .mat-form-field-underline {
+      background-color: transparent;
+      position: initial;
+      background-image: none;
+      .mat-form-field-ripple {
+        background-color: transparent;
+      }
+    }
+  }
 }
