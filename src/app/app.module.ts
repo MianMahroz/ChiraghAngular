@@ -69,6 +69,8 @@ import 'hammerjs';
 import 'mousetrap';
 import {ModalGalleryModule} from 'angular-modal-gallery';
 import { MatNativeDateModule } from '../../node_modules/@angular/material';
+import { SellerdashboardPaginationComponent } from './sellerdashboard-pagination/sellerdashboard-pagination.component';
+import {PagerServiceService} from './pager-service.service';
 
 // enableProdMode();
 
@@ -120,6 +122,7 @@ import { MatNativeDateModule } from '../../node_modules/@angular/material';
     VerificationHomeComponent,
     AdminsignoutComponent,
     AdminSellerDetailsComponent,
+    SellerdashboardPaginationComponent,
   ],
   imports: [
 
@@ -143,7 +146,7 @@ import { MatNativeDateModule } from '../../node_modules/@angular/material';
 
   ],
   entryComponents: [ErrorDialogComponent],
-  providers: [ToasterServiceService,ErrorDialogComponent, PaymentsService,AuctionService,UserService,SellerService,AuthService, TokenStorage, TokenStorage,SellerService,PropertyService,
+  providers: [ToasterServiceService,ErrorDialogComponent, PaymentsService,AuctionService,UserService,SellerService,AuthService, TokenStorage, TokenStorage,SellerService,PropertyService,PagerServiceService,
     {provide: HTTP_INTERCEPTORS,
     useClass: Interceptor,
     multi : true}

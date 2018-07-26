@@ -1,0 +1,67 @@
+<!-- <div class="tab-heading mb-3">{{title}}</div>
+<div class="row watch-prop-row" >
+  <div class="col-md-4 watch-prop-col mb-4"*ngFor="let array of data">
+    <div class="watch-prop-block" >
+      <div class="prop-pic-div thumbnail-1 mb-3" [ngStyle]="{'background-image': 'url(' + array.propertyimage + ')'}"></div>
+      <div class="prop-title">{{array.projectname}}</div>
+      <div class="prop-id">{{array.propertyid}}</div>
+      <button class="btn learn-more-btn my-2">Remove from list</button>
+  </div>
+  </div>
+</div> -->
+<div>
+  <div class="container">
+    <div class="tab-heading mb-3">{{title}}</div>
+    <p *ngIf="isBidActivity"> This is bid activity </p>
+    <!-- items being paged -->
+    <!-- <div *ngFor="let item of pagedItems">{{item.projectname}} -->
+      <div class="row watch-prop-row" >
+        <div class="col-md-4 watch-prop-col mb-4" *ngFor="let item of pagedItems">
+          <div class="watch-prop-block" >
+            <div class="prop-pic-div thumbnail-1 mb-3" [ngStyle]="{'background-image': 'url(' + item.propertyimage + ')'}"></div>
+            <div class="prop-title align-items-start">{{item .projectname}} <a *ngIf="isBidActivity"  class="bid-detail-view w-100 text-right" >Edit details</a></div>
+            <div class="prop-id">{{item .propertyid}}</div>
+            <button *ngIf="isBidActivity" class="btn learn-more-btn my-2">You bid: 50,000,00</button>
+            <button *ngIf="!isBidActivity"class="btn learn-more-btn my-2">Remove from list</button>
+          </div>
+        </div>
+      </div>
+    <!-- </div>   -->
+
+    <!-- pager -->
+    <div class="pagination-wrap mt-4 w-100 text-center">
+      <nav>
+        <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
+          <!-- <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+              <a class="page-link" (click)="setPage(1)">First</a>
+          </li> -->
+          <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+              <a class="page-link prev-link mr-2" (click)="setPage(pager.currentPage - 1)"><i class="fas fa-chevron-left"></i></a>
+          </li>
+          <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+              <a class="page-link" (click)="setPage(page)">{{page}}</a>
+          </li>
+          <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+              <a class="page-link next-link ml-2" (click)="setPage(pager.currentPage + 1)"><i class="fas fa-chevron-right"></i></a>
+          </li>
+          <!-- <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+              <a a class="page-link" (click)="setPage(pager.totalPages)">Last</a>
+          </li> -->
+        </ul>
+      </nav>
+    </div>      
+
+  </div>
+</div>  
+  
+<!-- <div class="pagination-wrap mt-4 w-100 text-center">
+  <nav>
+    <ul class="pagination justify-content-center"> 
+      <li class="page-item"><a class="page-link prev-link mr-2" ></a></li>
+      <ul *ngFor="let array of data;let countindex= index" class="ul-list-none pl-0">
+          <li  ><a class="page-link" >{{countindex+1}}</a></li>
+      </ul>
+      <li class="page-item"><a class="page-link next-link ml-2" ></a></li>
+    </ul>
+  </nav>
+</div> -->

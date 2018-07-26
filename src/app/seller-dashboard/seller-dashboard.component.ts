@@ -11,6 +11,7 @@ import {PropertyRentalDetailDTO  } from './../SellerForm/property-rental/propert
 import { PropertyFinancialDTO } from './../SellerForm/property-financials/propertyfinancialDTO';
 import { personalInfoDTO } from './../register/personalInfoDTO';
 import {ModalGalleryModule,Image} from 'angular-modal-gallery';
+//import { ENGINE_METHOD_PKEY_ASN1_METHS } from 'constants';
 
 @Component({
   selector: 'app-seller-dashboard',
@@ -33,6 +34,32 @@ export class SellerDashboardComponent implements OnInit {
 
   userIdCopy:string;
   userPassportCopy:string;
+  title:string ;
+  titles:string[] = ["Watch List","Property Seen","Bid Activity","History"];
+
+  //for now using dummy data array
+  public data: Array<{ propertyid: number,projectname: string,propertyimage:string}> = [
+    {propertyid: 1, projectname: 'Dream Inn Dubai - Palm Villa',propertyimage:'http://13.59.166.45/ChiraghDocuments/images/thumbnail-img1.jpg'},
+    {propertyid: 2, projectname: 'The Palm Jumeirah, Dubai',propertyimage:'http://13.59.166.45/ChiraghDocuments/images/thumbnail-img3.jpg'},
+    {propertyid: 3, projectname: 'Unique Luxury Apartment Downtown,Dubai',propertyimage:'http://13.59.166.45/ChiraghDocuments/images/thumbnail-img1.jpg'},
+    {propertyid: 4, projectname: ' The Empress Villa Jumeirah, Dubai',propertyimage:'http://13.59.166.45/ChiraghDocuments/images/thumbnail-img3.jpg'},
+    {propertyid: 5, projectname: 'Burj Khalifa, Downtown Dubai',propertyimage:'http://13.59.166.45/ChiraghDocuments/images/thumbnail-img1.jpg'},
+    {propertyid: 6, projectname: 'MAG 214, Jumeirah Lake Towers,Dubai',propertyimage:'http://13.59.166.45/ChiraghDocuments/images/thumbnail-img3.jpg'},
+    {propertyid: 7, projectname: 'Dream Inn Dubai - Palm Villa',propertyimage:'http://13.59.166.45/ChiraghDocuments/images/thumbnail-img1.jpg'},
+    {propertyid: 8, projectname: 'The Palm Jumeirah, Dubai',propertyimage:'http://13.59.166.45/ChiraghDocuments/images/thumbnail-img3.jpg'},
+    {propertyid: 9, projectname: 'Unique Luxury Apartment,Dubai',propertyimage:'http://13.59.166.45/ChiraghDocuments/images/thumbnail-img1.jpg'},
+    {propertyid: 10, projectname: ' The Empress Villa Jumeirah, Dubai',propertyimage:'http://13.59.166.45/ChiraghDocuments/images/thumbnail-img3.jpg'},
+    {propertyid: 11, projectname: 'Burj Khalifa, Downtown Dubai',propertyimage:'http://13.59.166.45/ChiraghDocuments/images/thumbnail-img1.jpg'},
+    {propertyid: 12, projectname: 'MAG 214, Jumeirah Lake Towers,Dubai',propertyimage:'http://13.59.166.45/ChiraghDocuments/images/thumbnail-img3.jpg'},
+    {propertyid: 13, projectname: 'MAG 214, Jumeirah Lake Towers,Dubai',propertyimage:'http://13.59.166.45/ChiraghDocuments/images/thumbnail-img3.jpg'},
+    {propertyid: 14, projectname: 'Dream Inn Dubai - Palm Villa',propertyimage:'http://13.59.166.45/ChiraghDocuments/images/thumbnail-img1.jpg'},
+    {propertyid: 15, projectname: 'The Palm Jumeirah, Dubai',propertyimage:'http://13.59.166.45/ChiraghDocuments/images/thumbnail-img3.jpg'},
+    {propertyid: 16, projectname: 'Unique Luxury Apartment Downtown,Dubai',propertyimage:'http://13.59.166.45/ChiraghDocuments/images/thumbnail-img1.jpg'},
+    {propertyid: 17, projectname: ' The Empress Villa Jumeirah, Dubai',propertyimage:'http://13.59.166.45/ChiraghDocuments/images/thumbnail-img3.jpg'},
+    {propertyid: 18, projectname: 'Burj Khalifa, Downtown Dubai',propertyimage:'http://13.59.166.45/ChiraghDocuments/images/thumbnail-img1.jpg'},
+    {propertyid: 19, projectname: 'MAG 214, Jumeirah Lake Towers,Dubai',propertyimage:'http://13.59.166.45/ChiraghDocuments/images/thumbnail-img3.jpg'},
+    {propertyid: 20, projectname: 'Dream Inn Dubai - Palm Villa',propertyimage:'http://13.59.166.45/ChiraghDocuments/images/thumbnail-img1.jpg'},];
+  
 
   constructor(private propertyService:PropertyService,private myToast:ToasterServiceService,private userService:UserService,private router: Router,  private authService: AuthService, private token: TokenStorage) { }
 
@@ -89,7 +116,15 @@ export class SellerDashboardComponent implements OnInit {
     this.getDashboardPersonalInfo();
     if(this.token.getuserName()!=null)
     this.userName=this.token.getuserName();
+    this.loadListings(0);
     
+  }
+
+  loadListings(orderId:number){
+    this.title=this.titles[orderId];
+    // Call some service from the backend to load data
+    // Assign that data to this.data 
+    this.data;
   }
 
   getOwnerImages():void{

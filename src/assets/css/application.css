@@ -1006,15 +1006,12 @@
   height: 180px;
 }
 .screen-wrapper .ud-body-row .tab-content .tab-pane .watch-prop-row .watch-prop-col .watch-prop-block .prop-pic-div.thumbnail-1 {
-  background: url("../../assets/images/thumbnail-img1.jpg") no-repeat 0 0;
   background-size: cover;
 }
 .screen-wrapper .ud-body-row .tab-content .tab-pane .watch-prop-row .watch-prop-col .watch-prop-block .prop-pic-div.thumbnail-2 {
-  background: url("../../assets/images/thumbnail-img2.jpg") no-repeat 0 0;
   background-size: cover;
 }
 .screen-wrapper .ud-body-row .tab-content .tab-pane .watch-prop-row .watch-prop-col .watch-prop-block .prop-pic-div.thumbnail-3 {
-  background: url("../../assets/images/thumbnail-img3.jpg") no-repeat 0 0;
   background-size: cover;
 }
 .screen-wrapper .ud-body-row .tab-content .tab-pane .watch-prop-row .watch-prop-col .watch-prop-block .prop-title {
@@ -1876,6 +1873,9 @@ img {
 }
 .mat-calendar-body-selected {
   background-color: #212121 !important;
+}
+.ul-list-none {
+  list-style: none;
 }
 .page-footer .footer-wrap {
   border-bottom: 1px solid #e3e3e3;

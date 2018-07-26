@@ -81,6 +81,7 @@ const routes: Routes = [
   { path:'forbuyers',component:ForbuyersComponent},
   { path:'forhomeowners',component:ForhomeownersComponent},
   { path:'sellerDashboard',component:SellerDashboardComponent},
+  
   { path:'changepassword',component:ChangepasswordComponent},
 
   //admin module path
