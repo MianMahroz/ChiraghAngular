@@ -13,6 +13,7 @@
                   <div class="col-md-6 form-label-group mb-4">
                     <label class="form-label required-input-label">Property Rented</label>
                     <select  [(ngModel)]="propertyRentalDetailDTO.isRented" name ="isRented" class="form-control common-select placeholder">
+                      <option>Select One</option>
                       <option>Yes</option>
                       <option>No</option>
                     </select>
@@ -26,7 +27,8 @@
                   </div>
                   <div class="col-md-6 form-label-group mb-4">
                     <label class="form-label">Payment Structure</label>
-                    <select [(ngModel)]="propertyRentalDetailDTO.paymentStructure" name="paymentStructure" class="form-control common-select placeholder" [disabled]="propertyRentalDetailDTO.isRented=='No'" >
+                    <select [(ngModel)]="propertyRentalDetailDTO.paymentStructure" class="form-control common-select placeholder" [disabled]="propertyRentalDetailDTO.isRented=='No'" >
+                      <option selected>Select One</option>
                       <option>1</option>
                       <option>2</option>
                       <option>3</option>

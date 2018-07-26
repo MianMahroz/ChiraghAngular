@@ -144,7 +144,8 @@
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
                               <label class="form-label required-input-label">Select Nationality</label>
-                            <select [(ngModel)]="personalinfoDTO.nationality" name="nationality" #nationality="ngModel"  class="form-control common-select">
+                            <select [(ngModel)]="personalinfoDTO.nationality"  #nationality="ngModel"  class="form-control common-select">
+                              <option selected>Select One</option>
                               <option>Pakistani</option>
                               <option>Indian</option>
                               <option>Australian</option>
@@ -270,8 +271,9 @@
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
                               <label class="form-label required-input-label">Country</label>
-                            <select [(ngModel)]="personalinfoDTO.country" name="country" #country="ngModel" class="form-control common-select ">
+                            <select [(ngModel)]="personalinfoDTO.country"  #country="ngModel" class="form-control common-select ">
                               <!-- <option selected>Country</option> -->
+                              <option selected>Select One</option>
                               <option>Pakistan</option>
                               <option>Indian</option>
                               <option>Australian</option>
@@ -280,8 +282,8 @@
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
                               <label class="form-label required-input-label">City</label>
-                            <select [(ngModel)]="personalinfoDTO.userCity" name="userCity" #userCity="ngModel" class="form-control common-select ">
-                              <option selected>City</option>
+                            <select [(ngModel)]="personalinfoDTO.userCity" #userCity="ngModel" class="form-control common-select ">
+                              <option selected>Select One</option>
                               <option>Lahore</option>
                               <option>Karachi</option>
                               <option>New York</option>
@@ -656,9 +658,9 @@
                   <div id="owner-detail" class="row tab-pane fade sign-in-row">           
                     <div class="offset-md-1 col-md-10 sub-prop-mutliple">
                       <ul *ngIf="currentProperty" class="nav nav-tabs sub-prop-tabs">
-                        <li class="d-flex" *ngFor="let ownerArr1 of currentProperty.propertysellerdetailses">
+                        <li class="d-flex" *ngFor="let ownerArr1 of currentProperty.propertysellerdetailses ;let countindex=index">
                           <a *ngIf="ownerArr1.ownerType=='owner'" data-toggle="tab" href="#owner-detail"  (click)="getOwnerDetails(ownerArr1)" class="sub-prop-tabs-link">
-                            - Owner ID:{{ownerArr1.propertySellerId}}
+                            - Owner ID:{{countindex+1}}
                           </a>
                         </li>
                         <!-- <li *ngFor="let propertyArr of userData"><a class="sub-prop-tabs-link pl-0 active" data-toggle="tab" href="#owner-1">Owner {{propertyArr.propertySellerId}}</a></li>  -->
@@ -689,7 +691,8 @@
                               </div>
                               <div class="col-md-6 form-label-group mb-4">
                                   <label class="form-label required-input-label">Select Nationality</label>
-                                <select  [(ngModel)]="ownerDto.nationality" name="nationality" class="form-control common-select">
+                                <select  [(ngModel)]="ownerDto.nationality"  class="form-control common-select">
+                                  <option selected>Select One</option>
                                   <option>Pakistani</option>
                                   <option>Indian</option>
                                   <option>Australian</option>
@@ -784,9 +787,9 @@
                   <div id="POA-detail" class="row tab-pane fade sign-in-row">
                     <div class="offset-md-1 col-md-10 sub-prop-mutliple">
                       <ul *ngIf="currentProperty" class="nav nav-tabs sub-prop-tabs">
-                        <li class="d-flex" *ngFor="let poaArr1 of currentProperty.propertysellerdetailses">
+                        <li class="d-flex" *ngFor="let poaArr1 of currentProperty.propertysellerdetailses;let countindex=index">
                           <a *ngIf="poaArr1.ownerType=='poa'" data-toggle="tab"  href="#POA-detail"   (click)=" getPOADetails(poaArr1)" class="sub-prop-tabs-link">
-                            - Poa ID:{{poaArr1.propertySellerId}}
+                            - Poa ID:{{countindex+1}}
                           </a>
                         </li>
                       </ul>
@@ -814,6 +817,7 @@
                               <div class="col-md-6 form-label-group mb-4">
                                 <label class="form-label required-input-label">Select Nationality</label>
                                 <select class="form-control common-select">
+                                  <option selected>Select One</option>
                                   <option>Pakistani</option>
                                   <option>Indian</option>
                                   <option>Australian</option>
@@ -891,7 +895,8 @@
                               </div>
                               <div class="col-md-6 form-label-group mb-4">
                                   <label class="form-label required-input-label">Specific Property</label>
-                                <select class="form-control common-select" [(ngModel)]="ownerDto.specificProperty" name="specificproperty">
+                                <select class="form-control common-select" [(ngModel)]="ownerDto.specificProperty">
+                                  <option selected>Select One</option>
                                   <option>Individual Property</option>
                                   <option>Multiple Properties</option>
                                 </select>
@@ -950,7 +955,8 @@
                             <div class="col-md-12 form-block-heading mb-2">Area Details:</div>
                             <div class="col-md-6 form-label-group mb-4">
                                 <label class="form-label required-input-label">Property Status</label>
-                              <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.propertyStatus" name="propertyStatus">
+                              <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.propertyStatus">
+                                <option selected>Select One</option>
                                 <option>Off-plan</option>
                                 <option>Under Construction</option>
                                 <option>Completed</option>
@@ -962,7 +968,8 @@
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
                                 <label class="form-label">Type of Area</label>
-                              <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.typeArea" name="typeArea" #typeArea="ngModel">
+                              <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.typeArea" #typeArea="ngModel">
+                                <option selected>Select One</option>
                                 <option>Free Hold</option>
                                 <option>Non-Free Hold</option>
                                 <option>Lease Hold</option>
@@ -986,7 +993,8 @@
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
                                 <label class="form-label required-input-label">Type of Property</label>
-                              <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.propertyType" name="propertyType" #propertyType="ngModel">
+                              <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.propertyType" #propertyType="ngModel">
+                                <option selected>Select One</option>
                                 <option>Land</option>
                                 <option>Villa</option>
                                 <option>Building</option>
@@ -1017,7 +1025,8 @@
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
                                 <label class="form-label">Present Use</label>
-                              <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.presentUse" name="presentUse" #presentUse="ngModel">
+                              <select class="form-control common-select placeholder" [(ngModel)]="propertyDetailsDto.presentUse" #presentUse="ngModel">
+                                <option selected>Select One</option>
                                 <option>Residential</option>
                                 <option>Commercial</option>
                                 <option>Industrial</option>
@@ -1544,7 +1553,8 @@
                             <div class="col-md-12 form-block-heading mb-2">Mortgage Details</div>
                             <div class="col-md-6 form-label-group mb-4">
                               <label class="form-label required-input-label">Mortgage Status</label>
-                              <select [(ngModel)]="propertyFinancialDTO.morgageStatus" name="morgageStatus" class="form-control common-select placeholder">
+                              <select [(ngModel)]="propertyFinancialDTO.morgageStatus" class="form-control common-select placeholder">
+                                <option selected>Select One</option>
                                 <option>Yes</option>
                                 <option>No</option>
                               </select>
@@ -1570,6 +1580,15 @@
                             <div class="col-md-6 form-label-group mb-4">
                               <label class="form-label">Bank</label>
                               <select [(ngModel)]="propertyFinancialDTO.bank" ng-disabled="all" name="bank" class="form-control common-select placeholder" [disabled]="propertyFinancialDTO.morgageStatus=='No'">
+                                <option selected>Select One</option>
+                                <option>Islamic</option>
+                                <option>World Bank</option>
+                              </select>
+                            </div>
+                            <div class="col-md-6 form-label-group mb-4">
+                                <label class="form-label">Bank</label>
+                              <select [(ngModel)]="propertyFinancialDTO.bank" ng-disabled="all"  class="form-control common-select placeholder">
+                                <option selected>Select One</option>
                                 <option>Islamic</option>
                                 <option>World Bank</option>
                               </select>
@@ -1584,7 +1603,8 @@
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
                                 <label class="form-label">Payment Schedule</label>
-                              <select  [(ngModel)]="propertyFinancialDTO.paymentSchedule" name="paymentSchedule" class="form-control common-select placeholder">
+                              <select  [(ngModel)]="propertyFinancialDTO.paymentSchedule"  class="form-control common-select placeholder">
+                                <option selected>Select One</option> 
                                 <option>Quarterly</option>
                                 <option>Monthly</option>
                                 <option>Yearly</option>
@@ -1635,14 +1655,16 @@
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
                                 <label class="form-label required-input-label">Property Rented</label>
-                              <select  [(ngModel)]="propertyRentalDetailDTO.isRented" name ="isRented" class="form-control common-select placeholder">
+                              <select  [(ngModel)]="propertyRentalDetailDTO.isRented" class="form-control common-select placeholder">
+                                <option selected>Select One</option>
                                 <option>Yes</option>
                                 <option>No</option>
                               </select>
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
                                 <label class="form-label">Is Vacant</label>
-                              <select [(ngModel)]="propertyRentalDetailDTO.isVacant" name="isVacant"  class="form-control common-select ">
+                              <select [(ngModel)]="propertyRentalDetailDTO.isVacant"  class="form-control common-select ">
+                                <option selected>Select One</option>
                                 <option>Yes</option>
                                 <option>No</option>
                               </select>
@@ -1653,7 +1675,8 @@
                             </div>
                             <div class="col-md-6 form-label-group mb-4">
                                 <label class="form-label">Payment Structure</label>
-                                <select [(ngModel)]="propertyRentalDetailDTO.paymentStructure" name="paymentStructure" class="form-control common-select " >
+                                <select [(ngModel)]="propertyRentalDetailDTO.paymentStructure" class="form-control common-select ">
+                                <option selected>Select One</option>
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
@@ -1890,6 +1913,7 @@
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
                             <select class="form-control common-select">
+                              <option selected>Select One</option>
                               <option>Pakistani</option>
                               <option>Indian</option>
                               <option>Australian</option>
@@ -1929,6 +1953,7 @@
                           </div> -->
                           <div class="col-md-6 form-label-group mb-4">
                             <select class="form-control common-select">
+                              <option selected>Select One</option>
                               <option>Pakistani</option>
                               <option>Indian</option>
                               <option>Australian</option>
@@ -1937,6 +1962,7 @@
                           </div>
                           <div class="col-md-6 form-label-group mb-4">
                             <select class="form-control common-select">
+                              <option selected>Select One</option>
                               <option>New York</option>
                               <option>Mumbai</option>
                               <option>Karachi</option>
