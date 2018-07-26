@@ -12,7 +12,8 @@
                     <div class="col-md-12 form-block-heading mb-3">Mortgage Details</div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label required-input-label">Mortgage Status</label>
-                      <select [(ngModel)]="propertyFinancialDTO.morgageStatus" name="morgageStatus" class="form-control common-select placeholder">
+                      <select [(ngModel)]="propertyFinancialDTO.morgageStatus" class="form-control common-select placeholder">
+                        <option selected>Select One</option>
                         <option>Yes</option>
                         <option>No</option>
                       </select>

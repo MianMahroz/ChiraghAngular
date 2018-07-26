@@ -72,7 +72,8 @@
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label required-input-label">Select Nationality</label>
-                      <select [(ngModel)]="ownerDto.nationality" name="nationality" class="form-control common-select">
+                      <select [(ngModel)]="ownerDto.nationality" #ownerDto.nationality="ngModel" class="form-control common-select placeholder">
+                        <option selected>Select One</option>
                         <option>Pakistani</option>
                         <option>Indian</option>
                         <option>Australian</option>
