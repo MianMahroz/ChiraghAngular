@@ -100,7 +100,7 @@
                         <input matInput [matDatepicker]="idCardExpiration" [(ngModel)]="ownerDto.idCardExpiration" name="idCardExpiration" disabled>
                         <mat-datepicker-toggle matSuffix [for]="idCardExpiration"></mat-datepicker-toggle>
                         <mat-datepicker #idCardExpiration disabled="false"></mat-datepicker>
-                      </mat-form-field>
+                      </mat-form-field>-->
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label required-input-label">Passport Number</label>
@@ -123,7 +123,7 @@
                         <input matInput [matDatepicker]="passportExpiryDate" [(ngModel)]="ownerDto.passportExpiryDate" name="passportExpiryDate" required disabled>
                         <mat-datepicker-toggle matSuffix [for]="passportExpiryDate"></mat-datepicker-toggle>
                         <mat-datepicker #passportExpiryDate disabled="false"></mat-datepicker>
-                      </mat-form-field>
+                      </mat-form-field>-->
                     </div>
 
                   </div>
@@ -199,7 +199,7 @@
                   <div class="row mt-3">
                     <div class="col-md-12 document-upload form-block-heading mb-4">
                       Upload Documents
-                      <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>    
+                      <div class="sub-details">jpg, png, pdf accepted with file size not exceeding 2Mb</div>
                     </div>
                     <div class="col-md-4 upload-doc-block">
                       <div class="upload-doc-div">
@@ -222,16 +222,16 @@
                       <div  class="upload-instuct mt-2">Scanned ID copy
                         <!-- <i class="fas fa-circle-notch fa-spin ml-2"></i> -->
                         <div class="upload-sub-instruct">(UAE or country of origin)</div>
-                      </div>  
+                      </div>
                       <div  class="upload-btn-div mt-3">
                         <div class="doc-upload">
                           <input id="owneIdCopy" #idFile type="file"  (change)="selectIdCopy($event)" name="file" class="doc-upload" accept=".jpg,.png,.gif,.jpeg" />
-                        </div>  
+                        </div>
                         <span class="upload-instuct ml-3">Upload</span>
-                      </div> 
+                      </div>
                     </div>
                     <!-- <ks-modal-gallery [modalImages]="images"
-                      [downloadable]="true"></ks-modal-gallery>                      
+                      [downloadable]="true"></ks-modal-gallery>
                       <p *ngIf="personalinfoDTO.scannedIdCopyUpload"><br>{{personalinfoDTO.scannedIdCopyUpload}}</p>
                       <p *ngIf="personalinfoDTO.scannedPassportCopyUpload"><br>{{personalinfoDTO.scannedPassportCopyUpload}}</p> -->
                   </div>
@@ -239,12 +239,12 @@
                     <div class="col-md-3 mb-xs-4">
                       <a  *ngIf="!atLeastOneOwner"  id="addOwnerBtn" (click)="addOwner('add')"  data-toggle="modal" data-target="#confirmationModal" style=color:white class="btn common-btn btn-light-black">Add Owner</a>
                       <a  *ngIf="atLeastOneOwner"   id="addOwnerBtn"   data-toggle="modal" data-target="#confirmationModal" style=color:white class="btn common-btn btn-light-black">Add Owner</a>
-                    
+
                     </div>
                     <div class="offset-md-6 col-md-3">
                       <!-- [disabled]="!ownerDetailsForm.form.valid" -->
                       <button   (click)="addOwner('next')" style=color:white class="btn common-btn" type="submit">Next</button>
-                    
+
                     </div>
                   </div>
                 </form>
