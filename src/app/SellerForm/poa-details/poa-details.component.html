@@ -90,7 +90,11 @@
                   </div>
                   <div class="col-md-6 form-label-group mb-4">
                     <label class="form-label">ID Card Expiry Date</label>
-                    <input type="date" class="form-control form-input"  [(ngModel)]="ownerDto.idCardExpiration" name="idCardExpiration" reqiured>
+                    <mat-form-field class="datepicker-input form-input w-100">
+                      <input matInput [matDatepicker]="idCardExpiration" [(ngModel)]="ownerDto.idCardExpiration" name="idCardExpiration" disabled>
+                      <mat-datepicker-toggle matSuffix [for]="idCardExpiration"></mat-datepicker-toggle>
+                      <mat-datepicker #idCardExpiration disabled="false"></mat-datepicker>
+                    </mat-form-field>
                   </div>
                   <div class="col-md-6 form-label-group mb-4">
                     <label class="form-label required-input-label">Passport Number</label>
@@ -109,7 +113,11 @@
                   </div>
                   <div class="col-md-6 form-label-group mb-4">
                     <label class="form-label required-input-label">Passport Expiry Date</label>
-                    <input type="date" class="form-control  form-input" [(ngModel)]="ownerDto.passportExpiryDate" name="passportExpiryDate" required>
+                    <mat-form-field class="datepicker-input form-input w-100">
+                      <input matInput [matDatepicker]="passportExpiryDate" [(ngModel)]="ownerDto.passportExpiryDate" name="passportExpiryDate" required disabled>
+                      <mat-datepicker-toggle matSuffix [for]="passportExpiryDate"></mat-datepicker-toggle>
+                      <mat-datepicker #passportExpiryDate disabled="false"></mat-datepicker>
+                    </mat-form-field>
                   </div>
                 </div>
                 <div class="row mt-3">
@@ -198,7 +206,11 @@
                   </div>
                   <div class="col-md-6 form-label-group mb-4">
                     <label class="form-label required-input-label">POA Expiry Date</label>
-                    <input type="date" class="form-control form-input" [(ngModel)]="ownerDto.poaAgreementExpiry" name="poaAgreementExpiry" required>
+                    <mat-form-field class="datepicker-input form-input w-100">
+                      <input matInput [matDatepicker]="poaAgreementExpiry" [(ngModel)]="ownerDto.poaAgreementExpiry" name="poaAgreementExpiry" required disabled>
+                      <mat-datepicker-toggle matSuffix [for]="poaAgreementExpiry"></mat-datepicker-toggle>
+                      <mat-datepicker #poaAgreementExpiry disabled="false"></mat-datepicker>
+                    </mat-form-field>
                   </div>
                   <div class="col-md-6 form-label-group mb-4">
                     <label class="form-label required-input-label">Specific Property</label>

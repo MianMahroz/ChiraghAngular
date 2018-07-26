@@ -3057,7 +3057,7 @@ input[type="file"]:disabled {
 }
 .datepicker-input .mat-input-wrapper .mat-input-flex .mat-input-infix .mat-form-field-label-wrapper {
   padding-top: 0;
-  top: 0;
+  top: -1px;
 }
 .datepicker-input .mat-input-wrapper .mat-input-flex .mat-input-suffix {
   height: 100%;
@@ -3066,6 +3066,12 @@ input[type="file"]:disabled {
   vertical-align: bottom;
   height: 100%;
   margin-right: 10px;
+}
+.datepicker-input .mat-input-wrapper .mat-input-flex .mat-input-suffix .mat-datepicker-toggle .mat-icon-button.cdk-program-focused {
+  display: none;
+}
+.datepicker-input .mat-input-wrapper .mat-input-flex .mat-input-suffix .mat-datepicker-toggle .mat-icon-button.cdk-focused {
+  display: none;
 }
 .datepicker-input .mat-input-wrapper .mat-input-flex .mat-input-suffix .mat-datepicker-toggle .mat-icon-button:focus {
   background-color: transparent;

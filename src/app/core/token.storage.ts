@@ -10,8 +10,8 @@ const TOKEN_EXPIRES_IN = 'expires_in';
 export class TokenStorage {
 
 
-    // serverPath:string='http://52.14.137.61/ChiraghServer';
-  serverPath:string='http://localhost:8082';
+  serverPath:string='http://52.14.137.61/ChiraghServer';
+  // serverPath:string='http://localhost:8082';
 
 
    imagepath:string='http://52.14.137.61/ChiraghDocuments/';

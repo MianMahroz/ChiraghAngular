@@ -602,7 +602,7 @@ input[type="file"]:disabled {
         }
         .mat-form-field-label-wrapper {
           padding-top: 0;
-          top: 0;
+          top: -1px;
         }
       }
       .mat-input-suffix {
@@ -612,6 +612,12 @@ input[type="file"]:disabled {
             vertical-align: bottom;
             height: 100%;
             margin-right: 10px;
+            &.cdk-program-focused {
+              display: none;
+            }
+            &.cdk-focused {
+              display: none;
+            }
             &:focus {
               background-color: transparent;
               outline: none;
