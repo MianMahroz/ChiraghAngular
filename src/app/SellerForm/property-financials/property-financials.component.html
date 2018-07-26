@@ -87,7 +87,11 @@
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label">Date</label>
-                      <input type="date" class="form-control form-input"  [(ngModel)]="propertyFinancialDTO.date" name="date" #date="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'" reqiured>
+                      <mat-form-field class="datepicker-input form-input w-100">
+                        <input matInput [matDatepicker]="date" [(ngModel)]="propertyFinancialDTO.date" name="date" #date="ngModel" [disabled]="propertyFinancialDTO.morgageStatus=='No'" reqiured disabled>
+                        <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+                        <mat-datepicker #date disabled="false"></mat-datepicker>
+                      </mat-form-field>
                     </div>
                     <div class="col-md-6 form-label-group mb-4">
                       <label class="form-label">Amount</label>

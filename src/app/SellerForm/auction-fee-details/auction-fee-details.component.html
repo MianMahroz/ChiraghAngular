@@ -26,7 +26,11 @@
                 <div class="row mb-5 align-items-center">
                   <div class="col-md-3 pr-0 mb-xs-3 deposit-details">Auction Start Date</div>
                   <div class="col-md-6 form-label-group">
-                    <input type="date" [(ngModel)]="auctionDTO.auctionStartDate" class="form-control form-input" reqiured>
+                    <mat-form-field class="datepicker-input form-input w-100">
+                      <input matInput [matDatepicker]="auctionStartDate" [(ngModel)]="auctionDTO.auctionStartDate" reqiured disabled>
+                      <mat-datepicker-toggle matSuffix [for]="auctionStartDate"></mat-datepicker-toggle>
+                      <mat-datepicker #auctionStartDate disabled="false"></mat-datepicker>
+                    </mat-form-field>
                   </div>
                 </div>
                 <div class="deposit-details pb-2">
